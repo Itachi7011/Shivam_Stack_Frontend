@@ -1,0 +1,679 @@
+/* =========================================================
+   SHIVAM STACK — ADMIN SIDEBAR CSS
+   Prefix: shivam-stack-admin-sidebar-
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────── */
+.shivam-stack-admin-sidebar-root {
+  /* Dark mode defaults */
+  --ss-sidebar-bg: #0a0d14;
+  --ss-sidebar-surface: #0f1320;
+  --ss-sidebar-border: rgba(99, 102, 241, 0.12);
+  --ss-sidebar-text-primary: #e2e8f0;
+  --ss-sidebar-text-secondary: #94a3b8;
+  --ss-sidebar-text-muted: #475569;
+  --ss-sidebar-accent: #6366f1;
+  --ss-sidebar-accent-2: #8b5cf6;
+  --ss-sidebar-accent-glow: rgba(99, 102, 241, 0.25);
+  --ss-sidebar-hover-bg: rgba(99, 102, 241, 0.08);
+  --ss-sidebar-active-bg: rgba(99, 102, 241, 0.18);
+  --ss-sidebar-active-border: #6366f1;
+  --ss-sidebar-dropdown-bg: rgba(15, 19, 32, 0.95);
+  --ss-sidebar-scrollbar: rgba(99, 102, 241, 0.2);
+  --ss-sidebar-shadow: 0 0 40px rgba(0, 0, 0, 0.6), 0 0 80px rgba(99, 102, 241, 0.05);
+  --ss-sidebar-profile-bg: rgba(99, 102, 241, 0.08);
+  --ss-sidebar-orb-1: rgba(99, 102, 241, 0.07);
+  --ss-sidebar-orb-2: rgba(139, 92, 246, 0.05);
+  --ss-sidebar-logo-bg: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --ss-sidebar-badge-bg: rgba(99, 102, 241, 0.2);
+  --ss-sidebar-badge-text: #818cf8;
+  --ss-sidebar-status-color: #10b981;
+  --ss-sidebar-ring-color: rgba(99, 102, 241, 0.5);
+  --ss-sidebar-width-expanded: 265px;
+  --ss-sidebar-width-collapsed: 68px;
+  --ss-sidebar-font: 'DM Sans', sans-serif;
+  --ss-sidebar-font-brand: 'Syne', sans-serif;
+  --ss-sidebar-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --ss-sidebar-dropdown-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Mode Overrides */
+.shivam-stack-admin-sidebar-root.light {
+  --ss-sidebar-bg: #f8f9ff;
+  --ss-sidebar-surface: #ffffff;
+  --ss-sidebar-border: rgba(99, 102, 241, 0.15);
+  --ss-sidebar-text-primary: #1e1b4b;
+  --ss-sidebar-text-secondary: #4c4f69;
+  --ss-sidebar-text-muted: #9ca3af;
+  --ss-sidebar-hover-bg: rgba(99, 102, 241, 0.06);
+  --ss-sidebar-active-bg: rgba(99, 102, 241, 0.12);
+  --ss-sidebar-dropdown-bg: rgba(248, 249, 255, 0.98);
+  --ss-sidebar-scrollbar: rgba(99, 102, 241, 0.15);
+  --ss-sidebar-shadow: 4px 0 30px rgba(99, 102, 241, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.08);
+  --ss-sidebar-profile-bg: rgba(99, 102, 241, 0.06);
+  --ss-sidebar-orb-1: rgba(99, 102, 241, 0.04);
+  --ss-sidebar-orb-2: rgba(139, 92, 246, 0.03);
+  --ss-sidebar-badge-bg: rgba(99, 102, 241, 0.12);
+  --ss-sidebar-badge-text: #4f46e5;
+  --ss-sidebar-ring-color: rgba(99, 102, 241, 0.35);
+}
+
+/* ── Root Sidebar ──────────────────────────────────────── */
+.shivam-stack-admin-sidebar-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--ss-sidebar-width-expanded);
+  background: var(--ss-sidebar-bg);
+  border-right: 1px solid var(--ss-sidebar-border);
+  box-shadow: var(--ss-sidebar-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: var(--ss-sidebar-font);
+  transition: width var(--ss-sidebar-transition);
+  will-change: width;
+}
+
+.shivam-stack-admin-sidebar-root.shivam-stack-admin-sidebar-collapsed {
+  width: var(--ss-sidebar-width-collapsed);
+}
+
+/* ── Background Orbs ───────────────────────────────────── */
+.shivam-stack-admin-sidebar-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(60px);
+  animation: shivam-stack-sidebar-orb-pulse 8s ease-in-out infinite;
+}
+
+.shivam-stack-admin-sidebar-bg-orb-1 {
+  width: 200px;
+  height: 200px;
+  top: -60px;
+  left: -60px;
+  background: var(--ss-sidebar-orb-1);
+  animation-delay: 0s;
+}
+
+.shivam-stack-admin-sidebar-bg-orb-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 80px;
+  right: -40px;
+  background: var(--ss-sidebar-orb-2);
+  animation-delay: 4s;
+}
+
+@keyframes shivam-stack-sidebar-orb-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 14px 14px;
+  min-height: 64px;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.shivam-stack-admin-sidebar-logo-wrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--ss-sidebar-logo-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-admin-sidebar-logo-wrap::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  animation: shivam-stack-sidebar-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shivam-stack-sidebar-shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.shivam-stack-admin-sidebar-logo-icon {
+  color: #fff;
+  z-index: 1;
+}
+
+.shivam-stack-admin-sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: shivam-stack-sidebar-fade-in 0.3s ease;
+}
+
+.shivam-stack-admin-sidebar-brand-name {
+  font-family: var(--ss-sidebar-font-brand);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ss-sidebar-text-primary);
+  white-space: nowrap;
+  background: linear-gradient(135deg, var(--ss-sidebar-accent), var(--ss-sidebar-accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.shivam-stack-admin-sidebar-brand-role {
+  font-size: 0.65rem;
+  color: var(--ss-sidebar-text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.shivam-stack-admin-sidebar-toggle-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--ss-sidebar-border);
+  background: var(--ss-sidebar-hover-bg);
+  color: var(--ss-sidebar-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.shivam-stack-admin-sidebar-toggle-btn:hover {
+  background: var(--ss-sidebar-accent-glow);
+  color: var(--ss-sidebar-accent);
+  border-color: var(--ss-sidebar-accent);
+  transform: scale(1.05);
+}
+
+/* ── Profile ───────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-profile {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin: 0 10px 4px;
+  border-radius: 12px;
+  background: var(--ss-sidebar-profile-bg);
+  border: 1px solid var(--ss-sidebar-border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.shivam-stack-admin-sidebar-avatar-ring {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-sidebar-avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ss-sidebar-accent), var(--ss-sidebar-accent-2));
+  z-index: 0;
+  animation: shivam-stack-sidebar-ring-spin 4s linear infinite;
+}
+
+@keyframes shivam-stack-sidebar-ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.shivam-stack-admin-sidebar-avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid var(--ss-sidebar-bg);
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.shivam-stack-admin-sidebar-avatar-status {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: 9px;
+  height: 9px;
+  background: var(--ss-sidebar-status-color);
+  border-radius: 50%;
+  border: 2px solid var(--ss-sidebar-bg);
+  z-index: 2;
+  animation: shivam-stack-sidebar-status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shivam-stack-sidebar-status-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+}
+
+.shivam-stack-admin-sidebar-profile-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: shivam-stack-sidebar-fade-in 0.3s ease;
+}
+
+.shivam-stack-admin-sidebar-profile-name {
+  font-family: var(--ss-sidebar-font-brand);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ss-sidebar-text-primary);
+  white-space: nowrap;
+}
+
+.shivam-stack-admin-sidebar-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--ss-sidebar-badge-text);
+  background: var(--ss-sidebar-badge-bg);
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+/* ── Divider ───────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ss-sidebar-border), transparent);
+  margin: 8px 14px;
+  flex-shrink: 0;
+}
+
+/* ── Navigation ────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ss-sidebar-scrollbar) transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.shivam-stack-admin-sidebar-nav::-webkit-scrollbar {
+  width: 3px;
+}
+
+.shivam-stack-admin-sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.shivam-stack-admin-sidebar-nav::-webkit-scrollbar-thumb {
+  background: var(--ss-sidebar-scrollbar);
+  border-radius: 10px;
+}
+
+.shivam-stack-admin-sidebar-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.shivam-stack-admin-sidebar-nav-item {
+  border-radius: 10px;
+  overflow: visible;
+}
+
+/* Shared link/button styles */
+.shivam-stack-admin-sidebar-nav-link,
+.shivam-stack-admin-sidebar-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--ss-sidebar-text-secondary);
+  font-family: var(--ss-sidebar-font);
+  font-size: 0.815rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.shivam-stack-admin-sidebar-nav-link::before,
+.shivam-stack-admin-sidebar-nav-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 60%;
+  border-radius: 0 3px 3px 0;
+  background: var(--ss-sidebar-accent);
+  transition: transform 0.2s ease;
+}
+
+.shivam-stack-admin-sidebar-nav-link:hover,
+.shivam-stack-admin-sidebar-nav-btn:hover {
+  background: var(--ss-sidebar-hover-bg);
+  color: var(--ss-sidebar-text-primary);
+}
+
+.shivam-stack-admin-sidebar-nav-link-active,
+.shivam-stack-admin-sidebar-nav-btn-active {
+  background: var(--ss-sidebar-active-bg) !important;
+  color: var(--ss-sidebar-accent) !important;
+}
+
+.shivam-stack-admin-sidebar-nav-link-active::before,
+.shivam-stack-admin-sidebar-nav-btn-active::before {
+  transform: translateY(-50%) scaleY(1) !important;
+}
+
+.shivam-stack-admin-sidebar-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.shivam-stack-admin-sidebar-nav-link:hover .shivam-stack-admin-sidebar-nav-icon,
+.shivam-stack-admin-sidebar-nav-btn:hover .shivam-stack-admin-sidebar-nav-icon {
+  transform: scale(1.15);
+  color: var(--ss-sidebar-accent);
+}
+
+.shivam-stack-admin-sidebar-nav-link-active .shivam-stack-admin-sidebar-nav-icon,
+.shivam-stack-admin-sidebar-nav-btn-active .shivam-stack-admin-sidebar-nav-icon {
+  color: var(--ss-sidebar-accent);
+}
+
+.shivam-stack-admin-sidebar-nav-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: shivam-stack-sidebar-fade-in 0.25s ease;
+}
+
+.shivam-stack-admin-sidebar-nav-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ss-sidebar-text-muted);
+  transition: transform 0.3s ease;
+}
+
+.shivam-stack-admin-sidebar-nav-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ──────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--ss-sidebar-dropdown-transition), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.shivam-stack-admin-sidebar-dropdown-open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.shivam-stack-admin-sidebar-dropdown-item {
+  margin: 0;
+}
+
+.shivam-stack-admin-sidebar-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px 7px 32px;
+  text-decoration: none;
+  color: var(--ss-sidebar-text-muted);
+  font-size: 0.775rem;
+  font-weight: 400;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.shivam-stack-admin-sidebar-dropdown-link::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--ss-sidebar-text-muted);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.shivam-stack-admin-sidebar-dropdown-link:hover {
+  color: var(--ss-sidebar-text-primary);
+  background: var(--ss-sidebar-hover-bg);
+}
+
+.shivam-stack-admin-sidebar-dropdown-link:hover::before {
+  background: var(--ss-sidebar-accent);
+  transform: translateY(-50%) scale(1.4);
+}
+
+.shivam-stack-admin-sidebar-dropdown-link-active {
+  color: var(--ss-sidebar-accent) !important;
+  background: var(--ss-sidebar-active-bg) !important;
+}
+
+.shivam-stack-admin-sidebar-dropdown-link-active::before {
+  background: var(--ss-sidebar-accent) !important;
+  transform: translateY(-50%) scale(1.6) !important;
+}
+
+.shivam-stack-admin-sidebar-dropdown-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.shivam-stack-admin-sidebar-dropdown-link:hover .shivam-stack-admin-sidebar-dropdown-icon,
+.shivam-stack-admin-sidebar-dropdown-link-active .shivam-stack-admin-sidebar-dropdown-icon {
+  opacity: 1;
+}
+
+.shivam-stack-admin-sidebar-dropdown-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+.shivam-stack-admin-sidebar-footer {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  padding: 4px 8px 12px;
+}
+
+.shivam-stack-admin-sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: #f87171;
+  font-family: var(--ss-sidebar-font);
+  font-size: 0.815rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.shivam-stack-admin-sidebar-logout-btn:hover {
+  background: rgba(248, 113, 113, 0.08);
+  border-color: rgba(248, 113, 113, 0.2);
+  transform: translateX(2px);
+}
+
+/* ── Animations ────────────────────────────────────────── */
+@keyframes shivam-stack-sidebar-fade-in {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Collapsed Tooltip ─────────────────────────────────── */
+.shivam-stack-admin-sidebar-collapsed .shivam-stack-admin-sidebar-nav-link[title]:hover::after,
+.shivam-stack-admin-sidebar-collapsed .shivam-stack-admin-sidebar-nav-btn[title]:hover::after,
+.shivam-stack-admin-sidebar-collapsed .shivam-stack-admin-sidebar-logout-btn[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: calc(var(--ss-sidebar-width-collapsed) + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--ss-sidebar-surface);
+  color: var(--ss-sidebar-text-primary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  border: 1px solid var(--ss-sidebar-border);
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: shivam-stack-sidebar-tooltip-in 0.15s ease;
+}
+
+@keyframes shivam-stack-sidebar-tooltip-in {
+  from { opacity: 0; transform: translateY(-50%) translateX(-4px); }
+  to { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .shivam-stack-admin-sidebar-root {
+    --ss-sidebar-width-expanded: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shivam-stack-admin-sidebar-root {
+    --ss-sidebar-width-expanded: 100vw;
+    --ss-sidebar-width-collapsed: 0px;
+    transform: translateX(0);
+    transition: width var(--ss-sidebar-transition), transform var(--ss-sidebar-transition);
+  }
+
+  .shivam-stack-admin-sidebar-root.shivam-stack-admin-sidebar-collapsed {
+    transform: translateX(-100%);
+    width: var(--ss-sidebar-width-expanded);
+  }
+}
+
+@media (max-width: 480px) {
+  .shivam-stack-admin-sidebar-header {
+    padding: 14px 12px 12px;
+  }
+
+  .shivam-stack-admin-sidebar-profile {
+    margin: 0 8px 4px;
+    padding: 8px 10px;
+  }
+
+  .shivam-stack-admin-sidebar-brand-name {
+    font-size: 0.88rem;
+  }
+
+  .shivam-stack-admin-sidebar-nav-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* ── 3D Card Effect on Profile ─────────────────────────── */
+.shivam-stack-admin-sidebar-profile {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shivam-stack-admin-sidebar-profile:hover {
+  transform: perspective(600px) rotateX(3deg) translateY(-1px);
+  box-shadow: 0 8px 25px var(--ss-sidebar-accent-glow);
+}
+
+/* ── Glassmorphism effect on hover ─────────────────────── */
+.shivam-stack-admin-sidebar-nav-link:hover,
+.shivam-stack-admin-sidebar-nav-btn:hover {
+  backdrop-filter: blur(4px);
+}
+
+/* ── Active item glow ──────────────────────────────────── */
+.shivam-stack-admin-sidebar-nav-link-active,
+.shivam-stack-admin-sidebar-nav-btn-active {
+  box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.2);
+}

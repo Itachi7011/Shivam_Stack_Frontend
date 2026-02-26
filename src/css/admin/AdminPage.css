@@ -1,0 +1,349 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Shivam Stack — Admin Pages CSS Additions
+   Prefix: .saap- (shivam-stack-admin-admin-pages)
+   APPEND THIS ENTIRE FILE TO THE BOTTOM OF MainSettings.css
+   Inherits all .ssas- variables — no duplication needed
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Page body ── */
+.saap-page-body {
+  padding: clamp(1rem, 3vw, 2rem);
+  display: flex; flex-direction: column; gap: 1.5rem;
+  position: relative; z-index: 1;
+  min-width: 0;
+}
+
+/* ── Stats row ── */
+.saap-stats-row {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.saap-stat-card {
+  flex: 1; min-width: 110px;
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 1rem 1.2rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  box-shadow: var(--ss-shadow-sm);
+  animation: ssas-fadeup 0.35s ease both;
+}
+.saap-stat-val {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700; color: var(--ss-text-h); line-height: 1;
+  font-family: 'JetBrains Mono', monospace;
+}
+.saap-stat-lbl { font-size: 0.72rem; color: var(--ss-text-m); font-weight: 500; }
+.saap-green  { color: var(--ss-green) !important; }
+.saap-amber  { color: var(--ss-amber) !important; }
+.saap-red    { color: var(--ss-red)   !important; }
+.saap-purple { color: var(--ss-purple-lt) !important; }
+
+/* ── Header controls ── */
+.saap-header-controls {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+
+/* ── Search ── */
+.saap-search-wrap { position: relative; }
+.saap-search-icon {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  color: var(--ss-text-dim); pointer-events: none;
+}
+.saap-search-input {
+  padding: 7px 12px 7px 32px;
+  background: var(--ss-bg);
+  border: 1.5px solid var(--ss-border);
+  border-radius: var(--ss-radius);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem; color: var(--ss-text-h);
+  outline: none; width: 220px;
+  transition: border-color 0.2s, width 0.3s;
+}
+.ssas-root.dark .saap-search-input { background: rgba(8,12,20,0.8); }
+.saap-search-input:focus { border-color: var(--ss-purple); width: 260px; }
+.saap-search-input::placeholder { color: var(--ss-text-dim); }
+
+/* ── Filter tabs ── */
+.saap-filter-tabs { display: flex; gap: 3px; background: var(--ss-bg-alt); border-radius: var(--ss-radius); padding: 3px; border: 1px solid var(--ss-border); }
+.saap-filter-tab {
+  padding: 5px 12px; border-radius: 7px;
+  border: none; background: transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.76rem; font-weight: 600; color: var(--ss-text-m);
+  transition: all 0.18s var(--ss-ease); white-space: nowrap;
+}
+.saap-filter-tab:hover { color: var(--ss-text-h); background: rgba(255,255,255,0.05); }
+.saap-filter-active { background: var(--ss-bg-card); color: var(--ss-purple-lt); box-shadow: var(--ss-shadow-sm); }
+.ssas-root.dark .saap-filter-active { background: rgba(108,99,255,0.1); }
+
+/* ── Table enhancements ── */
+.saap-name-cell { display: flex; align-items: center; gap: 7px; font-weight: 600; color: var(--ss-text-h); }
+.saap-row-icon { color: var(--ss-purple-lt); flex-shrink: 0; }
+.saap-icon-green { color: var(--ss-green) !important; }
+
+.saap-slug-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 6px;
+  background: rgba(108,99,255,0.07); color: var(--ss-purple-lt);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500;
+  border: 1px solid rgba(108,99,255,0.15); white-space: nowrap;
+}
+.saap-desc-cell { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Status toggle button */
+.saap-status-toggle {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 700; white-space: nowrap;
+  transition: all 0.18s var(--ss-ease);
+}
+.saap-status-toggle:disabled { cursor: not-allowed; opacity: 0.65; }
+.saap-active   { background: rgba(16,185,129,0.1); color: var(--ss-green);   border-color: rgba(16,185,129,0.25); }
+.saap-inactive { background: rgba(148,163,184,0.1); color: var(--ss-text-m); border-color: rgba(148,163,184,0.2); }
+.saap-draft    { background: rgba(245,158,11,0.1); color: var(--ss-amber);   border-color: rgba(245,158,11,0.25); }
+.saap-expired  { background: rgba(239,68,68,0.1);  color: var(--ss-red);    border-color: rgba(239,68,68,0.2); }
+.saap-status-toggle.saap-active:hover   { background: rgba(16,185,129,0.18); }
+.saap-status-toggle.saap-inactive:hover { background: rgba(148,163,184,0.18); }
+
+/* Title cell with thumb */
+.saap-title-cell { display: flex; align-items: center; gap: 10px; }
+.saap-thumb {
+  width: 36px; height: 36px; border-radius: 6px;
+  object-fit: cover; flex-shrink: 0;
+  border: 1px solid var(--ss-border);
+}
+.saap-thumb-placeholder {
+  width: 36px; height: 36px; border-radius: 6px;
+  background: var(--ss-bg-alt); border: 1px solid var(--ss-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ss-text-dim); flex-shrink: 0;
+}
+.saap-title-text { font-weight: 600; color: var(--ss-text-h); font-size: 0.85rem; line-height: 1.3; }
+.saap-slug-small {
+  display: flex; align-items: center; gap: 3px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--ss-text-dim); margin-top: 2px;
+}
+
+/* Category badge */
+.saap-cat-badge {
+  display: inline-flex; align-items: center;
+  padding: 2px 8px; border-radius: 100px;
+  font-size: 0.71rem; font-weight: 700;
+  background: rgba(108,99,255,0.08); color: var(--ss-purple-lt);
+  border: 1px solid rgba(108,99,255,0.18);
+}
+.saap-cat-green { background: rgba(16,185,129,0.08); color: var(--ss-green); border-color: rgba(16,185,129,0.2); }
+
+/* Tags */
+.saap-tags-wrap { display: flex; gap: 4px; flex-wrap: wrap; max-width: 160px; }
+.saap-tag {
+  display: inline-block; padding: 1px 6px;
+  background: rgba(34,211,238,0.08); color: var(--ss-cyan);
+  border: 1px solid rgba(34,211,238,0.18);
+  border-radius: 4px; font-size: 0.67rem; font-weight: 600;
+}
+.saap-tag-more { background: rgba(148,163,184,0.1); color: var(--ss-text-m); border-color: rgba(148,163,184,0.2); }
+
+/* Price */
+.saap-price-cell {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.86rem;
+  font-weight: 700; color: var(--ss-green);
+}
+
+/* Stock badge */
+.saap-stock-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 6px;
+  font-size: 0.75rem; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+.saap-stock-ok  { background: rgba(16,185,129,0.1); color: var(--ss-green); }
+.saap-stock-low { background: rgba(245,158,11,0.1); color: var(--ss-amber); }
+.saap-stock-out { background: rgba(239,68,68,0.1);  color: var(--ss-red); }
+
+/* Coupon code cell */
+.saap-coupon-code-cell { display: flex; align-items: center; gap: 8px; }
+.saap-coupon-code {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; font-weight: 700;
+  color: var(--ss-text-h); letter-spacing: 0.06em;
+  background: rgba(108,99,255,0.07); padding: 3px 9px; border-radius: 6px;
+  border: 1px solid rgba(108,99,255,0.18);
+}
+.saap-copy-btn {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: transparent; border: 1px solid var(--ss-border);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--ss-text-m); transition: all 0.18s;
+}
+.saap-copy-btn:hover { border-color: var(--ss-purple); color: var(--ss-purple); }
+
+/* Discount badge */
+.saap-discount-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px; border-radius: 100px; font-size: 0.73rem; font-weight: 700;
+}
+.saap-pct   { background: rgba(16,185,129,0.1); color: var(--ss-green); border: 1px solid rgba(16,185,129,0.2); }
+.saap-fixed { background: rgba(245,158,11,0.1); color: var(--ss-amber); border: 1px solid rgba(245,158,11,0.2); }
+
+/* Usage bar */
+.saap-usage-cell { display: flex; flex-direction: column; gap: 4px; min-width: 80px; }
+.saap-usage-text { font-size: 0.74rem; font-weight: 600; color: var(--ss-text-h); font-family: 'JetBrains Mono', monospace; }
+.saap-usage-bar {
+  height: 5px; background: var(--ss-border); border-radius: 100px; overflow: hidden;
+}
+.saap-usage-fill { height: 100%; border-radius: 100px; transition: width 0.4s; }
+.saap-expired-date { display: flex; align-items: center; color: var(--ss-red); font-size: 0.78rem; }
+
+/* Project status select inline */
+.saap-status-select {
+  padding: 4px 8px; border-radius: 100px;
+  border: 1px solid transparent; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem; font-weight: 700; outline: none;
+  transition: all 0.18s;
+}
+.saap-planned    { background: rgba(108,99,255,0.1); color: var(--ss-purple-lt); border-color: rgba(108,99,255,0.2); }
+.saap-inprogress { background: rgba(245,158,11,0.1); color: var(--ss-amber);     border-color: rgba(245,158,11,0.2); }
+.saap-completed  { background: rgba(16,185,129,0.1); color: var(--ss-green);     border-color: rgba(16,185,129,0.2); }
+
+/* ── Kanban preview ── */
+.saap-kanban-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+@media (max-width: 768px) { .saap-kanban-row { grid-template-columns: 1fr; } }
+.saap-kanban-col {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  overflow: hidden;
+}
+.saap-kanban-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; font-size: 0.78rem; font-weight: 700;
+  border-bottom: 1px solid var(--ss-border);
+}
+.saap-kanban-planned    .saap-kanban-head { color: var(--ss-purple-lt); background: rgba(108,99,255,0.05); }
+.saap-kanban-inprogress .saap-kanban-head { color: var(--ss-amber);     background: rgba(245,158,11,0.05); }
+.saap-kanban-completed  .saap-kanban-head { color: var(--ss-green);     background: rgba(16,185,129,0.05); }
+.saap-kanban-count {
+  margin-left: auto; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ss-border); display: flex; align-items: center;
+  justify-content: center; font-size: 0.68rem;
+}
+.saap-kanban-card {
+  padding: 10px 14px; border-bottom: 1px solid var(--ss-border-lt);
+  cursor: pointer; transition: background 0.15s;
+}
+.saap-kanban-card:hover { background: var(--ss-bg-alt); }
+.saap-kanban-img { width: 100%; height: 60px; object-fit: cover; border-radius: 6px; margin-bottom: 6px; }
+.saap-kanban-title { font-size: 0.81rem; font-weight: 600; color: var(--ss-text-h); line-height: 1.3; }
+.saap-kanban-client { display: flex; align-items: center; gap: 4px; font-size: 0.72rem; color: var(--ss-text-m); margin-top: 3px; }
+.saap-kanban-more { padding: 8px 14px; font-size: 0.73rem; color: var(--ss-text-dim); text-align: center; }
+
+/* ── Modal ── */
+.saap-modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  animation: saap-overlay-in 0.2s ease;
+}
+@keyframes saap-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+
+.saap-modal {
+  width: 100%; max-width: 520px;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  box-shadow: var(--ss-shadow-lg);
+  display: flex; flex-direction: column;
+  max-height: 90vh;
+  animation: saap-modal-in 0.25s var(--ss-ease);
+}
+.saap-modal-lg { max-width: 760px; }
+@keyframes saap-modal-in {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.saap-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--ss-border);
+  flex-shrink: 0;
+}
+.saap-modal-title { font-size: 1rem; font-weight: 700; color: var(--ss-text-h); }
+.saap-modal-close {
+  background: none; border: none; cursor: pointer;
+  color: var(--ss-text-m); font-size: 1rem; padding: 4px 7px;
+  border-radius: 7px; line-height: 1;
+  transition: all 0.15s;
+}
+.saap-modal-close:hover { background: var(--ss-bg-alt); color: var(--ss-red); }
+
+.saap-modal-body {
+  padding: 1.3rem 1.4rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  overflow-y: auto;
+}
+.saap-modal-scroll { overflow-y: auto; max-height: calc(90vh - 130px); }
+
+.saap-modal-footer {
+  display: flex; justify-content: flex-end; gap: 10px;
+  padding: 1rem 1.4rem;
+  border-top: 1px solid var(--ss-border);
+  flex-shrink: 0;
+}
+
+/* ── Form helpers inside modal ── */
+.saap-form-group { display: flex; flex-direction: column; gap: 5px; }
+.saap-label { font-size: 0.82rem; font-weight: 600; color: var(--ss-text-h); }
+.saap-hint { font-size: 0.72rem; color: var(--ss-text-m); font-weight: 400; margin-left: 5px; }
+.saap-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+.saap-uppercase { text-transform: uppercase; letter-spacing: 0.06em; }
+.saap-content-area { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.7; }
+
+.saap-form-row { flex-direction: row; align-items: center; justify-content: space-between; }
+.saap-form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 560px) { .saap-form-grid-2 { grid-template-columns: 1fr; } }
+
+/* Prefix input */
+.saap-input-prefix-wrap { position: relative; }
+.saap-input-prefix {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  color: var(--ss-text-m); pointer-events: none; display: flex;
+}
+.saap-input-prefixed { padding-left: 34px; }
+
+/* Radio group */
+.saap-radio-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+.saap-radio-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 0.83rem; font-weight: 600; color: var(--ss-text-b);
+  cursor: pointer; padding: 7px 14px;
+  border: 1.5px solid var(--ss-border); border-radius: var(--ss-radius);
+  transition: all 0.18s;
+}
+.saap-radio-label:has(input:checked) {
+  border-color: var(--ss-purple); background: rgba(108,99,255,0.07); color: var(--ss-purple-lt);
+}
+.saap-radio-label input { display: none; }
+
+/* ── Responsive for pages ── */
+@media (max-width: 600px) {
+  .saap-stats-row { flex-direction: row; flex-wrap: wrap; }
+  .saap-stat-card { min-width: 80px; }
+  .saap-header-controls { flex-direction: column; align-items: flex-start; }
+  .saap-search-input { width: 100%; }
+  .saap-search-input:focus { width: 100%; }
+  .saap-modal { max-height: 95vh; }
+  .saap-filter-tabs { flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  .saap-page-body { padding: 0.75rem; }
+  .saap-modal-body { padding: 1rem; }
+  .saap-modal-header, .saap-modal-footer { padding: 0.85rem 1rem; }
+}

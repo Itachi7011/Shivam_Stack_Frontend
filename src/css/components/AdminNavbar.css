@@ -1,0 +1,763 @@
+/* =========================================================
+   SHIVAM STACK — ADMIN NAVBAR CSS
+   Prefix: shivam-stack-admin-navbar-
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────── */
+.shivam-stack-admin-navbar-root {
+  /* Dark mode defaults */
+  --ss-navbar-bg: rgba(10, 13, 20, 0.85);
+  --ss-navbar-border: rgba(99, 102, 241, 0.12);
+  --ss-navbar-text-primary: #e2e8f0;
+  --ss-navbar-text-secondary: #94a3b8;
+  --ss-navbar-text-muted: #475569;
+  --ss-navbar-accent: #6366f1;
+  --ss-navbar-accent-2: #8b5cf6;
+  --ss-navbar-accent-glow: rgba(99, 102, 241, 0.2);
+  --ss-navbar-hover-bg: rgba(99, 102, 241, 0.08);
+  --ss-navbar-active-bg: rgba(99, 102, 241, 0.15);
+  --ss-navbar-surface: #0f1320;
+  --ss-navbar-surface-2: #141928;
+  --ss-navbar-input-bg: rgba(99, 102, 241, 0.06);
+  --ss-navbar-input-border: rgba(99, 102, 241, 0.15);
+  --ss-navbar-shadow: 0 2px 30px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(99, 102, 241, 0.08);
+  --ss-navbar-dropdown-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.12);
+  --ss-navbar-badge-bg: #ef4444;
+  --ss-navbar-status-color: #10b981;
+  --ss-navbar-font: 'DM Sans', sans-serif;
+  --ss-navbar-font-brand: 'Syne', sans-serif;
+  --ss-navbar-height: 64px;
+  --ss-navbar-z: 999;
+}
+
+/* Light mode overrides */
+.shivam-stack-admin-navbar-root.light {
+  --ss-navbar-bg: rgba(248, 249, 255, 0.9);
+  --ss-navbar-border: rgba(99, 102, 241, 0.12);
+  --ss-navbar-text-primary: #1e1b4b;
+  --ss-navbar-text-secondary: #4c4f69;
+  --ss-navbar-text-muted: #9ca3af;
+  --ss-navbar-hover-bg: rgba(99, 102, 241, 0.06);
+  --ss-navbar-active-bg: rgba(99, 102, 241, 0.1);
+  --ss-navbar-surface: #ffffff;
+  --ss-navbar-surface-2: #f1f5ff;
+  --ss-navbar-input-bg: rgba(99, 102, 241, 0.05);
+  --ss-navbar-input-border: rgba(99, 102, 241, 0.2);
+  --ss-navbar-shadow: 0 2px 20px rgba(99, 102, 241, 0.06), 0 1px 0 rgba(99, 102, 241, 0.08);
+  --ss-navbar-dropdown-shadow: 0 20px 50px rgba(99, 102, 241, 0.1), 0 0 0 1px rgba(99, 102, 241, 0.1);
+}
+
+/* ── Root Navbar ───────────────────────────────────────── */
+.shivam-stack-admin-navbar-root {
+  position: fixed;
+  top: 0;
+  left: 265px; /* matches sidebar expanded width */
+  right: 0;
+  height: var(--ss-navbar-height);
+  background: var(--ss-navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ss-navbar-border);
+  box-shadow: var(--ss-navbar-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 20px;
+  z-index: var(--ss-navbar-z);
+  font-family: var(--ss-navbar-font);
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When sidebar is collapsed (add class via layout) */
+.shivam-stack-admin-navbar-root.shivam-stack-admin-navbar-sidebar-collapsed {
+  left: 68px;
+}
+
+/* ── Left Section ──────────────────────────────────────── */
+.shivam-stack-admin-navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.shivam-stack-admin-navbar-page-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.shivam-stack-admin-navbar-page-title {
+  font-family: var(--ss-navbar-font-brand);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 700;
+  color: var(--ss-navbar-text-primary);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(135deg, var(--ss-navbar-text-primary), var(--ss-navbar-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.shivam-stack-admin-navbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shivam-stack-admin-navbar-breadcrumb-sep {
+  color: var(--ss-navbar-text-muted);
+}
+
+.shivam-stack-admin-navbar-breadcrumb-item {
+  font-size: 0.68rem;
+  color: var(--ss-navbar-text-muted);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.shivam-stack-admin-navbar-breadcrumb-active {
+  color: var(--ss-navbar-accent);
+  font-weight: 500;
+}
+
+/* ── Center — Search ───────────────────────────────────── */
+.shivam-stack-admin-navbar-center {
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+  transition: max-width 0.3s ease;
+}
+
+.shivam-stack-admin-navbar-center-focused {
+  max-width: 540px;
+}
+
+.shivam-stack-admin-navbar-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ss-navbar-input-bg);
+  border: 1px solid var(--ss-navbar-input-border);
+  border-radius: 12px;
+  padding: 0 12px;
+  height: 38px;
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-admin-navbar-center-focused .shivam-stack-admin-navbar-search-wrap {
+  border-color: var(--ss-navbar-accent);
+  box-shadow: 0 0 0 3px var(--ss-navbar-accent-glow);
+  background: var(--ss-navbar-surface);
+}
+
+.shivam-stack-admin-navbar-search-icon {
+  color: var(--ss-navbar-text-muted);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.shivam-stack-admin-navbar-center-focused .shivam-stack-admin-navbar-search-icon {
+  color: var(--ss-navbar-accent);
+}
+
+.shivam-stack-admin-navbar-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ss-navbar-text-primary);
+  font-family: var(--ss-navbar-font);
+  font-size: 0.815rem;
+  font-weight: 400;
+  min-width: 0;
+}
+
+.shivam-stack-admin-navbar-search-input::placeholder {
+  color: var(--ss-navbar-text-muted);
+}
+
+.shivam-stack-admin-navbar-search-clear {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ss-navbar-text-muted);
+  color: var(--ss-navbar-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+  opacity: 0.6;
+}
+
+.shivam-stack-admin-navbar-search-clear:hover {
+  background: var(--ss-navbar-accent);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Search Dropdown */
+.shivam-stack-admin-navbar-search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--ss-navbar-surface);
+  border: 1px solid var(--ss-navbar-border);
+  border-radius: 14px;
+  box-shadow: var(--ss-navbar-dropdown-shadow);
+  overflow: hidden;
+  z-index: 1000;
+  animation: shivam-stack-navbar-dropdown-appear 0.2s ease;
+}
+
+.shivam-stack-admin-navbar-search-cats {
+  display: flex;
+  gap: 4px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--ss-navbar-border);
+  flex-wrap: wrap;
+}
+
+.shivam-stack-admin-navbar-search-cat-btn {
+  padding: 4px 11px;
+  border-radius: 20px;
+  border: 1px solid var(--ss-navbar-border);
+  background: transparent;
+  color: var(--ss-navbar-text-secondary);
+  font-family: var(--ss-navbar-font);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.shivam-stack-admin-navbar-search-cat-btn:hover {
+  background: var(--ss-navbar-hover-bg);
+  color: var(--ss-navbar-text-primary);
+}
+
+.shivam-stack-admin-navbar-search-cat-active {
+  background: var(--ss-navbar-active-bg) !important;
+  color: var(--ss-navbar-accent) !important;
+  border-color: var(--ss-navbar-accent) !important;
+}
+
+.shivam-stack-admin-navbar-search-result-hint,
+.shivam-stack-admin-navbar-search-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 14px;
+  color: var(--ss-navbar-text-muted);
+  font-size: 0.78rem;
+}
+
+.shivam-stack-admin-navbar-search-result-hint strong {
+  color: var(--ss-navbar-accent);
+  font-weight: 600;
+}
+
+/* ── Right Section ─────────────────────────────────────── */
+.shivam-stack-admin-navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ── Icon Button ───────────────────────────────────────── */
+.shivam-stack-admin-navbar-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--ss-navbar-border);
+  background: var(--ss-navbar-input-bg);
+  color: var(--ss-navbar-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-navbar-icon-btn:hover {
+  background: var(--ss-navbar-hover-bg);
+  color: var(--ss-navbar-accent);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--ss-navbar-accent-glow);
+}
+
+.shivam-stack-admin-navbar-icon-btn-active {
+  background: var(--ss-navbar-active-bg) !important;
+  color: var(--ss-navbar-accent) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+}
+
+.shivam-stack-admin-navbar-quick-create-btn {
+  background: linear-gradient(135deg, var(--ss-navbar-accent), var(--ss-navbar-accent-2));
+  color: #fff !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.shivam-stack-admin-navbar-quick-create-btn:hover {
+  color: #fff !important;
+  transform: translateY(-1px) rotate(90deg);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+/* Notifications Badge */
+.shivam-stack-admin-navbar-notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--ss-navbar-badge-bg);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ss-navbar-bg);
+  animation: shivam-stack-navbar-badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shivam-stack-navbar-badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Theme Toggle */
+.shivam-stack-admin-navbar-theme-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shivam-stack-admin-navbar-theme-light {
+  color: #f59e0b;
+  transform: rotate(0deg);
+}
+
+.shivam-stack-admin-navbar-theme-dark {
+  color: #818cf8;
+  transform: rotate(180deg);
+}
+
+.shivam-stack-admin-navbar-theme-btn:hover .shivam-stack-admin-navbar-theme-icon-wrap {
+  transform: rotate(30deg) scale(1.2) !important;
+}
+
+/* ── Dropdown (shared) ─────────────────────────────────── */
+.shivam-stack-admin-navbar-dropdown-wrap {
+  position: relative;
+}
+
+.shivam-stack-admin-navbar-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--ss-navbar-surface);
+  border: 1px solid var(--ss-navbar-border);
+  border-radius: 14px;
+  box-shadow: var(--ss-navbar-dropdown-shadow);
+  z-index: 1001;
+  min-width: 200px;
+  overflow: hidden;
+  animation: shivam-stack-navbar-dropdown-appear 0.2s ease;
+}
+
+@keyframes shivam-stack-navbar-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.shivam-stack-admin-navbar-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 14px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ss-navbar-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--ss-navbar-border);
+  background: var(--ss-navbar-surface-2);
+}
+
+.shivam-stack-admin-navbar-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  color: var(--ss-navbar-text-secondary);
+  font-size: 0.815rem;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
+.shivam-stack-admin-navbar-dropdown-item:hover {
+  background: var(--ss-navbar-hover-bg);
+  color: var(--ss-navbar-text-primary);
+}
+
+.shivam-stack-admin-navbar-dropdown-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--ss-navbar-hover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ss-navbar-accent);
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.shivam-stack-admin-navbar-dropdown-item:hover .shivam-stack-admin-navbar-dropdown-item-icon {
+  background: var(--ss-navbar-active-bg);
+  transform: scale(1.1);
+}
+
+.shivam-stack-admin-navbar-dropdown-item-arrow {
+  margin-left: auto;
+  color: var(--ss-navbar-text-muted);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.shivam-stack-admin-navbar-dropdown-item:hover .shivam-stack-admin-navbar-dropdown-item-arrow {
+  opacity: 1;
+}
+
+.shivam-stack-admin-navbar-dropdown-divider {
+  height: 1px;
+  background: var(--ss-navbar-border);
+  margin: 4px 0;
+}
+
+.shivam-stack-admin-navbar-logout-item {
+  color: #f87171 !important;
+}
+
+.shivam-stack-admin-navbar-logout-item .shivam-stack-admin-navbar-dropdown-item-icon {
+  color: #f87171;
+}
+
+.shivam-stack-admin-navbar-logout-item:hover {
+  background: rgba(248, 113, 113, 0.08) !important;
+}
+
+/* ── Quick Create Dropdown ─────────────────────────────── */
+.shivam-stack-admin-navbar-qc-dropdown {
+  min-width: 200px;
+}
+
+/* ── Notifications Dropdown ────────────────────────────── */
+.shivam-stack-admin-navbar-notif-dropdown {
+  min-width: 320px;
+  max-width: 340px;
+}
+
+.shivam-stack-admin-navbar-notif-count {
+  margin-left: auto;
+  background: var(--ss-navbar-badge-bg);
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.shivam-stack-admin-navbar-notif-list {
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.shivam-stack-admin-navbar-notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--ss-navbar-border);
+  transition: background 0.18s ease;
+  cursor: pointer;
+}
+
+.shivam-stack-admin-navbar-notif-item:last-child {
+  border-bottom: none;
+}
+
+.shivam-stack-admin-navbar-notif-item:hover {
+  background: var(--ss-navbar-hover-bg);
+}
+
+.shivam-stack-admin-navbar-notif-item-unread {
+  background: rgba(99, 102, 241, 0.04);
+  position: relative;
+}
+
+.shivam-stack-admin-navbar-notif-item-unread::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--ss-navbar-accent);
+  border-radius: 0 2px 2px 0;
+}
+
+.shivam-stack-admin-navbar-notif-item-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.shivam-stack-admin-navbar-notif-icon-order { background: rgba(99, 102, 241, 0.15); color: var(--ss-navbar-accent); }
+.shivam-stack-admin-navbar-notif-icon-message { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.shivam-stack-admin-navbar-notif-icon-user { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.shivam-stack-admin-navbar-notif-icon-alert { background: rgba(239, 68, 68, 0.12); color: #f87171; }
+
+.shivam-stack-admin-navbar-notif-item-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.shivam-stack-admin-navbar-notif-item-title {
+  font-size: 0.795rem;
+  font-weight: 500;
+  color: var(--ss-navbar-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivam-stack-admin-navbar-notif-item-desc {
+  font-size: 0.71rem;
+  color: var(--ss-navbar-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivam-stack-admin-navbar-notif-item-time {
+  font-size: 0.65rem;
+  color: var(--ss-navbar-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.shivam-stack-admin-navbar-notif-view-all {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ss-navbar-accent);
+  text-decoration: none;
+  background: var(--ss-navbar-surface-2);
+  transition: background 0.18s ease;
+  border-top: 1px solid var(--ss-navbar-border);
+}
+
+.shivam-stack-admin-navbar-notif-view-all:hover {
+  background: var(--ss-navbar-active-bg);
+}
+
+/* ── Profile Trigger ───────────────────────────────────── */
+.shivam-stack-admin-navbar-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 12px;
+  border: 1px solid var(--ss-navbar-border);
+  background: var(--ss-navbar-input-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-navbar-profile-trigger:hover,
+.shivam-stack-admin-navbar-profile-trigger-open {
+  background: var(--ss-navbar-hover-bg);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 14px var(--ss-navbar-accent-glow);
+}
+
+.shivam-stack-admin-navbar-profile-avatar-wrap {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-navbar-profile-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  display: block;
+}
+
+.shivam-stack-admin-navbar-profile-online {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  border: 2px solid var(--ss-navbar-bg);
+}
+
+.shivam-stack-admin-navbar-profile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.shivam-stack-admin-navbar-profile-name {
+  font-family: var(--ss-navbar-font-brand);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ss-navbar-text-primary);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.shivam-stack-admin-navbar-profile-role {
+  font-size: 0.62rem;
+  color: var(--ss-navbar-text-muted);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.shivam-stack-admin-navbar-profile-chevron {
+  color: var(--ss-navbar-text-muted);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.shivam-stack-admin-navbar-profile-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* ── Profile Dropdown ──────────────────────────────────── */
+.shivam-stack-admin-navbar-profile-dropdown {
+  min-width: 210px;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 1280px) {
+  .shivam-stack-admin-navbar-root {
+    left: 265px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shivam-stack-admin-navbar-profile-name,
+  .shivam-stack-admin-navbar-profile-role {
+    display: none;
+  }
+  .shivam-stack-admin-navbar-profile-trigger {
+    padding: 4px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+  }
+  .shivam-stack-admin-navbar-profile-chevron {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .shivam-stack-admin-navbar-root {
+    left: 0;
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .shivam-stack-admin-navbar-center {
+    max-width: 180px;
+  }
+
+  .shivam-stack-admin-navbar-page-title {
+    font-size: 0.9rem;
+  }
+
+  .shivam-stack-admin-navbar-breadcrumb {
+    display: none;
+  }
+
+  .shivam-stack-admin-navbar-notif-dropdown {
+    min-width: 290px;
+    max-width: 95vw;
+    right: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shivam-stack-admin-navbar-center {
+    display: none;
+  }
+
+  .shivam-stack-admin-navbar-right {
+    gap: 4px;
+  }
+
+  .shivam-stack-admin-navbar-icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+}

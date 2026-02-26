@@ -1,0 +1,2934 @@
+/* =========================================================
+   SHIVAM STACK — HOMEPAGE CSS
+   Prefix: shivam-stack-homepage-
+   Fonts: Syne (display) + DM Sans (body)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────── */
+.shivam-stack-homepage-root {
+  /* Palette */
+  --ss-primary: #6366f1;
+  --ss-primary-hover: #4f52e0;
+  --ss-primary-glow: rgba(99, 102, 241, 0.25);
+  --ss-accent: #10b981;
+  --ss-accent-glow: rgba(16, 185, 129, 0.2);
+  --ss-warn: #f59e0b;
+  --ss-danger: #ef4444;
+
+  /* Dark theme (default) */
+  --ss-bg: #080b14;
+  --ss-bg-2: #0c1020;
+  --ss-bg-3: #111827;
+  --ss-surface: #131929;
+  --ss-surface-2: #1a2235;
+  --ss-border: rgba(99, 102, 241, 0.12);
+  --ss-border-subtle: rgba(255, 255, 255, 0.06);
+
+  --ss-text-primary: #f1f5f9;
+  --ss-text-secondary: #94a3b8;
+  --ss-text-muted: #4b5563;
+
+  --ss-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --ss-shadow-md: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --ss-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --ss-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+
+  /* Typography */
+  --ss-font-display: 'Syne', sans-serif;
+  --ss-font-body: 'DM Sans', sans-serif;
+
+  /* Spacing */
+  --ss-section-pad: clamp(70px, 10vw, 120px);
+  --ss-max-w: 1260px;
+
+  /* Radius */
+  --ss-radius-btn: 12px;
+  --ss-radius-card: 16px;
+  --ss-radius-input: 10px;
+
+  /* Transitions */
+  --ss-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light mode */
+.shivam-stack-homepage-root.light {
+  --ss-bg: #f8f9ff;
+  --ss-bg-2: #f1f4fe;
+  --ss-bg-3: #e8edfb;
+  --ss-surface: #ffffff;
+  --ss-surface-2: #f4f7ff;
+  --ss-border: rgba(99, 102, 241, 0.14);
+  --ss-border-subtle: rgba(0, 0, 0, 0.06);
+
+  --ss-text-primary: #0f1729;
+  --ss-text-secondary: #475569;
+  --ss-text-muted: #9ca3af;
+
+  --ss-shadow-sm: 0 2px 8px rgba(99, 102, 241, 0.07);
+  --ss-shadow-md: 0 8px 30px rgba(99, 102, 241, 0.1);
+  --ss-shadow-lg: 0 20px 60px rgba(99, 102, 241, 0.12);
+  --ss-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.1);
+}
+
+/* ── Reset & Base ──────────────────────────────────────── */
+.shivam-stack-homepage-root {
+  font-family: var(--ss-font-body);
+  background: var(--ss-bg);
+  color: var(--ss-text-primary);
+  line-height: 1.65;
+  /* -webkit-font-smoothing: antialiased; */
+  overflow-x: hidden;
+  transition: background var(--ss-transition), color var(--ss-transition);
+}
+
+.shivam-stack-homepage-container {
+  /* max-width: 100%; */
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+}
+
+.shivam-stack-homepage-section {
+  padding: var(--ss-section-pad) 0;
+}
+
+/* ── Section Headers ───────────────────────────────────── */
+.shivam-stack-homepage-section-header {
+  text-align: center;
+  margin-bottom: clamp(40px, 6vw, 70px);
+}
+
+.shivam-stack-homepage-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(0.68rem, 1.2vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  padding: 4px 14px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+}
+
+.shivam-stack-homepage-section-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  line-height: 1.2;
+  margin: 0 0 16px;
+  letter-spacing: -0.03em;
+}
+
+.shivam-stack-homepage-section-desc {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  color: var(--ss-text-secondary);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+.shivam-stack-homepage-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--ss-radius-btn);
+  background: var(--ss-primary);
+  color: #fff;
+  font-family: var(--ss-font-body);
+  font-size: clamp(0.84rem, 1.5vw, 0.92rem);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--ss-transition);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.shivam-stack-homepage-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  transition: opacity var(--ss-transition);
+  opacity: 0;
+}
+
+.shivam-stack-homepage-btn-primary:hover {
+  background: var(--ss-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-btn-primary:hover::before {
+  opacity: 1;
+}
+
+.shivam-stack-homepage-btn-primary:active {
+  transform: translateY(0);
+}
+
+.shivam-stack-homepage-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--ss-radius-btn);
+  background: transparent;
+  color: var(--ss-text-primary);
+  font-family: var(--ss-font-body);
+  font-size: clamp(0.84rem, 1.5vw, 0.92rem);
+  font-weight: 600;
+  border: 1.5px solid var(--ss-border);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--ss-transition);
+  white-space: nowrap;
+}
+
+.shivam-stack-homepage-btn-ghost:hover {
+  border-color: var(--ss-primary);
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+  transform: translateY(-2px);
+}
+
+.shivam-stack-homepage-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--ss-radius-btn);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-family: var(--ss-font-body);
+  font-size: clamp(0.84rem, 1.5vw, 0.92rem);
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--ss-transition);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.shivam-stack-homepage-btn-secondary:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Scroll reveal animation ───────────────────────────── */
+.shivam-stack-homepage-expertise-grid > *,
+.shivam-stack-homepage-services-grid > *,
+.shivam-stack-homepage-cases-grid > *,
+.shivam-stack-homepage-blog-grid > *,
+.shivam-stack-homepage-process-step,
+.shivam-stack-homepage-why-card,
+.shivam-stack-homepage-stat-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.shivam-stack-homepage-revealed > * {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ── NAVBAR ────────────────────────────────────────────── */
+.shivam-stack-homepage-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 0;
+  transition: all var(--ss-transition);
+}
+
+.shivam-stack-homepage-navbar-scrolled {
+  background: var(--ss-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ss-border);
+  box-shadow: var(--ss-shadow-sm);
+}
+
+.shivam-stack-homepage-navbar-inner {
+  max-width: var(--ss-max-w);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shivam-stack-homepage-navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-navbar-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--ss-primary), #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 14px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-navbar-logo-text {
+  font-family: var(--ss-font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  letter-spacing: -0.03em;
+}
+
+.shivam-stack-homepage-navbar-logo-text span {
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+.shivam-stack-homepage-navbar-link {
+  padding: 7px 14px;
+  border-radius: 9px;
+  background: transparent;
+  border: none;
+  color: var(--ss-text-secondary);
+  font-family: var(--ss-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.shivam-stack-homepage-navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 2px;
+  background: var(--ss-primary);
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.shivam-stack-homepage-navbar-link:hover {
+  color: var(--ss-text-primary);
+  background: var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-navbar-link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.shivam-stack-homepage-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-navbar-theme-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--ss-border);
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-navbar-theme-btn:hover {
+  background: var(--ss-primary);
+  color: #fff;
+  border-color: var(--ss-primary);
+  transform: rotate(20deg);
+}
+
+.shivam-stack-homepage-navbar-cta {
+  padding: 9px 22px;
+  font-size: 0.85rem;
+}
+
+.shivam-stack-homepage-navbar-hamburger {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--ss-border);
+  background: transparent;
+  color: var(--ss-text-primary);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-navbar-hamburger:hover {
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-mobile-menu {
+  background: var(--ss-surface);
+  border-bottom: 1px solid var(--ss-border);
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px 20px;
+  gap: 4px;
+  animation: shivam-stack-hp-menu-slide 0.25s ease;
+}
+
+@keyframes shivam-stack-hp-menu-slide {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.shivam-stack-homepage-mobile-menu-link {
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--ss-text-secondary);
+  font-family: var(--ss-font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-mobile-menu-link:hover {
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+}
+
+/* ── ANNOUNCEMENT BAR ──────────────────────────────────── */
+.shivam-stack-homepage-announcement-bar {
+  margin-top: 68px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15));
+  border-bottom: 1px solid var(--ss-border);
+  padding: 10px 20px;
+}
+
+.shivam-stack-homepage-announcement-inner {
+  max-width: var(--ss-max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.shivam-stack-homepage-announcement-badge {
+  background: var(--ss-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.shivam-stack-homepage-announcement-text {
+  font-size: clamp(0.78rem, 1.5vw, 0.875rem);
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-homepage-announcement-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.shivam-stack-homepage-announcement-link:hover {
+  gap: 8px;
+}
+
+/* ── HERO ──────────────────────────────────────────────── */
+.shivam-stack-homepage-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(60px, 10vw, 100px) 0 clamp(60px, 8vw, 100px);
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(160deg, #080b14 0%, #0d1326 50%, #090c18 100%);
+}
+
+.shivam-stack-homepage-root.light .shivam-stack-homepage-hero-bg {
+  background: linear-gradient(160deg, #0f1729 0%, #1a2548 50%, #0c1426 100%);
+}
+
+.shivam-stack-homepage-hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.shivam-stack-homepage-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.shivam-stack-homepage-hero-orb-1 {
+  width: clamp(300px, 50vw, 600px);
+  height: clamp(300px, 50vw, 600px);
+  background: rgba(99, 102, 241, 0.15);
+  top: -100px;
+  right: -100px;
+  animation: shivam-stack-hp-orb-drift 12s ease-in-out infinite;
+}
+
+.shivam-stack-homepage-hero-orb-2 {
+  width: clamp(200px, 35vw, 400px);
+  height: clamp(200px, 35vw, 400px);
+  background: rgba(16, 185, 129, 0.08);
+  bottom: 0;
+  left: -80px;
+  animation: shivam-stack-hp-orb-drift 16s ease-in-out infinite reverse;
+}
+
+.shivam-stack-homepage-hero-orb-3 {
+  width: clamp(150px, 20vw, 280px);
+  height: clamp(150px, 20vw, 280px);
+  background: rgba(139, 92, 246, 0.1);
+  top: 40%;
+  left: 40%;
+  animation: shivam-stack-hp-orb-drift 20s ease-in-out infinite 4s;
+}
+
+@keyframes shivam-stack-hp-orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+.shivam-stack-homepage-hero .shivam-stack-homepage-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.shivam-stack-homepage-hero-content {
+  max-width: 660px;
+}
+
+.shivam-stack-homepage-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--ss-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+  animation: shivam-stack-hp-fade-up 0.6s ease both;
+}
+
+.shivam-stack-homepage-hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--ss-accent);
+  border-radius: 50%;
+  animation: shivam-stack-hp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shivam-stack-hp-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+}
+
+.shivam-stack-homepage-hero-badge-slots {
+  background: var(--ss-accent);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 1px 8px;
+  border-radius: 20px;
+}
+
+.shivam-stack-homepage-hero-h1 {
+  font-family: var(--ss-font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+  animation: shivam-stack-hp-fade-up 0.6s ease 0.1s both;
+}
+
+.shivam-stack-homepage-hero-gradient-text {
+  background: linear-gradient(135deg, var(--ss-primary) 0%, #a78bfa 50%, var(--ss-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: shivam-stack-hp-gradient-shift 4s ease infinite;
+}
+
+@keyframes shivam-stack-hp-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.shivam-stack-homepage-hero-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+  margin: 0 0 24px;
+  animation: shivam-stack-hp-fade-up 0.6s ease 0.2s both;
+}
+
+.shivam-stack-homepage-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+  animation: shivam-stack-hp-fade-up 0.6s ease 0.25s both;
+}
+
+.shivam-stack-homepage-hero-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-hero-tag:hover {
+  background: var(--ss-primary-glow);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
+}
+
+.shivam-stack-homepage-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  animation: shivam-stack-hp-fade-up 0.6s ease 0.3s both;
+}
+
+.shivam-stack-homepage-hero-cta-primary {
+  padding: 15px 32px;
+  font-size: clamp(0.88rem, 1.5vw, 0.96rem);
+  box-shadow: 0 8px 30px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-hero-cta-secondary {
+  color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.shivam-stack-homepage-hero-cta-secondary:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.07);
+}
+
+.shivam-stack-homepage-hero-social {
+  display: flex;
+  gap: 12px;
+  animation: shivam-stack-hp-fade-up 0.6s ease 0.4s both;
+}
+
+.shivam-stack-homepage-hero-social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-hero-social-link:hover {
+  background: var(--ss-primary);
+  border-color: var(--ss-primary);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px var(--ss-primary-glow);
+}
+
+/* Hero Visual - 3D Card */
+.shivam-stack-homepage-hero-visual {
+  animation: shivam-stack-hp-fade-up 0.8s ease 0.3s both;
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-hero-card-3d {
+  perspective: 1000px;
+  width: clamp(240px, 28vw, 320px);
+}
+
+.shivam-stack-homepage-hero-card-inner {
+  background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(99,102,241,0.08) 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+  animation: shivam-stack-hp-card-float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+@keyframes shivam-stack-hp-card-float {
+  0%, 100% { transform: translateY(0) rotateX(2deg) rotateY(-3deg); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+  50% { transform: translateY(-12px) rotateX(-1deg) rotateY(3deg); box-shadow: 0 35px 80px rgba(0,0,0,0.5), 0 0 40px rgba(99,102,241,0.1); }
+}
+
+.shivam-stack-homepage-hero-profile-ring {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--ss-primary), #a78bfa, var(--ss-accent));
+  margin: 0 auto 16px;
+  animation: shivam-stack-hp-ring-spin 6s linear infinite;
+}
+
+@keyframes shivam-stack-hp-ring-spin {
+  0% { background: linear-gradient(135deg, var(--ss-primary), #a78bfa, var(--ss-accent)); }
+  33% { background: linear-gradient(255deg, var(--ss-primary), #a78bfa, var(--ss-accent)); }
+  66% { background: linear-gradient(375deg, var(--ss-primary), #a78bfa, var(--ss-accent)); }
+  100% { background: linear-gradient(495deg, var(--ss-primary), #a78bfa, var(--ss-accent)); }
+}
+
+.shivam-stack-homepage-hero-profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #080b14;
+  object-fit: cover;
+  display: block;
+}
+
+.shivam-stack-homepage-hero-card-info {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.shivam-stack-homepage-hero-card-name {
+  font-family: var(--ss-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.shivam-stack-homepage-hero-card-role {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+}
+
+.shivam-stack-homepage-hero-card-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: var(--ss-accent);
+}
+
+.shivam-stack-homepage-hero-floating-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.shivam-stack-homepage-hero-floating-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  transition: all 0.3s ease;
+  animation: shivam-stack-hp-badge-slide 0.6s ease both;
+}
+
+.shivam-stack-homepage-hero-fb-1 { animation-delay: 0.8s; color: #a78bfa; }
+.shivam-stack-homepage-hero-fb-2 { animation-delay: 1s; color: var(--ss-warn); }
+.shivam-stack-homepage-hero-fb-3 { animation-delay: 1.2s; color: var(--ss-primary); }
+
+.shivam-stack-homepage-hero-floating-badge:hover {
+  background: rgba(99,102,241,0.12);
+  border-color: rgba(99,102,241,0.25);
+  transform: translateX(4px);
+}
+
+@keyframes shivam-stack-hp-badge-slide {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.shivam-stack-homepage-hero-scroll-cue {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: shivam-stack-hp-bounce 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+.shivam-stack-homepage-hero-scroll-cue:hover {
+  border-color: var(--ss-primary);
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+}
+
+@keyframes shivam-stack-hp-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes shivam-stack-hp-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── STATS ─────────────────────────────────────────────── */
+.shivam-stack-homepage-stats-section {
+  padding: clamp(50px, 7vw, 80px) 0;
+  background: var(--ss-surface);
+  border-top: 1px solid var(--ss-border);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.shivam-stack-homepage-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1px;
+  background: var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: clamp(20px, 3vw, 32px) clamp(16px, 2vw, 24px);
+  background: var(--ss-surface);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-stat-card:hover {
+  background: var(--ss-surface-2);
+  transform: translateY(-4px);
+}
+
+.shivam-stack-homepage-stat-icon {
+  color: var(--ss-primary);
+  opacity: 0.8;
+}
+
+.shivam-stack-homepage-stat-value {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--ss-text-primary), var(--ss-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shivam-stack-homepage-stat-label {
+  font-size: clamp(0.72rem, 1.2vw, 0.8rem);
+  color: var(--ss-text-secondary);
+  font-weight: 500;
+}
+
+/* ── TECH STACK ────────────────────────────────────────── */
+.shivam-stack-homepage-tech-section {
+  background: var(--ss-bg-2);
+}
+
+.shivam-stack-homepage-tech-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.shivam-stack-homepage-tech-filter-btn {
+  padding: 7px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--ss-border);
+  background: transparent;
+  color: var(--ss-text-secondary);
+  font-family: var(--ss-font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-tech-filter-btn:hover {
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  border-color: rgba(99,102,241,0.3);
+}
+
+.shivam-stack-homepage-tech-filter-active {
+  background: var(--ss-primary) !important;
+  color: #fff !important;
+  border-color: var(--ss-primary) !important;
+}
+
+.shivam-stack-homepage-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 110px);
+  gap: 14px;
+  justify-content: center;
+}
+
+.shivam-stack-homepage-tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 12px;
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  transition: all 0.25s ease;
+  cursor: default;
+  animation: shivam-stack-hp-fade-up 0.4s ease both;
+}
+
+.shivam-stack-homepage-tech-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--tech-color, var(--ss-primary));
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 0 1px var(--tech-color, var(--ss-primary));
+}
+
+.shivam-stack-homepage-tech-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px var(--tech-color, rgba(99,102,241,0.3)));
+  transition: transform 0.2s ease;
+}
+
+.shivam-stack-homepage-tech-card:hover .shivam-stack-homepage-tech-icon {
+  transform: scale(1.2);
+}
+
+.shivam-stack-homepage-tech-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  text-align: center;
+}
+
+.shivam-stack-homepage-tech-cat {
+  font-size: 0.65rem;
+  color: var(--ss-text-muted);
+  text-align: center;
+}
+
+/* ── ABOUT ME ──────────────────────────────────────────── */
+.shivam-stack-homepage-about-section {
+  background: var(--ss-bg);
+}
+
+.shivam-stack-homepage-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 90px);
+  align-items: center;
+}
+
+.shivam-stack-homepage-about-title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.shivam-stack-homepage-about-body {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.shivam-stack-homepage-about-achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.shivam-stack-homepage-about-achievement {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-homepage-about-achievement:hover {
+  border-color: var(--ss-primary);
+  box-shadow: var(--ss-shadow-sm);
+  transform: translateY(-2px);
+}
+
+.shivam-stack-homepage-about-achievement-icon {
+  color: var(--ss-primary);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.shivam-stack-homepage-about-achievement-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ss-text-primary);
+  margin-bottom: 2px;
+}
+
+.shivam-stack-homepage-about-achievement-desc {
+  font-size: 0.72rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.5;
+}
+
+.shivam-stack-homepage-about-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* About Visual */
+.shivam-stack-homepage-about-right {
+  display: flex;
+  justify-content: center;
+}
+
+.shivam-stack-homepage-about-visual {
+  position: relative;
+  width: clamp(260px, 35vw, 400px);
+}
+
+.shivam-stack-homepage-about-img-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--ss-border);
+  box-shadow: var(--ss-shadow-lg);
+  background: linear-gradient(145deg, var(--ss-surface), var(--ss-bg-3));
+  position: relative;
+}
+
+.shivam-stack-homepage-about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.shivam-stack-homepage-about-img-wrap:hover .shivam-stack-homepage-about-img {
+  transform: scale(1.04);
+}
+
+.shivam-stack-homepage-about-exp-badge {
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  background: var(--ss-primary);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-about-exp-num {
+  font-family: var(--ss-font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.shivam-stack-homepage-about-exp-text {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.85;
+  line-height: 1.3;
+  margin-top: 3px;
+}
+
+.shivam-stack-homepage-about-avail-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--ss-surface);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 30px;
+  padding: 7px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ss-accent);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-about-avail-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--ss-accent);
+  border-radius: 50%;
+  animation: shivam-stack-hp-pulse 2s ease-in-out infinite;
+}
+
+/* ── EXPERTISE ─────────────────────────────────────────── */
+.shivam-stack-homepage-expertise-section {
+  background: var(--ss-surface);
+}
+
+.shivam-stack-homepage-expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-expertise-card {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(22px, 3vw, 32px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ss-primary), #a78bfa);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.shivam-stack-homepage-expertise-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: var(--ss-shadow-md), var(--ss-shadow-glow);
+}
+
+.shivam-stack-homepage-expertise-card:hover::before {
+  transform: scaleX(1);
+}
+
+.shivam-stack-homepage-expertise-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-expertise-card:hover .shivam-stack-homepage-expertise-icon {
+  background: var(--ss-primary);
+  color: #fff;
+  box-shadow: 0 6px 18px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-expertise-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0 0 10px;
+}
+
+.shivam-stack-homepage-expertise-desc {
+  font-size: clamp(0.82rem, 1.3vw, 0.9rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.shivam-stack-homepage-expertise-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shivam-stack-homepage-expertise-skill-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+  border: 1px solid rgba(99,102,241,0.2);
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+/* ── SERVICES ──────────────────────────────────────────── */
+.shivam-stack-homepage-services-section {
+  background: var(--ss-bg-2);
+}
+
+.shivam-stack-homepage-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-service-card {
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-service-card-featured {
+  border-color: var(--ss-primary);
+  box-shadow: 0 0 0 1px var(--ss-primary), var(--ss-shadow-glow);
+}
+
+.shivam-stack-homepage-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-service-card-featured:hover {
+  box-shadow: 0 0 0 1px var(--ss-primary), var(--ss-shadow-lg), var(--ss-shadow-glow);
+}
+
+.shivam-stack-homepage-service-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.shivam-stack-homepage-service-badge-popular {
+  background: var(--ss-primary);
+  color: #fff;
+}
+
+.shivam-stack-homepage-service-badge-premium {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+}
+
+.shivam-stack-homepage-service-badge-new {
+  background: var(--ss-accent);
+  color: #fff;
+}
+
+.shivam-stack-homepage-service-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-service-card:hover .shivam-stack-homepage-service-icon {
+  background: var(--ss-primary);
+  color: #fff;
+}
+
+.shivam-stack-homepage-service-card-featured .shivam-stack-homepage-service-icon {
+  background: var(--ss-primary);
+  color: #fff;
+}
+
+.shivam-stack-homepage-service-price {
+  font-family: var(--ss-font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ss-accent);
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.2);
+  padding: 3px 12px;
+  border-radius: 6px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.shivam-stack-homepage-service-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.shivam-stack-homepage-service-desc {
+  font-size: clamp(0.82rem, 1.3vw, 0.88rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.shivam-stack-homepage-service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.shivam-stack-homepage-service-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-homepage-service-features li svg {
+  color: var(--ss-accent);
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-service-cta {
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ── INDUSTRIES ────────────────────────────────────────── */
+.shivam-stack-homepage-industries-section {
+  background: var(--ss-bg);
+}
+
+.shivam-stack-homepage-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.shivam-stack-homepage-industry-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: clamp(18px, 2.5vw, 26px);
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-homepage-industry-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-industry-icon {
+  color: var(--ss-primary);
+  opacity: 0.85;
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-homepage-industry-card:hover .shivam-stack-homepage-industry-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.shivam-stack-homepage-industry-name {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+}
+
+.shivam-stack-homepage-industry-desc {
+  font-size: clamp(0.75rem, 1.2vw, 0.82rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+}
+
+/* ── CASE STUDIES ──────────────────────────────────────── */
+.shivam-stack-homepage-cases-section {
+  background: var(--ss-surface);
+}
+
+.shivam-stack-homepage-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-case-card {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-case-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--case-color, var(--ss-primary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.shivam-stack-homepage-case-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--case-color, var(--ss-primary));
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25), 0 0 0 1px var(--case-color, var(--ss-primary));
+}
+
+.shivam-stack-homepage-case-card:hover::after {
+  transform: scaleX(1);
+}
+
+.shivam-stack-homepage-case-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shivam-stack-homepage-case-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--case-color, var(--ss-primary));
+  background: color-mix(in srgb, var(--case-color, var(--ss-primary)) 15%, transparent);
+  padding: 3px 11px;
+  border-radius: 20px;
+}
+
+.shivam-stack-homepage-case-ext {
+  color: var(--ss-text-muted);
+  transition: color 0.2s ease;
+}
+
+.shivam-stack-homepage-case-card:hover .shivam-stack-homepage-case-ext {
+  color: var(--case-color, var(--ss-primary));
+}
+
+.shivam-stack-homepage-case-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.shivam-stack-homepage-case-desc {
+  font-size: clamp(0.82rem, 1.3vw, 0.88rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.shivam-stack-homepage-case-metrics {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.shivam-stack-homepage-case-metric {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--case-color, var(--ss-primary));
+  background: color-mix(in srgb, var(--case-color, var(--ss-primary)) 10%, transparent);
+  padding: 3px 11px;
+  border-radius: 6px;
+}
+
+.shivam-stack-homepage-case-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shivam-stack-homepage-case-tech {
+  font-size: 0.7rem;
+  color: var(--ss-text-muted);
+  background: var(--ss-surface-2);
+  border: 1px solid var(--ss-border-subtle);
+  padding: 2px 9px;
+  border-radius: 5px;
+}
+
+.shivam-stack-homepage-section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+/* ── STORE ─────────────────────────────────────────────── */
+.shivam-stack-homepage-store-section {
+  background: var(--ss-bg-2);
+}
+
+.shivam-stack-homepage-store-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.shivam-stack-homepage-product-card {
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(18px, 2.5vw, 26px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-product-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shivam-stack-homepage-product-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shivam-stack-homepage-product-type {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+  border: 1px solid rgba(99,102,241,0.2);
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+.shivam-stack-homepage-product-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.shivam-stack-homepage-product-desc {
+  font-size: 0.82rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+.shivam-stack-homepage-product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shivam-stack-homepage-product-pricing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shivam-stack-homepage-product-price {
+  font-family: var(--ss-font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  letter-spacing: -0.03em;
+}
+
+.shivam-stack-homepage-product-original {
+  font-size: 0.78rem;
+  color: var(--ss-text-muted);
+  text-decoration: line-through;
+}
+
+.shivam-stack-homepage-product-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.shivam-stack-homepage-product-rating {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ss-warn);
+}
+
+.shivam-stack-homepage-product-sales {
+  font-size: 0.68rem;
+  color: var(--ss-text-muted);
+}
+
+.shivam-stack-homepage-product-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 11px 20px;
+}
+
+/* ── FREE RESOURCES ────────────────────────────────────── */
+.shivam-stack-homepage-resources-section {
+  background: var(--ss-bg);
+}
+
+.shivam-stack-homepage-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-resource-card {
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-resource-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-resource-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shivam-stack-homepage-resource-icon {
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-resource-type {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ss-accent);
+  background: var(--ss-accent-glow);
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+.shivam-stack-homepage-resource-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.shivam-stack-homepage-resource-desc {
+  font-size: 0.85rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.shivam-stack-homepage-resource-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.shivam-stack-homepage-resource-downloads {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  font-weight: 500;
+}
+
+.shivam-stack-homepage-resource-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ss-primary);
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.shivam-stack-homepage-resource-link:hover {
+  gap: 8px;
+}
+
+/* ── PROCESS ───────────────────────────────────────────── */
+.shivam-stack-homepage-process-section {
+  background: var(--ss-surface);
+}
+
+.shivam-stack-homepage-process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.shivam-stack-homepage-process-step {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-process-step:hover {
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: var(--ss-shadow-md);
+  transform: translateY(-4px);
+}
+
+.shivam-stack-homepage-process-connector {
+  display: none;
+}
+
+.shivam-stack-homepage-process-step-num {
+  font-family: var(--ss-font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--ss-border);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.shivam-stack-homepage-process-step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-process-step:hover .shivam-stack-homepage-process-step-icon {
+  background: var(--ss-primary);
+  color: #fff;
+}
+
+.shivam-stack-homepage-process-step-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.shivam-stack-homepage-process-step-desc {
+  font-size: clamp(0.8rem, 1.3vw, 0.875rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── WHY ME ────────────────────────────────────────────── */
+.shivam-stack-homepage-why-section {
+  background: var(--ss-bg-2);
+}
+
+.shivam-stack-homepage-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 7vw, 90px);
+  align-items: start;
+}
+
+.shivam-stack-homepage-why-title {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.shivam-stack-homepage-why-desc {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.shivam-stack-homepage-why-cta-wrap {
+  margin-top: 8px;
+}
+
+.shivam-stack-homepage-why-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.shivam-stack-homepage-why-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-homepage-why-card:hover {
+  border-color: rgba(99,102,241,0.3);
+  transform: translateX(6px);
+  box-shadow: var(--ss-shadow-sm);
+}
+
+.shivam-stack-homepage-why-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.shivam-stack-homepage-why-card:hover .shivam-stack-homepage-why-icon {
+  background: var(--ss-primary);
+  color: #fff;
+}
+
+.shivam-stack-homepage-why-card-title {
+  font-family: var(--ss-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin-bottom: 4px;
+}
+
+.shivam-stack-homepage-why-card-desc {
+  font-size: 0.82rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.6;
+}
+
+/* ── TESTIMONIALS ──────────────────────────────────────── */
+.shivam-stack-homepage-testimonials-section {
+  background: var(--ss-bg);
+}
+
+.shivam-stack-homepage-testimonials-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ss-radius-card);
+}
+
+.shivam-stack-homepage-testimonials-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shivam-stack-homepage-testimonial-card {
+  min-width: 100%;
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(30px, 5vw, 60px) clamp(24px, 5vw, 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.shivam-stack-homepage-testimonial-stars {
+  display: flex;
+  gap: 4px;
+  color: var(--ss-warn);
+}
+
+.shivam-stack-homepage-testimonial-text {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--ss-text-primary);
+  font-style: italic;
+  line-height: 1.75;
+  max-width: 700px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.shivam-stack-homepage-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.shivam-stack-homepage-testimonial-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ss-font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.shivam-stack-homepage-testimonial-name {
+  font-family: var(--ss-font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ss-text-primary);
+}
+
+.shivam-stack-homepage-testimonial-role {
+  font-size: 0.78rem;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-homepage-testimonials-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.shivam-stack-homepage-carousel-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--ss-border);
+  background: var(--ss-surface);
+  color: var(--ss-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-carousel-btn:hover:not(:disabled) {
+  border-color: var(--ss-primary);
+  color: var(--ss-primary);
+  background: var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-carousel-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.shivam-stack-homepage-carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.shivam-stack-homepage-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ss-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.shivam-stack-homepage-carousel-dot-active {
+  background: var(--ss-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ── OPEN SOURCE ───────────────────────────────────────── */
+.shivam-stack-homepage-opensource-section {
+  background: var(--ss-surface);
+}
+
+.shivam-stack-homepage-opensource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-repo-card {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(20px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.shivam-stack-homepage-repo-card:hover {
+  border-color: rgba(99,102,241,0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-repo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shivam-stack-homepage-repo-icon {
+  color: var(--ss-text-secondary);
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-repo-name {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
+  font-weight: 700;
+  color: var(--ss-primary);
+  text-decoration: none;
+  flex: 1;
+  transition: color 0.2s ease;
+}
+
+.shivam-stack-homepage-repo-name:hover {
+  color: #a78bfa;
+}
+
+.shivam-stack-homepage-repo-ext {
+  color: var(--ss-text-muted);
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-repo-desc {
+  font-size: clamp(0.8rem, 1.3vw, 0.87rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+.shivam-stack-homepage-repo-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.shivam-stack-homepage-repo-lang {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+  font-weight: 500;
+}
+
+.shivam-stack-homepage-repo-lang-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.shivam-stack-homepage-repo-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--ss-text-muted);
+  font-weight: 500;
+}
+
+/* ── BLOG ──────────────────────────────────────────────── */
+.shivam-stack-homepage-blog-section {
+  background: var(--ss-bg-2);
+}
+
+.shivam-stack-homepage-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.shivam-stack-homepage-blog-card {
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-card);
+  padding: clamp(22px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-blog-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--blog-color, var(--ss-primary));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.shivam-stack-homepage-blog-card:hover::before {
+  transform: scaleY(1);
+}
+
+.shivam-stack-homepage-blog-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99,102,241,0.25);
+  box-shadow: var(--ss-shadow-md);
+}
+
+.shivam-stack-homepage-blog-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shivam-stack-homepage-blog-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blog-color, var(--ss-primary));
+  background: color-mix(in srgb, var(--blog-color, var(--ss-primary)) 12%, transparent);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.shivam-stack-homepage-blog-date {
+  font-size: 0.72rem;
+  color: var(--ss-text-muted);
+}
+
+.shivam-stack-homepage-blog-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.shivam-stack-homepage-blog-desc {
+  font-size: clamp(0.82rem, 1.3vw, 0.875rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.shivam-stack-homepage-blog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.shivam-stack-homepage-blog-read-time {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--ss-text-muted);
+  font-weight: 500;
+}
+
+.shivam-stack-homepage-blog-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blog-color, var(--ss-primary));
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.shivam-stack-homepage-blog-link:hover {
+  gap: 8px;
+}
+
+/* ── AVAILABILITY ──────────────────────────────────────── */
+.shivam-stack-homepage-availability-section {
+  background: var(--ss-bg);
+  padding: clamp(40px, 6vw, 70px) 0;
+}
+
+.shivam-stack-homepage-availability-card {
+  background: linear-gradient(135deg, var(--ss-surface) 0%, rgba(99,102,241,0.05) 100%);
+  border: 1px solid rgba(99,102,241,0.25);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 50px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  box-shadow: var(--ss-shadow-glow);
+}
+
+.shivam-stack-homepage-availability-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ss-accent);
+  margin-bottom: 12px;
+}
+
+.shivam-stack-homepage-availability-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--ss-accent);
+  border-radius: 50%;
+  animation: shivam-stack-hp-pulse 2s ease-in-out infinite;
+}
+
+.shivam-stack-homepage-availability-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  margin: 0 0 10px;
+  letter-spacing: -0.03em;
+}
+
+.shivam-stack-homepage-availability-desc {
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: var(--ss-text-secondary);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.shivam-stack-homepage-availability-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+  min-width: 200px;
+}
+
+.shivam-stack-homepage-availability-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-homepage-availability-slot-bar {
+  height: 6px;
+  background: var(--ss-border);
+  border-radius: 3px;
+  overflow: hidden;
+  width: 200px;
+}
+
+.shivam-stack-homepage-availability-slot-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ss-primary), #a78bfa);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+/* ── FAQ ───────────────────────────────────────────────── */
+.shivam-stack-homepage-faq-section {
+  background: var(--ss-surface);
+}
+
+.shivam-stack-homepage-faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shivam-stack-homepage-faq-item {
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.shivam-stack-homepage-faq-open {
+  border-color: rgba(99,102,241,0.35);
+}
+
+.shivam-stack-homepage-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 22px;
+  border: none;
+  background: transparent;
+  color: var(--ss-text-primary);
+  font-family: var(--ss-font-body);
+  font-size: clamp(0.88rem, 1.5vw, 0.95rem);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  gap: 16px;
+  transition: color 0.2s ease;
+}
+
+.shivam-stack-homepage-faq-open .shivam-stack-homepage-faq-question {
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-faq-chevron {
+  color: var(--ss-text-muted);
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.shivam-stack-homepage-faq-open .shivam-stack-homepage-faq-chevron {
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shivam-stack-homepage-faq-open .shivam-stack-homepage-faq-answer {
+  max-height: 300px;
+}
+
+.shivam-stack-homepage-faq-answer p {
+  padding: 0 22px 20px;
+  margin: 0;
+  font-size: clamp(0.84rem, 1.4vw, 0.9rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.75;
+  border-top: 1px solid var(--ss-border);
+  padding-top: 16px;
+}
+
+/* ── CTA ───────────────────────────────────────────────── */
+.shivam-stack-homepage-cta-section {
+  position: relative;
+  background: var(--ss-bg-2);
+  overflow: hidden;
+}
+
+.shivam-stack-homepage-cta-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.shivam-stack-homepage-cta-orb-1 {
+  position: absolute;
+  width: clamp(300px, 50vw, 600px);
+  height: clamp(300px, 50vw, 600px);
+  background: rgba(99,102,241,0.1);
+  border-radius: 50%;
+  filter: blur(80px);
+  top: -100px;
+  left: -100px;
+}
+
+.shivam-stack-homepage-cta-orb-2 {
+  position: absolute;
+  width: clamp(200px, 35vw, 400px);
+  height: clamp(200px, 35vw, 400px);
+  background: rgba(16,185,129,0.08);
+  border-radius: 50%;
+  filter: blur(60px);
+  bottom: -80px;
+  right: -80px;
+}
+
+.shivam-stack-homepage-cta-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.shivam-stack-homepage-cta-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.shivam-stack-homepage-cta-desc {
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  color: var(--ss-text-secondary);
+  max-width: 540px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.shivam-stack-homepage-cta-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shivam-stack-homepage-cta-primary-btn {
+  padding: 16px 36px;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  box-shadow: 0 8px 30px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-cta-trust {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.shivam-stack-homepage-cta-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--ss-text-secondary);
+  font-weight: 500;
+}
+
+.shivam-stack-homepage-cta-trust-item svg {
+  color: var(--ss-accent);
+}
+
+/* ── NEWSLETTER ────────────────────────────────────────── */
+.shivam-stack-homepage-newsletter-section {
+  background: var(--ss-bg);
+}
+
+.shivam-stack-homepage-newsletter-card {
+  background: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 20px;
+  padding: clamp(30px, 5vw, 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 60px);
+  align-items: center;
+}
+
+.shivam-stack-homepage-newsletter-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--ss-primary-glow);
+  color: var(--ss-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.shivam-stack-homepage-newsletter-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  margin: 0 0 12px;
+  letter-spacing: -0.03em;
+}
+
+.shivam-stack-homepage-newsletter-desc {
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: var(--ss-text-secondary);
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+
+.shivam-stack-homepage-newsletter-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.shivam-stack-homepage-newsletter-benefits span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-homepage-newsletter-benefits span svg {
+  color: var(--ss-accent);
+}
+
+.shivam-stack-homepage-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shivam-stack-homepage-newsletter-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.shivam-stack-homepage-newsletter-field-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--ss-text-muted);
+  pointer-events: none;
+}
+
+.shivam-stack-homepage-newsletter-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px 0 42px;
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-input);
+  background: var(--ss-bg);
+  color: var(--ss-text-primary);
+  font-family: var(--ss-font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.shivam-stack-homepage-newsletter-input:focus {
+  border-color: var(--ss-primary);
+  box-shadow: 0 0 0 3px var(--ss-primary-glow);
+}
+
+.shivam-stack-homepage-newsletter-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.shivam-stack-homepage-newsletter-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+}
+
+.shivam-stack-homepage-newsletter-privacy {
+  font-size: 0.72rem;
+  color: var(--ss-text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── FOOTER ────────────────────────────────────────────── */
+.shivam-stack-homepage-footer {
+  background: var(--ss-surface);
+  border-top: 1px solid var(--ss-border);
+  padding: clamp(50px, 7vw, 80px) 0 clamp(24px, 4vw, 40px);
+}
+
+.shivam-stack-homepage-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: clamp(30px, 5vw, 60px);
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.shivam-stack-homepage-footer-brand-desc {
+  font-size: 0.87rem;
+  color: var(--ss-text-secondary);
+  line-height: 1.75;
+  margin: 16px 0 20px;
+}
+
+.shivam-stack-homepage-footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.shivam-stack-homepage-footer-social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: var(--ss-bg);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-homepage-footer-social-link:hover {
+  background: var(--ss-primary);
+  border-color: var(--ss-primary);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.shivam-stack-homepage-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shivam-stack-homepage-footer-col-title {
+  font-family: var(--ss-font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ss-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+
+.shivam-stack-homepage-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  color: var(--ss-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 2px 0;
+}
+
+.shivam-stack-homepage-footer-link:hover {
+  color: var(--ss-primary);
+}
+
+.shivam-stack-homepage-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid var(--ss-border);
+  font-size: 0.8rem;
+  color: var(--ss-text-muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.shivam-stack-homepage-footer-bottom svg {
+  color: #ef4444;
+  vertical-align: middle;
+}
+
+.shivam-stack-homepage-footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .shivam-stack-homepage-store-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .shivam-stack-homepage-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shivam-stack-homepage-navbar-links {
+    display: none;
+  }
+  .shivam-stack-homepage-navbar-hamburger {
+    display: flex;
+  }
+  .shivam-stack-homepage-hero .shivam-stack-homepage-container {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-hero-visual {
+    display: flex;
+    justify-content: center;
+    order: -1;
+  }
+  .shivam-stack-homepage-hero-card-3d {
+    width: clamp(220px, 50vw, 280px);
+  }
+  .shivam-stack-homepage-about-grid {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-about-right {
+    order: -1;
+  }
+  .shivam-stack-homepage-expertise-grid,
+  .shivam-stack-homepage-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-cases-grid,
+  .shivam-stack-homepage-resources-grid,
+  .shivam-stack-homepage-opensource-grid,
+  .shivam-stack-homepage-blog-grid,
+  .shivam-stack-homepage-process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-why-grid {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-newsletter-card {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-availability-card {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-availability-right {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .shivam-stack-homepage-industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-store-grid {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-expertise-grid,
+  .shivam-stack-homepage-services-grid,
+  .shivam-stack-homepage-cases-grid,
+  .shivam-stack-homepage-resources-grid,
+  .shivam-stack-homepage-opensource-grid,
+  .shivam-stack-homepage-blog-grid,
+  .shivam-stack-homepage-process-steps {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-about-achievements {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .shivam-stack-homepage-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 15px;
+  }
+  .shivam-stack-homepage-navbar-cta {
+    display: none;
+  }
+  .shivam-stack-homepage-hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .shivam-stack-homepage-about-actions {
+    flex-direction: column;
+  }
+  .shivam-stack-homepage-btn-primary,
+  .shivam-stack-homepage-btn-ghost,
+  .shivam-stack-homepage-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .shivam-stack-homepage-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-homepage-industries-grid {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-homepage-footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .shivam-stack-homepage-footer-bottom-links {
+    justify-content: center;
+  }
+  .shivam-stack-homepage-tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .shivam-stack-homepage-newsletter-card {
+    padding: 24px;
+  }
+}
