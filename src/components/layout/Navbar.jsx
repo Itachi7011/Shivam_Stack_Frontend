@@ -263,7 +263,7 @@ const Navbar = ({ user = null }) => {
         }`}
       >
         {/* ── Announcement Banner ── */}
-        {showBanner && (
+        {/* {showBanner && (
           <div className="shivam-stack-navbar-announcement" role="banner">
             <Sparkles size={13} />
             <span>
@@ -280,7 +280,7 @@ const Navbar = ({ user = null }) => {
               <X size={14} />
             </button>
           </div>
-        )}
+        )} */}
 
         {/* ── Main Nav Bar ── */}
         <div className="shivam-stack-navbar-inner">

@@ -1,0 +1,841 @@
+/* ============================================================
+   SHIVAM STACK — Profile & Settings Shared Stylesheet
+   Prefix: shivam-stack-user-profile-  |  shivam-stack-user-mySettings-
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap");
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+.shivam-stack-user-profile-root,
+.shivam-stack-user-mySettings-root {
+  --pf-font-display: "Playfair Display", Georgia, serif;
+  --pf-font-body: "Inter", sans-serif;
+
+  /* Light */
+  --pf-bg-page: #fafaf8;
+  --pf-bg-card: #ffffff;
+  --pf-bg-card-alt: #f6f5f2;
+  --pf-bg-glass: rgba(255, 255, 255, 0.7);
+  --pf-bg-input: #f4f3f0;
+  --pf-border: rgba(0, 0, 0, 0.08);
+  --pf-border-focus: #c9a84c;
+
+  --pf-text-primary: #100f0c;
+  --pf-text-secondary: #5c5850;
+  --pf-text-muted: #9a9286;
+  --pf-text-input: #1a1815;
+
+  --pf-gold: #c9a84c;
+  --pf-gold-light: #e8c96b;
+  --pf-gold-glow: rgba(201, 168, 76, 0.16);
+  --pf-gold-deep: #a07c28;
+
+  --pf-emerald: #2e7d5e;
+  --pf-rose: #b94040;
+  --pf-amber: #d97706;
+  --pf-blue: #2563eb;
+  --pf-purple: #7c3aed;
+
+  --pf-avatar-ring: linear-gradient(135deg, #c9a84c, #e8c96b, #a07c28);
+
+  --pf-shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.06);
+  --pf-shadow-md: 0 4px 24px rgba(0, 0, 0, 0.09);
+  --pf-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.13);
+  --pf-shadow-glow: 0 0 32px rgba(201, 168, 76, 0.18);
+
+  --pf-radius-sm: 8px;
+  --pf-radius-md: 14px;
+  --pf-radius-lg: 20px;
+  --pf-radius-xl: 28px;
+  --pf-radius-2xl: 40px;
+
+  --pf-transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --pf-spring: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shivam-stack-user-profile-root.dark,
+.shivam-stack-user-mySettings-root.dark {
+  --pf-bg-page: #0d0c0a;
+  --pf-bg-card: #161410;
+  --pf-bg-card-alt: #1c1a15;
+  --pf-bg-glass: rgba(22, 20, 16, 0.85);
+  --pf-bg-input: #1e1b15;
+  --pf-border: rgba(255, 255, 255, 0.07);
+  --pf-border-focus: #c9a84c;
+
+  --pf-text-primary: #ede9e0;
+  --pf-text-secondary: #9a9080;
+  --pf-text-muted: #5e5a50;
+  --pf-text-input: #e0dbd0;
+
+  --pf-shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.35);
+  --pf-shadow-md: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --pf-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.65);
+}
+
+/* ── Reset base ─────────────────────────────────────────────── */
+.shivam-stack-user-profile-root,
+.shivam-stack-user-mySettings-root {
+  min-height: 100vh;
+  background-color: var(--pf-bg-page);
+  font-family: var(--pf-font-body);
+  color: var(--pf-text-primary);
+  transition:
+    background-color var(--pf-transition),
+    color var(--pf-transition);
+}
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.shivam-stack-user-profile-layout,
+.shivam-stack-user-mySettings-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1rem, 4vw, 2.5rem) 5rem;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────── */
+.shivam-stack-user-profile-sidebar,
+.shivam-stack-user-mySettings-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+/* ── Avatar Card ────────────────────────────────────────────── */
+.shivam-stack-user-profile-avatar-card {
+  background: var(--pf-bg-card);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-xl);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--pf-shadow-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-user-profile-avatar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.12),
+    rgba(201, 168, 76, 0.04)
+  );
+}
+
+.shivam-stack-user-profile-avatar-ring {
+  position: relative;
+  z-index: 1;
+  padding: 3px;
+  background: var(--pf-avatar-ring);
+  border-radius: 50%;
+  box-shadow: var(--pf-shadow-glow);
+  transition: transform var(--pf-spring);
+}
+
+.shivam-stack-user-profile-avatar-ring:hover {
+  transform: scale(1.04);
+}
+
+.shivam-stack-user-profile-avatar-img {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--pf-bg-card-alt);
+  border: 3px solid var(--pf-bg-card);
+}
+
+.shivam-stack-user-profile-avatar-initials {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c9a84c22, #e8c96b33);
+  border: 3px solid var(--pf-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--pf-font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pf-gold);
+}
+
+.shivam-stack-user-profile-avatar-name {
+  font-family: var(--pf-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--pf-text-primary);
+  z-index: 1;
+}
+
+.shivam-stack-user-profile-avatar-email {
+  font-size: 0.78rem;
+  color: var(--pf-text-muted);
+  z-index: 1;
+}
+
+.shivam-stack-user-profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.15),
+    rgba(201, 168, 76, 0.08)
+  );
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: var(--pf-gold);
+  z-index: 1;
+}
+
+.shivam-stack-user-profile-verified-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--pf-emerald);
+  font-weight: 500;
+  z-index: 1;
+}
+
+/* ── Sidebar Nav ────────────────────────────────────────────── */
+.shivam-stack-user-profile-sidebar-nav,
+.shivam-stack-user-mySettings-sidebar-nav {
+  background: var(--pf-bg-card);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--pf-shadow-sm);
+}
+
+.shivam-stack-user-profile-nav-item,
+.shivam-stack-user-mySettings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--pf-text-secondary);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all var(--pf-transition);
+  text-decoration: none;
+  background: transparent;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--pf-font-body);
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.shivam-stack-user-profile-nav-item:last-child,
+.shivam-stack-user-mySettings-nav-item:last-child {
+  border-bottom: none;
+}
+
+.shivam-stack-user-profile-nav-item:hover,
+.shivam-stack-user-mySettings-nav-item:hover {
+  color: var(--pf-text-primary);
+  background: var(--pf-bg-card-alt);
+}
+
+.shivam-stack-user-profile-nav-item.active,
+.shivam-stack-user-mySettings-nav-item.active {
+  color: var(--pf-gold);
+  background: var(--pf-gold-glow);
+  border-left-color: var(--pf-gold);
+  font-weight: 600;
+}
+
+.shivam-stack-user-profile-nav-icon,
+.shivam-stack-user-mySettings-nav-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Main Panel ─────────────────────────────────────────────── */
+.shivam-stack-user-profile-main,
+.shivam-stack-user-mySettings-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+/* ── Section Card ───────────────────────────────────────────── */
+.shivam-stack-user-profile-section,
+.shivam-stack-user-mySettings-section {
+  background: var(--pf-bg-card);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--pf-shadow-sm);
+  animation: pfSectionIn 0.5s ease both;
+}
+
+@keyframes pfSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shivam-stack-user-profile-section:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.shivam-stack-user-profile-section:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.shivam-stack-user-profile-section:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.shivam-stack-user-mySettings-section:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.shivam-stack-user-mySettings-section:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.shivam-stack-user-mySettings-section:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.shivam-stack-user-profile-section-header,
+.shivam-stack-user-mySettings-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.3rem 1.75rem;
+  border-bottom: 1px solid var(--pf-border);
+  background: var(--pf-bg-card-alt);
+}
+
+.shivam-stack-user-profile-section-title,
+.shivam-stack-user-mySettings-section-title {
+  font-family: var(--pf-font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pf-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.shivam-stack-user-profile-section-title-icon,
+.shivam-stack-user-mySettings-section-title-icon {
+  font-size: 1.1rem;
+}
+
+.shivam-stack-user-profile-edit-btn,
+.shivam-stack-user-mySettings-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--pf-radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--pf-font-body);
+  cursor: pointer;
+  transition: all var(--pf-spring);
+  border: 1px solid var(--pf-gold);
+  color: var(--pf-gold);
+  background: transparent;
+  letter-spacing: 0.02em;
+}
+
+.shivam-stack-user-profile-edit-btn:hover,
+.shivam-stack-user-mySettings-action-btn:hover {
+  background: var(--pf-gold);
+  color: #0f0e0c;
+  box-shadow: var(--pf-shadow-glow);
+  transform: scale(1.04);
+}
+
+.shivam-stack-user-mySettings-action-btn-danger {
+  border-color: var(--pf-rose);
+  color: var(--pf-rose);
+}
+
+.shivam-stack-user-mySettings-action-btn-danger:hover {
+  background: var(--pf-rose);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(185, 64, 64, 0.3);
+}
+
+.shivam-stack-user-profile-section-body,
+.shivam-stack-user-mySettings-section-body {
+  padding: 1.75rem;
+}
+
+/* ── Info Grid ──────────────────────────────────────────────── */
+.shivam-stack-user-profile-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.shivam-stack-user-profile-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.shivam-stack-user-profile-field-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.shivam-stack-user-profile-field-value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--pf-text-primary);
+}
+
+.shivam-stack-user-profile-field-value-muted {
+  color: var(--pf-text-muted);
+  font-style: italic;
+}
+
+/* ── Activity Feed ──────────────────────────────────────────── */
+.shivam-stack-user-profile-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.shivam-stack-user-profile-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--pf-border);
+  position: relative;
+}
+
+.shivam-stack-user-profile-activity-item:last-child {
+  border-bottom: none;
+}
+
+.shivam-stack-user-profile-activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--pf-gold-glow);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.shivam-stack-user-profile-activity-text {
+  flex: 1;
+}
+
+.shivam-stack-user-profile-activity-action {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--pf-text-primary);
+  text-transform: capitalize;
+}
+
+.shivam-stack-user-profile-activity-meta {
+  font-size: 0.76rem;
+  color: var(--pf-text-muted);
+  margin-top: 2px;
+}
+
+/* ── Stats Tiles (Profile) ──────────────────────────────────── */
+.shivam-stack-user-profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.shivam-stack-user-profile-stat-tile {
+  background: var(--pf-bg-card-alt);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition:
+    transform var(--pf-spring),
+    box-shadow var(--pf-transition);
+}
+
+.shivam-stack-user-profile-stat-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--pf-shadow-md);
+}
+
+.shivam-stack-user-profile-stat-tile-num {
+  font-family: var(--pf-font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--pf-gold);
+  line-height: 1;
+}
+
+.shivam-stack-user-profile-stat-tile-label {
+  font-size: 0.72rem;
+  color: var(--pf-text-muted);
+  font-weight: 500;
+}
+
+/* ── Form Elements (Settings) ───────────────────────────────── */
+.shivam-stack-user-mySettings-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.shivam-stack-user-mySettings-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.shivam-stack-user-mySettings-form-field-full {
+  grid-column: 1 / -1;
+}
+
+.shivam-stack-user-mySettings-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-text-muted);
+}
+
+.shivam-stack-user-mySettings-input,
+.shivam-stack-user-mySettings-select,
+.shivam-stack-user-mySettings-textarea {
+  background: var(--pf-bg-input);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-md);
+  padding: 0.7rem 1rem;
+  font-family: var(--pf-font-body);
+  font-size: 0.9rem;
+  color: var(--pf-text-input);
+  outline: none;
+  transition:
+    border-color var(--pf-transition),
+    box-shadow var(--pf-transition);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.shivam-stack-user-mySettings-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.shivam-stack-user-mySettings-input::placeholder,
+.shivam-stack-user-mySettings-textarea::placeholder {
+  color: var(--pf-text-muted);
+}
+
+.shivam-stack-user-mySettings-input:focus,
+.shivam-stack-user-mySettings-select:focus,
+.shivam-stack-user-mySettings-textarea:focus {
+  border-color: var(--pf-border-focus);
+  box-shadow: 0 0 0 3px var(--pf-gold-glow);
+}
+
+.shivam-stack-user-mySettings-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.shivam-stack-user-mySettings-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9286' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* ── Toggle Switch ──────────────────────────────────────────── */
+.shivam-stack-user-mySettings-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.shivam-stack-user-mySettings-toggle-row:last-child {
+  border-bottom: none;
+}
+
+.shivam-stack-user-mySettings-toggle-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.shivam-stack-user-mySettings-toggle-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--pf-text-primary);
+}
+
+.shivam-stack-user-mySettings-toggle-desc {
+  font-size: 0.76rem;
+  color: var(--pf-text-muted);
+}
+
+.shivam-stack-user-mySettings-toggle-track {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  background: var(--pf-bg-input);
+  border: 1px solid var(--pf-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background var(--pf-transition),
+    border-color var(--pf-transition);
+  flex-shrink: 0;
+}
+
+.shivam-stack-user-mySettings-toggle-track.on {
+  background: var(--pf-gold);
+  border-color: var(--pf-gold);
+}
+
+.shivam-stack-user-mySettings-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform var(--pf-spring);
+}
+
+.shivam-stack-user-mySettings-toggle-track.on
+  .shivam-stack-user-mySettings-toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ── Save Button ────────────────────────────────────────────── */
+.shivam-stack-user-mySettings-save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--pf-radius-md);
+  font-family: var(--pf-font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--pf-spring);
+  border: none;
+  background: linear-gradient(135deg, var(--pf-gold), var(--pf-gold-deep));
+  color: #0f0e0c;
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
+  letter-spacing: 0.02em;
+}
+
+.shivam-stack-user-mySettings-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.4);
+}
+
+.shivam-stack-user-mySettings-save-btn:active {
+  transform: scale(0.97);
+}
+
+.shivam-stack-user-mySettings-form-footer {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid var(--pf-border);
+  margin-top: 0.5rem;
+}
+
+.shivam-stack-user-mySettings-cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--pf-radius-md);
+  font-family: var(--pf-font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--pf-transition);
+  border: 1px solid var(--pf-border);
+  background: transparent;
+  color: var(--pf-text-secondary);
+}
+
+.shivam-stack-user-mySettings-cancel-btn:hover {
+  background: var(--pf-bg-card-alt);
+  color: var(--pf-text-primary);
+}
+
+/* ── Danger Zone ────────────────────────────────────────────── */
+.shivam-stack-user-mySettings-danger-section {
+  border-color: rgba(185, 64, 64, 0.22) !important;
+}
+
+.shivam-stack-user-mySettings-danger-header {
+  background: rgba(185, 64, 64, 0.06) !important;
+}
+
+.shivam-stack-user-mySettings-danger-title {
+  color: var(--pf-rose) !important;
+}
+
+.shivam-stack-user-mySettings-danger-text {
+  font-size: 0.85rem;
+  color: var(--pf-text-muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ── Password strength meter ────────────────────────────────── */
+.shivam-stack-user-mySettings-strength-bar {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--pf-bg-input);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.shivam-stack-user-mySettings-strength-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition:
+    width var(--pf-transition),
+    background var(--pf-transition);
+}
+
+.shivam-stack-user-mySettings-strength-0 {
+  width: 0%;
+}
+.shivam-stack-user-mySettings-strength-1 {
+  width: 25%;
+  background: var(--pf-rose);
+}
+.shivam-stack-user-mySettings-strength-2 {
+  width: 50%;
+  background: var(--pf-amber);
+}
+.shivam-stack-user-mySettings-strength-3 {
+  width: 75%;
+  background: var(--pf-gold);
+}
+.shivam-stack-user-mySettings-strength-4 {
+  width: 100%;
+  background: var(--pf-emerald);
+}
+
+/* ── Notification Toast Hint ────────────────────────────────── */
+.shivam-stack-user-mySettings-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--pf-bg-card);
+  border: 1px solid var(--pf-gold);
+  border-radius: var(--pf-radius-lg);
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--pf-text-primary);
+  box-shadow: var(--pf-shadow-lg);
+  z-index: 9999;
+  animation: pfToastIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pfToastIn {
+  from {
+    opacity: 0;
+    transform: translateX(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.shivam-stack-user-mySettings-toast-icon {
+  font-size: 1.1rem;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .shivam-stack-user-profile-layout,
+  .shivam-stack-user-mySettings-layout {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-user-profile-sidebar,
+  .shivam-stack-user-mySettings-sidebar {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .shivam-stack-user-profile-sidebar,
+  .shivam-stack-user-mySettings-sidebar {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-user-profile-info-grid,
+  .shivam-stack-user-mySettings-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .shivam-stack-user-mySettings-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+}

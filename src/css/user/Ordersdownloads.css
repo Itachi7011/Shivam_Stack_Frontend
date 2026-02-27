@@ -1,0 +1,652 @@
+/* ============================================================
+   SHIVAM STACK — Orders & Downloads Shared Stylesheet
+   Prefix: shivam-stack-user-mydown-order-
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-root {
+  --ss-font-display: "Syne", sans-serif;
+  --ss-font-body: "DM Sans", sans-serif;
+
+  /* Light mode */
+  --ss-bg-primary: #f5f3ef;
+  --ss-bg-card: #ffffff;
+  --ss-bg-card-hover: #f9f8f6;
+  --ss-bg-accent: #faf9f7;
+  --ss-bg-glass: rgba(255, 255, 255, 0.72);
+  --ss-border: rgba(0, 0, 0, 0.08);
+  --ss-border-strong: rgba(0, 0, 0, 0.14);
+
+  --ss-text-primary: #0f0e0c;
+  --ss-text-secondary: #5a5651;
+  --ss-text-muted: #9e9890;
+
+  --ss-accent-gold: #c9a84c;
+  --ss-accent-gold-light: #e8c96b;
+  --ss-accent-gold-glow: rgba(201, 168, 76, 0.18);
+  --ss-accent-emerald: #2e7d5e;
+  --ss-accent-rose: #c44b4b;
+  --ss-accent-amber: #d97706;
+  --ss-accent-blue: #2563eb;
+
+  --ss-shadow-card:
+    0 2px 20px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --ss-shadow-card-hover:
+    0 8px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --ss-shadow-glow: 0 0 24px var(--ss-accent-gold-glow);
+
+  --ss-radius-sm: 8px;
+  --ss-radius-md: 14px;
+  --ss-radius-lg: 20px;
+  --ss-radius-xl: 28px;
+
+  --ss-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --ss-transition-spring: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shivam-stack-user-mydown-order-root.dark {
+  --ss-bg-primary: #0c0b09;
+  --ss-bg-card: #151310;
+  --ss-bg-card-hover: #1c1a16;
+  --ss-bg-accent: #111009;
+  --ss-bg-glass: rgba(21, 19, 16, 0.82);
+  --ss-border: rgba(255, 255, 255, 0.07);
+  --ss-border-strong: rgba(255, 255, 255, 0.12);
+
+  --ss-text-primary: #f0ece4;
+  --ss-text-secondary: #a09880;
+  --ss-text-muted: #5e5a52;
+
+  --ss-accent-gold-glow: rgba(201, 168, 76, 0.22);
+
+  --ss-shadow-card: 0 2px 20px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+  --ss-shadow-card-hover:
+    0 8px 40px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Page Wrapper ───────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-root {
+  min-height: 100vh;
+  background-color: var(--ss-bg-primary);
+  font-family: var(--ss-font-body);
+  color: var(--ss-text-primary);
+  padding: 2rem clamp(1rem, 5vw, 3rem) 4rem;
+  transition:
+    background-color var(--ss-transition),
+    color var(--ss-transition);
+}
+
+/* ── Page Header ────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.shivam-stack-user-mydown-order-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.shivam-stack-user-mydown-order-eyebrow {
+  font-family: var(--ss-font-display);
+  font-size: clamp(0.65rem, 1.5vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ss-accent-gold);
+}
+
+.shivam-stack-user-mydown-order-page-title {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ss-text-primary);
+  margin: 0;
+}
+
+.shivam-stack-user-mydown-order-page-title-accent {
+  background: linear-gradient(
+    120deg,
+    var(--ss-accent-gold),
+    var(--ss-accent-gold-light)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Stats Row ──────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.shivam-stack-user-mydown-order-stat-card {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  box-shadow: var(--ss-shadow-card);
+  transition:
+    transform var(--ss-transition-spring),
+    box-shadow var(--ss-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.shivam-stack-user-mydown-order-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ss-accent-gold), transparent);
+  opacity: 0;
+  transition: opacity var(--ss-transition);
+}
+
+.shivam-stack-user-mydown-order-stat-card:hover::before {
+  opacity: 1;
+}
+.shivam-stack-user-mydown-order-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ss-shadow-card-hover);
+}
+
+.shivam-stack-user-mydown-order-stat-number {
+  font-family: var(--ss-font-display);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--ss-text-primary);
+  line-height: 1;
+}
+
+.shivam-stack-user-mydown-order-stat-label {
+  font-size: 0.78rem;
+  color: var(--ss-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── Filter & Search Bar ────────────────────────────────────── */
+.shivam-stack-user-mydown-order-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+  align-items: center;
+}
+
+.shivam-stack-user-mydown-order-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.shivam-stack-user-mydown-order-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ss-text-muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.shivam-stack-user-mydown-order-search-input {
+  width: 100%;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: 0.65rem 1rem 0.65rem 2.6rem;
+  font-family: var(--ss-font-body);
+  font-size: 0.9rem;
+  color: var(--ss-text-primary);
+  outline: none;
+  transition:
+    border-color var(--ss-transition),
+    box-shadow var(--ss-transition);
+  box-sizing: border-box;
+}
+
+.shivam-stack-user-mydown-order-search-input::placeholder {
+  color: var(--ss-text-muted);
+}
+
+.shivam-stack-user-mydown-order-search-input:focus {
+  border-color: var(--ss-accent-gold);
+  box-shadow: 0 0 0 3px var(--ss-accent-gold-glow);
+}
+
+.shivam-stack-user-mydown-order-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-md);
+  padding: 0.65rem 1.1rem;
+  font-family: var(--ss-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ss-text-secondary);
+  cursor: pointer;
+  transition: all var(--ss-transition);
+  white-space: nowrap;
+}
+
+.shivam-stack-user-mydown-order-filter-btn:hover,
+.shivam-stack-user-mydown-order-filter-btn.active {
+  background: var(--ss-accent-gold);
+  border-color: var(--ss-accent-gold);
+  color: #0f0e0c;
+}
+
+/* ── Table / List ───────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-table-wrap {
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  border-radius: var(--ss-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--ss-shadow-card);
+}
+
+.shivam-stack-user-mydown-order-table-head {
+  display: grid;
+  padding: 0.9rem 1.5rem;
+  background: var(--ss-bg-accent);
+  border-bottom: 1px solid var(--ss-border);
+  gap: 1rem;
+}
+
+.shivam-stack-user-mydown-order-table-head-orders {
+  grid-template-columns: 2fr 2fr 1fr 1.2fr 1.2fr 1fr;
+}
+
+.shivam-stack-user-mydown-order-table-head-downloads {
+  grid-template-columns: 3fr 1.2fr 1.2fr 1fr 1fr;
+}
+
+.shivam-stack-user-mydown-order-th {
+  font-family: var(--ss-font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ss-text-muted);
+}
+
+/* ── Row ────────────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-row {
+  display: grid;
+  padding: 1.1rem 1.5rem;
+  gap: 1rem;
+  border-bottom: 1px solid var(--ss-border);
+  align-items: center;
+  transition:
+    background var(--ss-transition),
+    transform var(--ss-transition);
+  cursor: pointer;
+  animation: ssRowIn 0.4s ease both;
+}
+
+.shivam-stack-user-mydown-order-row-orders {
+  grid-template-columns: 2fr 2fr 1fr 1.2fr 1.2fr 1fr;
+}
+
+.shivam-stack-user-mydown-order-row-downloads {
+  grid-template-columns: 3fr 1.2fr 1.2fr 1fr 1fr;
+}
+
+.shivam-stack-user-mydown-order-row:last-child {
+  border-bottom: none;
+}
+
+.shivam-stack-user-mydown-order-row:hover {
+  background: var(--ss-bg-card-hover);
+}
+
+@keyframes ssRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shivam-stack-user-mydown-order-row:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.shivam-stack-user-mydown-order-row:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.shivam-stack-user-mydown-order-row:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.shivam-stack-user-mydown-order-row:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.shivam-stack-user-mydown-order-row:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+/* ── Cell Styles ────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-cell {
+  font-size: clamp(0.8rem, 1.5vw, 0.88rem);
+  color: var(--ss-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shivam-stack-user-mydown-order-cell-mono {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78rem;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-user-mydown-order-cell-product {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.shivam-stack-user-mydown-order-product-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ss-radius-sm);
+  background: var(--ss-bg-accent);
+  border: 1px solid var(--ss-border);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.shivam-stack-user-mydown-order-product-name {
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--ss-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shivam-stack-user-mydown-order-product-sub {
+  font-size: 0.74rem;
+  color: var(--ss-text-muted);
+  margin-top: 1px;
+}
+
+/* ── Status Badges ──────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+}
+
+.shivam-stack-user-mydown-order-badge-pending {
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--ss-accent-amber);
+  border-color: rgba(217, 119, 6, 0.22);
+}
+
+.shivam-stack-user-mydown-order-badge-processing {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--ss-accent-blue);
+  border-color: rgba(37, 99, 235, 0.22);
+}
+
+.shivam-stack-user-mydown-order-badge-completed {
+  background: rgba(46, 125, 94, 0.12);
+  color: var(--ss-accent-emerald);
+  border-color: rgba(46, 125, 94, 0.22);
+}
+
+.shivam-stack-user-mydown-order-badge-cancelled {
+  background: rgba(196, 75, 75, 0.12);
+  color: var(--ss-accent-rose);
+  border-color: rgba(196, 75, 75, 0.22);
+}
+
+.shivam-stack-user-mydown-order-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ── Action Btn inside row ──────────────────────────────────── */
+.shivam-stack-user-mydown-order-row-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: transparent;
+  border: 1px solid var(--ss-border-strong);
+  border-radius: var(--ss-radius-sm);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-family: var(--ss-font-body);
+  font-weight: 500;
+  color: var(--ss-text-secondary);
+  cursor: pointer;
+  transition: all var(--ss-transition);
+  text-decoration: none;
+}
+
+.shivam-stack-user-mydown-order-row-action-btn:hover {
+  background: var(--ss-accent-gold);
+  border-color: var(--ss-accent-gold);
+  color: #0f0e0c;
+  transform: scale(1.03);
+}
+
+/* ── Empty State ────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  text-align: center;
+}
+
+.shivam-stack-user-mydown-order-empty-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+  animation: ssFloat 3s ease-in-out infinite;
+}
+
+@keyframes ssFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.shivam-stack-user-mydown-order-empty-title {
+  font-family: var(--ss-font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ss-text-secondary);
+}
+
+.shivam-stack-user-mydown-order-empty-sub {
+  font-size: 0.88rem;
+  color: var(--ss-text-muted);
+  max-width: 300px;
+}
+
+/* ── Pagination ─────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.shivam-stack-user-mydown-order-page-info {
+  font-size: 0.82rem;
+  color: var(--ss-text-muted);
+}
+
+.shivam-stack-user-mydown-order-page-btns {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.shivam-stack-user-mydown-order-page-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ss-radius-sm);
+  background: var(--ss-bg-card);
+  border: 1px solid var(--ss-border);
+  font-size: 0.82rem;
+  font-family: var(--ss-font-display);
+  font-weight: 600;
+  color: var(--ss-text-secondary);
+  cursor: pointer;
+  transition: all var(--ss-transition);
+}
+
+.shivam-stack-user-mydown-order-page-btn:hover,
+.shivam-stack-user-mydown-order-page-btn.active {
+  background: var(--ss-accent-gold);
+  border-color: var(--ss-accent-gold);
+  color: #0f0e0c;
+}
+
+.shivam-stack-user-mydown-order-page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Decorative Gold Line ───────────────────────────────────── */
+.shivam-stack-user-mydown-order-gold-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ss-accent-gold),
+    transparent
+  );
+  opacity: 0.4;
+  margin: 2rem 0;
+}
+
+/* ── File icon ──────────────────────────────────────────────── */
+.shivam-stack-user-mydown-order-file-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--ss-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.shivam-stack-user-mydown-order-file-icon-pdf {
+  background: rgba(196, 75, 75, 0.12);
+}
+.shivam-stack-user-mydown-order-file-icon-zip {
+  background: rgba(217, 119, 6, 0.12);
+}
+.shivam-stack-user-mydown-order-file-icon-img {
+  background: rgba(46, 125, 94, 0.12);
+}
+.shivam-stack-user-mydown-order-file-icon-code {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+/* ── Download Progress / Count ──────────────────────────────── */
+.shivam-stack-user-mydown-order-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--ss-accent-gold-glow);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ss-accent-gold);
+  padding: 0 0.4rem;
+  font-family: var(--ss-font-display);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .shivam-stack-user-mydown-order-table-wrap {
+    border-radius: var(--ss-radius-lg);
+  }
+  .shivam-stack-user-mydown-order-table-head {
+    display: none;
+  }
+  .shivam-stack-user-mydown-order-row,
+  .shivam-stack-user-mydown-order-row-orders,
+  .shivam-stack-user-mydown-order-row-downloads {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.2rem;
+  }
+  .shivam-stack-user-mydown-order-cell {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 600px) {
+  .shivam-stack-user-mydown-order-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shivam-stack-user-mydown-order-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .shivam-stack-user-mydown-order-controls {
+    flex-direction: column;
+  }
+  .shivam-stack-user-mydown-order-search-wrap {
+    min-width: 100%;
+  }
+}

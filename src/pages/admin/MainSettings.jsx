@@ -11,7 +11,6 @@ import {
   Upload, Download, Activity, Cpu, HardDrive, Terminal, Code2
 } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
-import './MainSettings.css';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const API_BASE = '/admin/main-settings';

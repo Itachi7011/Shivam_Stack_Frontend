@@ -17,6 +17,8 @@ import "./css/components/AdminSidebar.css";
 import "./css/components/Error/Error404.css";
 
 import "./css/user/UserAuth.css";
+import "./css/user/Profile_Settings.css";
+import "./css/user/Ordersdownloads.css";
 // import "./css/User/UserLogin.css"
 // import "./css/User/UserProfile.css"
 // import "./css/User/UserForgotPassword.css"
@@ -51,33 +53,28 @@ import UserRegister from "./pages/user/auth/Register";
 import UserLogin from "./pages/user/auth/Login";
 import UserForgotPassword from "./pages/user/auth/ForgotPassword";
 import UserResetPassword from "./pages/user/auth/ResetPassword";
-// import UserLogin from './pages/User/Auth/UserLogin';
-// import UserEmailVerificatoin from './pages/User/Auth/UserEmailVerificatoin';
-// import UserForgotPassword from './pages/User/Auth/UserForgotPassword';
-// import UserProfile from './pages/User/Profile/UserProfile';
-// import GeneralSettings from './pages/User/Settings/GeneralSettings';
-// import SecuritySetting from './pages/User/Settings/SecuritySetting';
-// import NotificationSettings from './pages/User/Settings/NotificationSettings';
+import UserMyDownloads from "./pages/user/MyDownloads";
+import UserMyOrders from "./pages/user/MyOrders";
+import UserProfile from "./pages/user/Profile";
+import UserSettings from "./pages/user/Settings";
+
 
 import AdminRegister from "./pages/admin/auth/Register";
 import AdminLogin from "./pages/admin/auth/Login";
 import AdminForgotPassword from "./pages/admin/auth/ForgotPassword";
 import AdminResetPassword from "./pages/admin/auth/ResetPassword";
-// import AdminEmailVerification from './pages/Admin/Auth/AdminEmailVerification';
-// import AdminLogin from './pages/Admin/Auth/AdminLogin';
-// import AdminProfile from './pages/Admin/Profile/AdminProfile';
-// import AdminSecurity from './pages/Admin/Profile/AdminSecurity';
-// import AdminDashboard from './pages/Admin/Dashboard/AdminDashboard';
-// import AdminSystemHealth from './pages/Admin/Dashboard/AdminSystemHealth';
-// import AdminUsersList from './pages/Admin/AdminUsersList';
-// import SubscriptionPlans from './pages/Admin/SubscriptionPlans';
-// import PrivacyPolicy from './pages/Admin/PrivacyPolicyAndTerms/PrivacyPolicy';
-// import TermsOfUse from './pages/Admin/PrivacyPolicyAndTerms/TermsOfUse';
-// import AdminClientLogs from './pages/Admin/Logs/AdminClientLogs';
-// import AdminUserLogs from './pages/Admin/Logs/AdminUserLogs';
-// import AdminSettings from './pages/Admin/Settings/AdminSettings';
-// import AdminSearchBar from './pages/Admin/Settings/SearchBarSettings/AdminSearchBar';
-// import NotificationManager from './pages/Admin/Settings/Notifications/NotificationManager';
+import AdminDashboard from "./pages/admin/AdminDashboard";
+// import AdminAnalytics from "./pages/admin/Analytics";
+import AdminMainSettings from "./pages/admin/MainSettings";
+import AdminManageBlog from "./pages/admin/ManageBlog";
+import AdminManageCoupons from "./pages/admin/ManageCoupons";
+// import AdminManageMessages from "./pages/admin/ManageMessages";
+// import AdminManageOrders from "./pages/admin/ManageOrders";
+import AdminManageProducts from "./pages/admin/ManageProducts";
+import AdminManageProductsCategory from "./pages/admin/ManageProductsCategory";
+import AdminManageProjects from "./pages/admin/ManageProjects";
+// import AdminManageUsers from "./pages/admin/ManageUsers";
+
 
 import Error404 from "./components/Error/Error404";
 
@@ -114,11 +111,11 @@ function App() {
             <Route path="/user/login" element={<UserLogin />} />
             <Route path="/user/forgot-password" element={<UserForgotPassword />} />
             <Route path="/user/reset-password" element={<UserResetPassword />} />
-            {/*  <Route path="/user/email-verification" element={<UserEmailVerificatoin />} />
-            <Route path="/user/forgot-password" element={<UserForgotPassword />} />
+           <Route path="/user/downloads" element={<UserMyDownloads />} />
+            <Route path="/user/orders" element={<UserMyOrders />} />
             <Route path="/user/profile" element={<UserProfile />} />
-            <Route path="/user/generalSettings" element={<GeneralSettings />} />
-            <Route path="/user/securitySettings" element={<SecuritySetting />} />
+            <Route path="/user/settings" element={<UserSettings />} />
+           {/*    <Route path="/user/securitySettings" element={<SecuritySetting />} />
             <Route path="/user/notificationsSettings" element={<NotificationSettings />} /> */}
 
 
@@ -126,18 +123,19 @@ function App() {
            <Route path="/admin/login" element={<AdminLogin />} />
            <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
            <Route path="/admin/reset-password" element={<AdminResetPassword />} />
-              {/* <Route path="/admin/email-verification" element={<AdminEmailVerification />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/profile" element={<AdminProfile />} />
-            <Route path="/admin/settings/security" element={<AdminSecurity />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/system/health" element={<AdminSystemHealth />} />
-            <Route path="/admin/users/all" element={<AdminUsersList />} />
-            <Route path="/admin/billing/subscriptions" element={<SubscriptionPlans />} />
-            <Route path="/admin/notification/manager" element={<NotificationManager />} />
-            <Route path="/admin/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/admin/terms-of-use" element={<TermsOfUse />} />
-            <Route path="/admin/clients/logs" element={<AdminClientLogs />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          {/* <Route path="/admin/analytics" element={<AdminAnalytics />} /> */}
+          <Route path="/admin/main-settings" element={<AdminMainSettings />} />
+          <Route path="/admin/manage-blog" element={<AdminManageBlog />} />
+          <Route path="/admin/manage-coupons" element={<AdminManageCoupons />} />
+          {/* <Route path="/admin/manage-messages" element={<AdminManageMessages />} /> */}
+          {/* <Route path="/admin/manage-orders" element={<AdminManageOrders />} /> */}
+          <Route path="/admin/manage-products" element={<AdminManageProducts />} />
+          <Route path="/admin/manage-product-categories" element={<AdminManageProductsCategory />} />
+          <Route path="/admin/manage-projects" element={<AdminManageProjects />} />
+          {/* <Route path="/admin/manage-users" element={<AdminManageUsers />} /> */}
+          
+           {/*  <Route path="/admin/clients/logs" element={<AdminClientLogs />} />
             <Route path="/admin/users/logs" element={<AdminUserLogs />} />
             <Route path="/admin/settings/general" element={<AdminSettings />} />
             <Route path="/admin/settings/nav-options" element={<AdminSearchBar />} /> */}
