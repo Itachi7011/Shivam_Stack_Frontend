@@ -93,7 +93,7 @@ export default function MyProfile() {
                 ✅ Email Verified
               </div>
             )}
-          </div>
+          </div> 
 
           {/* Quick Links */}
           <nav className="shivam-stack-user-profile-sidebar-nav">

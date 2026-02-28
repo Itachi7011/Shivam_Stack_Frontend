@@ -158,7 +158,7 @@ const NAV_ITEMS = [
         bg:    "rgba(245,158,11,0.1)",
         title: "Code Templates",
         desc:  "Ready-to-use starters",
-      },
+      }, 
       {
         to:    "/products/resources",
         icon:  Database,
