@@ -7,6 +7,7 @@ import "./App.css";
 import "./css/public/Home.css";
 import "./css/public/PublicPages.css";
 import "./css/public/Services.css";
+import "./css/public/AllServices.css";
 
 import "./css/components/Navbar.css";
 import "./css/components/Footer.css";
@@ -46,6 +47,7 @@ import PrivacyPolicy from "./pages/public/PrivacyPolicy";
 // import Projects from "./pages/public/Projects";
 // import RefundPolicy from './pages/public/RefundPolicy';
 import Services from "./pages/public/Services";
+import AllServices from "./pages/public/AllServices";
 // import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
@@ -99,6 +101,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/all-services" element={<AllServices />} />
             <Route path="/services" element={<Services />} />
             {/* <Route path="/projects" element={<Projects />} /> */}
             {/* <Route path="/blog" element={<Blog />} /> */}
