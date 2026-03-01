@@ -46,8 +46,15 @@ import PrivacyPolicy from "./pages/public/PrivacyPolicy";
 // import ProjectDetails from "./pages/public/ProjectDetails";
 // import Projects from "./pages/public/Projects";
 // import RefundPolicy from './pages/public/RefundPolicy';
-import Services from "./pages/public/Services";
-import AllServices from "./pages/public/AllServices";
+import AllServices from "./pages/public/Services/AllServices";
+import APIDevelopmentServices from "./pages/public/Services/APIDevelopment";
+import AdminpanelscmsServices from "./pages/public/Services/Adminpanelscms";
+import DevopsdeploymentServices from "./pages/public/Services/Devopsdeployment";
+import EcommercesolutionsServices from "./pages/public/Services/Ecommercesolutions";
+import FullStackServices from "./pages/public/Services/FullStack";
+import MaintenancesupportServices from "./pages/public/Services/Maintenancesupport";
+import PerformanceoptimizationServices from "./pages/public/Services/Performanceoptimization";
+import PortfoliowebsitesServices from "./pages/public/Services/Portfoliowebsites";
 // import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
@@ -101,8 +108,15 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/all-services" element={<AllServices />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/services" element={<AllServices />} />
+            <Route path="/services/api-development" element={<APIDevelopmentServices />} />
+            <Route path="/services/admin-panel-cms-development" element={<AdminpanelscmsServices />} />
+            <Route path="/services/devops-deployment" element={<DevopsdeploymentServices />} />
+            <Route path="/services/ecommerce-solutions" element={<EcommercesolutionsServices />} />
+            <Route path="/services/full-stack-development" element={<FullStackServices />} />
+            <Route path="/services/maintenance-support" element={<MaintenancesupportServices />} />
+            <Route path="/services/performance-optimization" element={<PerformanceoptimizationServices />} />
+            <Route path="/services/portfolio-website-development" element={<PortfoliowebsitesServices />} />
             {/* <Route path="/projects" element={<Projects />} /> */}
             {/* <Route path="/blog" element={<Blog />} /> */}
 
