@@ -395,7 +395,7 @@ const AllServices = () => {
       <section className="shivam-stack-section" id="all-services-list">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// what i offer</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">
               All Services, One Developer
             </h2>
@@ -453,7 +453,7 @@ const AllServices = () => {
       <section className="shivam-stack-section" style={{ paddingTop: 0 }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// deep dive</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">
               What's Included in Each Service
             </h2>
@@ -502,7 +502,7 @@ const AllServices = () => {
       >
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// my arsenal</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">
               Tech Stack I Work With
             </h2>
@@ -556,7 +556,7 @@ const AllServices = () => {
 
             {/* Right: Points */}
             <div>
-              <div className="shivam-stack-section-label">// why me</div>
+              <div className="shivam-stack-section-label"></div>
               <h2 className="shivam-stack-section-title">
                 Why Choose Shivam Stack?
               </h2>
@@ -590,7 +590,7 @@ const AllServices = () => {
       >
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// how it works</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">My 6-Step Process</h2>
             <p className="shivam-stack-section-desc">
               Structured, transparent, and collaborative. You'll always know
@@ -644,7 +644,7 @@ const AllServices = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// proof of work</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Projects I've Built</h2>
             <p className="shivam-stack-section-desc">
               A glimpse into some of the applications I've shipped for real
@@ -705,7 +705,7 @@ const AllServices = () => {
       >
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// client love</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">What Clients Say</h2>
           </div>
 
@@ -764,7 +764,7 @@ const AllServices = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">
               Frequently Asked Questions
             </h2>

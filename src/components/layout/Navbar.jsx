@@ -22,7 +22,7 @@ const NAV_ITEMS = [
     dropdown: "wide",
     items: [
       {
-        to:    "/services/full-stack",
+        to:    "/services/full-stack-development",
         icon:  Layers,
         color: "#6366f1",
         bg:    "rgba(99,102,241,0.1)",
@@ -30,7 +30,7 @@ const NAV_ITEMS = [
         desc:  "MERN apps, SaaS, dashboards",
       },
       {
-        to:    "/services/ecommerce",
+        to:    "/services/ecommerce-solutions",
         icon:  ShoppingCart,
         color: "#f59e0b",
         bg:    "rgba(245,158,11,0.1)",
@@ -38,7 +38,7 @@ const NAV_ITEMS = [
         desc:  "Stores, payments, digital downloads",
       },
       {
-        to:    "/services/admin-panel",
+        to:    "/services/admin-panel-cms-development",
         icon:  LayoutDashboard,
         color: "#10b981",
         bg:    "rgba(16,185,129,0.1)",
@@ -54,7 +54,7 @@ const NAV_ITEMS = [
         desc:  "REST APIs, integrations, JWT",
       },
       {
-        to:    "/services/performance",
+        to:    "/services/performance-optimization",
         icon:  BarChart3,
         color: "#f43f5e",
         bg:    "rgba(244,63,94,0.1)",
@@ -62,7 +62,7 @@ const NAV_ITEMS = [
         desc:  "Speed, Core Web Vitals, scaling",
       },
       {
-        to:    "/services/portfolio",
+        to:    "/services/portfolio-website-development",
         icon:  Briefcase,
         color: "#8b5cf6",
         bg:    "rgba(139,92,246,0.1)",
@@ -70,7 +70,7 @@ const NAV_ITEMS = [
         desc:  "Personal brand, SEO-optimized",
       },
       {
-        to:    "/services/devops",
+        to:    "/services/devops-deployment",
         icon:  Terminal,
         color: "#ec4899",
         bg:    "rgba(236,72,153,0.1)",
@@ -78,7 +78,7 @@ const NAV_ITEMS = [
         desc:  "VPS, Nginx, CI/CD, SSL setup",
       },
       {
-        to:    "/services/maintenance",
+        to:    "/services/maintenance-support",
         icon:  Wrench,
         color: "#14b8a6",
         bg:    "rgba(20,184,166,0.1)",
@@ -136,7 +136,7 @@ const NAV_ITEMS = [
     dropdown: "wide",
     items: [
       {
-        to:    "/products",
+        to:    "/products/all-products",
         icon:  Package,
         color: "#6366f1",
         bg:    "rgba(99,102,241,0.1)",
@@ -144,7 +144,7 @@ const NAV_ITEMS = [
         desc:  "Browse the full store",
       },
       {
-        to:    "/products/ebooks",
+        to:    "/products/code-templates",
         icon:  FileText,
         color: "#f43f5e",
         bg:    "rgba(244,63,94,0.1)",
@@ -152,7 +152,7 @@ const NAV_ITEMS = [
         desc:  "PDFs, deep-dive references",
       },
       {
-        to:    "/products/templates",
+        to:    "/products/ebooks-and-guides",
         icon:  LayoutDashboard,
         color: "#f59e0b",
         bg:    "rgba(245,158,11,0.1)",
@@ -160,7 +160,7 @@ const NAV_ITEMS = [
         desc:  "Ready-to-use starters",
       }, 
       {
-        to:    "/products/resources",
+        to:    "/products/developer-resources",
         icon:  Database,
         color: "#10b981",
         bg:    "rgba(16,185,129,0.1)",

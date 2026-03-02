@@ -8,6 +8,7 @@ import "./css/public/Home.css";
 import "./css/public/PublicPages.css";
 import "./css/public/Services.css";
 import "./css/public/AllServices.css";
+import "./css/public/AllProducts.css";
 
 import "./css/components/Navbar.css";
 import "./css/components/Footer.css";
@@ -55,6 +56,10 @@ import FullStackServices from "./pages/public/Services/FullStack";
 import MaintenancesupportServices from "./pages/public/Services/Maintenancesupport";
 import PerformanceoptimizationServices from "./pages/public/Services/Performanceoptimization";
 import PortfoliowebsitesServices from "./pages/public/Services/Portfoliowebsites";
+import AllProducts from "./pages/public/Products/AllProducts";
+import CodeTemplates from "./pages/public/Products/CodeTemplates";
+import Ebooksandguides from "./pages/public/Products/Ebooksandguides";
+import Resources from "./pages/public/Products/Resources";
 // import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
@@ -117,6 +122,10 @@ function App() {
             <Route path="/services/maintenance-support" element={<MaintenancesupportServices />} />
             <Route path="/services/performance-optimization" element={<PerformanceoptimizationServices />} />
             <Route path="/services/portfolio-website-development" element={<PortfoliowebsitesServices />} />
+            <Route path="/products/all-products" element={<AllProducts />} />
+            <Route path="/products/code-templates" element={<CodeTemplates />} />
+            <Route path="/products/ebooks-and-guides" element={<Ebooksandguides />} />
+            <Route path="/products/developer-resources" element={<Resources />} />
             {/* <Route path="/projects" element={<Projects />} /> */}
             {/* <Route path="/blog" element={<Blog />} /> */}
 
