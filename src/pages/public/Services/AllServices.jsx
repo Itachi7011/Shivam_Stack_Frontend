@@ -1,6 +1,13 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 
+import img1 from "../../../images/336.jpg";
+import img2 from "../../../images/589.jpg";
+import img3 from "../../../images/7f4.jpg";
+import img4 from "../../../images/364.jpg";
+import img5 from "../../../images/18c.jpg";
+import img6 from "../../../images/800.jpg";
+
 const AllServices = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [openFaq, setOpenFaq] = useState(null);
@@ -538,10 +545,7 @@ const AllServices = () => {
             <div className="shivam-stack-hero-visual-inner">
               <div className="shivam-stack-img-wrapper shivam-stack-img-wrapper--hero">
                 <div className="shivam-stack-img-placeholder">
-                  <span className="shivam-stack-img-placeholder-icon">🧑‍💻</span>
-                  <span className="shivam-stack-img-placeholder-text">
-                    Your Image Here
-                  </span>
+                  <img src={img1} />
                 </div>
               </div>
               <div className="shivam-stack-hero-floating-badge shivam-stack-hero-floating-badge--2">
@@ -655,49 +659,45 @@ const AllServices = () => {
             </p>
           </div>
 
-          <div className="shivam-stack-portfolio-showcase-grid">
-            {[
-              { title: "E-Commerce Platform", type: "Full Stack", wide: true },
-              { title: "Admin Dashboard", type: "React + Node", wide: false },
-              { title: "Portfolio Website", type: "React + GSAP", wide: false },
-              {
-                title: "REST API Suite",
-                type: "Node.js + MongoDB",
-                wide: false,
-              },
-              { title: "SaaS Dashboard", type: "MERN Stack", wide: true },
-            ].map((p, i) => (
-              <div
-                key={i}
-                className={`shivam-stack-portfolio-showcase-card ${p.wide ? "shivam-stack-portfolio-showcase-grid-item--wide" : ""}`}
-                style={{ minHeight: 240 }}
-              >
-                <div
-                  className="shivam-stack-img-wrapper"
-                  style={{ height: "100%", minHeight: 220 }}
-                >
-                  <div className="shivam-stack-img-placeholder">
-                    <span className="shivam-stack-img-placeholder-icon">
-                      🖼️
-                    </span>
-                    <span className="shivam-stack-img-placeholder-text">
-                      {p.title}
-                    </span>
-                  </div>
-                </div>
-                <div className="shivam-stack-portfolio-showcase-overlay">
-                  <div className="shivam-stack-portfolio-showcase-info">
-                    <div className="shivam-stack-portfolio-showcase-title">
-                      {p.title}
-                    </div>
-                    <div className="shivam-stack-portfolio-showcase-type">
-                      {p.type}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+        <div className="shivam-stack-portfolio-showcase-grid">
+  {[
+    { title: "E-Commerce Platform", type: "Full Stack", wide: true, img: img6 },
+    { title: "Admin Dashboard", type: "React + Node", wide: false, img: img2 },
+    { title: "Portfolio Website", type: "React + GSAP", wide: false, img: img4 },
+    { title: "REST API Suite", type: "Node.js + MongoDB", wide: false, img: img5 },
+    { title: "SaaS Dashboard", type: "MERN Stack", wide: true, img: img3 },
+  ].map((p, i) => (
+    <div
+      key={i}
+      className={`shivam-stack-portfolio-showcase-card ${
+        p.wide ? "shivam-stack-portfolio-showcase-grid-item--wide" : ""
+      }`}
+      style={{ minHeight: 240 }}
+    >
+      <div
+        className="shivam-stack-img-wrapper"
+        style={{ height: "100%", minHeight: 220 }}
+      >
+        <img
+          src={p.img}
+          alt={p.title}
+          
+        />
+      </div>
+
+      <div className="shivam-stack-portfolio-showcase-overlay">
+        <div className="shivam-stack-portfolio-showcase-info">
+          <div className="shivam-stack-portfolio-showcase-title">
+            {p.title}
           </div>
+          <div className="shivam-stack-portfolio-showcase-type">
+            {p.type}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
         </div>
       </section>
 

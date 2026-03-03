@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../../../context/ThemeContext';
 
+import img1 from "../../../images/analyticsinsight.jpg"
+
 const DevOpsDeployment = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [openFaq, setOpenFaq] = useState(null);
@@ -55,7 +57,7 @@ const DevOpsDeployment = () => {
     { icon: '🏗️', label: 'Build' },
     { icon: '🐳', label: 'Docker' },
     { icon: '🚀', label: 'Deploy' },
-    { icon: '✅', label: 'Health Check' },
+    { icon: '✅', label: 'Monitor' },
   ];
 
   const cloudOptions = [
@@ -124,7 +126,7 @@ const DevOpsDeployment = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }} id="devops-pipeline">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// how deployment works</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Your Automated CI/CD Pipeline</h2>
             <p className="shivam-stack-section-desc">Every code push flows through this automated pipeline. Tests pass → Docker image built → Deployed to production. No manual steps.</p>
           </div>
@@ -141,8 +143,7 @@ const DevOpsDeployment = () => {
           </div>
           <div className="shivam-stack-img-wrapper shivam-stack-img-wrapper--landscape" style={{ marginTop: '2.5rem' }}>
             <div className="shivam-stack-img-placeholder">
-              <span className="shivam-stack-img-placeholder-icon">⚙️</span>
-              <span className="shivam-stack-img-placeholder-text">GitHub Actions CI/CD Workflow Screenshot</span>
+             <img src={img1} />
             </div>
           </div>
         </div>
@@ -152,7 +153,7 @@ const DevOpsDeployment = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// what i set up</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Complete DevOps Coverage</h2>
             <p className="shivam-stack-section-desc">Everything from containerization to monitoring — I handle the full infrastructure stack.</p>
           </div>
@@ -175,7 +176,7 @@ const DevOpsDeployment = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// cloud platforms</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Choosing the Right Cloud</h2>
             <p className="shivam-stack-section-desc">I'll recommend the right platform for your traffic, budget, and team's technical level.</p>
           </div>
@@ -197,7 +198,7 @@ const DevOpsDeployment = () => {
         <div className="shivam-stack-container">
           <div className="shivam-stack-fsd-deliverables-wrap">
             <div>
-              <div className="shivam-stack-section-label">// docker & containers</div>
+              <div className="shivam-stack-section-label"></div>
               <h2 className="shivam-stack-section-title">Container-First Approach</h2>
               <p className="shivam-stack-section-desc" style={{ marginBottom: '1.5rem' }}>
                 Every app I deploy is containerized. Your local environment matches production exactly. No more "it works on my machine" problems.
@@ -254,7 +255,7 @@ const DevOpsDeployment = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Frequently Asked</h2>
           </div>
           <div className="shivam-stack-faq-list">

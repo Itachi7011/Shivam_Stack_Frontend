@@ -1369,7 +1369,7 @@ font-size: clamp(1.2rem, 2.6vw, 2rem);
 }
 
 .shivam-stack-hero-floating-badge--2 {
-  bottom: -20%;
+  bottom: -22%;
   right: -5%;
   animation: ss-float 7s 2s ease-in-out infinite;
 }
@@ -2418,7 +2418,7 @@ font-size: clamp(1.2rem, 2.6vw, 2rem);
 /* ── PERFORMANCE — BEFORE/AFTER GRID ── */
 .shivam-stack-perf-ba-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
 }
 @media (max-width: 900px) {

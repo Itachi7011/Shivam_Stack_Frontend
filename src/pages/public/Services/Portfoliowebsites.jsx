@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../../../context/ThemeContext';
 
+import img1 from "../../../images/47856.jpg";
+
 const PortfolioWebsites = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [openFaq, setOpenFaq] = useState(null);
@@ -115,8 +117,7 @@ const PortfolioWebsites = () => {
               <div className="shivam-stack-hero-visual-inner">
                 <div className="shivam-stack-img-wrapper shivam-stack-img-wrapper--hero">
                   <div className="shivam-stack-img-placeholder">
-                    <span className="shivam-stack-img-placeholder-icon">💼</span>
-                    <span className="shivam-stack-img-placeholder-text">Portfolio Website Preview</span>
+                   <img src={img1} />
                   </div>
                 </div>
                 <div className="shivam-stack-hero-floating-badge shivam-stack-hero-floating-badge--2">
@@ -143,7 +144,7 @@ const PortfolioWebsites = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// portfolio types</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Built for Your Profession</h2>
             <p className="shivam-stack-section-desc">Different professions need different portfolio approaches. I tailor every website to your specific audience and goals.</p>
           </div>
@@ -181,7 +182,7 @@ const PortfolioWebsites = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// what's included</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Built to Impress, Built to Last</h2>
             <p className="shivam-stack-section-desc">Every portfolio I build includes these features as standard — no upsells, no extras.</p>
           </div>
@@ -201,7 +202,7 @@ const PortfolioWebsites = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }} id="portfolio-showcase">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// portfolio screenshots</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Examples from My Work</h2>
             <p className="shivam-stack-section-desc">A glimpse at portfolio websites I've crafted for developers, designers, and businesses.</p>
           </div>
@@ -229,7 +230,7 @@ const PortfolioWebsites = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// built with</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">The Tech Behind the Magic</h2>
           </div>
           <div className="shivam-stack-all-services-stack-row">
@@ -248,7 +249,7 @@ const PortfolioWebsites = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Frequently Asked</h2>
           </div>
           <div className="shivam-stack-faq-list">

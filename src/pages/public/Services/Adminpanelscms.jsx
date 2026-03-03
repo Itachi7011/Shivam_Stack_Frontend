@@ -1,43 +1,100 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../../../context/ThemeContext';
 
+import img1 from "../../../images/NTK.jpg";
+import img2 from "../../../images/356.jpg";
+import img3 from "../../../images/4741.jpg";
+import img4 from "../../../images/order.jpg";
+import img5 from "../../../images/support.jpg";
+import img6 from "../../../images/1648.jpg";
+import img7 from "../../../images/settings.jpg";
+
+
 const AdminPanelsCMS = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [openFaq, setOpenFaq] = useState(null);
   const [activeFeature, setActiveFeature] = useState(0);
 
-  const dashboardFeatures = [
-    {
-      icon: '📊', title: 'Analytics Dashboard',
-      desc: 'Real-time charts, KPI cards, revenue graphs, user growth trends, funnel analysis, and exportable reports. Built with Chart.js and Recharts.',
-      bullets: ['Real-time data visualization', 'Custom date range filters', 'CSV/PDF export', 'Drill-down charts', 'Mobile-responsive layouts'],
-    },
-    {
-      icon: '👥', title: 'User Management',
-      desc: 'Complete user CRUD, role assignment, permission matrices, account suspension, activity logs, and bulk operations.',
-      bullets: ['Role-Based Access Control (RBAC)', 'Permission matrices', 'Bulk user operations', 'Activity audit logs', 'Two-factor auth toggle'],
-    },
-    {
-      icon: '📝', title: 'Content Management',
-      desc: 'Rich text editors, media library, content scheduling, SEO meta fields, categories, tags, and multi-language support.',
-      bullets: ['Rich text editor (TipTap/Quill)', 'Drag & drop media library', 'Content scheduling', 'SEO meta management', 'Multi-language support'],
-    },
-    {
-      icon: '🛒', title: 'Order & Inventory',
-      desc: 'Order processing pipeline, inventory tracking, stock alerts, supplier management, and automated reorder triggers.',
-      bullets: ['Order status pipeline', 'Low-stock alerts', 'Supplier management', 'Automated reorders', 'Inventory history logs'],
-    },
-    {
-      icon: '💬', title: 'Support & CRM',
-      desc: 'Ticket management, live chat integration, customer notes, follow-up reminders, and customer lifetime value tracking.',
-      bullets: ['Support ticket system', 'Customer notes & history', 'Follow-up reminders', 'CLV tracking', 'Email templates'],
-    },
-    {
-      icon: '⚙️', title: 'System Settings',
-      desc: 'App-wide configuration, feature flags, email templates, webhook management, API key generation, and maintenance mode.',
-      bullets: ['Feature flag system', 'Email template editor', 'Webhook configuration', 'API key management', 'Maintenance mode toggle'],
-    },
-  ];
+const dashboardFeatures = [
+  {
+    icon: '📊',
+    title: 'Analytics Dashboard',
+    image: img1,
+    desc: 'Real-time charts, KPI cards...',
+    bullets: [
+      'Real-time data visualization',
+      'Custom date range filters',
+      'CSV/PDF export',
+      'Drill-down charts',
+      'Mobile-responsive layouts'
+    ],
+  },
+  {
+    icon: '👥',
+    title: 'User Management',
+    image: img2,
+    desc: 'Complete user CRUD...',
+    bullets: [
+      'Role-Based Access Control (RBAC)',
+      'Permission matrices',
+      'Bulk user operations',
+      'Activity audit logs',
+      'Two-factor auth toggle'
+    ],
+  },
+  {
+    icon: '📝',
+    title: 'Content Management',
+    image: img3,
+    desc: 'Rich text editors...',
+    bullets: [
+      'Rich text editor (TipTap/Quill)',
+      'Drag & drop media library',
+      'Content scheduling',
+      'SEO meta management',
+      'Multi-language support'
+    ],
+  },
+  {
+    icon: '🛒',
+    title: 'Order & Inventory',
+    image: img4,
+    desc: 'Order processing pipeline...',
+    bullets: [
+      'Order status pipeline',
+      'Low-stock alerts',
+      'Supplier management',
+      'Automated reorders',
+      'Inventory history logs'
+    ],
+  },
+  {
+    icon: '💬',
+    title: 'Support & CRM',
+    image: img5,
+    desc: 'Ticket management...',
+    bullets: [
+      'Support ticket system',
+      'Customer notes & history',
+      'Follow-up reminders',
+      'CLV tracking',
+      'Email templates'
+    ],
+  },
+  {
+    icon: '⚙️',
+    title: 'System Settings',
+    image: img7,
+    desc: 'App-wide configuration...',
+    bullets: [
+      'Feature flag system',
+      'Email template editor',
+      'Webhook configuration',
+      'API key management',
+      'Maintenance mode toggle'
+    ],
+  },
+];
 
   const cmsOptions = [
     {
@@ -156,10 +213,8 @@ const AdminPanelsCMS = () => {
             </div>
             <div className="shivam-stack-admin-feature-detail">
               <div className="shivam-stack-img-wrapper shivam-stack-img-wrapper--landscape" style={{ marginBottom: '1.5rem' }}>
-                <div className="shivam-stack-img-placeholder">
-                  <span className="shivam-stack-img-placeholder-icon">{dashboardFeatures[activeFeature].icon}</span>
-                  <span className="shivam-stack-img-placeholder-text">{dashboardFeatures[activeFeature].title} Preview</span>
-                </div>
+                                <img src={dashboardFeatures[activeFeature].image} />
+
               </div>
               <h3 className="shivam-stack-section-title" style={{ fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', marginBottom: '0.75rem' }}>{dashboardFeatures[activeFeature].title}</h3>
               <p className="shivam-stack-card-text" style={{ marginBottom: '1.25rem' }}>{dashboardFeatures[activeFeature].desc}</p>
@@ -225,24 +280,25 @@ const AdminPanelsCMS = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// visual showcase</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Dashboard Screenshots</h2>
             <p className="shivam-stack-section-desc">A glimpse at the quality and detail that goes into every admin panel.</p>
           </div>
           <div className="shivam-stack-portfolio-showcase-grid">
             {[
-              { title: 'E-Commerce Dashboard', wide: true },
-              { title: 'Analytics Module', wide: false },
-              { title: 'User Management', wide: false },
-              { title: 'CMS Editor', wide: false },
-              { title: 'Reports & Exports', wide: true },
+                { title: 'E-Commerce Dashboard', wide: true, image: img4 },
+    { title: 'Analytics Module', wide: false, image: img1 },
+    { title: 'User Management', wide: false, image: img2 },
+    { title: 'CMS Editor', wide: false, image: img3 },
+    { title: 'Reports & Exports', wide: true, image: img6 },
             ].map((p, i) => (
               <div key={i} className={`shivam-stack-portfolio-showcase-card ${p.wide ? 'shivam-stack-portfolio-showcase-grid-item--wide' : ''}`} style={{ minHeight: 220 }}>
                 <div className="shivam-stack-img-wrapper" style={{ height: '100%', minHeight: 200 }}>
-                  <div className="shivam-stack-img-placeholder">
-                    <span className="shivam-stack-img-placeholder-icon">🖼️</span>
-                    <span className="shivam-stack-img-placeholder-text">{p.title}</span>
-                  </div>
+                  <img
+          src={p.image}
+          alt={p.title}
+          className="shivam-stack-showcase-image"
+        />
                 </div>
                 <div className="shivam-stack-portfolio-showcase-overlay">
                   <div className="shivam-stack-portfolio-showcase-info">

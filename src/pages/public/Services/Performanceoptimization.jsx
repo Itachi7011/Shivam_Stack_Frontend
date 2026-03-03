@@ -144,7 +144,7 @@ const PerformanceOptimization = () => {
       <section className="shivam-stack-section" id="perf-results" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// the proof</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Real Results, Real Numbers</h2>
             <p className="shivam-stack-section-desc">These are typical results from projects I've optimized. Not cherry-picked — this is what focused performance work achieves.</p>
           </div>
@@ -175,7 +175,7 @@ const PerformanceOptimization = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// how i do it</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">8 Layers of Optimization</h2>
             <p className="shivam-stack-section-desc">Performance is not a single fix — it's a stack of improvements working together.</p>
           </div>
@@ -198,7 +198,7 @@ const PerformanceOptimization = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// visual proof</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Lighthouse Reports</h2>
             <p className="shivam-stack-section-desc">Screenshots from actual optimization projects.</p>
           </div>
@@ -223,7 +223,7 @@ const PerformanceOptimization = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// my process</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">How I Optimize Your App</h2>
           </div>
           <div className="shivam-stack-grid-2" style={{ gap: 'clamp(2rem, 4vw, 4rem)' }}>
@@ -257,7 +257,7 @@ const PerformanceOptimization = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Frequently Asked</h2>
           </div>
           <div className="shivam-stack-faq-list">

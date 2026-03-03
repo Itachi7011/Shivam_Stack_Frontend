@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from '../../../context/ThemeContext';
 
+import img1 from "../../../images/health-report.jpeg";
+
 const MaintenanceSupport = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [openFaq, setOpenFaq] = useState(null);
@@ -146,7 +148,7 @@ const MaintenanceSupport = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// how it works</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">What Ongoing Support Looks Like</h2>
             <p className="shivam-stack-section-desc">A predictable, structured maintenance relationship — not reactive firefighting.</p>
           </div>
@@ -166,7 +168,7 @@ const MaintenanceSupport = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// what's covered</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Everything Keeping Your App Alive</h2>
             <p className="shivam-stack-section-desc">Comprehensive coverage across security, performance, reliability, and feature development.</p>
           </div>
@@ -186,7 +188,7 @@ const MaintenanceSupport = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// response times</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">You'll Always Know When to Expect Help</h2>
             <p className="shivam-stack-section-desc">Clear SLAs — no ambiguity about when issues will be addressed.</p>
           </div>
@@ -215,7 +217,7 @@ const MaintenanceSupport = () => {
       <section className="shivam-stack-section" id="maint-plans">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// pricing plans</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Monthly Maintenance Plans</h2>
             <p className="shivam-stack-section-desc">Predictable monthly costs. Cancel anytime with 2 weeks notice.</p>
           </div>
@@ -249,7 +251,7 @@ const MaintenanceSupport = () => {
         <div className="shivam-stack-container">
           <div className="shivam-stack-fsd-deliverables-wrap">
             <div>
-              <div className="shivam-stack-section-label">// transparency</div>
+              <div className="shivam-stack-section-label"></div>
               <h2 className="shivam-stack-section-title">Monthly Health Reports</h2>
               <p className="shivam-stack-section-desc" style={{ marginBottom: '1.5rem' }}>
                 Every month you receive a detailed report showing exactly what happened to your application — no black box maintenance.
@@ -274,8 +276,7 @@ const MaintenanceSupport = () => {
             </div>
             <div className="shivam-stack-img-wrapper shivam-stack-img-wrapper--auto" style={{ minHeight: 400 }}>
               <div className="shivam-stack-img-placeholder">
-                <span className="shivam-stack-img-placeholder-icon">📊</span>
-                <span className="shivam-stack-img-placeholder-text">Monthly Health Report Preview</span>
+                <img src={img1} />
               </div>
             </div>
           </div>
@@ -286,7 +287,7 @@ const MaintenanceSupport = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Frequently Asked</h2>
           </div>
           <div className="shivam-stack-faq-list">

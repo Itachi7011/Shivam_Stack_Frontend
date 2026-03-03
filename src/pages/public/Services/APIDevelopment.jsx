@@ -145,7 +145,7 @@ const APIDevelopment = () => {
       <section className="shivam-stack-section" id="api-explorer" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// api types</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">REST, GraphQL & Webhooks</h2>
             <p className="shivam-stack-section-desc">I build all three types of APIs, choosing the right approach for your specific use case.</p>
           </div>
@@ -177,7 +177,7 @@ const APIDevelopment = () => {
       <section className="shivam-stack-section">
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// built into every api</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Production-Ready by Default</h2>
             <p className="shivam-stack-section-desc">These aren't optional add-ons. Every API I build comes with these features as standard.</p>
           </div>
@@ -197,7 +197,7 @@ const APIDevelopment = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// third-party integrations</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Connect to Any Service</h2>
             <p className="shivam-stack-section-desc">I integrate your API with the services your business depends on.</p>
           </div>
@@ -219,7 +219,7 @@ const APIDevelopment = () => {
         <div className="shivam-stack-container">
           <div className="shivam-stack-fsd-deliverables-wrap">
             <div>
-              <div className="shivam-stack-section-label">// documentation</div>
+              <div className="shivam-stack-section-label"></div>
               <h2 className="shivam-stack-section-title">Swagger Docs Included</h2>
               <p className="shivam-stack-section-desc" style={{ marginBottom: '1.5rem' }}>
                 Every API ships with interactive Swagger/OpenAPI 3.0 documentation. Your frontend developers can explore and test every endpoint directly in the browser — no Postman needed.
@@ -254,7 +254,7 @@ const APIDevelopment = () => {
       <section className="shivam-stack-section" style={{ background: 'var(--ss-bg-secondary)' }}>
         <div className="shivam-stack-container">
           <div className="shivam-stack-section-header">
-            <div className="shivam-stack-section-label">// got questions</div>
+            <div className="shivam-stack-section-label"></div>
             <h2 className="shivam-stack-section-title">Frequently Asked</h2>
           </div>
           <div className="shivam-stack-faq-list">
