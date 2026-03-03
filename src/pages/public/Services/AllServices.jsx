@@ -147,6 +147,7 @@ const AllServices = () => {
     { icon: "🔶", name: "Babel" },
     { icon: "🧹", name: "ESLint" },
     { icon: "✨", name: "Prettier" },
+    { icon: "💡", name: "20+ Tools & Libraries" },
   ];
 
   const whyPoints = [
@@ -381,6 +382,8 @@ const AllServices = () => {
               { num: "95+", label: "Lighthouse Score" },
               { num: "99%", label: "Uptime Guaranteed" },
               { num: "24h", label: "Avg Response Time" },
+              { num: "15+", label: "Countries Covered" }, // <-- new entry
+              { num: "99.9%", label: "Data Accuracy" },
             ].map((s, i) => (
               <div key={i} className="shivam-stack-stat-item">
                 <div className="shivam-stack-stat-number">{s.num}</div>
