@@ -9,6 +9,8 @@ import "./css/public/PublicPages.css";
 import "./css/public/Services.css";
 import "./css/public/AllServices.css";
 import "./css/public/AllProducts.css";
+import "./css/public/Portfolio.css";
+import "./css/public/BookFreeCall.css";
 
 import "./css/components/Navbar.css";
 import "./css/components/Footer.css";
@@ -41,6 +43,8 @@ import Homepage from "./pages/public/Home";
 import About from "./pages/public/About";
 import Contact from "./pages/public/Contact";
 import PrivacyPolicy from "./pages/public/PrivacyPolicy";
+import Portfolio from "./pages/public/Portfolio";
+import BookFreeCall from "./pages/public/BookFreeCall";
 // import Blog from "./pages/public/Blog";
 // import BlogDetails from "./pages/public/BlogDetails";
 // import ProductDetails from "./pages/public/ProductDetails";
@@ -111,6 +115,8 @@ function App() {
 
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/book-free-call" element={<BookFreeCall />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/services" element={<AllServices />} />

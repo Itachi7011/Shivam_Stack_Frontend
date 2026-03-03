@@ -706,7 +706,7 @@ const FullStackDevelopment = () => {
           <div className="shivam-stack-fsd-deliverables-wrap">
             <div>
               <div className="shivam-stack-section-label">
-                // what you receive
+               
               </div>
               <h2 className="shivam-stack-section-title">
                 Every Deliverable, Documented
@@ -889,7 +889,7 @@ const FullStackDevelopment = () => {
           </p>
           <div className="shivam-stack-cta-buttons">
             <a
-              href="/contact"
+              href="/book-free-call"
               className="shivam-stack-btn shivam-stack-btn--primary"
             >
               ✦ Book Free Call

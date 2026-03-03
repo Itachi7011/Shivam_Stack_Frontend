@@ -1,0 +1,1310 @@
+/* ============================================================
+   SHIVAM STACK — Book Free Call Page CSS
+   All class names prefixed: ss-bookcall-*
+   Dark/Light mode via .dark / .light on root container
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ---------- CSS Variables ---------- */
+.ss-bookcall-root.light {
+  --ss-bc-bg-primary: #f8f7ff;
+  --ss-bc-bg-secondary: #ffffff;
+  --ss-bc-bg-card: #ffffff;
+  --ss-bc-bg-card-hover: #f0eeff;
+  --ss-bc-bg-glass: rgba(255,255,255,0.80);
+  --ss-bc-bg-code: #f1f0ff;
+  --ss-bc-bg-input: #ffffff;
+  --ss-bc-text-primary: #0d0b1f;
+  --ss-bc-text-secondary: #3d3a5c;
+  --ss-bc-text-muted: #7b78a8;
+  --ss-bc-text-inverse: #ffffff;
+  --ss-bc-border: rgba(109,99,255,0.18);
+  --ss-bc-border-strong: rgba(109,99,255,0.38);
+  --ss-bc-border-focus: rgba(109,99,255,0.7);
+  --ss-bc-shadow-sm: 0 2px 12px rgba(109,99,255,0.08);
+  --ss-bc-shadow-md: 0 8px 32px rgba(109,99,255,0.14);
+  --ss-bc-shadow-lg: 0 20px 60px rgba(109,99,255,0.18);
+  --ss-bc-shadow-glow: 0 0 60px rgba(109,99,255,0.22);
+  --ss-bc-gradient-hero: linear-gradient(135deg, #0d0b1f 0%, #1a1540 40%, #2d1b69 100%);
+  --ss-bc-step-inactive: #e8e6ff;
+  --ss-bc-step-inactive-text: #7b78a8;
+}
+
+.ss-bookcall-root.dark {
+  --ss-bc-bg-primary: #07060f;
+  --ss-bc-bg-secondary: #0f0d1f;
+  --ss-bc-bg-card: #131127;
+  --ss-bc-bg-card-hover: #1c1935;
+  --ss-bc-bg-glass: rgba(19,17,39,0.85);
+  --ss-bc-bg-code: #0a091a;
+  --ss-bc-bg-input: #0f0d1f;
+  --ss-bc-text-primary: #f0eeff;
+  --ss-bc-text-secondary: #b8b2e0;
+  --ss-bc-text-muted: #7b78a8;
+  --ss-bc-text-inverse: #0d0b1f;
+  --ss-bc-border: rgba(109,99,255,0.20);
+  --ss-bc-border-strong: rgba(109,99,255,0.42);
+  --ss-bc-border-focus: rgba(109,99,255,0.75);
+  --ss-bc-shadow-sm: 0 2px 12px rgba(0,0,0,0.45);
+  --ss-bc-shadow-md: 0 8px 32px rgba(0,0,0,0.55);
+  --ss-bc-shadow-lg: 0 20px 60px rgba(0,0,0,0.65);
+  --ss-bc-shadow-glow: 0 0 80px rgba(109,99,255,0.38);
+  --ss-bc-gradient-hero: linear-gradient(135deg, #07060f 0%, #0f0d1f 50%, #1a1540 100%);
+  --ss-bc-step-inactive: #1c1935;
+  --ss-bc-step-inactive-text: #7b78a8;
+}
+
+.ss-bookcall-root {
+  --ss-bc-accent: #6d63ff;
+  --ss-bc-accent-bright: #8b82ff;
+  --ss-bc-accent-dim: #4a42cc;
+  --ss-bc-accent-2: #ff6b9d;
+  --ss-bc-accent-3: #00d4aa;
+  --ss-bc-accent-4: #ffb347;
+  --ss-bc-accent-5: #4fc3f7;
+  --ss-bc-gradient-accent: linear-gradient(135deg, #6d63ff 0%, #ff6b9d 100%);
+  --ss-bc-gradient-accent2: linear-gradient(135deg, #00d4aa 0%, #4fc3f7 100%);
+  --ss-bc-gradient-accent3: linear-gradient(135deg, #ff6b9d 0%, #ffb347 100%);
+  --ss-bc-radius-sm: 8px;
+  --ss-bc-radius-md: 14px;
+  --ss-bc-radius-lg: 22px;
+  --ss-bc-radius-xl: 32px;
+  --ss-bc-radius-full: 999px;
+  --ss-bc-font-heading: 'Syne', sans-serif;
+  --ss-bc-font-body: 'Space Grotesk', sans-serif;
+  --ss-bc-font-mono: 'JetBrains Mono', monospace;
+  --ss-bc-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --ss-bc-transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset & Base ---------- */
+.ss-bookcall-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.ss-bookcall-root {
+  font-family: var(--ss-bc-font-body);
+  background: var(--ss-bc-bg-primary);
+  color: var(--ss-bc-text-primary);
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.ss-bookcall-hero {
+  position: relative;
+  min-height: 72vh;
+  background: var(--ss-bc-gradient-hero);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 130px 24px 90px;
+  text-align: center;
+}
+
+.ss-bookcall-hero-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 30%, rgba(109,99,255,0.30), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 65%, rgba(255,107,157,0.22), transparent 60%),
+    radial-gradient(ellipse 45% 55% at 50% 80%, rgba(0,212,170,0.12), transparent 55%);
+  animation: ss-bc-meshPulse 9s ease-in-out infinite alternate;
+}
+@keyframes ss-bc-meshPulse {
+  0%   { opacity: 0.75; transform: scale(1); }
+  100% { opacity: 1;    transform: scale(1.04); }
+}
+
+.ss-bookcall-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(109,99,255,0.22) 1px, transparent 1px);
+  background-size: 52px 52px;
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 20%, transparent 80%);
+}
+
+.ss-bookcall-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: ss-bc-float 7s ease-in-out infinite;
+}
+.ss-bookcall-hero-orb-1 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(109,99,255,0.38), transparent 70%);
+  top: -140px; left: -120px;
+}
+.ss-bookcall-hero-orb-2 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(255,107,157,0.30), transparent 70%);
+  bottom: -60px; right: -80px;
+  animation-delay: 2.5s;
+}
+.ss-bookcall-hero-orb-3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,212,170,0.25), transparent 70%);
+  top: 45%; left: 65%;
+  animation-delay: 4.5s;
+}
+@keyframes ss-bc-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-28px) rotate(4deg); }
+}
+
+.ss-bookcall-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.ss-bookcall-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(109,99,255,0.14);
+  border: 1px solid rgba(109,99,255,0.42);
+  border-radius: var(--ss-bc-radius-full);
+  padding: 9px 22px;
+  font-size: clamp(11px, 1.4vw, 13px);
+  font-family: var(--ss-bc-font-mono);
+  color: #a09aff;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  backdrop-filter: blur(14px);
+  animation: ss-bc-pop 0.55s ease both;
+}
+.ss-bookcall-hero-badge-pulse {
+  width: 8px; height: 8px;
+  background: var(--ss-bc-accent-3);
+  border-radius: 50%;
+  animation: ss-bc-blink 1.6s ease-in-out infinite;
+}
+@keyframes ss-bc-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.65); }
+}
+@keyframes ss-bc-pop {
+  from { opacity: 0; transform: scale(0.8) translateY(-12px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0); }
+}
+
+.ss-bookcall-hero-title {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(38px, 7.5vw, 86px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  animation: ss-bc-slideUp 0.65s ease 0.1s both;
+}
+.ss-bookcall-hero-title-grad {
+  background: var(--ss-bc-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ss-bookcall-hero-desc {
+  font-size: clamp(15px, 2vw, 18px);
+  color: rgba(255,255,255,0.68);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.78;
+  animation: ss-bc-slideUp 0.65s ease 0.2s both;
+}
+
+.ss-bookcall-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  animation: ss-bc-slideUp 0.65s ease 0.3s both;
+}
+.ss-bookcall-hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--ss-bc-radius-full);
+  font-size: clamp(12px, 1.3vw, 13px);
+  color: rgba(255,255,255,0.82);
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+}
+
+.ss-bookcall-hero-scroll {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.35);
+  font-size: 10px;
+  font-family: var(--ss-bc-font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: ss-bc-scrollBounce 2.2s ease-in-out infinite;
+  z-index: 2;
+}
+.ss-bookcall-hero-scroll-line {
+  width: 1px; height: 38px;
+  background: linear-gradient(to bottom, rgba(109,99,255,0.7), transparent);
+}
+@keyframes ss-bc-scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(9px); }
+}
+@keyframes ss-bc-slideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SHARED SECTION STYLES
+   ============================================================ */
+.ss-bookcall-section {
+  padding: 96px 0;
+  position: relative;
+}
+.ss-bookcall-section-alt {
+  background: var(--ss-bc-bg-secondary);
+}
+.ss-bookcall-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 60px);
+}
+.ss-bookcall-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--ss-bc-font-mono);
+  font-size: clamp(10px, 1.3vw, 12px);
+  font-weight: 500;
+  color: var(--ss-bc-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 13px;
+}
+.ss-bookcall-section-label-line {
+  width: 30px; height: 1.5px;
+  background: var(--ss-bc-accent);
+  border-radius: 2px;
+}
+.ss-bookcall-section-heading {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(28px, 4.5vw, 52px);
+  font-weight: 800;
+  color: var(--ss-bc-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+.ss-bookcall-section-heading-grad {
+  background: var(--ss-bc-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ss-bookcall-section-sub {
+  font-size: clamp(14px, 1.7vw, 17px);
+  color: var(--ss-bc-text-secondary);
+  max-width: 600px;
+  line-height: 1.78;
+}
+.ss-bookcall-section-header {
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+
+/* ============================================================
+   MAIN BOOKING LAYOUT
+   ============================================================ */
+.ss-bookcall-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items: start;
+}
+@media (max-width: 960px) {
+  .ss-bookcall-main-layout { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   LEFT PANEL — INFO COLUMN
+   ============================================================ */
+.ss-bookcall-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: sticky;
+  top: 100px;
+}
+@media (max-width: 960px) {
+  .ss-bookcall-info-col { position: static; }
+}
+
+/* Availability pill */
+.ss-bookcall-avail-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,212,170,0.10);
+  border: 1px solid rgba(0,212,170,0.32);
+  border-radius: var(--ss-bc-radius-full);
+  padding: 10px 20px;
+  font-size: clamp(12px, 1.3vw, 14px);
+  color: var(--ss-bc-accent-3);
+  font-weight: 500;
+  width: fit-content;
+}
+.ss-bookcall-avail-dot {
+  width: 8px; height: 8px;
+  background: var(--ss-bc-accent-3);
+  border-radius: 50%;
+  animation: ss-bc-blink 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Info card */
+.ss-bookcall-info-card {
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-lg);
+  padding: clamp(20px, 3vw, 36px);
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-info-card:hover {
+  border-color: var(--ss-bc-border-strong);
+  box-shadow: var(--ss-bc-shadow-md);
+}
+.ss-bookcall-info-card-title {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 800;
+  color: var(--ss-bc-text-primary);
+  margin-bottom: 8px;
+}
+.ss-bookcall-info-card-desc {
+  font-size: clamp(13px, 1.4vw, 15px);
+  color: var(--ss-bc-text-secondary);
+  line-height: 1.75;
+}
+
+/* What to expect items */
+.ss-bookcall-expect-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+.ss-bookcall-expect-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--ss-bc-bg-secondary);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-expect-item:hover {
+  border-color: var(--ss-bc-border-strong);
+  background: var(--ss-bc-bg-card-hover);
+  transform: translateX(4px);
+}
+.ss-bookcall-expect-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--ss-bc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.ss-bookcall-expect-text-title {
+  font-size: clamp(13px, 1.4vw, 14px);
+  font-weight: 700;
+  color: var(--ss-bc-text-primary);
+  margin-bottom: 3px;
+}
+.ss-bookcall-expect-text-desc {
+  font-size: clamp(12px, 1.3vw, 13px);
+  color: var(--ss-bc-text-muted);
+  line-height: 1.6;
+}
+
+/* Contact quick-links */
+.ss-bookcall-contact-quick {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ss-bookcall-contact-quick-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  text-decoration: none;
+  transition: var(--ss-bc-transition);
+  cursor: pointer;
+}
+.ss-bookcall-contact-quick-item:hover {
+  border-color: var(--ss-bc-accent);
+  background: rgba(109,99,255,0.06);
+  transform: translateX(4px);
+}
+.ss-bookcall-contact-quick-icon {
+  width: 38px; height: 38px;
+  border-radius: var(--ss-bc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.ss-bookcall-contact-quick-label {
+  font-size: 11px;
+  color: var(--ss-bc-text-muted);
+  font-family: var(--ss-bc-font-mono);
+}
+.ss-bookcall-contact-quick-value {
+  font-size: clamp(13px, 1.4vw, 14px);
+  font-weight: 600;
+  color: var(--ss-bc-text-primary);
+}
+.ss-bookcall-contact-quick-arrow {
+  margin-left: auto;
+  color: var(--ss-bc-accent);
+  opacity: 0;
+  transition: var(--ss-bc-transition);
+  flex-shrink: 0;
+}
+.ss-bookcall-contact-quick-item:hover .ss-bookcall-contact-quick-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Timezone info card */
+.ss-bookcall-tz-card {
+  background: linear-gradient(135deg, rgba(109,99,255,0.08), rgba(255,107,157,0.05));
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.ss-bookcall-tz-icon {
+  width: 40px; height: 40px;
+  background: var(--ss-bc-gradient-accent);
+  border-radius: var(--ss-bc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ss-bookcall-tz-title {
+  font-size: clamp(13px, 1.4vw, 14px);
+  font-weight: 700;
+  color: var(--ss-bc-text-primary);
+  margin-bottom: 4px;
+}
+.ss-bookcall-tz-desc {
+  font-size: clamp(12px, 1.3vw, 13px);
+  color: var(--ss-bc-text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   RIGHT PANEL — BOOKING FORM
+   ============================================================ */
+.ss-bookcall-form-panel {
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--ss-bc-shadow-lg);
+  transition: var(--ss-bc-transition);
+}
+
+/* Step indicator */
+.ss-bookcall-steps-bar {
+  background: var(--ss-bc-bg-secondary);
+  border-bottom: 1px solid var(--ss-bc-border);
+  padding: 20px clamp(20px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.ss-bookcall-step-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+.ss-bookcall-step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--ss-bc-step-inactive);
+  border-radius: 2px;
+  transition: background 0.4s ease;
+  margin: 0 8px;
+}
+.ss-bookcall-step-connector.ss-bookcall-step-done {
+  background: var(--ss-bc-accent);
+}
+.ss-bookcall-step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--ss-bc-font-mono);
+  flex-shrink: 0;
+  transition: var(--ss-bc-transition);
+  background: var(--ss-bc-step-inactive);
+  color: var(--ss-bc-step-inactive-text);
+  border: 2px solid var(--ss-bc-step-inactive);
+}
+.ss-bookcall-step-item.ss-bookcall-step-active .ss-bookcall-step-num {
+  background: var(--ss-bc-gradient-accent);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(109,99,255,0.45);
+}
+.ss-bookcall-step-item.ss-bookcall-step-done .ss-bookcall-step-num {
+  background: var(--ss-bc-accent);
+  color: #fff;
+  border-color: transparent;
+}
+.ss-bookcall-step-info {
+  min-width: 0;
+  display: none;
+}
+@media (min-width: 520px) {
+  .ss-bookcall-step-info { display: block; }
+}
+.ss-bookcall-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ss-bc-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ss-bookcall-step-sublabel {
+  font-size: 10px;
+  color: var(--ss-bc-text-muted);
+  font-family: var(--ss-bc-font-mono);
+  white-space: nowrap;
+}
+
+/* Form body */
+.ss-bookcall-form-body {
+  padding: clamp(24px, 3.5vw, 44px);
+}
+.ss-bookcall-form-step-title {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-weight: 800;
+  color: var(--ss-bc-text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.015em;
+}
+.ss-bookcall-form-step-desc {
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--ss-bc-text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.65;
+}
+
+/* Form controls */
+.ss-bookcall-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 540px) {
+  .ss-bookcall-form-row { grid-template-columns: 1fr; }
+}
+.ss-bookcall-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+.ss-bookcall-form-group-full {
+  grid-column: 1 / -1;
+}
+.ss-bookcall-form-label {
+  font-size: clamp(12px, 1.3vw, 13px);
+  font-weight: 600;
+  color: var(--ss-bc-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ss-bookcall-form-label-required {
+  color: var(--ss-bc-accent-2);
+  font-size: 14px;
+}
+.ss-bookcall-form-input,
+.ss-bookcall-form-textarea,
+.ss-bookcall-form-select {
+  width: 100%;
+  background: var(--ss-bc-bg-input);
+  border: 1.5px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  padding: 13px 16px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--ss-bc-text-primary);
+  font-family: var(--ss-bc-font-body);
+  transition: var(--ss-bc-transition);
+  outline: none;
+  -webkit-appearance: none;
+}
+.ss-bookcall-form-input::placeholder,
+.ss-bookcall-form-textarea::placeholder {
+  color: var(--ss-bc-text-muted);
+}
+.ss-bookcall-form-input:focus,
+.ss-bookcall-form-textarea:focus,
+.ss-bookcall-form-select:focus {
+  border-color: var(--ss-bc-border-focus);
+  box-shadow: 0 0 0 3px rgba(109,99,255,0.14);
+}
+.ss-bookcall-form-textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.ss-bookcall-form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237b78a8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+/* Input with icon */
+.ss-bookcall-input-wrap {
+  position: relative;
+}
+.ss-bookcall-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ss-bc-text-muted);
+  pointer-events: none;
+}
+.ss-bookcall-input-has-icon {
+  padding-left: 42px !important;
+}
+
+/* Time slot grid */
+.ss-bookcall-timeslot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.ss-bookcall-timeslot-btn {
+  padding: 11px 8px;
+  background: var(--ss-bc-bg-input);
+  border: 1.5px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  font-size: clamp(12px, 1.3vw, 13px);
+  font-weight: 600;
+  font-family: var(--ss-bc-font-mono);
+  color: var(--ss-bc-text-secondary);
+  cursor: pointer;
+  transition: var(--ss-bc-transition);
+  text-align: center;
+}
+.ss-bookcall-timeslot-btn:hover:not(.ss-bookcall-timeslot-disabled) {
+  border-color: var(--ss-bc-accent);
+  color: var(--ss-bc-accent);
+  background: rgba(109,99,255,0.07);
+}
+.ss-bookcall-timeslot-btn.ss-bookcall-timeslot-selected {
+  background: var(--ss-bc-gradient-accent);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(109,99,255,0.40);
+}
+.ss-bookcall-timeslot-btn.ss-bookcall-timeslot-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* Day picker */
+.ss-bookcall-day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+@media (max-width: 480px) {
+  .ss-bookcall-day-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.ss-bookcall-day-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 4px;
+  background: var(--ss-bc-bg-input);
+  border: 1.5px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  cursor: pointer;
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-day-btn:hover:not(.ss-bookcall-day-past) {
+  border-color: var(--ss-bc-accent);
+  background: rgba(109,99,255,0.07);
+}
+.ss-bookcall-day-btn.ss-bookcall-day-selected {
+  background: var(--ss-bc-gradient-accent);
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(109,99,255,0.40);
+}
+.ss-bookcall-day-btn.ss-bookcall-day-past {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.ss-bookcall-day-name {
+  font-size: 10px;
+  font-family: var(--ss-bc-font-mono);
+  font-weight: 600;
+  color: var(--ss-bc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.ss-bookcall-day-num {
+  font-size: clamp(14px, 1.7vw, 17px);
+  font-weight: 700;
+  font-family: var(--ss-bc-font-heading);
+  color: var(--ss-bc-text-primary);
+}
+.ss-bookcall-day-btn.ss-bookcall-day-selected .ss-bookcall-day-name,
+.ss-bookcall-day-btn.ss-bookcall-day-selected .ss-bookcall-day-num {
+  color: #fff;
+}
+
+/* Service type option cards */
+.ss-bookcall-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 20vw, 180px), 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+.ss-bookcall-service-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ss-bc-bg-input);
+  border: 1.5px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  cursor: pointer;
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-service-option:hover {
+  border-color: var(--ss-bc-border-strong);
+  background: var(--ss-bc-bg-card-hover);
+}
+.ss-bookcall-service-option.ss-bookcall-service-selected {
+  border-color: var(--ss-bc-accent);
+  background: rgba(109,99,255,0.07);
+  box-shadow: 0 0 0 3px rgba(109,99,255,0.12);
+}
+.ss-bookcall-service-opt-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--ss-bc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.ss-bookcall-service-opt-name {
+  font-size: clamp(12px, 1.4vw, 13px);
+  font-weight: 700;
+  color: var(--ss-bc-text-primary);
+  line-height: 1.3;
+}
+.ss-bookcall-service-opt-desc {
+  font-size: 11px;
+  color: var(--ss-bc-text-muted);
+  line-height: 1.5;
+}
+.ss-bookcall-service-selected-check {
+  margin-left: auto;
+  align-self: flex-start;
+  display: none;
+  color: var(--ss-bc-accent);
+}
+.ss-bookcall-service-option.ss-bookcall-service-selected .ss-bookcall-service-selected-check {
+  display: block;
+}
+
+/* Form nav buttons */
+.ss-bookcall-form-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ss-bc-border);
+  flex-wrap: wrap;
+}
+.ss-bookcall-form-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Summary box (step 4 review) */
+.ss-bookcall-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+@media (max-width: 480px) {
+  .ss-bookcall-summary-grid { grid-template-columns: 1fr; }
+}
+.ss-bookcall-summary-item {
+  background: var(--ss-bc-bg-secondary);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  padding: 14px 16px;
+}
+.ss-bookcall-summary-label {
+  font-size: 11px;
+  color: var(--ss-bc-text-muted);
+  font-family: var(--ss-bc-font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+.ss-bookcall-summary-value {
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 600;
+  color: var(--ss-bc-text-primary);
+}
+.ss-bookcall-summary-note {
+  background: linear-gradient(135deg, rgba(109,99,255,0.07), rgba(255,107,157,0.05));
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  padding: 14px 16px;
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--ss-bc-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   BUTTONS (scoped to bookcall)
+   ============================================================ */
+.ss-bookcall-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--ss-bc-gradient-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--ss-bc-radius-full);
+  padding: 14px 30px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 600;
+  font-family: var(--ss-bc-font-body);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--ss-bc-transition);
+  box-shadow: 0 4px 22px rgba(109,99,255,0.45);
+  position: relative;
+  overflow: hidden;
+}
+.ss-bookcall-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(109,99,255,0.58);
+}
+.ss-bookcall-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  color: var(--ss-bc-text-secondary);
+  border: 1.5px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-full);
+  padding: 13px 28px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 500;
+  font-family: var(--ss-bc-font-body);
+  cursor: pointer;
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-btn-ghost:hover {
+  border-color: var(--ss-bc-border-strong);
+  color: var(--ss-bc-text-primary);
+  background: rgba(109,99,255,0.06);
+}
+.ss-bookcall-btn-outline-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: var(--ss-bc-radius-full);
+  padding: 13px 28px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 500;
+  font-family: var(--ss-bc-font-body);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--ss-bc-transition);
+  backdrop-filter: blur(10px);
+}
+.ss-bookcall-btn-outline-hero:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.55);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   WHY SECTION CARDS
+   ============================================================ */
+.ss-bookcall-why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(220px, 28vw, 270px), 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+.ss-bookcall-why-card {
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-lg);
+  padding: clamp(20px, 2.5vw, 30px);
+  transition: var(--ss-bc-transition);
+  position: relative;
+  overflow: hidden;
+}
+.ss-bookcall-why-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--ss-bc-gradient-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.ss-bookcall-why-card:hover::after { transform: scaleX(1); }
+.ss-bookcall-why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ss-bc-shadow-md);
+  border-color: var(--ss-bc-border-strong);
+}
+.ss-bookcall-why-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--ss-bc-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.ss-bookcall-why-title {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 700;
+  color: var(--ss-bc-text-primary);
+  margin-bottom: 9px;
+}
+.ss-bookcall-why-desc {
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--ss-bc-text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================================
+   TOPICS SECTION
+   ============================================================ */
+.ss-bookcall-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 26vw, 260px), 1fr));
+  gap: 14px;
+}
+.ss-bookcall-topic-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-topic-card:hover {
+  border-color: var(--ss-bc-border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--ss-bc-shadow-sm);
+}
+.ss-bookcall-topic-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--ss-bc-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.ss-bookcall-topic-name {
+  font-size: clamp(13px, 1.5vw, 15px);
+  font-weight: 600;
+  color: var(--ss-bc-text-primary);
+}
+.ss-bookcall-topic-sub {
+  font-size: 11px;
+  color: var(--ss-bc-text-muted);
+  font-family: var(--ss-bc-font-mono);
+  margin-top: 2px;
+}
+
+/* ============================================================
+   TESTIMONIALS (mini row)
+   ============================================================ */
+.ss-bookcall-mini-testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(240px, 32vw, 320px), 1fr));
+  gap: 20px;
+}
+.ss-bookcall-mini-testi-card {
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-lg);
+  padding: clamp(18px, 2.5vw, 28px);
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-mini-testi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ss-bc-shadow-md);
+  border-color: var(--ss-bc-border-strong);
+}
+.ss-bookcall-mini-testi-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 10px;
+  color: var(--ss-bc-accent-4);
+}
+.ss-bookcall-mini-testi-text {
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--ss-bc-text-secondary);
+  line-height: 1.72;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+.ss-bookcall-mini-testi-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ss-bookcall-mini-testi-avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--ss-bc-gradient-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.ss-bookcall-mini-testi-name {
+  font-weight: 700;
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--ss-bc-text-primary);
+}
+.ss-bookcall-mini-testi-role {
+  font-size: 11px;
+  color: var(--ss-bc-text-muted);
+  font-family: var(--ss-bc-font-mono);
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.ss-bookcall-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.ss-bookcall-faq-item {
+  background: var(--ss-bc-bg-card);
+  border: 1px solid var(--ss-bc-border);
+  border-radius: var(--ss-bc-radius-md);
+  overflow: hidden;
+  transition: var(--ss-bc-transition);
+}
+.ss-bookcall-faq-item.ss-bookcall-faq-open {
+  border-color: var(--ss-bc-border-strong);
+  box-shadow: var(--ss-bc-shadow-sm);
+}
+.ss-bookcall-faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 17px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: clamp(14px, 1.6vw, 16px);
+  font-weight: 600;
+  color: var(--ss-bc-text-primary);
+  font-family: var(--ss-bc-font-body);
+  cursor: pointer;
+  text-align: left;
+}
+.ss-bookcall-faq-chevron {
+  flex-shrink: 0;
+  color: var(--ss-bc-accent);
+  transition: transform 0.3s ease;
+}
+.ss-bookcall-faq-open .ss-bookcall-faq-chevron { transform: rotate(180deg); }
+.ss-bookcall-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 22px;
+  font-size: clamp(13px, 1.5vw, 15px);
+  color: var(--ss-bc-text-secondary);
+  line-height: 1.75;
+}
+.ss-bookcall-faq-open .ss-bookcall-faq-a {
+  max-height: 300px;
+  padding: 0 22px 18px;
+}
+
+/* ============================================================
+   CTA BANNER
+   ============================================================ */
+.ss-bookcall-cta-banner {
+  position: relative;
+  background: var(--ss-bc-gradient-hero);
+  border-radius: var(--ss-bc-radius-xl);
+  overflow: hidden;
+  padding: clamp(44px, 7vw, 88px) clamp(24px, 5vw, 80px);
+  text-align: center;
+  margin: 0 clamp(16px, 4vw, 60px);
+}
+.ss-bookcall-cta-mesh {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(109,99,255,0.32), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(255,107,157,0.22), transparent 60%);
+  pointer-events: none;
+}
+.ss-bookcall-cta-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.45;
+}
+.ss-bookcall-cta-inner { position: relative; z-index: 2; }
+.ss-bookcall-cta-title {
+  font-family: var(--ss-bc-font-heading);
+  font-size: clamp(26px, 4.5vw, 50px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.025em;
+}
+.ss-bookcall-cta-sub {
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(255,255,255,0.7);
+  max-width: 520px;
+  margin: 0 auto 34px;
+  line-height: 1.72;
+}
+.ss-bookcall-cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   FADE-IN ANIMATION
+   ============================================================ */
+.ss-bookcall-fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ss-bookcall-fade-in.ss-bookcall-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ss-bookcall-fade-delay-1 { transition-delay: 0.1s; }
+.ss-bookcall-fade-delay-2 { transition-delay: 0.2s; }
+.ss-bookcall-fade-delay-3 { transition-delay: 0.3s; }
+
+/* Accent bg utilities */
+.ss-bc-bg-1 { background: linear-gradient(135deg, #6d63ff, #9b94ff); }
+.ss-bc-bg-2 { background: linear-gradient(135deg, #ff6b9d, #ff9fc6); }
+.ss-bc-bg-3 { background: linear-gradient(135deg, #00d4aa, #4fc3f7); }
+.ss-bc-bg-4 { background: linear-gradient(135deg, #ffb347, #ffcc80); }
+.ss-bc-bg-5 { background: linear-gradient(135deg, #4fc3f7, #81d4fa); }
+.ss-bc-bg-6 { background: linear-gradient(135deg, #ff6b9d, #ffb347); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 700px) {
+  .ss-bookcall-why-grid { grid-template-columns: 1fr 1fr; }
+  .ss-bookcall-topics-grid { grid-template-columns: 1fr 1fr; }
+  .ss-bookcall-mini-testimonials { grid-template-columns: 1fr; }
+  .ss-bookcall-timeslot-grid { grid-template-columns: repeat(3, 1fr); }
+  .ss-bookcall-service-grid { grid-template-columns: repeat(2, 1fr); }
+  .ss-bookcall-cta-banner { margin: 0 8px; border-radius: var(--ss-bc-radius-lg); }
+}
+@media (max-width: 400px) {
+  .ss-bookcall-why-grid { grid-template-columns: 1fr; }
+  .ss-bookcall-topics-grid { grid-template-columns: 1fr; }
+  .ss-bookcall-timeslot-grid { grid-template-columns: repeat(2, 1fr); }
+  .ss-bookcall-service-grid { grid-template-columns: 1fr; }
+  .ss-bookcall-day-grid { grid-template-columns: repeat(4, 1fr); }
+}
