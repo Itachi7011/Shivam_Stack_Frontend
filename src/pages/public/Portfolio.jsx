@@ -464,6 +464,55 @@ const SKILLS = [
   { name: 'Git / GitHub', level: 91, cat: 'DevOps', emoji: '🐙', bg: '#ffffff15' },
   { name: 'Netlify / Render', level: 87, cat: 'Deploy', emoji: '☁️', bg: '#00d4aa22' },
   { name: 'Next.js', level: 75, cat: 'Frontend', emoji: '▲', bg: '#ffffff15' },
+
+  // ✅ Newly Added Skills
+
+  { name: 'Docker', level: 72, cat: 'DevOps', emoji: '🐳', bg: '#0db7ed22' },
+  { name: 'AWS', level: 70, cat: 'Cloud', emoji: '☁️', bg: '#ff990022' },
+  { name: 'Redis', level: 76, cat: 'Database', emoji: '🔥', bg: '#dc382d22' },
+  { name: 'Vite', level: 85, cat: 'Build Tool', emoji: '⚡', bg: '#646cff22' },
+
+  // Frontend Ecosystem
+  { name: 'Redux Toolkit', level: 88, cat: 'Frontend', emoji: '🌀', bg: '#764abc22' },
+  { name: 'React Query', level: 84, cat: 'Frontend', emoji: '🔄', bg: '#ff415422' },
+  { name: 'React Hook Form', level: 86, cat: 'Frontend', emoji: '📋', bg: '#ec599022' },
+  { name: 'Material UI', level: 83, cat: 'Styling', emoji: '🟦', bg: '#007fff22' },
+  { name: 'Styled Components', level: 80, cat: 'Styling', emoji: '💖', bg: '#db709322' },
+  { name: 'Bootstrap', level: 85, cat: 'Styling', emoji: '🅱️', bg: '#7952b322' },
+  { name: 'Sass', level: 82, cat: 'Styling', emoji: '💅', bg: '#cc669922' },
+
+  // Backend Advanced
+  { name: 'Bcrypt', level: 87, cat: 'Security', emoji: '🧂', bg: '#aaaaaa22' },
+  { name: 'Socket.io', level: 83, cat: 'Backend', emoji: '🔌', bg: '#01010122' },
+  { name: 'Passport.js', level: 78, cat: 'Security', emoji: '🛂', bg: '#34e27a22' },
+  { name: 'Zod', level: 80, cat: 'Backend', emoji: '✔️', bg: '#3e67b122' },
+  { name: 'Joi', level: 79, cat: 'Backend', emoji: '📐', bg: '#00aaff22' },
+  { name: 'Nodemailer', level: 85, cat: 'Backend', emoji: '✉️', bg: '#0099ff22' },
+
+  // ORM / DB Tools
+  { name: 'Mongoose', level: 90, cat: 'Database', emoji: '📀', bg: '#88000022' },
+
+  // API / Tools
+  { name: 'Apollo Server', level: 80, cat: 'Backend', emoji: '🚀', bg: '#311c8722' },
+  { name: 'Axios', level: 92, cat: 'Frontend', emoji: '📡', bg: '#5a29e422' },
+  { name: 'Postman', level: 90, cat: 'Tooling', emoji: '📮', bg: '#ff6c3722' },
+
+  // DevOps Advanced
+  { name: 'GitHub Actions', level: 75, cat: 'DevOps', emoji: '⚙️', bg: '#2088ff22' },
+  { name: 'Nginx', level: 73, cat: 'DevOps', emoji: '🟢', bg: '#00963922' },
+  { name: 'PM2', level: 81, cat: 'DevOps', emoji: '♻️', bg: '#2b037a22' },
+  { name: 'Linux', level: 84, cat: 'DevOps', emoji: '🐧', bg: '#fcc62422' },
+
+  // Cloud Platforms
+  { name: 'Firebase', level: 85, cat: 'Cloud', emoji: '🔥', bg: '#ffca2822' },
+  { name: 'DigitalOcean', level: 72, cat: 'Cloud', emoji: '🌊', bg: '#0080ff22' },
+  { name: 'Railway', level: 74, cat: 'Cloud', emoji: '🚂', bg: '#00000022' },
+
+  // Payments
+  { name: 'Stripe', level: 88, cat: 'Payments', emoji: '💳', bg: '#635bff22' },
+  { name: 'Razorpay', level: 85, cat: 'Payments', emoji: '💠', bg: '#0c245122' },
+
+
 ];
 
 const PROCESS = [
