@@ -7,8 +7,8 @@ import {
   LayoutDashboard, BookOpen, Briefcase, Package,
   Mail, ArrowRight, RefreshCw, Terminal
 } from 'lucide-react';
-
-const QUICK_LINKS = [
+ 
+const QUICK_LINKS = [ 
   { icon: <Home size={16} />, label: 'Homepage', to: '/' },
   { icon: <Briefcase size={16} />, label: 'Portfolio', to: '/portfolio' },
   { icon: <Package size={16} />, label: 'Products', to: '/store' },

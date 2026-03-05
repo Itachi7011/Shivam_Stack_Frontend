@@ -1,8 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
-
-import {
+ 
+import { 
   Search, Plus, Bell, Sun, Moon, ChevronDown, ChevronRight,
   Package, PenTool, Briefcase, Ticket, User, Settings,
   Activity, RefreshCw, LogOut, ShoppingCart, Mail,
