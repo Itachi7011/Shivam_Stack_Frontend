@@ -205,10 +205,10 @@ const UserLogin = () => {
                 </svg>
                 Continue with Google
               </button>
-              <button className="sua-social-btn sua-social-btn-gh" type="button" onClick={handleGithubLogin}>
+              {/* <button className="sua-social-btn sua-social-btn-gh" type="button" onClick={handleGithubLogin}>
                 <Github size={17} />
                 Continue with GitHub
-              </button>
+              </button> */}
             </div>
 
             <div className="sua-divider"><span>or sign in with email</span></div>

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
+import { useAdmin } from '../../context/AdminContext';
  
 import { 
   Search, Plus, Bell, Sun, Moon, ChevronDown, ChevronRight,
@@ -10,7 +11,7 @@ import {
   LayoutDashboard
 } from 'lucide-react';
 
-const adminPhoto = 'https://api.dicebear.com/7.x/avataaars/svg?seed=Shivam&backgroundColor=b6e3f4';
+// Remove static adminPhoto - we'll use avatar from admin data or generate
 
 const pageTitles = {
   '/admin/dashboard': { title: 'Dashboard', crumbs: ['Admin', 'Dashboard'] },
@@ -21,34 +22,46 @@ const pageTitles = {
   '/admin/portfolio': { title: 'Portfolio', crumbs: ['Admin', 'Portfolio'] },
   '/admin/analytics/revenue': { title: 'Revenue Analytics', crumbs: ['Admin', 'Analytics', 'Revenue'] },
   '/admin/settings/general': { title: 'Platform Settings', crumbs: ['Admin', 'Settings'] },
+  '/admin/main-settings': { title: 'Main Settings', crumbs: ['Admin', 'Settings'] },
+  '/admin/manage-blog': { title: 'Manage Blog', crumbs: ['Admin', 'Blog', 'Manage'] },
+  '/admin/manage-coupons': { title: 'Manage Coupons', crumbs: ['Admin', 'Coupons', 'Manage'] },
+  '/admin/manage-products': { title: 'Manage Products', crumbs: ['Admin', 'Products', 'Manage'] },
+  '/admin/manage-product-categories': { title: 'Product Categories', crumbs: ['Admin', 'Products', 'Categories'] },
+  '/admin/manage-projects': { title: 'Manage Projects', crumbs: ['Admin', 'Projects', 'Manage'] },
 };
 
 const quickCreateItems = [
-  { id: 'qc-product', label: 'Add Product', icon: <Package size={14} />, link: '/admin/products/add' },
-  { id: 'qc-blog', label: 'Add Blog Post', icon: <PenTool size={14} />, link: '/admin/blog/add' },
-  { id: 'qc-project', label: 'Add Project', icon: <Briefcase size={14} />, link: '/admin/portfolio/add' },
-  { id: 'qc-coupon', label: 'Create Coupon', icon: <Ticket size={14} />, link: '/admin/coupons/create' },
-];
-
-const mockNotifications = [
-  { id: 1, type: 'order', icon: <ShoppingCart size={14} />, title: 'New Order #1042', desc: 'React Mastery Course purchased', time: '2m ago', unread: true },
-  { id: 2, type: 'message', icon: <Mail size={14} />, title: 'New Contact Message', desc: 'From: rahul@example.com', time: '15m ago', unread: true },
-  { id: 3, type: 'user', icon: <Users size={14} />, title: '3 New Users Joined', desc: 'Today\'s registrations', time: '1h ago', unread: true },
-  { id: 4, type: 'alert', icon: <AlertTriangle size={14} />, title: 'System Alert', desc: 'Backup completed successfully', time: '3h ago', unread: false },
+  { id: 'qc-product', label: 'Add Product', icon: <Package size={14} />, link: '/admin/manage-products/add', permission: 'manage_products' },
+  { id: 'qc-blog', label: 'Add Blog Post', icon: <PenTool size={14} />, link: '/admin/manage-blog/add', permission: 'manage_blog' },
+  { id: 'qc-project', label: 'Add Project', icon: <Briefcase size={14} />, link: '/admin/manage-projects/add', permission: 'manage_projects' },
+  { id: 'qc-coupon', label: 'Create Coupon', icon: <Ticket size={14} />, link: '/admin/manage-coupons/create', permission: 'manage_coupons' },
 ];
 
 const profileMenuItems = [
   { id: 'pm-profile', label: 'My Profile', icon: <User size={14} />, link: '/admin/profile' },
   { id: 'pm-settings', label: 'Account Settings', icon: <Settings size={14} />, link: '/admin/settings/general' },
-  { id: 'pm-logs', label: 'Activity Logs', icon: <Activity size={14} />, link: '/admin/logs/admin' },
-  { id: 'pm-switch', label: 'Switch Role', icon: <RefreshCw size={14} />, link: '/admin/admins/roles' },
+  { id: 'pm-logs', label: 'Activity Logs', icon: <Activity size={14} />, link: '/admin/activities' },
+];
+
+// Only show for superadmin
+const superAdminItems = [
+  { id: 'pm-admins', label: 'Manage Admins', icon: <Users size={14} />, link: '/admin/admins' },
+  { id: 'pm-roles', label: 'Switch Role', icon: <RefreshCw size={14} />, link: '/admin/admins/roles' },
 ];
 
 const searchCategories = ['Users', 'Orders', 'Products', 'Blog Posts'];
 
+// Generate avatar from admin data
+const getAdminAvatar = (admin) => {
+  if (admin?.avatar?.url) return admin.avatar.url;
+  return `https://api.dicebear.com/7.x/avataaars/svg?seed=${admin?.name || 'Admin'}&backgroundColor=b6e3f4`;
+};
+
 const AdminNavbar = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+  const { admin, adminLogout, isSuperAdmin, hasPermission } = useAdmin();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
@@ -56,6 +69,8 @@ const AdminNavbar = () => {
   const [quickCreateOpen, setQuickCreateOpen] = useState(false);
   const [notifOpen, setNotifOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   const quickCreateRef = useRef(null);
   const notifRef = useRef(null);
@@ -63,7 +78,11 @@ const AdminNavbar = () => {
   const searchRef = useRef(null);
 
   const pageInfo = pageTitles[location.pathname] || { title: 'Admin Panel', crumbs: ['Admin'] };
-  const unreadCount = mockNotifications.filter((n) => n.unread).length;
+
+  // Filter quick create items based on permissions
+  const filteredQuickCreate = quickCreateItems.filter(item => 
+    isSuperAdmin || hasPermission(item.permission)
+  );
 
   // Close dropdowns on outside click
   useEffect(() => {
@@ -75,6 +94,26 @@ const AdminNavbar = () => {
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
+
+  // Fetch notifications
+  useEffect(() => {
+    // You can implement notification fetching here
+    // For now, using mock data
+    setNotifications([
+      { id: 1, type: 'order', icon: <ShoppingCart size={14} />, title: 'New Order #1042', desc: 'React Mastery Course purchased', time: '2m ago', unread: true },
+      { id: 2, type: 'message', icon: <Mail size={14} />, title: 'New Contact Message', desc: 'From: rahul@example.com', time: '15m ago', unread: true },
+      { id: 3, type: 'user', icon: <Users size={14} />, title: '3 New Users Joined', desc: 'Today\'s registrations', time: '1h ago', unread: true },
+    ]);
+    setUnreadCount(3);
+  }, []);
+
+  const handleLogout = async () => {
+    await adminLogout();
+    navigate('/admin/login');
+  };
+
+  // If not authenticated, don't render (though this should be handled by RequireAdmin)
+  if (!admin) return null;
 
   return (
     <header className={`shivam-stack-admin-navbar-root ${isDarkMode ? 'dark' : 'light'}`}>
@@ -149,37 +188,39 @@ const AdminNavbar = () => {
       {/* Right Section */}
       <div className="shivam-stack-admin-navbar-right">
 
-        {/* Quick Create */}
-        <div className="shivam-stack-admin-navbar-dropdown-wrap" ref={quickCreateRef}>
-          <button
-            className={`shivam-stack-admin-navbar-icon-btn shivam-stack-admin-navbar-quick-create-btn ${quickCreateOpen ? 'shivam-stack-admin-navbar-icon-btn-active' : ''}`}
-            onClick={() => { setQuickCreateOpen((p) => !p); setNotifOpen(false); setProfileOpen(false); }}
-            aria-label="Quick create"
-            title="Quick Create"
-          >
-            <Plus size={17} />
-          </button>
-          {quickCreateOpen && (
-            <div className="shivam-stack-admin-navbar-dropdown shivam-stack-admin-navbar-qc-dropdown">
-              <div className="shivam-stack-admin-navbar-dropdown-header">
-                <Zap size={13} />
-                <span>Quick Create</span>
+        {/* Quick Create - Only show if admin has any create permissions */}
+        {filteredQuickCreate.length > 0 && (
+          <div className="shivam-stack-admin-navbar-dropdown-wrap" ref={quickCreateRef}>
+            <button
+              className={`shivam-stack-admin-navbar-icon-btn shivam-stack-admin-navbar-quick-create-btn ${quickCreateOpen ? 'shivam-stack-admin-navbar-icon-btn-active' : ''}`}
+              onClick={() => { setQuickCreateOpen((p) => !p); setNotifOpen(false); setProfileOpen(false); }}
+              aria-label="Quick create"
+              title="Quick Create"
+            >
+              <Plus size={17} />
+            </button>
+            {quickCreateOpen && (
+              <div className="shivam-stack-admin-navbar-dropdown shivam-stack-admin-navbar-qc-dropdown">
+                <div className="shivam-stack-admin-navbar-dropdown-header">
+                  <Zap size={13} />
+                  <span>Quick Create</span>
+                </div>
+                {filteredQuickCreate.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={item.link}
+                    className="shivam-stack-admin-navbar-dropdown-item"
+                    onClick={() => setQuickCreateOpen(false)}
+                  >
+                    <span className="shivam-stack-admin-navbar-dropdown-item-icon">{item.icon}</span>
+                    <span>{item.label}</span>
+                    <ExternalLink size={11} className="shivam-stack-admin-navbar-dropdown-item-arrow" />
+                  </Link>
+                ))}
               </div>
-              {quickCreateItems.map((item) => (
-                <Link
-                  key={item.id}
-                  to={item.link}
-                  className="shivam-stack-admin-navbar-dropdown-item"
-                  onClick={() => setQuickCreateOpen(false)}
-                >
-                  <span className="shivam-stack-admin-navbar-dropdown-item-icon">{item.icon}</span>
-                  <span>{item.label}</span>
-                  <ExternalLink size={11} className="shivam-stack-admin-navbar-dropdown-item-arrow" />
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
         {/* Notifications */}
         <div className="shivam-stack-admin-navbar-dropdown-wrap" ref={notifRef}>
@@ -202,7 +243,7 @@ const AdminNavbar = () => {
                 {unreadCount > 0 && <span className="shivam-stack-admin-navbar-notif-count">{unreadCount} new</span>}
               </div>
               <div className="shivam-stack-admin-navbar-notif-list">
-                {mockNotifications.map((notif) => (
+                {notifications.map((notif) => (
                   <div
                     key={notif.id}
                     className={`shivam-stack-admin-navbar-notif-item ${notif.unread ? 'shivam-stack-admin-navbar-notif-item-unread' : ''}`}
@@ -245,12 +286,14 @@ const AdminNavbar = () => {
             aria-label="Admin profile menu"
           >
             <div className="shivam-stack-admin-navbar-profile-avatar-wrap">
-              <img src={adminPhoto} alt="Admin" className="shivam-stack-admin-navbar-profile-avatar" />
+              <img src={getAdminAvatar(admin)} alt={admin.name} className="shivam-stack-admin-navbar-profile-avatar" />
               <span className="shivam-stack-admin-navbar-profile-online" />
             </div>
             <div className="shivam-stack-admin-navbar-profile-text">
-              <span className="shivam-stack-admin-navbar-profile-name">Shivam</span>
-              <span className="shivam-stack-admin-navbar-profile-role">Super Admin</span>
+              <span className="shivam-stack-admin-navbar-profile-name">{admin.name?.split(' ')[0] || 'Admin'}</span>
+              <span className="shivam-stack-admin-navbar-profile-role">
+                {admin.role === 'superadmin' ? 'Super Admin' : 'Admin'}
+              </span>
             </div>
             <ChevronDown size={13} className={`shivam-stack-admin-navbar-profile-chevron ${profileOpen ? 'shivam-stack-admin-navbar-profile-chevron-open' : ''}`} />
           </button>
@@ -260,6 +303,8 @@ const AdminNavbar = () => {
                 <UserCog size={13} />
                 <span>My Account</span>
               </div>
+              
+              {/* Profile menu items */}
               {profileMenuItems.map((item) => (
                 <Link
                   key={item.id}
@@ -272,15 +317,34 @@ const AdminNavbar = () => {
                   <ExternalLink size={11} className="shivam-stack-admin-navbar-dropdown-item-arrow" />
                 </Link>
               ))}
+
+              {/* Superadmin only items */}
+              {isSuperAdmin && superAdminItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className="shivam-stack-admin-navbar-dropdown-item"
+                  onClick={() => setProfileOpen(false)}
+                >
+                  <span className="shivam-stack-admin-navbar-dropdown-item-icon">{item.icon}</span>
+                  <span>{item.label}</span>
+                  <ExternalLink size={11} className="shivam-stack-admin-navbar-dropdown-item-arrow" />
+                </Link>
+              ))}
+
               <div className="shivam-stack-admin-navbar-dropdown-divider" />
-              <Link
-                to="/admin/logout"
+              
+              {/* Logout button */}
+              <button
+                onClick={() => {
+                  setProfileOpen(false);
+                  handleLogout();
+                }}
                 className="shivam-stack-admin-navbar-dropdown-item shivam-stack-admin-navbar-logout-item"
-                onClick={() => setProfileOpen(false)}
               >
                 <span className="shivam-stack-admin-navbar-dropdown-item-icon"><LogOut size={14} /></span>
                 <span>Logout</span>
-              </Link>
+              </button>
             </div>
           )}
         </div>

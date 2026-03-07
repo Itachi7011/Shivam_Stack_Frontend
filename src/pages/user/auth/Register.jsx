@@ -281,10 +281,10 @@ const handleSubmit = async (ev) => {
                 </svg>
                 Sign up with Google
               </button>
-              <button className="sua-social-btn sua-social-btn-gh" type="button" onClick={handleGithubSignup}>
+              {/* <button className="sua-social-btn sua-social-btn-gh" type="button" onClick={handleGithubSignup}>
                 <Github size={17} />
                 Sign up with GitHub
-              </button>
+              </button> */}
             </div>
 
             <div className="sua-divider"><span>or sign up with email</span></div>
@@ -329,7 +329,7 @@ const handleSubmit = async (ev) => {
                       id="sua-reg-name"
                       className="sua-input"
                       type="text"
-                      placeholder="Shivam Kumar"
+                      placeholder="Shivam"
                       value={form.name}
                       onChange={handleChange("name")}
                       autoComplete="name"
