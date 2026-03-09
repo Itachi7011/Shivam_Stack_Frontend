@@ -23,23 +23,18 @@ export const AuthProvider = ({ children }) => {
 // In AuthContext.jsx, update the fetchUser function:
 
 const fetchUser = async () => {
-  console.log('🟡 fetchUser called');
-  console.log('🟡 Current cookies:', document.cookie);
+  
   
   try {
-    console.log('🟡 Making API call to /api/users/profile');
+   
     const response = await axios.get('/api/users/profile', {
       withCredentials: true
     });
-    console.log('🟢 API Response:', response);
-    console.log('🟢 User data:', response.data);
+  
     setUser(response.data);
     setError(null);
   } catch (err) {
-    console.log('🔴 API Error:', err);
-    console.log('🔴 Error response:', err.response);
-    console.log('🔴 Error status:', err.response?.status);
-    console.log('🔴 Error data:', err.response?.data);
+    
     setUser(null);
     if (err.response?.status !== 401) {
       setError(err.response?.data?.message || 'Failed to fetch user');

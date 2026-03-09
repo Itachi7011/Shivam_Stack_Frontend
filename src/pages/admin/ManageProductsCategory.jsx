@@ -3,8 +3,7 @@ import Swal from 'sweetalert2';
 import { Tag, Plus, Edit2, Trash2, RefreshCw, Search, Hash, CheckCircle, XCircle } from 'lucide-react';
 import { ThemeContext } from '../../context/ThemeContext';
 
-
-const API = '/admin/product-categories';
+const API = '/api/admin/products'; // Same base as products
 const token = () => localStorage.getItem('adminToken');
 const swalCfg = (d) => ({ background: d ? '#0f1117' : '#fff', color: d ? '#e2e8f0' : '#1a202c', confirmButtonColor: '#6c63ff' });
 const EMPTY = { name: '', slug: '', description: '', isActive: true };
@@ -23,7 +22,9 @@ const ProductCategory = () => {
   const fetchAll = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch(API, { headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' } });
+      const res = await fetch(`${API}/categories`, { 
+        headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' } 
+      });
       const data = await res.json();
       setItems(data.data || data);
     } catch {
@@ -34,7 +35,16 @@ const ProductCategory = () => {
   useEffect(() => { fetchAll(); }, [fetchAll]);
 
   const openAdd = () => { setEditing(null); setForm(EMPTY); setModalOpen(true); };
-  const openEdit = (item) => { setEditing(item); setForm({ name: item.name, slug: item.slug, description: item.description || '', isActive: item.isActive }); setModalOpen(true); };
+  const openEdit = (item) => { 
+    setEditing(item); 
+    setForm({ 
+      name: item.name, 
+      slug: item.slug, 
+      description: item.description || '', 
+      isActive: item.isActive 
+    }); 
+    setModalOpen(true); 
+  };
   const closeModal = () => { setModalOpen(false); setEditing(null); setForm(EMPTY); };
 
   const handleFormChange = (field, value) => {
@@ -50,8 +60,12 @@ const ProductCategory = () => {
     setSaving(true);
     try {
       const method = editing ? 'PUT' : 'POST';
-      const url = editing ? `${API}/${editing._id}` : API;
-      const res = await fetch(url, { method, headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
+      const url = editing ? `${API}/categories/${editing._id}` : `${API}/categories`;
+      const res = await fetch(url, { 
+        method, 
+        headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' }, 
+        body: JSON.stringify(form) 
+      });
       if (!res.ok) throw new Error();
       Swal.fire({ title: editing ? 'Updated!' : 'Created!', icon: 'success', timer: 1800, showConfirmButton: false, ...swalCfg(isDarkMode) });
       closeModal(); fetchAll();
@@ -61,10 +75,21 @@ const ProductCategory = () => {
   };
 
   const handleDelete = async (item) => {
-    const r = await Swal.fire({ title: `Delete "${item.name}"?`, text: 'Products in this category may become uncategorised.', icon: 'warning', showCancelButton: true, confirmButtonText: 'Yes, delete', confirmButtonColor: '#ef4444', ...swalCfg(isDarkMode) });
+    const r = await Swal.fire({ 
+      title: `Delete "${item.name}"?`, 
+      text: 'Products in this category may become uncategorised.', 
+      icon: 'warning', 
+      showCancelButton: true, 
+      confirmButtonText: 'Yes, delete', 
+      confirmButtonColor: '#ef4444', 
+      ...swalCfg(isDarkMode) 
+    });
     if (!r.isConfirmed) return;
     try {
-      await fetch(`${API}/${item._id}`, { method: 'DELETE', headers: { Authorization: `Bearer ${token()}` } });
+      await fetch(`${API}/categories/${item._id}`, { 
+        method: 'DELETE', 
+        headers: { Authorization: `Bearer ${token()}` } 
+      });
       Swal.fire({ title: 'Deleted!', icon: 'success', timer: 1500, showConfirmButton: false, ...swalCfg(isDarkMode) });
       fetchAll();
     } catch {
@@ -74,7 +99,11 @@ const ProductCategory = () => {
 
   const handleToggle = async (item) => {
     try {
-      await fetch(`${API}/${item._id}`, { method: 'PUT', headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ ...item, isActive: !item.isActive }) });
+      await fetch(`${API}/categories/${item._id}`, { 
+        method: 'PUT', 
+        headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({ ...item, isActive: !item.isActive }) 
+      });
       fetchAll();
     } catch {
       Swal.fire({ title: 'Error', text: 'Status update failed.', icon: 'error', ...swalCfg(isDarkMode) });
@@ -85,6 +114,9 @@ const ProductCategory = () => {
 
   return (
     <div className={`ssas-root ${isDarkMode ? 'dark' : 'light'}`}>
+      {/* ... rest of your existing JSX remains exactly the same ... */}
+      {/* Just the API calls are updated above */}
+      
       <div className="ssas-bg-mesh" aria-hidden="true">
         <div className="ssas-bg-orb ssas-orb-a" /><div className="ssas-bg-orb ssas-orb-b" />
       </div>

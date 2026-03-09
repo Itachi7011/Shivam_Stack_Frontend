@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AdminProvider } from "./context/AdminContext";
 import { useAdmin } from "./context/AdminContext";
-import { useLocation } from "react-router-dom";
+import { useLocation , Link } from "react-router-dom";
+import { SidebarProvider } from './context/SidebarContext'; 
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ import "./css/public/AllServices.css";
 import "./css/public/AllProducts.css";
 import "./css/public/Portfolio.css";
 import "./css/public/BookFreeCall.css";
+import "./css/public/AllPDFS.css";
 
 import "./css/components/Navbar.css";
 import "./css/components/Footer.css";
@@ -41,6 +43,7 @@ import "./css/admin/MainSettings.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import AdminNavbar from "./components/layout/AdminNavbar";
+import AdminSidebar from "./components/layout/AdminSidebar";
 import RequireAdmin from "./components/layout/RequireAdmin";
 // import NotificationAlertDisplay from './components/Footer';
 import FloatingActionButton from "./components/layout/FloatingActionButton";
@@ -70,6 +73,7 @@ import AllProducts from "./pages/public/Products/AllProducts";
 import CodeTemplates from "./pages/public/Products/CodeTemplates";
 import Ebooksandguides from "./pages/public/Products/Ebooksandguides";
 import Resources from "./pages/public/Products/Resources";
+import AllPDFS from "./pages/public/Products/AllPDFS";
 // import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
@@ -114,6 +118,29 @@ function NavbarWrapper() {
   return <Navbar />;
 }
 
+// Create a wrapper for admin layout (navbar + sidebar)
+function AdminLayoutWrapper({ children }) {
+  const { admin } = useAdmin();
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
+  // Only show admin layout on admin routes and when authenticated
+  if (isAdminRoute && admin) {
+    return (
+      <div className="shivam-stack-admin-layout">
+        <AdminSidebar />
+        <div className="shivam-stack-admin-content">
+          {children}
+        </div>
+      </div>
+    );
+  }
+
+  // For non-admin routes, just return children
+  return children;
+}
+
+
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
   // const token1 = localStorage.getItem('adminToken');
@@ -123,12 +150,15 @@ function App() {
       <div className={isDarkMode ? "dark" : "light"}>
         <AuthProvider>
           <AdminProvider>
+             <SidebarProvider> 
             <Router>
               {/* {token1 ? <AdminNavbar /> : <Navbar />} */}
               {/* <AdminSidebar /> */}
 
               <FloatingActionButton />
              <NavbarWrapper />
+             <AdminLayoutWrapper />
+
               {/* <AdminNavSidebar /> */}
               <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -188,6 +218,12 @@ function App() {
                   path="/products/developer-resources"
                   element={<Resources />}
                 />
+
+                <Route
+                  path="/products/all-pdf"
+                  element={<AllPDFS />}
+                />
+
                 {/* <Route path="/projects" element={<Projects />} /> */}
                 {/* <Route path="/blog" element={<Blog />} /> */}
 
@@ -260,8 +296,9 @@ function App() {
                 <Route path="*" element={<Error404 />} />
               </Routes>
 
-              <Footer />
+              {!location.pathname.startsWith("/admin") && <Footer />}
             </Router>
+             </SidebarProvider> 
           </AdminProvider>
         </AuthProvider>
       </div>

@@ -677,3 +677,43 @@
 .shivam-stack-admin-sidebar-nav-btn-active {
   box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.2);
 }
+
+/* AdminNavbar.css */
+
+.shivam-stack-admin-navbar-root {
+  /* ... existing styles ... */
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+/* When sidebar is expanded */
+.shivam-stack-admin-navbar-with-sidebar {
+  margin-left: 0px; /* Same as expanded sidebar width */
+  /* width: calc(100% - 280px); */
+}
+
+/* When sidebar is collapsed */
+.shivam-stack-admin-navbar-with-sidebar-collapsed {
+  margin-left: -9rem; /* Same as collapsed sidebar width */
+  /* width: calc(100% - 80px); */
+}
+
+/* Optional: Add a toggle button in navbar */
+.shivam-stack-admin-navbar-sidebar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all 0.2s ease;
+}
+
+.shivam-stack-admin-navbar-sidebar-toggle:hover {
+  background: var(--hover-bg);
+  color: var(--text-primary);
+}

@@ -38,6 +38,8 @@
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+      margin-left: 3rem !important;
+
 }
 
 /* ─── LIGHT MODE tokens ────────────────────────────────────────────────────── */
@@ -106,6 +108,7 @@
 /* ─── AMBIENT BACKGROUND ───────────────────────────────────────────────────── */
 .sdash-ambient {
   position: fixed;
+
   inset: 0;
   pointer-events: none;
   z-index: 0;

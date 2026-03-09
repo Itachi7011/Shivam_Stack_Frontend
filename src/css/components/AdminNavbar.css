@@ -761,3 +761,19 @@
     height: 34px;
   }
 }
+
+/* Add this at the end of your navbar CSS file */
+
+/* Push all content after navbar down */
+.shivam-stack-admin-navbar-root + *,
+.shivam-stack-admin-navbar-root ~ * {
+  margin-top: var(--ss-navbar-height, 64px);
+}
+
+/* If you have a specific main content area */
+.shivam-stack-admin-main-wrapper,
+main,
+.shivam-stack-admin-content {
+  margin-top: var(--ss-navbar-height, 64px) !important;
+  display: block;
+}

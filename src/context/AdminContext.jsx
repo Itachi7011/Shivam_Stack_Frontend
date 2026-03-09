@@ -16,24 +16,42 @@ export const AdminProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch current admin profile
-  const fetchAdmin = async () => {
-    try {
-      const response = await axios.get('/api/admin/profile', {
-        withCredentials: true
-      });
-      setAdmin(response.data);
-      setError(null);
-    } catch (err) {
-      setAdmin(null);
-      // 401 is expected if not logged in
-      if (err.response?.status !== 401) {
-        setError(err.response?.data?.message || 'Failed to fetch admin');
-      }
-    } finally {
-      setLoading(false);
+useEffect(() => {
+  console.log('🔍 AdminContext - MOUNTED');
+  console.log('🔍 AdminContext - Current cookies:', document.cookie);
+  console.log('🔍 AdminContext - Has adminToken:', document.cookie.includes('adminToken'));
+  console.log('🔍 AdminContext - Calling fetchAdmin...');
+  fetchAdmin();
+}, []);
+
+// Update fetchAdmin with more logs
+const fetchAdmin = async () => {
+  console.log('🔍 fetchAdmin - START');
+  console.log('🔍 fetchAdmin - Making request to /api/admin/profile');
+  console.log('🔍 fetchAdmin - With credentials:', true);
+  
+  try {
+    const response = await axios.get('/api/admin/profile', {
+      withCredentials: true
+    });
+    console.log('🔍 fetchAdmin - SUCCESS:', response.data);
+    setAdmin(response.data);
+    setError(null);
+  } catch (err) {
+    console.log('🔍 fetchAdmin - ERROR:', err.message);
+    console.log('🔍 fetchAdmin - Error response:', err.response);
+    console.log('🔍 fetchAdmin - Error config:', err.config);
+    setAdmin(null);
+    // 401 is expected if not logged in
+    if (err.response?.status !== 401) {
+      setError(err.response?.data?.message || 'Failed to fetch admin');
     }
-  };
+  } finally {
+    console.log('🔍 fetchAdmin - COMPLETE, setting loading to false');
+    setLoading(false);
+  }
+};
+
 
   // Login function
   const adminLogin = async (email, password, twoFactorCode = null) => {
