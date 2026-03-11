@@ -508,7 +508,7 @@ const handleSubmit = async (ev) => {
             </p>
 
           </div>
-
+ 
           <p className="sua-legal">
             By creating an account, you agree to our{" "}
             <Link to="/terms" className="sua-legal-link">Terms of Service</Link> and{" "}
@@ -518,6 +518,6 @@ const handleSubmit = async (ev) => {
       </div>
     </div>
   );
-};
+}; 
 
 export default UserRegister;

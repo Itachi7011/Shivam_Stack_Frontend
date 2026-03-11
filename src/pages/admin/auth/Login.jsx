@@ -70,9 +70,9 @@ const AdminLogin = () => {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify(body),
-      });
+      }); 
       const data = await res.json();
-
+ 
       /* Account locked (lockUntil > Date.now()) */
       if (res.status === 423) {
         setLockInfo({ remainingMins: data.lockRemainingMinutes ?? 120 });
