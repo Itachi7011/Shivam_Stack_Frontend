@@ -15,8 +15,7 @@
   z-index: 1;
   min-width: 0;
   margin-left: 4rem !important;
-    margin-right: 0.5rem !important;
-
+  margin-right: 0.5rem !important;
 }
 
 /* ── Stats row ── */
@@ -142,6 +141,48 @@
 }
 .ssas-root.dark .saap-filter-active {
   background: rgba(108, 99, 255, 0.1);
+}
+
+/* ── Dark Mode Overrides ── */
+
+.dark .saap-search-icon {
+  color: #9ca3af;
+}
+
+.dark .saap-search-input {
+  background: #111827;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+.dark .saap-filter-tabs {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+}
+
+.dark .saap-filter-tab {
+  background: #1f2937 !important;
+  color: #9ca3af !important;
+}
+
+.dark .saap-filter-select {
+  background: #1f2937 !important;
+  color: #9ca3af !important;
+}
+
+.dark .saap-filter-tab:hover {
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dark .saap-filter-active {
+  background: rgba(151, 148, 210, 0.15) !important;
+  color: #c7c3ff;
+  box-shadow: none;
+}
+
+.dark .saap-header-controls {
+  background: transparent;
 }
 
 /* ── Table enhancements ── */
@@ -478,7 +519,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 10px 18px !important;
   font-size: 0.78rem;
   font-weight: 700;
   border-bottom: 1px solid var(--ss-border);
@@ -507,7 +548,7 @@
   font-size: 0.68rem;
 }
 .saap-kanban-card {
-  padding: 10px 14px;
+  padding: 10px 14px !important;
   border-bottom: 1px solid var(--ss-border-lt);
   cursor: pointer;
   transition: background 0.15s;
@@ -595,14 +636,12 @@
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3) !important;
 }
 
-
-
 /* Focus style */
 .saap-tab:focus {
   outline: none !important;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25) !important;
 }
-.saas-input-product-price{
+.saas-input-product-price {
   padding-left: 1.5rem !important;
 }
 .saap-search-input {
@@ -613,7 +652,9 @@
   border-radius: 6px !important;
   outline: none !important;
   width: auto !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
   background-color: white;
 }
 
@@ -631,7 +672,9 @@
   color: #333 !important;
   outline: none !important;
   cursor: pointer !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
 }
 .saap-filter-tab {
   display: inline-block !important;
@@ -660,7 +703,7 @@
 }
 .saap-modal {
   width: 100%;
-  max-width: 620px;
+  max-width: 720px;
   background: var(--ss-bg-card);
   border: 1px solid var(--ss-border);
   border-radius: var(--ss-radius-lg);
@@ -688,17 +731,22 @@
 .saap-modal-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* center the title */
+  position: relative; /* allows absolute positioning for the close button */
   padding: 1.1rem 1.4rem;
   border-bottom: 1px solid var(--ss-border);
-  flex-shrink: 0;
 }
+
 .saap-modal-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ss-text-h);
+  margin: 0; /* remove default h3 margin */
+  text-align: center;
 }
+
 .saap-modal-close {
+  position: absolute; /* remove from flex flow */
+  right: 1.4rem; /* align to right */
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
@@ -720,6 +768,7 @@
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
+  padding: 2rem 1rem !important;
 }
 .saap-modal-scroll {
   overflow-y: auto;
@@ -733,6 +782,58 @@
   padding: 1rem 1.4rem;
   border-top: 1px solid var(--ss-border);
   flex-shrink: 0;
+}
+
+/* ── Dark Mode Overrides ── */
+
+.dark .saap-label {
+  color: #e5e7eb;
+}
+
+.dark .saap-hint {
+  color: #9ca3af;
+}
+
+.dark .saap-input-prefix {
+  color: #9ca3af;
+}
+
+.dark .saap-radio-label {
+  background: #1f2937;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark .saap-radio-label:has(input:checked) {
+  background: rgba(108, 99, 255, 0.18);
+  color: #c7c3ff;
+  border-color: #6c63ff;
+}
+
+.dark .saap-content-area {
+  color: #e5e7eb;
+  background: #111827;
+}
+
+.dark .saap-form-group {
+  background: transparent;
+  color: #e5e7eb;
+}
+
+.dark .saap-input-prefix-wrap {
+  background: transparent;
+}
+
+.dark .saap-mono {
+  color: #e5e7eb;
+}
+
+.dark .saap-radio-group {
+  background: transparent;
+}
+
+.dark .ssas-header {
+  color: #f3f4f6;
 }
 
 /* ── Form helpers inside modal ── */
@@ -776,6 +877,11 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
+
+.saap-input-prefixed {
+  padding-left: 1.3rem !important;
+}
+
 @media (max-width: 560px) {
   .saap-form-grid-2 {
     grid-template-columns: 1fr;
@@ -867,8 +973,222 @@
   }
 }
 
-.ssas-header{
+.ssas-header {
   margin-left: 4rem !important;
   margin-top: 2rem !important;
   margin-right: 0.5rem !important;
+}
+
+/* Image upload styles */
+.saap-image-method-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.saap-image-method-toggle button {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saap-image-method-toggle button:hover {
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.saap-image-method-toggle button.ssas-btn-active {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #6c63ff;
+}
+
+.saap-file-upload-area {
+  width: 100%;
+}
+
+.saap-file-upload-placeholder {
+  border: 2px dashed rgba(108, 99, 255, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(108, 99, 255, 0.05);
+  transition: all 0.2s;
+}
+
+.saap-file-upload-placeholder:hover {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #6c63ff;
+}
+
+.saap-file-preview {
+  position: relative;
+  margin-top: 8px;
+}
+
+.saap-file-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+}
+
+.saap-file-preview button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saap-file-preview .file-name {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: white;
+}
+
+/* Image upload styles */
+.saap-image-method-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.saap-image-method-toggle button {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saap-image-method-toggle button:hover {
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.saap-image-method-toggle button.ssas-btn-active {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #6c63ff;
+}
+
+.saap-file-upload-area {
+  width: 100%;
+}
+
+.saap-file-upload-placeholder {
+  border: 2px dashed rgba(108, 99, 255, 0.3);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(108, 99, 255, 0.05);
+  transition: all 0.2s;
+}
+
+.saap-file-upload-placeholder:hover {
+  background: rgba(108, 99, 255, 0.1);
+  border-color: #6c63ff;
+}
+
+.saap-file-preview {
+  position: relative;
+  margin-top: 8px;
+}
+
+.saap-file-preview img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+}
+
+.saap-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.saap-image-item {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.saap-image-actions {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.saap-image-item:hover .saap-image-actions {
+  opacity: 1;
+}
+
+.saap-image-actions button {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saap-image-actions button:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.saap-image-actions button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Dark mode adjustments */
+.dark .saap-image-method-toggle button {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .saap-file-upload-placeholder {
+  border-color: rgba(108, 99, 255, 0.3);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.dark .saap-file-upload-placeholder:hover {
+  background: rgba(108, 99, 255, 0.1);
+}
+.saap-image-item:hover .saap-image-actions {
+  opacity: 1;
 }

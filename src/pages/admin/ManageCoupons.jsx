@@ -8,7 +8,7 @@ import {
 import { ThemeContext } from '../../context/ThemeContext';
 
 
-const API = '/admin/coupons';
+const API = '/api/admin/coupons';
 const token = () => localStorage.getItem('adminToken');
 const swalCfg = (d) => ({ background: d ? '#0f1117' : '#fff', color: d ? '#e2e8f0' : '#1a202c', confirmButtonColor: '#6c63ff' });
 const EMPTY = { code: '', discountType: 'percentage', discountValue: '', maxUses: 1, validFrom: '', validTill: '', isActive: true };

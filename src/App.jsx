@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { AdminProvider } from "./context/AdminContext";
 import { useAdmin } from "./context/AdminContext";
-import { useLocation , Link } from "react-router-dom";
-import { SidebarProvider } from './context/SidebarContext'; 
+import { useLocation, Link } from "react-router-dom";
+import { SidebarProvider } from "./context/SidebarContext";
 
 import "./App.css";
 
@@ -16,7 +16,8 @@ import "./css/public/AllServices.css";
 import "./css/public/AllProducts.css";
 import "./css/public/Portfolio.css";
 import "./css/public/BookFreeCall.css";
-import "./css/public/AllPDFS.css";
+import "./css/public/Blog.css";
+import "./css/public/Projects.css";
 
 import "./css/components/Navbar.css";
 import "./css/components/Footer.css";
@@ -54,11 +55,11 @@ import Contact from "./pages/public/Contact";
 import PrivacyPolicy from "./pages/public/PrivacyPolicy";
 import Portfolio from "./pages/public/Portfolio";
 import BookFreeCall from "./pages/public/BookFreeCall";
-// import Blog from "./pages/public/Blog";
+import Blog from "./pages/public/Blog";
 // import BlogDetails from "./pages/public/BlogDetails";
 // import ProductDetails from "./pages/public/ProductDetails";
 // import ProjectDetails from "./pages/public/ProjectDetails";
-// import Projects from "./pages/public/Projects";
+import Projects from "./pages/public/Projects";
 // import RefundPolicy from './pages/public/RefundPolicy';
 import AllServices from "./pages/public/Services/AllServices";
 import APIDevelopmentServices from "./pages/public/Services/APIDevelopment";
@@ -73,7 +74,6 @@ import AllProducts from "./pages/public/Products/AllProducts";
 import CodeTemplates from "./pages/public/Products/CodeTemplates";
 import Ebooksandguides from "./pages/public/Products/Ebooksandguides";
 import Resources from "./pages/public/Products/Resources";
-import AllPDFS from "./pages/public/Products/AllPDFS";
 // import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
@@ -94,11 +94,13 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 // import AdminAnalytics from "./pages/admin/Analytics";
 import AdminMainSettings from "./pages/admin/MainSettings";
 import AdminManageBlog from "./pages/admin/ManageBlog";
+import AdminManageBlogCategory from "./pages/admin/ManageBlogCategory";
 import AdminManageCoupons from "./pages/admin/ManageCoupons";
 // import AdminManageMessages from "./pages/admin/ManageMessages";
 // import AdminManageOrders from "./pages/admin/ManageOrders";
 import AdminManageProducts from "./pages/admin/ManageProducts";
 import AdminManageProductsCategory from "./pages/admin/ManageProductsCategory";
+import AdminManageProjectsCategory from "./pages/admin/ManageProjectsCategory";
 import AdminManageProjects from "./pages/admin/ManageProjects";
 // import AdminManageUsers from "./pages/admin/ManageUsers";
 
@@ -129,9 +131,7 @@ function AdminLayoutWrapper({ children }) {
     return (
       <div className="shivam-stack-admin-layout">
         <AdminSidebar />
-        <div className="shivam-stack-admin-content">
-          {children}
-        </div>
+        <div className="shivam-stack-admin-content">{children}</div>
       </div>
     );
   }
@@ -139,7 +139,6 @@ function AdminLayoutWrapper({ children }) {
   // For non-admin routes, just return children
   return children;
 }
-
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
@@ -150,155 +149,164 @@ function App() {
       <div className={isDarkMode ? "dark" : "light"}>
         <AuthProvider>
           <AdminProvider>
-             <SidebarProvider> 
-            <Router>
-              {/* {token1 ? <AdminNavbar /> : <Navbar />} */}
-              {/* <AdminSidebar /> */}
+            <SidebarProvider>
+              <Router>
+                {/* {token1 ? <AdminNavbar /> : <Navbar />} */}
+                {/* <AdminSidebar /> */}
 
-              <FloatingActionButton />
-             <NavbarWrapper />
-             <AdminLayoutWrapper />
+                <FloatingActionButton />
+                <NavbarWrapper />
+                <AdminLayoutWrapper />
 
-              {/* <AdminNavSidebar /> */}
-              <Routes>
-                <Route path="/" element={<Homepage />} />
+                {/* <AdminNavSidebar /> */}
+                <Routes>
+                  <Route path="/" element={<Homepage />} />
 
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/book-free-call" element={<BookFreeCall />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/services" element={<AllServices />} />
-                <Route
-                  path="/services/api-development"
-                  element={<APIDevelopmentServices />}
-                />
-                <Route
-                  path="/services/admin-panel-cms-development"
-                  element={<AdminpanelscmsServices />}
-                />
-                <Route
-                  path="/services/devops-deployment"
-                  element={<DevopsdeploymentServices />}
-                />
-                <Route
-                  path="/services/ecommerce-solutions"
-                  element={<EcommercesolutionsServices />}
-                />
-                <Route
-                  path="/services/full-stack-development"
-                  element={<FullStackServices />}
-                />
-                <Route
-                  path="/services/maintenance-support"
-                  element={<MaintenancesupportServices />}
-                />
-                <Route
-                  path="/services/performance-optimization"
-                  element={<PerformanceoptimizationServices />}
-                />
-                <Route
-                  path="/services/portfolio-website-development"
-                  element={<PortfoliowebsitesServices />}
-                />
-                <Route
-                  path="/products/all-products"
-                  element={<AllProducts />}
-                />
-                <Route
-                  path="/products/code-templates"
-                  element={<CodeTemplates />}
-                />
-                <Route
-                  path="/products/ebooks-and-guides"
-                  element={<Ebooksandguides />}
-                />
-                <Route
-                  path="/products/developer-resources"
-                  element={<Resources />}
-                />
+                  <Route path="/blogs" element={<Blog />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/book-free-call" element={<BookFreeCall />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route
+                    path="/terms-of-service"
+                    element={<TermsOfService />}
+                  />
+                  <Route path="/services" element={<AllServices />} />
+                  <Route
+                    path="/services/api-development"
+                    element={<APIDevelopmentServices />}
+                  />
+                  <Route
+                    path="/services/admin-panel-cms-development"
+                    element={<AdminpanelscmsServices />}
+                  />
+                  <Route
+                    path="/services/devops-deployment"
+                    element={<DevopsdeploymentServices />}
+                  />
+                  <Route
+                    path="/services/ecommerce-solutions"
+                    element={<EcommercesolutionsServices />}
+                  />
+                  <Route
+                    path="/services/full-stack-development"
+                    element={<FullStackServices />}
+                  />
+                  <Route
+                    path="/services/maintenance-support"
+                    element={<MaintenancesupportServices />}
+                  />
+                  <Route
+                    path="/services/performance-optimization"
+                    element={<PerformanceoptimizationServices />}
+                  />
+                  <Route
+                    path="/services/portfolio-website-development"
+                    element={<PortfoliowebsitesServices />}
+                  />
+                  <Route
+                    path="/products/all-products"
+                    element={<AllProducts />}
+                  />
+                  <Route
+                    path="/products/code-templates"
+                    element={<CodeTemplates />}
+                  />
+                  <Route
+                    path="/products/ebooks-and-guides"
+                    element={<Ebooksandguides />}
+                  />
+                  <Route
+                    path="/products/developer-resources"
+                    element={<Resources />}
+                  />
 
-                <Route
-                  path="/products/all-pdf"
-                  element={<AllPDFS />}
-                />
+                  {/* <Route path="/blog" element={<Blog />} /> */}
 
-                {/* <Route path="/projects" element={<Projects />} /> */}
-                {/* <Route path="/blog" element={<Blog />} /> */}
+                  {/* <Route path="/blog/:slug" element={<BlogDetails />} /> */}
+                  {/* <Route path="/projects/:slug" element={<ProjectDetails />} /> */}
+                  {/* <Route path="/products/:slug" element={<ProductDetails />} /> */}
 
-                {/* <Route path="/blog/:slug" element={<BlogDetails />} /> */}
-                {/* <Route path="/projects/:slug" element={<ProjectDetails />} /> */}
-                {/* <Route path="/products/:slug" element={<ProductDetails />} /> */}
-
-                <Route path="/user/register" element={<UserRegister />} />
-                <Route path="/user/login" element={<UserLogin />} />
-                <Route
-                  path="/user/forgot-password"
-                  element={<UserForgotPassword />}
-                />
-                <Route
-                  path="/user/reset-password"
-                  element={<UserResetPassword />}
-                />
-                <Route path="/user/downloads" element={<UserMyDownloads />} />
-                <Route path="/user/orders" element={<UserMyOrders />} />
-                <Route path="/user/profile" element={<UserProfile />} />
-                <Route path="/user/settings" element={<UserSettings />} />
-                {/*    <Route path="/user/securitySettings" element={<SecuritySetting />} />
+                  <Route path="/user/register" element={<UserRegister />} />
+                  <Route path="/user/login" element={<UserLogin />} />
+                  <Route
+                    path="/user/forgot-password"
+                    element={<UserForgotPassword />}
+                  />
+                  <Route
+                    path="/user/reset-password"
+                    element={<UserResetPassword />}
+                  />
+                  <Route path="/user/downloads" element={<UserMyDownloads />} />
+                  <Route path="/user/orders" element={<UserMyOrders />} />
+                  <Route path="/user/profile" element={<UserProfile />} />
+                  <Route path="/user/settings" element={<UserSettings />} />
+                  {/*    <Route path="/user/securitySettings" element={<SecuritySetting />} />
             <Route path="/user/notificationsSettings" element={<NotificationSettings />} /> */}
 
-                <Route path="/admin/register" element={<AdminRegister />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route
-                  path="/admin/forgot-password"
-                  element={<AdminForgotPassword />}
-                />
-                <Route
-                  path="/admin/reset-password"
-                  element={<AdminResetPassword />}
-                />
-                <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                {/* <Route path="/admin/analytics" element={<AdminAnalytics />} /> */}
-                <Route
-                  path="/admin/main-settings"
-                  element={<AdminMainSettings />}
-                />
-                <Route
-                  path="/admin/manage-blog"
-                  element={<AdminManageBlog />}
-                />
-                <Route
-                  path="/admin/manage-coupons"
-                  element={<AdminManageCoupons />}
-                />
-                {/* <Route path="/admin/manage-messages" element={<AdminManageMessages />} /> */}
-                {/* <Route path="/admin/manage-orders" element={<AdminManageOrders />} /> */}
-                <Route
-                  path="/admin/manage-products"
-                  element={<AdminManageProducts />}
-                />
-                <Route
-                  path="/admin/manage-product-categories"
-                  element={<AdminManageProductsCategory />}
-                />
-                <Route
-                  path="/admin/manage-projects"
-                  element={<AdminManageProjects />}
-                />
-                {/* <Route path="/admin/manage-users" element={<AdminManageUsers />} /> */}
+                  <Route path="/admin/register" element={<AdminRegister />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route
+                    path="/admin/forgot-password"
+                    element={<AdminForgotPassword />}
+                  />
+                  <Route
+                    path="/admin/reset-password"
+                    element={<AdminResetPassword />}
+                  />
+                  <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                  {/* <Route path="/admin/analytics" element={<AdminAnalytics />} /> */}
+                  <Route
+                    path="/admin/main-settings"
+                    element={<AdminMainSettings />}
+                  />
+                  <Route
+                    path="/admin/manage-blog"
+                    element={<AdminManageBlog />}
+                  />
+                  <Route
+                    path="/admin/manage-blog-categories"
+                    element={<AdminManageBlogCategory />}
+                  />
+                  <Route
+                    path="/admin/manage-coupons"
+                    element={<AdminManageCoupons />}
+                  />
+                  {/* <Route path="/admin/manage-messages" element={<AdminManageMessages />} /> */}
+                  {/* <Route path="/admin/manage-orders" element={<AdminManageOrders />} /> */}
 
-                {/*  <Route path="/admin/clients/logs" element={<AdminClientLogs />} />
+                  <Route
+                    path="/admin/manage-products"
+                    element={<AdminManageProducts />}
+                  />
+                  <Route
+                    path="/admin/manage-product-categories"
+                    element={<AdminManageProductsCategory />}
+                  />
+
+                  <Route
+                    path="/admin/manage-project-categories"
+                    element={<AdminManageProjectsCategory />}
+                  />
+                  <Route
+                    path="/admin/manage-projects"
+                    element={<AdminManageProjects />}
+                  />
+                  {/* <Route path="/admin/manage-users" element={<AdminManageUsers />} /> */}
+
+                  {/*  <Route path="/admin/clients/logs" element={<AdminClientLogs />} />
             <Route path="/admin/users/logs" element={<AdminUserLogs />} />
             <Route path="/admin/settings/general" element={<AdminSettings />} />
             <Route path="/admin/settings/nav-options" element={<AdminSearchBar />} /> */}
 
-                <Route path="*" element={<Error404 />} />
-              </Routes>
+                  <Route path="*" element={<Error404 />} />
+                </Routes>
 
-              {!location.pathname.startsWith("/admin") && <Footer />}
-            </Router>
-             </SidebarProvider> 
+                {!location.pathname.startsWith("/admin") && <Footer />}
+              </Router>
+            </SidebarProvider>
           </AdminProvider>
         </AuthProvider>
       </div>
