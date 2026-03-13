@@ -207,7 +207,7 @@ function App() {
                     element={<PortfoliowebsitesServices />}
                   />
                   <Route
-                    path="/products/all-products"
+                    path="/products"
                     element={<AllProducts />}
                   />
                   <Route
