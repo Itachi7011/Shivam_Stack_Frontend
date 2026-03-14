@@ -30,6 +30,7 @@ import "./css/components/Error/Error404.css";
 import "./css/user/UserAuth.css";
 import "./css/user/Profile_Settings.css";
 import "./css/user/Ordersdownloads.css";
+import "./css/user/Messages.css";
 // import "./css/User/UserLogin.css"
 // import "./css/User/UserProfile.css"
 // import "./css/User/UserForgotPassword.css"
@@ -40,6 +41,7 @@ import "./css/admin/AdminAuth.css";
 import "./css/admin/AdminDashboard.css";
 import "./css/admin/AdminPage.css";
 import "./css/admin/MainSettings.css";
+import "./css/admin/ManageMessages.css";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -85,12 +87,15 @@ import UserMyDownloads from "./pages/user/MyDownloads";
 import UserMyOrders from "./pages/user/MyOrders";
 import UserProfile from "./pages/user/Profile";
 import UserSettings from "./pages/user/Settings";
+import UserMessages from "./pages/user/messages/Messages";
 
 import AdminRegister from "./pages/admin/auth/Register";
 import AdminLogin from "./pages/admin/auth/Login";
 import AdminForgotPassword from "./pages/admin/auth/ForgotPassword";
 import AdminResetPassword from "./pages/admin/auth/ResetPassword";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminManageMessages from "./pages/admin/messages/ManageMessages";
+
 // import AdminAnalytics from "./pages/admin/Analytics";
 import AdminMainSettings from "./pages/admin/MainSettings";
 import AdminManageBlog from "./pages/admin/ManageBlog";
@@ -113,11 +118,14 @@ function NavbarWrapper() {
   // Check if current route is an admin route
   const isAdminRoute = location.pathname.startsWith("/admin");
 
-  if (isAdminRoute && admin) {
-    return <AdminNavbar />;
-  }
+  return (
+    <>
+      {isAdminRoute && admin ? <AdminNavbar /> : <Navbar />}
 
-  return <Navbar />;
+      {/* Show FAB only on non-admin pages */}
+      {!isAdminRoute && <FloatingActionButton />}
+    </>
+  );
 }
 
 // Create a wrapper for admin layout (navbar + sidebar)
@@ -154,7 +162,7 @@ function App() {
                 {/* {token1 ? <AdminNavbar /> : <Navbar />} */}
                 {/* <AdminSidebar /> */}
 
-                <FloatingActionButton />
+                {/* <FloatingActionButton /> */}
                 <NavbarWrapper />
                 <AdminLayoutWrapper />
 
@@ -206,10 +214,7 @@ function App() {
                     path="/services/portfolio-website-development"
                     element={<PortfoliowebsitesServices />}
                   />
-                  <Route
-                    path="/products"
-                    element={<AllProducts />}
-                  />
+                  <Route path="/products" element={<AllProducts />} />
                   <Route
                     path="/products/code-templates"
                     element={<CodeTemplates />}
@@ -239,6 +244,7 @@ function App() {
                     path="/user/reset-password"
                     element={<UserResetPassword />}
                   />
+                  <Route path="/user/messages" element={<UserMessages />} />
                   <Route path="/user/downloads" element={<UserMyDownloads />} />
                   <Route path="/user/orders" element={<UserMyOrders />} />
                   <Route path="/user/profile" element={<UserProfile />} />
@@ -258,6 +264,11 @@ function App() {
                   />
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />
                   {/* <Route path="/admin/analytics" element={<AdminAnalytics />} /> */}
+                  <Route
+                    path="/admin/messages"
+                    element={<AdminManageMessages />}
+                  />
+
                   <Route
                     path="/admin/main-settings"
                     element={<AdminMainSettings />}

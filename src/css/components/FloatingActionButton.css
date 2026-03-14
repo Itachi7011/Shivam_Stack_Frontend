@@ -47,7 +47,7 @@
 .shivam-stack-fab-root {
   position: fixed;
   bottom: clamp(20px,3vh,32px);
-  left: clamp(16px,2.5vw,28px);
+  left: clamp(26px,4vw,58px);
   z-index: 8000;
   display: flex;
   flex-direction: column;
