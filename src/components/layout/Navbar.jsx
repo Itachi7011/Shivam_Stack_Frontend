@@ -261,12 +261,12 @@ const Navbar = () => {
 
   // Add this after your other useEffects for debugging
   useEffect(() => {
-    console.log("Auth State:", {
-      isAuthenticated,
-      user,
-      loading,
-      cookies: document.cookie,
-    });
+    // console.log("Auth State:", {
+    //   isAuthenticated,
+    //   user,
+    //   loading,
+    //   cookies: document.cookie,
+    // });
   }, [isAuthenticated, user, loading]);
 
   const handleMouseEnter = (id) => {

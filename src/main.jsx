@@ -16,28 +16,28 @@ axios.defaults.withCredentials = true; // Important for cookies
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 // Log axios config for debugging (remove in production)
-console.log('Axios configured with:', {
-  baseURL: axios.defaults.baseURL,
-  withCredentials: axios.defaults.withCredentials
-});
+// console.log('Axios configured with:', {
+//   baseURL: axios.defaults.baseURL,
+//   withCredentials: axios.defaults.withCredentials
+// });
 axios.interceptors.request.use(request => {
-  console.log('📤 Request:', {
-    url: request.url,
-    method: request.method,
-    withCredentials: request.withCredentials,
-    cookies: document.cookie // This will be empty (HttpOnly), but we can check headers
-  });
+  // console.log('📤 Request:', {
+  //   url: request.url,
+  //   method: request.method,
+  //   withCredentials: request.withCredentials,
+  //   cookies: document.cookie // This will be empty (HttpOnly), but we can check headers
+  // });
   
   // Check if cookies are in the request headers (they won't show here for security)
   return request;
 });
 
 axios.interceptors.response.use(response => {
-  console.log('📥 Response:', {
-    url: response.config.url,
-    status: response.status,
-    headers: response.headers
-  });
+  // console.log('📥 Response:', {
+  //   url: response.config.url,
+  //   status: response.status,
+  //   headers: response.headers
+  // });
   return response;
 });
 

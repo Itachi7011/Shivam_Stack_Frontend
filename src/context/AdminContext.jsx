@@ -17,24 +17,24 @@ export const AdminProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
 useEffect(() => {
-  console.log('🔍 AdminContext - MOUNTED');
-  console.log('🔍 AdminContext - Current cookies:', document.cookie);
-  console.log('🔍 AdminContext - Has adminToken:', document.cookie.includes('adminToken'));
-  console.log('🔍 AdminContext - Calling fetchAdmin...');
+  // console.log('🔍 AdminContext - MOUNTED');
+  // console.log('🔍 AdminContext - Current cookies:', document.cookie);
+  // console.log('🔍 AdminContext - Has adminToken:', document.cookie.includes('adminToken'));
+  // console.log('🔍 AdminContext - Calling fetchAdmin...');
   fetchAdmin();
 }, []);
 
 // Update fetchAdmin with more logs
 const fetchAdmin = async () => {
-  console.log('🔍 fetchAdmin - START');
-  console.log('🔍 fetchAdmin - Making request to /api/admin/profile');
-  console.log('🔍 fetchAdmin - With credentials:', true);
+  // console.log('🔍 fetchAdmin - START');
+  // console.log('🔍 fetchAdmin - Making request to /api/admin/profile');
+  // console.log('🔍 fetchAdmin - With credentials:', true);
   
   try {
     const response = await axios.get('/api/admin/profile', {
       withCredentials: true
     });
-    console.log('🔍 fetchAdmin - SUCCESS:', response.data);
+    // console.log('🔍 fetchAdmin - SUCCESS:', response.data);
     setAdmin(response.data);
     setError(null);
   } catch (err) {
@@ -47,7 +47,7 @@ const fetchAdmin = async () => {
       setError(err.response?.data?.message || 'Failed to fetch admin');
     }
   } finally {
-    console.log('🔍 fetchAdmin - COMPLETE, setting loading to false');
+    // console.log('🔍 fetchAdmin - COMPLETE, setting loading to false');
     setLoading(false);
   }
 };

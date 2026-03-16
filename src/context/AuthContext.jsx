@@ -40,7 +40,7 @@ const fetchUser = async () => {
       setError(err.response?.data?.message || 'Failed to fetch user');
     }
   } finally {
-    console.log('🟡 Setting loading to false');
+    // console.log('🟡 Setting loading to false');
     setLoading(false);
   }
 };
