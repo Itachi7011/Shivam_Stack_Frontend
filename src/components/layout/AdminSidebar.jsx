@@ -264,7 +264,7 @@ const menuItems = [
         id: "all-project",
         label: "All Project",
         icon: <Ticket size={15} />,
-        link: "/admin/coupons",
+        link: "/admin/manage-projects",
         permission: "manage_coupons",
       },
       {
@@ -322,7 +322,7 @@ const menuItems = [
         id: "all-projects",
         label: "All Projects",
         icon: <FolderOpen size={15} />,
-        link: "/admin/portfolio",
+        link: "/admin/manage-projects",
         permission: "manage_projects",
       },
       {
