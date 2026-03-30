@@ -879,6 +879,7 @@ const MyProjects = () => {
       const res = await axios.get(`${API_BASE}`, { params });
       setProjects(res.data.data || []);
       setPagination(res.data.pagination || {});
+      console.log("Projects data is : ", res.data.data);
 
       // Derive simple stats from data
       const all = res.data.data || [];
@@ -888,6 +889,7 @@ const MyProjects = () => {
         inProgress: all.filter((p) => p.status === "in-progress").length,
         featured: all.filter((p) => p.isFeatured).length,
       });
+
     } catch {
       setProjects([]);
     } finally {
@@ -959,13 +961,28 @@ const MyProjects = () => {
             iterated, and refined in the real world.
           </p>
 
-{/* Stat counters */}
-<div className="ssp-hero-counters">
-  <div className="ssp-counter">
-    <span className="ssp-counter-num">{pagination.total || 0}</span>
-    <span className="ssp-counter-label">Total Projects</span>
-  </div>
-</div>
+          {/* Stat counters */}
+          <div className="ssp-hero-counters">
+            <div className="ssp-counter">
+              <span className="ssp-counter-num">{pagination.total || 0}</span>
+              <span className="ssp-counter-label">Total Projects</span>
+            </div>
+            <div className="ssp-counter-sep" />
+            <div className="ssp-counter">
+              <span className="ssp-counter-num">{stats.completed}</span>
+              <span className="ssp-counter-label">Shipped</span>
+            </div>
+            <div className="ssp-counter-sep" />
+            <div className="ssp-counter">
+              <span className="ssp-counter-num">{stats.inProgress}</span>
+              <span className="ssp-counter-label">In Progress</span>
+            </div>
+            <div className="ssp-counter-sep" />
+            <div className="ssp-counter">
+              <span className="ssp-counter-num">{stats.featured}</span>
+              <span className="ssp-counter-label">Featured</span>
+            </div>
+          </div>
 
           {/* Search */}
           <div className="ssp-hero-search-wrap">
