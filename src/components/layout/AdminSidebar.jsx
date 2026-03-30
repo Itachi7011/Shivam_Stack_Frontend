@@ -286,30 +286,18 @@ const menuItems = [
         id: "all-posts",
         label: "All Posts",
         icon: <AlignLeft size={15} />,
-        link: "/admin/blog",
-        permission: "manage_blog",
-      },
-      {
-        id: "add-post",
-        label: "Manage Post",
-        icon: <PenTool size={15} />,
         link: "/admin/manage-blog",
         permission: "manage_blog",
       },
+     
       {
         id: "blog-categories",
         label: "Categories",
         icon: <Tag size={15} />,
-        link: "/admin/blog/categories",
+        link: "/admin/manage-blog-categories",
         permission: "manage_blog",
       },
-      {
-        id: "drafts",
-        label: "Drafts",
-        icon: <Folder size={15} />,
-        link: "/admin/blog/drafts",
-        permission: "manage_blog",
-      },
+      
     ],
   },
   {

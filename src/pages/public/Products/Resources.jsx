@@ -138,17 +138,7 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* ── Banner ────────────────────────────────── */}
-      <section className="ss-section" style={{ paddingBottom: 0 }}>
-        <div className="ss-container">
-          <div className="ss-info-banner">
-            <span className="ss-info-banner-icon">🆓</span>
-            <div className="ss-info-banner-text">
-              <strong>All cheat sheets, roadmaps, and scripts are 100% free.</strong> No login required. Click download and you're done. Premium resources are clearly marked.
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
       {/* ── Resources Grid ─────────────────────────── */}
       <section className="ss-section">

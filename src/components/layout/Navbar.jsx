@@ -123,7 +123,7 @@ const NAV_ITEMS = [
     dropdown: "wide",
     items: [
       {
-        to: "/work",
+        to: "/projects",
         icon: FolderOpen,
         color: "#8b5cf6",
         bg: "rgba(139,92,246,0.1)",
@@ -155,7 +155,7 @@ const NAV_ITEMS = [
         desc: "GitHub projects & contributions",
       },
     ],
-    footer: { label: "See all work →", to: "/work" },
+    footer: { label: "See all work →", to: "/projects" },
   },
 
   {
@@ -199,7 +199,7 @@ const NAV_ITEMS = [
     footer: { label: "Shop all products →", to: "/products" },
   },
 
-  { id: "blog", label: "Blog", to: "/blog" },
+  { id: "blog", label: "Blog", to: "/blogs" },
   { id: "about", label: "About", to: "/about" },
   { id: "contact", label: "Contact", to: "/contact" },
 ];
@@ -818,7 +818,7 @@ const Navbar = () => {
           <div className="shivam-stack-navbar-mobile-divider" />
 
           <Link
-            to="/blog"
+            to="/blogs"
             className={`shivam-stack-navbar-mobile-link ${isActive("/blog") ? "shivam-stack-navbar-mobile-link--active" : ""}`}
           >
             <BookOpen size={16} /> Blog

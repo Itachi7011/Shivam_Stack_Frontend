@@ -31,11 +31,7 @@ import "./css/user/UserAuth.css";
 import "./css/user/Profile_Settings.css";
 import "./css/user/Ordersdownloads.css";
 import "./css/user/Messages.css";
-// import "./css/User/UserLogin.css"
-// import "./css/User/UserProfile.css"
-// import "./css/User/UserForgotPassword.css"
-// import "./css/User/UserSettings.css"
-// import "./css/User/UserEmailVerification.css"
+
 
 import "./css/admin/AdminAuth.css";
 import "./css/admin/AdminDashboard.css";
@@ -58,11 +54,7 @@ import PrivacyPolicy from "./pages/public/PrivacyPolicy";
 import Portfolio from "./pages/public/Portfolio";
 import BookFreeCall from "./pages/public/BookFreeCall";
 import Blog from "./pages/public/Blog";
-// import BlogDetails from "./pages/public/BlogDetails";
-// import ProductDetails from "./pages/public/ProductDetails";
-// import ProjectDetails from "./pages/public/ProjectDetails";
 import Projects from "./pages/public/Projects";
-// import RefundPolicy from './pages/public/RefundPolicy';
 import AllServices from "./pages/public/Services/AllServices";
 import APIDevelopmentServices from "./pages/public/Services/APIDevelopment";
 import AdminpanelscmsServices from "./pages/public/Services/Adminpanelscms";
@@ -76,7 +68,6 @@ import AllProducts from "./pages/public/Products/AllProducts";
 import CodeTemplates from "./pages/public/Products/CodeTemplates";
 import Ebooksandguides from "./pages/public/Products/Ebooksandguides";
 import Resources from "./pages/public/Products/Resources";
-// import Shop from './pages/public/Shop';
 import TermsOfService from "./pages/public/TermsOfService";
 
 import UserRegister from "./pages/user/auth/Register";
@@ -228,11 +219,6 @@ function App() {
                     element={<Resources />}
                   />
 
-                  {/* <Route path="/blog" element={<Blog />} /> */}
-
-                  {/* <Route path="/blog/:slug" element={<BlogDetails />} /> */}
-                  {/* <Route path="/projects/:slug" element={<ProjectDetails />} /> */}
-                  {/* <Route path="/products/:slug" element={<ProductDetails />} /> */}
 
                   <Route path="/user/register" element={<UserRegister />} />
                   <Route path="/user/login" element={<UserLogin />} />
