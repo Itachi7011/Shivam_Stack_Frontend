@@ -1269,7 +1269,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   width: 100%;
-  max-width: 780px;
+  max-width: 1180px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
