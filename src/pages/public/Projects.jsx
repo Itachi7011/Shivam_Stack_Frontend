@@ -74,7 +74,9 @@ const STATUS_CONFIG = {
 
 // ─── Skeleton ─────────────────────────────────────────────────────────────────
 const SkeletonCard = ({ view }) => (
-  <div className={`ssp-project-card ssp-skeleton-card ${view === "list" ? "ssp-card-list" : ""}`}>
+  <div
+    className={`ssp-project-card ssp-skeleton-card ${view === "list" ? "ssp-card-list" : ""}`}
+  >
     <div className="ssp-skeleton-img" />
     <div className="ssp-skeleton-body">
       <div className="ssp-skeleton-line ssp-sk-short" />
@@ -85,9 +87,7 @@ const SkeletonCard = ({ view }) => (
 );
 
 // ─── Tech Badge ───────────────────────────────────────────────────────────────
-const TechBadge = ({ name }) => (
-  <span className="ssp-tech-badge">{name}</span>
-);
+const TechBadge = ({ name }) => <span className="ssp-tech-badge">{name}</span>;
 
 // ─── Comment Item ─────────────────────────────────────────────────────────────
 const CommentItem = ({ comment, user, onDelete, onEdit }) => {
@@ -112,10 +112,14 @@ const CommentItem = ({ comment, user, onDelete, onEdit }) => {
       </div>
       <div className="ssp-comment-body">
         <div className="ssp-comment-header">
-          <span className="ssp-comment-author">{comment.user?.name || "Anonymous"}</span>
+          <span className="ssp-comment-author">
+            {comment.user?.name || "Anonymous"}
+          </span>
           <span className="ssp-comment-date">
             {formatDate(comment.updatedAt || comment.createdAt)}
-            {comment.updatedAt && comment.updatedAt !== comment.createdAt && " (edited)"}
+            {comment.updatedAt &&
+              comment.updatedAt !== comment.createdAt &&
+              " (edited)"}
           </span>
           {isOwner && (
             <div className="ssp-comment-actions">
@@ -138,8 +142,22 @@ const CommentItem = ({ comment, user, onDelete, onEdit }) => {
               autoFocus
             />
             <div className="ssp-comment-edit-btns">
-              <button className="ssp-btn-save" onClick={handleSave} disabled={!editText.trim()}>Save</button>
-              <button className="ssp-btn-cancel" onClick={() => { setEditing(false); setEditText(comment.comment); }}>Cancel</button>
+              <button
+                className="ssp-btn-save"
+                onClick={handleSave}
+                disabled={!editText.trim()}
+              >
+                Save
+              </button>
+              <button
+                className="ssp-btn-cancel"
+                onClick={() => {
+                  setEditing(false);
+                  setEditText(comment.comment);
+                }}
+              >
+                Cancel
+              </button>
             </div>
           </div>
         ) : (
@@ -172,7 +190,9 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
     const fetch = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${API_BASE}/slug/${slug}`, { withCredentials: true });
+        const res = await axios.get(`${API_BASE}/slug/${slug}`, {
+          withCredentials: true,
+        });
         const data = res.data.data;
         setProject(data);
         setComments(data.projectComments || []);
@@ -205,18 +225,31 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
 
   const handleLikeClick = async () => {
     if (!isAuthenticated) {
-      Swal.fire({ icon: "info", title: "Login Required", text: "Please log in to like this project.", confirmButtonColor: "#f59e0b" });
+      Swal.fire({
+        icon: "info",
+        title: "Login Required",
+        text: "Please log in to like this project.",
+        confirmButtonColor: "#f59e0b",
+      });
       return;
     }
     const prev = project.likesCount;
-    setProject((p) => ({ ...p, likesCount: isLiked ? p.likesCount - 1 : p.likesCount + 1 }));
+    setProject((p) => ({
+      ...p,
+      likesCount: isLiked ? p.likesCount - 1 : p.likesCount + 1,
+    }));
     const res = await onLike(project._id);
     if (!res?.success) setProject((p) => ({ ...p, likesCount: prev }));
   };
 
   const handleComment = async () => {
     if (!isAuthenticated) {
-      Swal.fire({ icon: "info", title: "Login Required", text: "Please log in to comment.", confirmButtonColor: "#f59e0b" });
+      Swal.fire({
+        icon: "info",
+        title: "Login Required",
+        text: "Please log in to comment.",
+        confirmButtonColor: "#f59e0b",
+      });
       return;
     }
     if (!commentText.trim()) return;
@@ -229,11 +262,18 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
       );
       if (res.data.success) {
         setComments((prev) => [...prev, res.data.data.comment]);
-        setProject((p) => ({ ...p, commentsCount: (p.commentsCount || 0) + 1 }));
+        setProject((p) => ({
+          ...p,
+          commentsCount: (p.commentsCount || 0) + 1,
+        }));
         setCommentText("");
       }
     } catch (err) {
-      Swal.fire({ icon: "error", title: "Error", text: err.response?.data?.message || "Failed to post comment." });
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: err.response?.data?.message || "Failed to post comment.",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -249,13 +289,23 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
     });
     if (!isConfirmed) return;
     try {
-      const res = await axios.delete(`${API_BASE}/${project._id}/comments/${commentId}`, { withCredentials: true });
+      const res = await axios.delete(
+        `${API_BASE}/${project._id}/comments/${commentId}`,
+        { withCredentials: true },
+      );
       if (res.data.success) {
         setComments((prev) => prev.filter((c) => c._id !== commentId));
-        setProject((p) => ({ ...p, commentsCount: Math.max(0, (p.commentsCount || 1) - 1) }));
+        setProject((p) => ({
+          ...p,
+          commentsCount: Math.max(0, (p.commentsCount || 1) - 1),
+        }));
       }
     } catch (err) {
-      Swal.fire({ icon: "error", title: "Error", text: err.response?.data?.message || "Failed to delete." });
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: err.response?.data?.message || "Failed to delete.",
+      });
     }
   };
 
@@ -268,11 +318,19 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
       );
       if (res.data.success) {
         setComments((prev) =>
-          prev.map((c) => (c._id === commentId ? { ...c, comment: newText, updatedAt: new Date() } : c)),
+          prev.map((c) =>
+            c._id === commentId
+              ? { ...c, comment: newText, updatedAt: new Date() }
+              : c,
+          ),
         );
       }
     } catch (err) {
-      Swal.fire({ icon: "error", title: "Error", text: err.response?.data?.message || "Failed to edit." });
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: err.response?.data?.message || "Failed to edit.",
+      });
     }
   };
 
@@ -281,7 +339,12 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
     const text = encodeURIComponent(project?.title || "Check this project!");
     if (platform === "copy") {
       navigator.clipboard.writeText(url);
-      Swal.fire({ icon: "success", title: "Copied!", timer: 1500, showConfirmButton: false });
+      Swal.fire({
+        icon: "success",
+        title: "Copied!",
+        timer: 1500,
+        showConfirmButton: false,
+      });
     } else {
       const links = {
         twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${text}`,
@@ -295,7 +358,9 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
   if (loading)
     return (
       <div className="ssp-modal-overlay">
-        <div className="ssp-modal-spinner"><div className="ssp-spinner" /></div>
+        <div className="ssp-modal-spinner">
+          <div className="ssp-spinner" />
+        </div>
       </div>
     );
 
@@ -304,18 +369,24 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
       <div className="ssp-modal-overlay">
         <div className="ssp-modal-empty">
           <p>Project not found.</p>
-          <button className="ssp-modal-close-btn" onClick={onClose}>Close</button>
+          <button className="ssp-modal-close-btn" onClick={onClose}>
+            Close
+          </button>
         </div>
       </div>
     );
 
-  const allImages = [project.mainImage, ...(project.images || [])].filter(Boolean);
+  const allImages = [project.mainImage, ...(project.images || [])].filter(
+    Boolean,
+  );
   const StatusIcon = STATUS_CONFIG[project.status]?.icon || Circle;
 
   return (
     <div className="ssp-modal-overlay" role="dialog" aria-modal="true">
       <div className="ssp-modal-panel" ref={modalRef}>
-        <button className="ssp-modal-x" onClick={onClose} aria-label="Close"><X size={18} /></button>
+        <button className="ssp-modal-x" onClick={onClose} aria-label="Close">
+          <X size={18} />
+        </button>
 
         {/* Image gallery */}
         {allImages.length > 0 && (
@@ -348,24 +419,38 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
                 {project.category && (
                   <span className="ssp-modal-cat">{project.category.name}</span>
                 )}
-                <span className={`ssp-modal-status ${STATUS_CONFIG[project.status]?.className || ""}`}>
+                <span
+                  className={`ssp-modal-status ${STATUS_CONFIG[project.status]?.className || ""}`}
+                >
                   <StatusIcon size={11} />
                   {STATUS_CONFIG[project.status]?.label || project.status}
                 </span>
                 {project.isFeatured && (
-                  <span className="ssp-modal-featured-badge"><Star size={10} fill="currentColor" /> Featured</span>
+                  <span className="ssp-modal-featured-badge">
+                    <Star size={10} fill="currentColor" /> Featured
+                  </span>
                 )}
               </div>
               <h1 className="ssp-modal-title">{project.title}</h1>
             </div>
             <div className="ssp-modal-header-links">
               {project.demoUrl && (
-                <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="ssp-modal-link-btn ssp-link-demo">
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ssp-modal-link-btn ssp-link-demo"
+                >
                   <Monitor size={15} /> Live Demo <ArrowUpRight size={13} />
                 </a>
               )}
               {project.repoUrl && (
-                <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="ssp-modal-link-btn ssp-link-repo">
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ssp-modal-link-btn ssp-link-repo"
+                >
                   <Github size={15} /> Source <ArrowUpRight size={13} />
                 </a>
               )}
@@ -374,10 +459,24 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
 
           {/* Meta row */}
           <div className="ssp-modal-meta-row">
-            {project.client && <span><User size={13} /> {project.client}</span>}
-            {project.startDate && <span><Calendar size={13} /> {formatDate(project.startDate)}</span>}
-            {project.endDate && <span><CheckCircle2 size={13} /> {formatDate(project.endDate)}</span>}
-            <span><Eye size={13} /> {project.views || 0} views</span>
+            {project.client && (
+              <span>
+                <User size={13} /> {project.client}
+              </span>
+            )}
+            {project.startDate && (
+              <span>
+                <Calendar size={13} /> {formatDate(project.startDate)}
+              </span>
+            )}
+            {project.endDate && (
+              <span>
+                <CheckCircle2 size={13} /> {formatDate(project.endDate)}
+              </span>
+            )}
+            <span>
+              <Eye size={13} /> {project.views || 0} views
+            </span>
           </div>
 
           {/* Description */}
@@ -388,9 +487,13 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
           {/* Technologies */}
           {project.technologies?.length > 0 && (
             <div className="ssp-modal-section">
-              <h4 className="ssp-modal-section-title"><Cpu size={14} /> Technologies</h4>
+              <h4 className="ssp-modal-section-title">
+                <Cpu size={14} /> Technologies
+              </h4>
               <div className="ssp-modal-techs">
-                {project.technologies.map((t) => <TechBadge key={t} name={t} />)}
+                {project.technologies.map((t) => (
+                  <TechBadge key={t} name={t} />
+                ))}
               </div>
             </div>
           )}
@@ -398,9 +501,15 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
           {/* Tags */}
           {project.tags?.length > 0 && (
             <div className="ssp-modal-section">
-              <h4 className="ssp-modal-section-title"><Tag size={14} /> Tags</h4>
+              <h4 className="ssp-modal-section-title">
+                <Tag size={14} /> Tags
+              </h4>
               <div className="ssp-modal-tags">
-                {project.tags.map((t) => <span key={t} className="ssp-modal-tag">#{t}</span>)}
+                {project.tags.map((t) => (
+                  <span key={t} className="ssp-modal-tag">
+                    #{t}
+                  </span>
+                ))}
               </div>
             </div>
           )}
@@ -416,20 +525,33 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
             </button>
             <button
               className="ssp-modal-action-btn"
-              onClick={() => document.getElementById("ssp-comments")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("ssp-comments")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               <MessageCircle size={16} />
               <span>{project.commentsCount || 0}</span>
             </button>
             <div className="ssp-share-wrap">
-              <button className="ssp-modal-action-btn" onClick={() => setShareOpen(!shareOpen)}>
+              <button
+                className="ssp-modal-action-btn"
+                onClick={() => setShareOpen(!shareOpen)}
+              >
                 <Share2 size={16} /> Share
               </button>
               {shareOpen && (
                 <div className="ssp-share-menu">
-                  <button onClick={() => handleShare("twitter")}>𝕏 Twitter</button>
-                  <button onClick={() => handleShare("linkedin")}><Globe size={12} /> LinkedIn</button>
-                  <button onClick={() => handleShare("copy")}>🔗 Copy Link</button>
+                  <button onClick={() => handleShare("twitter")}>
+                    𝕏 Twitter
+                  </button>
+                  <button onClick={() => handleShare("linkedin")}>
+                    <Globe size={12} /> LinkedIn
+                  </button>
+                  <button onClick={() => handleShare("copy")}>
+                    🔗 Copy Link
+                  </button>
                 </div>
               )}
             </div>
@@ -463,20 +585,30 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
                     onClick={handleComment}
                     disabled={submitting || !commentText.trim()}
                   >
-                    {submitting ? "Posting…" : <><Send size={13} /> Post</>}
+                    {submitting ? (
+                      "Posting…"
+                    ) : (
+                      <>
+                        <Send size={13} /> Post
+                      </>
+                    )}
                   </button>
                 </div>
               </div>
             ) : (
               <div className="ssp-comment-login-prompt">
                 <Code2 size={18} />
-                <p>Please <Link to="/login">log in</Link> to join the discussion.</p>
+                <p>
+                  Please <Link to="/login">log in</Link> to join the discussion.
+                </p>
               </div>
             )}
 
             <div className="ssp-comments-list">
               {comments.length === 0 ? (
-                <p className="ssp-no-comments">No comments yet — be the first to share your thoughts.</p>
+                <p className="ssp-no-comments">
+                  No comments yet — be the first to share your thoughts.
+                </p>
               ) : (
                 comments.map((c) => (
                   <CommentItem
@@ -497,9 +629,16 @@ const ProjectDetail = ({ slug, user, isAuthenticated, onClose, onLike }) => {
 };
 
 // ─── Project Card ─────────────────────────────────────────────────────────────
-const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, view }) => {
-  const isLiked =
-    user?.likedProjects?.includes(project._id) || false;
+const ProjectCard = ({
+  project,
+  user,
+  isAuthenticated,
+  onOpen,
+  onLike,
+  index,
+  view,
+}) => {
+  const isLiked = user?.likedProjects?.includes(project._id) || false;
   const StatusIcon = STATUS_CONFIG[project.status]?.icon || Circle;
 
   return (
@@ -510,7 +649,12 @@ const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, vi
     >
       <div className="ssp-card-img-wrap">
         {project.mainImage ? (
-          <img src={project.mainImage} alt={project.title} className="ssp-card-img" loading="lazy" />
+          <img
+            src={project.mainImage}
+            alt={project.title}
+            className="ssp-card-img"
+            loading="lazy"
+          />
         ) : (
           <div className="ssp-card-img-placeholder">
             <Code2 size={32} />
@@ -525,7 +669,9 @@ const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, vi
               <Star size={9} fill="currentColor" /> Featured
             </span>
           )}
-          <span className={`ssp-card-status ${STATUS_CONFIG[project.status]?.className || ""}`}>
+          <span
+            className={`ssp-card-status ${STATUS_CONFIG[project.status]?.className || ""}`}
+          >
             <StatusIcon size={9} />
             {STATUS_CONFIG[project.status]?.label || project.status}
           </span>
@@ -567,7 +713,9 @@ const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, vi
         <h2 className="ssp-card-title">{project.title}</h2>
 
         {project.description && (
-          <p className="ssp-card-desc">{excerpt(project.description, view === "list" ? 200 : 110)}</p>
+          <p className="ssp-card-desc">
+            {excerpt(project.description, view === "list" ? 200 : 110)}
+          </p>
         )}
 
         {/* Tech stack */}
@@ -577,7 +725,9 @@ const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, vi
               <TechBadge key={t} name={t} />
             ))}
             {project.technologies.length > 4 && (
-              <span className="ssp-card-tech-more">+{project.technologies.length - 4}</span>
+              <span className="ssp-card-tech-more">
+                +{project.technologies.length - 4}
+              </span>
             )}
           </div>
         )}
@@ -586,7 +736,10 @@ const ProjectCard = ({ project, user, isAuthenticated, onOpen, onLike, index, vi
           <div className="ssp-card-stats">
             <button
               className={`ssp-card-stat-btn ${isLiked ? "ssp-liked" : ""}`}
-              onClick={(e) => { e.stopPropagation(); onLike(project._id); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onLike(project._id);
+              }}
               aria-label="Like"
             >
               <Heart size={13} fill={isLiked ? "currentColor" : "none"} />
@@ -628,7 +781,12 @@ const MyProjects = () => {
   const [selectedSlug, setSelectedSlug] = useState(null);
   const [filterOpen, setFilterOpen] = useState(false);
   const [view, setView] = useState("grid"); // "grid" | "list"
-  const [stats, setStats] = useState({ total: 0, completed: 0, inProgress: 0, featured: 0 });
+  const [stats, setStats] = useState({
+    total: 0,
+    completed: 0,
+    inProgress: 0,
+    featured: 0,
+  });
   const heroRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -647,8 +805,8 @@ const MyProjects = () => {
     let t = 0;
 
     const draw = () => {
-      const W = canvas.width = canvas.offsetWidth;
-      const H = canvas.height = canvas.offsetHeight;
+      const W = (canvas.width = canvas.offsetWidth);
+      const H = (canvas.height = canvas.offsetHeight);
       ctx.clearRect(0, 0, W, H);
 
       const cols = 16;
@@ -691,7 +849,8 @@ const MyProjects = () => {
 
   // Fetch categories
   useEffect(() => {
-    axios.get("/api/public/projects/categories")
+    axios
+      .get("/api/public/projects/categories")
       .then((r) => setCategories(r.data.data || []))
       .catch(() => {});
   }, []);
@@ -708,7 +867,12 @@ const MyProjects = () => {
         featured: { sortBy: "isFeatured", sortOrder: "desc" },
       };
       const s = sortMap[sortBy] || sortMap.newest;
-      const params = { page, limit: view === "list" ? 8 : 9, search: debouncedSearch, ...s };
+      const params = {
+        page,
+        limit: view === "list" ? 8 : 9,
+        search: debouncedSearch,
+        ...s,
+      };
       if (activeCategory) params.category = activeCategory;
       if (activeStatus) params.status = activeStatus;
 
@@ -731,28 +895,46 @@ const MyProjects = () => {
     }
   }, [page, debouncedSearch, activeCategory, activeStatus, sortBy, view]);
 
-  useEffect(() => { setPage(1); }, [debouncedSearch, activeCategory, activeStatus, sortBy]);
-  useEffect(() => { fetchProjects(); }, [fetchProjects]);
+  useEffect(() => {
+    setPage(1);
+  }, [debouncedSearch, activeCategory, activeStatus, sortBy]);
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
 
   const handleLike = async (projectId) => {
     if (!isAuthenticated) {
-      Swal.fire({ icon: "info", title: "Login Required", text: "Please log in to like.", confirmButtonColor: "#f59e0b" });
+      Swal.fire({
+        icon: "info",
+        title: "Login Required",
+        text: "Please log in to like.",
+        confirmButtonColor: "#f59e0b",
+      });
       return { success: false };
     }
     try {
-      const res = await axios.post(`${API_BASE}/${projectId}/like`, {}, { withCredentials: true });
+      const res = await axios.post(
+        `${API_BASE}/${projectId}/like`,
+        {},
+        { withCredentials: true },
+      );
       const { liked, likesCount } = res.data.data;
-      setProjects((prev) => prev.map((p) => p._id === projectId ? { ...p, likesCount } : p));
+      setProjects((prev) =>
+        prev.map((p) => (p._id === projectId ? { ...p, likesCount } : p)),
+      );
       return { success: true, liked, likesCount };
     } catch (err) {
-      Swal.fire({ icon: "error", title: "Oops!", text: err.response?.data?.message || "Failed to like." });
+      Swal.fire({
+        icon: "error",
+        title: "Oops!",
+        text: err.response?.data?.message || "Failed to like.",
+      });
       return { success: false };
     }
   };
 
   return (
     <main className={`ssp-root ${isDarkMode ? "dark" : "light"}`}>
-
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="ssp-hero">
         <canvas ref={canvasRef} className="ssp-hero-canvas" />
@@ -772,32 +954,18 @@ const MyProjects = () => {
           </h1>
 
           <p className="ssp-hero-sub">
-            A curated collection of production projects — from complex MERN applications to
-            microservice architectures. Each one shipped, iterated, and refined in the real world.
+            A curated collection of production projects — from complex MERN
+            applications to microservice architectures. Each one shipped,
+            iterated, and refined in the real world.
           </p>
 
-          {/* Stat counters */}
-          <div className="ssp-hero-counters">
-            <div className="ssp-counter">
-              <span className="ssp-counter-num">{pagination.total || 0}</span>
-              <span className="ssp-counter-label">Total Projects</span>
-            </div>
-            <div className="ssp-counter-sep" />
-            <div className="ssp-counter">
-              <span className="ssp-counter-num">{stats.completed}</span>
-              <span className="ssp-counter-label">Shipped</span>
-            </div>
-            <div className="ssp-counter-sep" />
-            <div className="ssp-counter">
-              <span className="ssp-counter-num">{stats.inProgress}</span>
-              <span className="ssp-counter-label">In Progress</span>
-            </div>
-            <div className="ssp-counter-sep" />
-            <div className="ssp-counter">
-              <span className="ssp-counter-num">{stats.featured}</span>
-              <span className="ssp-counter-label">Featured</span>
-            </div>
-          </div>
+{/* Stat counters */}
+<div className="ssp-hero-counters">
+  <div className="ssp-counter">
+    <span className="ssp-counter-num">{pagination.total || 0}</span>
+    <span className="ssp-counter-label">Total Projects</span>
+  </div>
+</div>
 
           {/* Search */}
           <div className="ssp-hero-search-wrap">
@@ -810,7 +978,10 @@ const MyProjects = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             {search && (
-              <button className="ssp-hero-search-clear" onClick={() => setSearch("")}>
+              <button
+                className="ssp-hero-search-clear"
+                onClick={() => setSearch("")}
+              >
                 <X size={14} />
               </button>
             )}
@@ -818,21 +989,29 @@ const MyProjects = () => {
         </div>
 
         {/* Decorative elements */}
-        <div className="ssp-hero-deco ssp-deco-1"><Zap size={22} /></div>
-        <div className="ssp-hero-deco ssp-deco-2"><Star size={18} /></div>
-        <div className="ssp-hero-deco ssp-deco-3"><Layers size={20} /></div>
+        <div className="ssp-hero-deco ssp-deco-1">
+          <Zap size={22} />
+        </div>
+        <div className="ssp-hero-deco ssp-deco-2">
+          <Star size={18} />
+        </div>
+        <div className="ssp-hero-deco ssp-deco-3">
+          <Layers size={20} />
+        </div>
       </section>
 
       {/* ── Filter Bar ───────────────────────────────────────── */}
       <section className="ssp-filter-bar">
         <div className="ssp-container">
           <div className="ssp-filter-row">
-
             {/* Category pills */}
             <div className="ssp-pills-wrap">
               <button
                 className={`ssp-pill ${activeCategory === "" && activeStatus === "" ? "ssp-pill-active" : ""}`}
-                onClick={() => { setActiveCategory(""); setActiveStatus(""); }}
+                onClick={() => {
+                  setActiveCategory("");
+                  setActiveStatus("");
+                }}
               >
                 All
               </button>
@@ -840,7 +1019,10 @@ const MyProjects = () => {
                 <button
                   key={cat._id}
                   className={`ssp-pill ${activeCategory === cat._id ? "ssp-pill-active" : ""}`}
-                  onClick={() => { setActiveCategory(cat._id); setActiveStatus(""); }}
+                  onClick={() => {
+                    setActiveCategory(cat._id);
+                    setActiveStatus("");
+                  }}
                 >
                   {cat.name}
                 </button>
@@ -850,7 +1032,10 @@ const MyProjects = () => {
                 <button
                   key={s}
                   className={`ssp-pill ssp-pill-status ${activeStatus === s ? "ssp-pill-active" : ""}`}
-                  onClick={() => { setActiveStatus(s === activeStatus ? "" : s); setActiveCategory(""); }}
+                  onClick={() => {
+                    setActiveStatus(s === activeStatus ? "" : s);
+                    setActiveCategory("");
+                  }}
                 >
                   {STATUS_CONFIG[s]?.label}
                 </button>
@@ -879,10 +1064,24 @@ const MyProjects = () => {
 
               {/* Sort */}
               <div className="ssp-sort-wrap">
-                <button className="ssp-sort-btn" onClick={() => setFilterOpen(!filterOpen)}>
+                <button
+                  className="ssp-sort-btn"
+                  onClick={() => setFilterOpen(!filterOpen)}
+                >
                   <Filter size={13} />
-                  {{ newest: "Newest", oldest: "Oldest", popular: "Popular", liked: "Most Liked", featured: "Featured" }[sortBy]}
-                  <ChevronDown size={13} className={`ssp-sort-chevron ${filterOpen ? "open" : ""}`} />
+                  {
+                    {
+                      newest: "Newest",
+                      oldest: "Oldest",
+                      popular: "Popular",
+                      liked: "Most Liked",
+                      featured: "Featured",
+                    }[sortBy]
+                  }
+                  <ChevronDown
+                    size={13}
+                    className={`ssp-sort-chevron ${filterOpen ? "open" : ""}`}
+                  />
                 </button>
                 {filterOpen && (
                   <div className="ssp-sort-menu">
@@ -896,7 +1095,10 @@ const MyProjects = () => {
                       <button
                         key={o.v}
                         className={sortBy === o.v ? "ssp-sort-active" : ""}
-                        onClick={() => { setSortBy(o.v); setFilterOpen(false); }}
+                        onClick={() => {
+                          setSortBy(o.v);
+                          setFilterOpen(false);
+                        }}
                       >
                         {o.l}
                       </button>
@@ -912,7 +1114,8 @@ const MyProjects = () => {
               <BarChart3 size={13} />
               {pagination.total || 0} project{pagination.total !== 1 ? "s" : ""}
               {debouncedSearch && ` matching "${debouncedSearch}"`}
-              {activeCategory && ` in ${categories.find((c) => c._id === activeCategory)?.name || "category"}`}
+              {activeCategory &&
+                ` in ${categories.find((c) => c._id === activeCategory)?.name || "category"}`}
               {activeStatus && ` · ${STATUS_CONFIG[activeStatus]?.label}`}
             </p>
           )}
@@ -923,23 +1126,40 @@ const MyProjects = () => {
       <section className="ssp-grid-section">
         <div className="ssp-container">
           {loading || authLoading ? (
-            <div className={view === "list" ? "ssp-project-list" : "ssp-project-grid"}>
-              {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} view={view} />)}
+            <div
+              className={
+                view === "list" ? "ssp-project-list" : "ssp-project-grid"
+              }
+            >
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonCard key={i} view={view} />
+              ))}
             </div>
           ) : projects.length === 0 ? (
             <div className="ssp-empty-state">
-              <div className="ssp-empty-icon"><Code2 size={44} /></div>
+              <div className="ssp-empty-icon">
+                <Code2 size={44} />
+              </div>
               <h3>No projects found</h3>
               <p>Try adjusting your search or filters.</p>
               <button
                 className="ssp-empty-reset"
-                onClick={() => { setSearch(""); setActiveCategory(""); setActiveStatus(""); setSortBy("newest"); }}
+                onClick={() => {
+                  setSearch("");
+                  setActiveCategory("");
+                  setActiveStatus("");
+                  setSortBy("newest");
+                }}
               >
                 Reset Filters
               </button>
             </div>
           ) : (
-            <div className={view === "list" ? "ssp-project-list" : "ssp-project-grid"}>
+            <div
+              className={
+                view === "list" ? "ssp-project-list" : "ssp-project-grid"
+              }
+            >
               {projects.map((project, i) => (
                 <ProjectCard
                   key={project._id}
@@ -962,9 +1182,16 @@ const MyProjects = () => {
                 className="ssp-page-btn"
                 disabled={page === 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-              >← Prev</button>
+              >
+                ← Prev
+              </button>
               {Array.from({ length: pagination.pages }, (_, i) => i + 1)
-                .filter((p) => p === 1 || p === pagination.pages || Math.abs(p - page) <= 2)
+                .filter(
+                  (p) =>
+                    p === 1 ||
+                    p === pagination.pages ||
+                    Math.abs(p - page) <= 2,
+                )
                 .reduce((acc, p, idx, arr) => {
                   if (idx > 0 && arr[idx - 1] !== p - 1) acc.push("…");
                   acc.push(p);
@@ -972,20 +1199,28 @@ const MyProjects = () => {
                 }, [])
                 .map((p, i) =>
                   p === "…" ? (
-                    <span key={`e-${i}`} className="ssp-page-ellipsis">…</span>
+                    <span key={`e-${i}`} className="ssp-page-ellipsis">
+                      …
+                    </span>
                   ) : (
                     <button
                       key={p}
                       className={`ssp-page-btn ${page === p ? "ssp-page-active" : ""}`}
                       onClick={() => setPage(p)}
-                    >{p}</button>
+                    >
+                      {p}
+                    </button>
                   ),
                 )}
               <button
                 className="ssp-page-btn"
                 disabled={page === pagination.pages}
-                onClick={() => setPage((p) => Math.min(pagination.pages, p + 1))}
-              >Next →</button>
+                onClick={() =>
+                  setPage((p) => Math.min(pagination.pages, p + 1))
+                }
+              >
+                Next →
+              </button>
             </div>
           )}
         </div>
@@ -996,24 +1231,44 @@ const MyProjects = () => {
         <div className="ssp-container">
           <div className="ssp-stack-grid">
             <div className="ssp-stack-text">
-              <div className="ssp-section-eyebrow"><Flame size={13} /> The Stack</div>
+              <div className="ssp-section-eyebrow">
+                <Flame size={13} /> The Stack
+              </div>
               <h2 className="ssp-stack-title">Engineered for the Real World</h2>
               <p>
-                Every project is built on a carefully chosen foundation — technologies selected not
-                for hype, but for reliability, performance, and developer experience. The goal is
-                always the same: ship fast, scale gracefully.
+                Every project is built on a carefully chosen foundation —
+                technologies selected not for hype, but for reliability,
+                performance, and developer experience. The goal is always the
+                same: ship fast, scale gracefully.
               </p>
               <p>
-                From RESTful APIs to real-time sockets, from static sites to full MERN applications —
-                the right tool for the right job, every time.
+                From RESTful APIs to real-time sockets, from static sites to
+                full MERN applications — the right tool for the right job, every
+                time.
               </p>
             </div>
             <div className="ssp-stack-cards">
               {[
-                { icon: <Monitor size={20} />, title: "React Frontends", desc: "Production SPAs with optimised bundles, lazy loading, and polished UX." },
-                { icon: <Cpu size={20} />, title: "Node.js APIs", desc: "Scalable REST & GraphQL backends with clean architecture and solid error handling." },
-                { icon: <Layers size={20} />, title: "MongoDB Databases", desc: "Thoughtfully modelled schemas, aggregation pipelines, and Atlas deployments." },
-                { icon: <Zap size={20} />, title: "DevOps & CI/CD", desc: "Dockerised deployments, GitHub Actions pipelines, and zero-downtime releases." },
+                {
+                  icon: <Monitor size={20} />,
+                  title: "React Frontends",
+                  desc: "Production SPAs with optimised bundles, lazy loading, and polished UX.",
+                },
+                {
+                  icon: <Cpu size={20} />,
+                  title: "Node.js APIs",
+                  desc: "Scalable REST & GraphQL backends with clean architecture and solid error handling.",
+                },
+                {
+                  icon: <Layers size={20} />,
+                  title: "MongoDB Databases",
+                  desc: "Thoughtfully modelled schemas, aggregation pipelines, and Atlas deployments.",
+                },
+                {
+                  icon: <Zap size={20} />,
+                  title: "DevOps & CI/CD",
+                  desc: "Dockerised deployments, GitHub Actions pipelines, and zero-downtime releases.",
+                },
               ].map((item) => (
                 <div key={item.title} className="ssp-stack-card">
                   <div className="ssp-stack-icon">{item.icon}</div>
@@ -1038,8 +1293,9 @@ const MyProjects = () => {
               </div>
               <h2 className="ssp-cta-title">Have a project in mind?</h2>
               <p className="ssp-cta-sub">
-                Whether it's a new product, a rebuild, or a tricky engineering challenge —
-                let's talk. I'm available for freelance and contract work.
+                Whether it's a new product, a rebuild, or a tricky engineering
+                challenge — let's talk. I'm available for freelance and contract
+                work.
               </p>
               <div className="ssp-cta-actions">
                 <a href="/contact" className="ssp-cta-btn-primary">
