@@ -205,19 +205,19 @@ function App() {
                     path="/services/portfolio-website-development"
                     element={<PortfoliowebsitesServices />}
                   />
-                  <Route path="/products" element={<AllProducts />} />
+                  <Route path="/products/books" element={<Resources />} />
                   <Route
                     path="/products/code-templates"
                     element={<CodeTemplates />}
                   />
-                  <Route
+                  {/* <Route
                     path="/products/ebooks-and-guides"
                     element={<Ebooksandguides />}
-                  />
-                  <Route
+                  /> */}
+                  {/* <Route
                     path="/products/developer-resources"
                     element={<Resources />}
-                  />
+                  /> */}
 
 
                   <Route path="/user/register" element={<UserRegister />} />

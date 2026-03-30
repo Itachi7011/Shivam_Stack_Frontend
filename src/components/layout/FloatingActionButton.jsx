@@ -35,9 +35,9 @@ const buildMenu = (isAdmin, isDarkMode, toggleTheme, navigate) => [
     icon: <Rocket size={16} />,
     color: '#6366f1',
     children: [
-      { id: 'new-inquiry', label: 'New Project Inquiry', icon: <FilePlus size={14} />, to: '/contact?type=project' },
-      { id: 'custom-quote', label: 'Get Custom Quote', icon: <Tag size={14} />, to: '/contact?type=quote' },
-      { id: 'service-packages', label: 'View Service Packages', icon: <LayoutList size={14} />, to: '/services' },
+      { id: 'new-inquiry', label: 'New Project Inquiry', icon: <FilePlus size={14} />, to: '/book-free-call' },
+      // { id: 'custom-quote', label: 'Get Custom Quote', icon: <Tag size={14} />, to: '/contact?type=quote' },
+      // { id: 'service-packages', label: 'View Service Packages', icon: <LayoutList size={14} />, to: '/services' },
     ],
   },
   {
@@ -46,8 +46,8 @@ const buildMenu = (isAdmin, isDarkMode, toggleTheme, navigate) => [
     icon: <MessageCircle size={16} />,
     color: '#10b981',
     children: [
-      { id: 'whatsapp', label: 'WhatsApp Chat', icon: <WhatsAppIcon />, href: 'https://wa.me/91XXXXXXXXXX', external: true },
-      { id: 'telegram', label: 'Telegram Chat', icon: <TelegramIcon />, href: 'https://t.me/shivamstack', external: true },
+      { id: 'whatsapp', label: 'WhatsApp Chat', icon: <WhatsAppIcon />, href: 'https://wa.me/917011320816', external: true },
+      // { id: 'telegram', label: 'Telegram Chat', icon: <TelegramIcon />, href: 'https://t.me/shivamstack', external: true },
       { id: 'live-chat', label: 'Live Chat (Website)', icon: <Bot size={14} />, action: () => alert('Live chat coming soon!') },
     ],
   },
@@ -57,9 +57,9 @@ const buildMenu = (isAdmin, isDarkMode, toggleTheme, navigate) => [
     icon: <CalendarDays size={16} />,
     color: '#f59e0b',
     children: [
-      { id: 'discovery-call', label: 'Book Discovery Call', icon: <PhoneCall size={14} />, href: 'https://calendly.com/shivamstack/discovery', external: true },
-      { id: 'tech-consult', label: 'Technical Consultation', icon: <Phone size={14} />, href: 'https://calendly.com/shivamstack/tech', external: true },
-      { id: 'reschedule', label: 'Reschedule Meeting', icon: <RotateCcw size={14} />, href: 'https://calendly.com/shivamstack', external: true },
+      { id: 'discovery-call', label: 'Book Discovery Call', icon: <PhoneCall size={14} />, href: 'book-free-call', external: true },
+      // { id: 'tech-consult', label: 'Technical Consultation', icon: <Phone size={14} />, href: 'https://calendly.com/shivamstack/tech', external: true },
+      // { id: 'reschedule', label: 'Reschedule Meeting', icon: <RotateCcw size={14} />, href: 'https://calendly.com/shivamstack', external: true },
     ],
   },
   {
@@ -68,10 +68,10 @@ const buildMenu = (isAdmin, isDarkMode, toggleTheme, navigate) => [
     icon: <Package size={16} />,
     color: '#8b5cf6',
     children: [
-      { id: 'all-products', label: 'All Digital Products', icon: <ShoppingBag size={14} />, to: '/store' },
-      { id: 'best-sellers', label: 'Best Sellers', icon: <Star size={14} />, to: '/store?filter=bestseller' },
-      { id: 'templates', label: 'Templates', icon: <FileCode size={14} />, to: '/store?filter=templates' },
-      { id: 'free-resources', label: 'Free Resources', icon: <Gift size={14} />, to: '/resources' },
+      { id: 'all-products', label: 'All Digital Products', icon: <ShoppingBag size={14} />, to: '/products/books' },
+      // { id: 'best-sellers', label: 'Best Sellers', icon: <Star size={14} />, to: '/store?filter=bestseller' },
+      { id: 'templates', label: 'Templates', icon: <FileCode size={14} />, to: '/products/code-templates' },
+      // { id: 'free-resources', label: 'Free Resources', icon: <Gift size={14} />, to: '/resources' },
     ],
   },
   {
@@ -111,31 +111,31 @@ const buildMenu = (isAdmin, isDarkMode, toggleTheme, navigate) => [
       },
     ],
   },
-  {
-    id: 'my-account',
-    label: 'My Account',
-    icon: <User size={16} />,
-    color: '#06b6d4',
-    children: [
-      { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={14} />, to: '/dashboard' },
-      { id: 'my-orders', label: 'My Orders', icon: <ShoppingCart size={14} />, to: '/dashboard/orders' },
-      { id: 'downloads', label: 'Downloads', icon: <CheckCheck size={14} />, to: '/dashboard/downloads' },
-      { id: 'profile-settings', label: 'Profile Settings', icon: <User size={14} />, to: '/dashboard/settings' },
-    ],
-  },
-  ...(isAdmin ? [{
-    id: 'quick-admin',
-    label: 'Quick Admin',
-    icon: <ShieldCheck size={16} />,
-    color: '#ef4444',
-    adminOnly: true,
-    children: [
-      { id: 'admin-dash', label: 'Admin Dashboard', icon: <LayoutDashboard size={14} />, to: '/admin/dashboard' },
-      { id: 'add-product-admin', label: 'Add Product', icon: <PlusSquare size={14} />, to: '/admin/products/add' },
-      { id: 'add-blog-admin', label: 'Add Blog Post', icon: <PenTool size={14} />, to: '/admin/blog/add' },
-      { id: 'view-orders-admin', label: 'View Orders', icon: <ShoppingCart size={14} />, to: '/admin/orders' },
-    ],
-  }] : []),
+  // {
+  //   id: 'my-account',
+  //   label: 'My Account',
+  //   icon: <User size={16} />,
+  //   color: '#06b6d4',
+  //   children: [
+  //     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={14} />, to: '/dashboard' },
+  //     { id: 'my-orders', label: 'My Orders', icon: <ShoppingCart size={14} />, to: '/dashboard/orders' },
+  //     { id: 'downloads', label: 'Downloads', icon: <CheckCheck size={14} />, to: '/dashboard/downloads' },
+  //     { id: 'profile-settings', label: 'Profile Settings', icon: <User size={14} />, to: '/dashboard/settings' },
+  //   ],
+  // },
+  // ...(isAdmin ? [{
+  //   id: 'quick-admin',
+  //   label: 'Quick Admin',
+  //   icon: <ShieldCheck size={16} />,
+  //   color: '#ef4444',
+  //   adminOnly: true,
+  //   children: [
+  //     { id: 'admin-dash', label: 'Admin Dashboard', icon: <LayoutDashboard size={14} />, to: '/admin/dashboard' },
+  //     { id: 'add-product-admin', label: 'Add Product', icon: <PlusSquare size={14} />, to: '/admin/products/add' },
+  //     { id: 'add-blog-admin', label: 'Add Blog Post', icon: <PenTool size={14} />, to: '/admin/blog/add' },
+  //     { id: 'view-orders-admin', label: 'View Orders', icon: <ShoppingCart size={14} />, to: '/admin/orders' },
+  //   ],
+  // }] : []),
   {
     id: 'toggle-theme',
     label: isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode',

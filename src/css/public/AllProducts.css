@@ -97,7 +97,7 @@
    ============================================================ */
 .ss-page-hero {
   position: relative;
-  padding: 7rem 2rem 5rem;
+  padding: 7rem 2rem 2rem;
   overflow: hidden;
   background: var(--ss-bg-primary);
 }
@@ -2064,7 +2064,7 @@
 /* Hero Section */
 .ss-page-hero {
   position: relative;
-  padding: 6rem 0 4rem;
+  padding: 6rem 0 2rem;
   overflow: hidden;
 }
 
@@ -2163,9 +2163,9 @@
 /* Stats */
 .ss-page-hero-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
