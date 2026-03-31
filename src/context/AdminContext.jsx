@@ -29,10 +29,12 @@ const fetchAdmin = async () => {
   // console.log('🔍 fetchAdmin - START');
   // console.log('🔍 fetchAdmin - Making request to /api/admin/profile');
   // console.log('🔍 fetchAdmin - With credentials:', true);
-  
+  const token = localStorage.getItem('adminToken');
   try {
-    const response = await axios.get('/api/admin/profile', {
-      withCredentials: true
+        const response = await axios.get('/api/admin/profile', {
+      headers: {
+        'Authorization': `Bearer ${token}`  // Use Authorization header instead of cookie
+      }
     });
     // console.log('🔍 fetchAdmin - SUCCESS:', response.data);
     setAdmin(response.data);
