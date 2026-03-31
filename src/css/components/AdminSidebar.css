@@ -72,7 +72,7 @@
   box-shadow: var(--ss-sidebar-shadow);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 1000;
   font-family: var(--ss-sidebar-font);
   transition: width var(--ss-sidebar-transition);
@@ -205,8 +205,8 @@
   height: 30px;
   border-radius: 8px;
   border: 1px solid var(--ss-sidebar-border);
-  background: var(--ss-sidebar-hover-bg);
-  color: var(--ss-sidebar-text-secondary);
+  background: var(--ss-sidebar-logo-bg);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,7 +214,10 @@
   flex-shrink: 0;
   transition: all 0.2s ease;
   margin-left: auto;
+  margin-right: -1.2rem;
 }
+
+
 
 .shivam-stack-admin-sidebar-toggle-btn:hover {
   background: var(--ss-sidebar-accent-glow);
@@ -443,7 +446,7 @@
 }
 
 .shivam-stack-admin-sidebar-nav-label {
-  flex: 1;
+  /* flex: 1; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -460,6 +463,15 @@
 
 .shivam-stack-admin-sidebar-nav-chevron-open {
   transform: rotate(180deg);
+}
+
+.shivam-stack-admin-sidebar-nav-chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ss-sidebar-text-muted);
+  transition: transform 0.3s ease;
+  margin-left: auto; /* ✅ ADD THIS */
 }
 
 /* ── Dropdown ──────────────────────────────────────────── */
