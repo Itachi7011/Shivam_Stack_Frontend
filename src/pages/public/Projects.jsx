@@ -3,7 +3,6 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { getApiBase } from '../../config/api';
 import {
   Search,
   X,
@@ -41,7 +40,8 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
-const API_BASE = getApiBase();
+const API_BASE = "/api/public/projects";
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const formatDate = (d) =>
   d
