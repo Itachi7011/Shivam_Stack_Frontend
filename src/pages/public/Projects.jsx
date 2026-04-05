@@ -40,7 +40,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
-const API_BASE = "/api/public/projects";
+const API_BASE = "https://shivam-stack-backend.onrender.com/api/public/projects";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const formatDate = (d) =>
