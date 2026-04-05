@@ -37,6 +37,14 @@
   --ss-dur-fast:       140ms;
   --ss-dur-base:       240ms;
   --ss-dur-slow:       420ms;
+
+    --ssn-mobile-bg-light: #ffffff;
+  --ssn-mobile-bg-dark: #0a0820;
+  --ssn-mobile-bg: var(--ssn-mobile-bg-light);
+
+   --ssn-mobile-text-light: #0c0a1e;
+  --ssn-mobile-text-dark: #ede9ff;
+    --ssn-mobile-text: var(--ssn-mobile-text-light);
 }
 
 /* ── Light Theme ──────────────────────────────────────────────────────────── */
@@ -799,13 +807,28 @@
   opacity: 1;
 }
 
+.shivam-stack-navbar-root.light,
+.shivam-stack-navbar-mobile-drawer.light {
+  --ssn-mobile-bg: var(--ssn-mobile-bg-light);
+  --ssn-mobile-text: var(--ssn-mobile-text-light);
+  --ssn-mobile-border: var(--ssn-mobile-border-light);
+}
+
+.shivam-stack-navbar-root.dark,
+.shivam-stack-navbar-mobile-drawer.dark {
+  --ssn-mobile-bg: var(--ssn-mobile-bg-dark);
+  --ssn-mobile-text: var(--ssn-mobile-text-dark);
+  --ssn-mobile-border: var(--ssn-mobile-border-dark);
+}
+
 .shivam-stack-navbar-mobile-drawer {
   position: fixed;
   top: 0;
   right: -100%;
   width: min(340px, 90vw);
   height: 100dvh;
-  background: var(--ssn-mobile-bg);
+  background: var(--ssn-mobile-bg) !important;
+    color: var(--ssn-mobile-text);
   z-index: 999;
   display: flex;
   flex-direction: column;
@@ -1019,7 +1042,7 @@
     display: none;
   }
   .shivam-stack-navbar-hamburger { display: flex; }
-  .shivam-stack-navbar-overlay { display: block; }
+  /* .shivam-stack-navbar-overlay { display: block; } */
 }
 
 @media (max-width: 600px) {

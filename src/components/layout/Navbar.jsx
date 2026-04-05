@@ -680,6 +680,7 @@ const Navbar = () => {
         className={`shivam-stack-navbar-mobile-drawer ${isDarkMode ? "dark" : "light"} ${
           mobileOpen ? "shivam-stack-navbar-mobile-drawer--open" : ""
         }`}
+        
         aria-label="Mobile navigation"
         aria-hidden={!mobileOpen}
       >
