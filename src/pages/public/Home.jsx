@@ -640,8 +640,8 @@ const ACHIEVEMENTS = [
     icon: <TrendingUp size={22} />,
     title: "₹50L+ Revenue Generated",
     desc: "For clients across various industries",
-  },
-  {
+  }, 
+  { 
     icon: <Coffee size={22} />,
     title: "3,000+ Hours Coded",
     desc: "In the last 12 months alone",
