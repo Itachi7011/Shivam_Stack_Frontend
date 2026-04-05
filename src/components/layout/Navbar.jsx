@@ -625,18 +625,18 @@ const Navbar = () => {
               ) : (
                 /* ── Logged-out auth buttons ── */
                 <>
-                  <Link
+                  {/* <Link
                     to="/user/login"
                     className="shivam-stack-navbar-auth-login"
                   >
                     <LogIn size={14} /> Log In
-                  </Link>
-                  <Link
+                  </Link> */}
+                  {/* <Link
                     to="/user/register"
                     className="shivam-stack-navbar-auth-register"
                   >
                     <UserPlus size={14} /> Register
-                  </Link>
+                  </Link> */}
                   <Link to="/contact" className="shivam-stack-navbar-hire-btn">
                     <span
                       className="shivam-stack-navbar-hire-dot"
@@ -895,18 +895,18 @@ const Navbar = () => {
             </button>
           ) : (
             <>
-              <Link
+              {/* <Link
                 to="/user/login"
                 className="shivam-stack-navbar-mobile-auth-btn shivam-stack-navbar-mobile-auth-btn--outline"
               >
                 <LogIn size={16} /> Log In
-              </Link>
-              <Link
+              </Link> */}
+              {/* <Link
                 to="/user/register"
                 className="shivam-stack-navbar-mobile-auth-btn shivam-stack-navbar-mobile-auth-btn--outline"
               >
                 <UserPlus size={16} /> Create Account
-              </Link>
+              </Link> */}
               <Link
                 to="/contact"
                 className="shivam-stack-navbar-mobile-auth-btn shivam-stack-navbar-mobile-auth-btn--primary"

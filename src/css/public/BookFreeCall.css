@@ -286,7 +286,7 @@
   background: var(--ss-bc-bg-secondary);
 }
 .ss-bookcall-container {
-  max-width: 1280px;
+  max-width: 1580px;
   margin: 0 auto;
   padding: 0 clamp(16px, 5vw, 60px);
 }
@@ -337,7 +337,7 @@
    ============================================================ */
 .ss-bookcall-main-layout {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
+  grid-template-columns: 1fr 1.85fr;
   gap: clamp(24px, 4vw, 60px);
   align-items: start;
 }

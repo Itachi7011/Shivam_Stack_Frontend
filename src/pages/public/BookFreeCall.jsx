@@ -9,6 +9,9 @@ import {
   FileText, HeartPulse, Scale, Gamepad2, BarChart3, User,
   Building2, AlertCircle, ExternalLink, Smartphone, Monitor
 } from 'lucide-react';
+import axios from 'axios';
+
+const API_URL = '/api/public';
 
 /* ─────────────────────────────────────────
    DATA
@@ -121,6 +124,109 @@ function FaqItem({ q, a }) {
   );
 }
 
+ const bookCallService = {
+  // Fetch all available services
+  getServices: async () => {
+    try {
+      const response = await axios.get(`${API_URL}/services`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      throw error;
+    }
+  },
+
+  // Fetch available time slots for a specific date
+  getAvailableSlots: async (date) => {
+    try {
+      const response = await axios.get(`${API_URL}/available-slots`, {
+        params: { date: date.toISOString() }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching available slots:', error);
+      throw error;
+    }
+  },
+
+  // Create a new booking
+  createBooking: async (bookingData) => {
+    try {
+      const response = await axios.post(`${API_URL}/bookings`, bookingData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating booking:', error);
+      throw error;
+    }
+  },
+
+  // Get booking by ID
+  getBooking: async (bookingId) => {
+    try {
+      const response = await axios.get(`${API_URL}/bookings`, {
+        params: { bookingId }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching booking:', error);
+      throw error;
+    }
+  },
+
+  // Get bookings by email
+  getBookingsByEmail: async (email) => {
+    try {
+      const response = await axios.get(`${API_URL}/bookings`, {
+        params: { email }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
+      throw error;
+    }
+  },
+
+  // Cancel booking
+  cancelBooking: async (bookingId, reason) => {
+    try {
+      const response = await axios.delete(`${API_URL}/bookings/${bookingId}`, {
+        data: { reason }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error cancelling booking:', error);
+      throw error;
+    }
+  },
+
+  // Update booking status
+  updateBookingStatus: async (bookingId, status, meetingLink) => {
+    try {
+      const response = await axios.patch(`${API_URL}/bookings/${bookingId}/status`, {
+        status,
+        meetingLink
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error updating booking status:', error);
+      throw error;
+    }
+  }
+};
+
+const formatWhatsAppNumber = (number) => {
+  if (!number) return '';
+  // Remove all non-digit characters
+  const cleanNumber = number.toString().replace(/\D/g, '');
+  // Remove leading 0 if present
+  const withoutLeadingZero = cleanNumber.replace(/^0+/, '');
+  // Ensure it starts with country code (assume 91 for India if not present)
+  if (withoutLeadingZero.startsWith('91')) {
+    return withoutLeadingZero;
+  }
+  return `91${withoutLeadingZero}`;
+};
+
 /* ─────────────────────────────────────────
    MAIN
 ───────────────────────────────────────── */
@@ -129,16 +235,86 @@ const BookCall = () => {
   const [step, setStep] = useState(1);           // 1–4
   const TOTAL_STEPS = 4;
 
+  // Get environment variables
+const CONTACT_EMAIL = import.meta.env.VITE_Email || '';
+const CONTACT_GITHUB = import.meta.env.VITE_Github || '';
+const CONTACT_LINKEDIN = import.meta.env.VITE_LinkedIn || '';
+const CONTACT_PHONE = import.meta.env.VITE_Mobile || '';
+const CONTACT_WHATSAPP = import.meta.env.VITE_Whatsapp || '';
+
+const CONTACT_TWITTER = import.meta.env.VITE_Twitter || '';
+const CONTACT_INSTA = import.meta.env.VITE_Insta || '';
+const CONTACT_FACEBOOK = import.meta.env.VITE_Facebook || '';
+
+const WHATSAPP_NUMBER = formatWhatsAppNumber(CONTACT_WHATSAPP || CONTACT_PHONE);
+const WHATSAPP_LINK = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : '';
+
+    const [services, setServices] = useState([]); // Will come from API
+  const [loading, setLoading] = useState(false);
+
   /* Form state */
   const [selectedService, setSelectedService] = useState('');
-  const [selectedDay, setSelectedDay]         = useState(null);
-  const [selectedSlot, setSelectedSlot]       = useState('');
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState('');
+  const [timeSlots, setTimeSlots] = useState([
+    { label: '10:00 AM', avail: true },
+    { label: '11:00 AM', avail: true },
+    { label: '12:00 PM', avail: false },
+    { label: '1:00 PM',  avail: true },
+    { label: '2:00 PM',  avail: true },
+    { label: '3:00 PM',  avail: false },
+    { label: '4:00 PM',  avail: true },
+    { label: '5:00 PM',  avail: true },
+    { label: '6:00 PM',  avail: true },
+    { label: '7:00 PM',  avail: false },
+    { label: '7:30 PM',  avail: true },
+  ]);
+  
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '',
     budget: '', message: '', hearAbout: '',
   });
 
   const days = generateDays();
+
+  // Fetch services on component mount
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    setLoading(true);
+    try {
+      const response = await bookCallService.getServices();
+      if (response.success) {
+        setServices(response.data);
+      }
+    } catch (error) {
+      console.error('Error loading services:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Fetch available slots when a day is selected
+  const handleDaySelect = async (day) => {
+    if (day.isSunday) return;
+    
+    setSelectedDay(day);
+    setSelectedSlot(''); // Reset selected slot
+    
+    setLoading(true);
+    try {
+      const response = await bookCallService.getAvailableSlots(day.dateObj);
+      if (response.success && response.data.length > 0) {
+        setTimeSlots(response.data);
+      }
+    } catch (error) {
+      console.error('Error loading slots:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   /* Intersection observer */
   useEffect(() => {
@@ -180,32 +356,94 @@ const BookCall = () => {
   const nextStep = async () => {
     if (await validateStep()) setStep(s => Math.min(s + 1, TOTAL_STEPS));
   };
+  
   const prevStep = () => setStep(s => Math.max(s - 1, 1));
 
-  const handleConfirm = async () => {
+const handleConfirm = async () => {
+  const svc = services.find(s => s.id === selectedService);
+  
+  if (!svc) {
+    console.error("Service not found");
+    return;
+  }
+  
+  setLoading(true);
+  
+  const bookingData = {
+    selectedService: {
+      id: svc.id,
+      name: svc.name,
+      description: svc.description
+    },
+    selectedDate: {
+      date: selectedDay.dateObj,
+      dayName: selectedDay.dayName,
+      month: selectedDay.month,
+      dayNum: selectedDay.dayNum
+    },
+    selectedTimeSlot: selectedSlot,
+    preferredPlatform: document.querySelector('[name="platform"]')?.value || "Google Meet",
+    clientDetails: {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      company: form.company
+    },
+    projectDetails: {
+      budget: form.budget,
+      message: form.message,
+      hearAbout: form.hearAbout,
+      projectDescription: form.message
+    }
+  };
+  
+  try {
+    const response = await bookCallService.createBooking(bookingData);
+    
+    if (response.success) {
+      // First stop the loading indicator
+      setLoading(false);
+      
+      // Then show success message
+      const { default: Swal } = await import('sweetalert2');
+      await Swal.fire({
+        icon: 'success',
+        title: '🎉 Call Booked!',
+        html: `
+          <p style="color:${isDarkMode ? '#b8b2e0' : '#3d3a5c'};line-height:1.7;font-size:15px;">
+            <strong>Booking ID: ${response.data.bookingId}</strong><br/>
+            <strong style="color:${isDarkMode ? '#f0eeff' : '#0d0b1f'}">
+              ${selectedDay?.dayName}, ${selectedDay?.month} ${selectedDay?.dayNum} at ${selectedSlot}
+            </strong><br/>
+            You'll receive a confirmation email at <strong>${form.email}</strong> within a few minutes.<br/><br/>
+            Looking forward to speaking with you! 🚀
+          </p>
+        `,
+        confirmButtonText: 'Awesome!',
+        background: isDarkMode ? '#131127' : '#fff',
+        color: isDarkMode ? '#f0eeff' : '#0d0b1f',
+        confirmButtonColor: '#6d63ff',
+      });
+      
+      // Reset form after modal is closed
+      setStep(1);
+      setSelectedService('');
+      setSelectedDay(null);
+      setSelectedSlot('');
+      setForm({ name:'', email:'', phone:'', company:'', budget:'', message:'', hearAbout:'' });
+    }
+  } catch (error) {
+    setLoading(false);
     const { default: Swal } = await import('sweetalert2');
-    const svc = SERVICES_OPTIONS.find(s => s.id === selectedService);
     Swal.fire({
-      icon: 'success',
-      title: '🎉 Call Booked!',
-      html: `
-        <p style="color:${isDarkMode ? '#b8b2e0' : '#3d3a5c'};line-height:1.7;font-size:15px;">
-          <strong style="color:${isDarkMode ? '#f0eeff' : '#0d0b1f'}">
-            ${selectedDay?.dayName}, ${selectedDay?.month} ${selectedDay?.dayNum} at ${selectedSlot}
-          </strong><br/>
-          You'll receive a confirmation email at <strong>${form.email}</strong> within a few minutes.<br/><br/>
-          Looking forward to speaking with you! 🚀
-        </p>
-      `,
-      confirmButtonText: 'Awesome!',
+      icon: 'error',
+      title: 'Booking Failed',
+      text: error.response?.data?.message || 'Something went wrong. Please try again.',
       background: isDarkMode ? '#131127' : '#fff',
       color: isDarkMode ? '#f0eeff' : '#0d0b1f',
-      confirmButtonColor: '#6d63ff',
     });
-    // Reset
-    setStep(1); setSelectedService(''); setSelectedDay(null);
-    setSelectedSlot(''); setForm({ name:'',email:'',phone:'',company:'',budget:'',message:'',hearAbout:'' });
-  };
+  }
+};
 
   const stepMeta = [
     { num: '01', label: 'Service',     sublabel: 'What do you need?' },
@@ -214,10 +452,46 @@ const BookCall = () => {
     { num: '04', label: 'Confirm',     sublabel: 'Review & book' },
   ];
 
-  const svcObj = SERVICES_OPTIONS.find(s => s.id === selectedService);
+  const svcObj = services.find(s => s.id === selectedService);
+
+ 
+
+  /* Intersection observer */
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('ss-bookcall-visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.ss-bookcall-fade-in').forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, [step]);
+
+
 
   return (
     <div className={`ss-bookcall-root ${isDarkMode ? 'dark' : 'light'}`}>
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.7)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <div className="ss-bookcall-spinner" style={{ width: '50px', height: '50px', border: '3px solid #6d63ff', borderTopColor: 'transparent', borderRadius: '50%', animation: 'spin 1s linear infinite', marginBottom: '20px' }}></div>
+            <p>Processing your booking...</p>
+          </div>
+        </div>
+      )}
 
       {/* ══════════ HERO ══════════ */}
       <section className="ss-bookcall-hero">
@@ -303,30 +577,68 @@ const BookCall = () => {
                 </div>
               </div>
 
-              {/* Quick contact */}
-              <div className="ss-bookcall-contact-quick">
-                {[
-                  { icon: Mail,    bg: 'ss-bc-bg-1', label: 'Prefer Email?',   value: 'shivam@shivamstack.dev',    href: 'mailto:shivam@shivamstack.dev' },
-                  { icon: Linkedin,bg: 'ss-bc-bg-5', label: 'Connect',         value: 'linkedin.com/in/shivamstack', href: 'https://linkedin.com' },
-                  { icon: Github,  bg: null,         label: 'See the Code',    value: 'github.com/shivamstack',     href: 'https://github.com' },
-                  { icon: MapPin,  bg: 'ss-bc-bg-3', label: 'Based In',        value: 'India · Available Worldwide', href: null },
-                ].map((c, i) => {
-                  const Icon = c.icon;
-                  const Tag = c.href ? 'a' : 'div';
-                  return (
-                    <Tag key={i} className="ss-bookcall-contact-quick-item" href={c.href || undefined} target={c.href ? '_blank' : undefined} rel="noopener noreferrer">
-                      <div className={`ss-bookcall-contact-quick-icon ${c.bg || ''}`} style={!c.bg ? { background: 'var(--ss-bc-border)', color: 'var(--ss-bc-text-primary)' } : {}}>
-                        <Icon size={17} color={c.bg ? '#fff' : undefined} />
-                      </div>
-                      <div>
-                        <div className="ss-bookcall-contact-quick-label">{c.label}</div>
-                        <div className="ss-bookcall-contact-quick-value">{c.value}</div>
-                      </div>
-                      {c.href && <ArrowRight size={15} className="ss-bookcall-contact-quick-arrow" />}
-                    </Tag>
-                  );
-                })}
-              </div>
+{/* Quick contact */}
+<div className="ss-bookcall-contact-quick">
+  {[
+    { 
+      icon: Mail, 
+      bg: 'ss-bc-bg-1', 
+      label: 'Prefer Email?', 
+      value: CONTACT_EMAIL, 
+      href: `mailto:${CONTACT_EMAIL}` 
+    },
+    { 
+      icon: Linkedin, 
+      bg: 'ss-bc-bg-5', 
+      label: 'Connect', 
+      value: CONTACT_LINKEDIN ? CONTACT_LINKEDIN.replace('https://', '').replace('www.', '') : 'LinkedIn', 
+      href: CONTACT_LINKEDIN 
+    },
+    { 
+      icon: Github, 
+      bg: null, 
+      label: 'See the Code', 
+      value: CONTACT_GITHUB ? CONTACT_GITHUB.replace('https://', '').replace('www.', '') : 'GitHub', 
+      href: CONTACT_GITHUB 
+    },
+    { 
+      icon: MessageSquare, 
+      bg: 'ss-bc-bg-2', 
+      label: 'WhatsApp', 
+      value: CONTACT_PHONE || 'Available on WhatsApp', 
+      href: WHATSAPP_LINK,
+      isWhatsApp: true
+    },
+    { 
+      icon: MapPin, 
+      bg: 'ss-bc-bg-3', 
+      label: 'Based In', 
+      value: 'India · Available Worldwide', 
+      href: null 
+    },
+  ].filter(item => {
+    // Filter out items with empty values
+    if (item.href === null) return true;
+    if (!item.value || item.value === '') return false;
+    if (item.href === '') return false;
+    return true;
+  }).map((c, i) => {
+    const Icon = c.icon;
+    const Tag = c.href ? 'a' : 'div';
+    return (
+      <Tag key={i} className="ss-bookcall-contact-quick-item" href={c.href || undefined} target={c.href ? '_blank' : undefined} rel="noopener noreferrer">
+        <div className={`ss-bookcall-contact-quick-icon ${c.bg || ''}`} style={!c.bg ? { background: 'var(--ss-bc-border)', color: 'var(--ss-bc-text-primary)' } : {}}>
+          <Icon size={17} color={c.bg ? '#fff' : undefined} />
+        </div>
+        <div>
+          <div className="ss-bookcall-contact-quick-label">{c.label}</div>
+          <div className="ss-bookcall-contact-quick-value">{c.value}</div>
+        </div>
+        {c.href && <ArrowRight size={15} className="ss-bookcall-contact-quick-arrow" />}
+      </Tag>
+    );
+  })}
+</div>
             </div>
 
             {/* ── RIGHT FORM PANEL ── */}
@@ -363,17 +675,24 @@ const BookCall = () => {
                       Select the type of project or service you'd like to discuss. This helps me prepare the right questions and suggestions before the call.
                     </p>
                     <div className="ss-bookcall-service-grid">
-                      {SERVICES_OPTIONS.map(svc => {
-                        const Icon = svc.icon;
+                      {services.map(svc => {
+                        // Map icon names to actual components
+                        const iconMap = {
+                          Layers: Layers, ShoppingBag: ShoppingBag, LayoutDashboard: LayoutDashboard,
+                          Lock: Lock, Brain: Brain, Building2: Building2, Server: Server,
+                          Palette: Palette, MessageSquare: MessageSquare, Code2: Code2,
+                          BarChart3: BarChart3, Rocket: Rocket, Target: Target, Monitor: Monitor
+                        };
+                        const Icon = iconMap[svc.icon] || Layers;
                         const isSelected = selectedService === svc.id;
                         return (
                           <div key={svc.id} className={`ss-bookcall-service-option ${isSelected ? 'ss-bookcall-service-selected' : ''}`} onClick={() => setSelectedService(svc.id)}>
                             <div style={{ display: 'flex', width: '100%', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                              <div className={`ss-bookcall-service-opt-icon ${svc.bg}`}><Icon size={18} /></div>
+                              <div className={`ss-bookcall-service-opt-icon ${svc.iconBg}`}><Icon size={18} /></div>
                               <div className="ss-bookcall-service-selected-check"><CheckCircle2 size={16} /></div>
                             </div>
                             <div className="ss-bookcall-service-opt-name">{svc.name}</div>
-                            <div className="ss-bookcall-service-opt-desc">{svc.desc}</div>
+                            <div className="ss-bookcall-service-opt-desc">{svc.description}</div>
                           </div>
                         );
                       })}
@@ -393,7 +712,7 @@ const BookCall = () => {
                   </>
                 )}
 
-                {/* ── STEP 2: Date & Time ── */}
+                {/* ── STEP 2: Date & Time (UPDATED with API integration) ── */}
                 {step === 2 && (
                   <>
                     <h2 className="ss-bookcall-form-step-title">Pick a date & time</h2>
@@ -401,7 +720,6 @@ const BookCall = () => {
                       All times shown in IST (India Standard Time, UTC+5:30). Slots marked as unavailable are already booked.
                     </p>
 
-                    {/* Day picker */}
                     <div className="ss-bookcall-form-group">
                       <label className="ss-bookcall-form-label"><Calendar size={13} /> Choose a Day <span className="ss-bookcall-form-label-required">*</span></label>
                       <div className="ss-bookcall-day-grid">
@@ -409,7 +727,7 @@ const BookCall = () => {
                           <button
                             key={i}
                             className={`ss-bookcall-day-btn ${d.isSunday ? 'ss-bookcall-day-past' : ''} ${selectedDay?.dayNum === d.dayNum && selectedDay?.month === d.month ? 'ss-bookcall-day-selected' : ''}`}
-                            onClick={() => !d.isSunday && setSelectedDay(d)}
+                            onClick={() => handleDaySelect(d)}
                             title={d.isSunday ? 'Closed on Sundays' : ''}
                           >
                             <span className="ss-bookcall-day-name">{d.dayName}</span>
@@ -420,11 +738,10 @@ const BookCall = () => {
                       {selectedDay && <p style={{ fontSize: '12px', color: 'var(--ss-bc-accent-3)', marginTop: '8px', fontFamily: 'var(--ss-bc-font-mono)' }}>✓ Selected: {selectedDay.dayName}, {selectedDay.month} {selectedDay.dayNum}</p>}
                     </div>
 
-                    {/* Time slots */}
                     <div className="ss-bookcall-form-group">
                       <label className="ss-bookcall-form-label"><Clock size={13} /> Choose a Time <span className="ss-bookcall-form-label-required">*</span></label>
                       <div className="ss-bookcall-timeslot-grid">
-                        {TIME_SLOTS.map(slot => (
+                        {timeSlots.map(slot => (
                           <button
                             key={slot.label}
                             className={`ss-bookcall-timeslot-btn ${!slot.avail ? 'ss-bookcall-timeslot-disabled' : ''} ${selectedSlot === slot.label ? 'ss-bookcall-timeslot-selected' : ''}`}
@@ -437,7 +754,6 @@ const BookCall = () => {
                       </div>
                     </div>
 
-                    {/* Call platform */}
                     <div className="ss-bookcall-form-group">
                       <label className="ss-bookcall-form-label"><Monitor size={13} /> Preferred Platform</label>
                       <select name="platform" className="ss-bookcall-form-select" defaultValue="">
@@ -462,7 +778,7 @@ const BookCall = () => {
                   </>
                 )}
 
-                {/* ── STEP 3: Contact Details ── */}
+                {/* ── STEP 3: Contact Details (unchanged) ── */}
                 {step === 3 && (
                   <>
                     <h2 className="ss-bookcall-form-step-title">Tell me about you</h2>
@@ -525,11 +841,6 @@ const BookCall = () => {
                       </select>
                     </div>
 
-                    <div className="ss-bookcall-form-group">
-                      <label className="ss-bookcall-form-label">Anything else you'd like me to know? <span style={{ color: 'var(--ss-bc-text-muted)', fontWeight: 400 }}>(optional)</span></label>
-                      <textarea name="message" value={form.message} onChange={handleFormChange} className="ss-bookcall-form-textarea" placeholder="Share any extra context, references, links, or specific questions you want answered on the call..." />
-                    </div>
-
                     <div className="ss-bookcall-form-nav">
                       <button className="ss-bookcall-btn-ghost" onClick={prevStep}><ChevronLeft size={15} /> Back</button>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -542,7 +853,7 @@ const BookCall = () => {
                   </>
                 )}
 
-                {/* ── STEP 4: Confirm ── */}
+                {/* ── STEP 4: Confirm (UPDATED with API submission) ── */}
                 {step === 4 && (
                   <>
                     <h2 className="ss-bookcall-form-step-title">Review & Confirm</h2>
@@ -566,7 +877,8 @@ const BookCall = () => {
                           <div className="ss-bookcall-summary-value">{item.value}</div>
                         </div>
                       ))}
-                    </div>
+
+                                  </div>
 
                     {form.message && (
                       <div className="ss-bookcall-summary-item" style={{ marginBottom: '14px' }}>
@@ -577,7 +889,7 @@ const BookCall = () => {
 
                     <div className="ss-bookcall-summary-note">
                       <Sparkles size={15} style={{ display: 'inline', marginRight: '6px', color: 'var(--ss-bc-accent)' }} />
-                      <strong>What happens next:</strong> After confirming, you'll receive a <strong>calendar invite</strong> and <strong>Google Meet link</strong> at {form.email || 'your email'} within 15 minutes. I'll also send a brief pre-call questionnaire to make the most of our 30 minutes together.
+                      <strong>What happens next:</strong> After confirming, you'll receive a <strong>calendar invite</strong> and <strong>Google Meet link</strong> at {form.email || 'your email'} within 15 minutes.
                     </div>
 
                     <div className="ss-bookcall-form-nav">
@@ -705,9 +1017,9 @@ const BookCall = () => {
               <button className="ss-bookcall-btn-primary" onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setStep(1); }}>
                 <Calendar size={16} /> Book Your Free Call
               </button>
-              <a href="mailto:shivam@shivamstack.dev" className="ss-bookcall-btn-outline-hero">
-                <Mail size={16} /> Email Instead
-              </a>
+             <a href={`mailto:${CONTACT_EMAIL}`} className="ss-bookcall-btn-outline-hero">
+  <Mail size={16} /> Email Instead
+</a>
             </div>
           </div>
         </div>

@@ -161,7 +161,7 @@ const AboutUs = () => {
               <Mail size={12} />
               Contact Us
             </Link>
-            <Link to="/privacy" className="sspg-sidebar-link">
+            <Link to="/privacy-policy" className="sspg-sidebar-link">
               <Shield size={12} />
               Privacy Policy
             </Link>
@@ -898,7 +898,7 @@ const AboutUs = () => {
               </div>
               <ChevronRight size={16} />
             </Link>
-            <Link to="/privacy" className="sspg-related-card">
+            <Link to="/privacy-policy" className="sspg-related-card">
               <Shield size={22} />
               <div>
                 <strong>Privacy Policy</strong>
@@ -906,7 +906,7 @@ const AboutUs = () => {
               </div>
               <ChevronRight size={16} />
             </Link>
-            <Link to="/terms" className="sspg-related-card">
+            <Link to="/terms-of-service" className="sspg-related-card">
               <FileText size={22} />
               <div>
                 <strong>Terms of Service</strong>

@@ -209,11 +209,11 @@
   padding: 13px 28px;
   border-radius: var(--ss-radius-btn);
   background: rgba(255,255,255,0.08);
-  color: #fff;
+  color: #511bd8;
   font-family: var(--ss-font-body);
   font-size: clamp(0.84rem, 1.5vw, 0.92rem);
   font-weight: 600;
-  border: 1.5px solid rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(56, 11, 222, 0.5) !important;
   cursor: pointer;
   text-decoration: none;
   transition: all var(--ss-transition);
@@ -970,7 +970,7 @@
 
 .shivam-stack-homepage-tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 110px);
+  grid-template-columns: repeat(auto-fit, 210px);
   gap: 14px;
   justify-content: center;
 }
@@ -1802,6 +1802,19 @@
   font-size: 0.75rem;
   color: var(--ss-text-muted);
   font-weight: 500;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.shivam-stack-homepage-spinner {
+  animation: spin 1s linear infinite;
 }
 
 .shivam-stack-homepage-resource-link {

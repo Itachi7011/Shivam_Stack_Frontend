@@ -4,9 +4,10 @@ import {
   Mail, MessageSquare, Clock, Globe, Shield, FileText,
   ChevronRight, ArrowUp, Send, User, AtSign, HelpCircle,
   CheckCircle, AlertTriangle, Info, Sparkles, Zap, Phone,
-  Github, Twitter, Linkedin, Youtube, Plus,
+  Github, Twitter, Linkedin, Youtube, Plus, Instagram, Facebook,
 } from "lucide-react";
 import { ThemeContext } from "../../context/ThemeContext";
+import axios from "axios";
 
 const META = {
   title:       "Contact Us — ShivamStack",
@@ -69,6 +70,8 @@ function useActiveSection(ids) {
   return [active];
 }
 
+const API_URL = '/api/public';
+
 const ContactUs = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [active]       = useActiveSection(SECTIONS.map((s) => s.id));
@@ -80,6 +83,55 @@ const ContactUs = () => {
   const formRef = useRef(null);
 
   const MAX_CHARS = 2000;
+
+  const [contactInfo, setContactInfo] = useState({
+    email: {},
+    social: {},
+    phone: '',
+    whatsapp: ''
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.title = META.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", META.description);
+  }, []);
+
+  useEffect(() => {
+    const fn = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+
+    // Form state
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    category: '',
+    message: ''
+  });
+
+
+  // Fetch contact info on mount
+  useEffect(() => {
+    fetchContactInfo();
+  }, []);
+
+  const fetchContactInfo = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/contact/info`);
+      if (response.data.success) {
+        setContactInfo(response.data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching contact info:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     document.title = META.title;
@@ -98,18 +150,98 @@ const ContactUs = () => {
 
   const handleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
-  const handleMessageChange = (e) => setCharCount(e.target.value.length);
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    const fieldMap = {
+      'ct-name': 'name',
+      'ct-email': 'email',
+      'ct-subject': 'subject',
+      'ct-category': 'category',
+      'ct-message': 'message'
+    };
+    const field = fieldMap[id];
+    if (field) {
+      setFormData(prev => ({ ...prev, [field]: value }));
+    }
+  };
+
+  const handleMessageChange = (e) => {
+    setCharCount(e.target.value.length);
+    setFormData(prev => ({ ...prev, message: e.target.value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission — replace with real API call
-    await new Promise((r) => setTimeout(r, 1600));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    formRef.current?.reset();
-    setCharCount(0);
+    
+    try {
+      const response = await axios.post(`${API_URL}/contact/submit`, formData);
+      
+      if (response.data.success) {
+        setSubmitted(true);
+        formRef.current?.reset();
+        setFormData({ name: '', email: '', subject: '', category: '', message: '' });
+        setCharCount(0);
+      } else {
+        throw new Error(response.data.message);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert(error.response?.data?.message || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  // Contact emails from .env (you can add these to your .env)
+const CONTACT_EMAILS = {
+  general: import.meta.env.VITE_Email || "hello@shivamstack.com",
+  support: import.meta.env.VITE_Email || "support@shivamstack.com",
+  privacy: import.meta.env.VITE_Email || "privacy@shivamstack.com",
+  legal: import.meta.env.VITE_Email || "legal@shivamstack.com",
+  collab: import.meta.env.VITE_Email || "collab@shivamstack.com",
+  security: import.meta.env.VITE_Email || "security@shivamstack.com",
+};
+
+
+// Email channels with dynamic emails from .env
+const emailChannels = [
+  { icon: Mail, c: "indigo", label: "General / Hello", email: CONTACT_EMAILS.general, note: "General questions, feedback, and friendly messages. Replies within 2 business days." },
+  { icon: HelpCircle, c: "green", label: "Technical Support", email: CONTACT_EMAILS.support, note: "Purchase issues, product access, order problems, and technical bugs. Priority queue." },
+  { icon: Shield, c: "amber", label: "Privacy & Data", email: CONTACT_EMAILS.privacy, note: "Data access, correction, deletion requests, and all DPDP Act or GDPR-related enquiries." },
+  { icon: FileText, c: "cyan", label: "Legal & Licensing", email: CONTACT_EMAILS.legal, note: "Copyright notices, licensing inquiries, DMCA requests, and legal correspondence." },
+  { icon: Zap, c: "purple", label: "Collaborations", email: CONTACT_EMAILS.collab, note: "Partnership proposals, sponsored content inquiries, and joint project opportunities." },
+  { icon: AlertTriangle, c: "rose", label: "Security Reports", email: CONTACT_EMAILS.security, note: "Responsible vulnerability disclosure. We take security reports very seriously." },
+];
+
+// Get social links directly from .env
+  const SOCIAL_LINKS = {
+  github: import.meta.env.VITE_Github || "",
+  twitter: import.meta.env.VITE_Twitter || "",
+  linkedin: import.meta.env.VITE_LinkedIn || "",
+  instagram: import.meta.env.VITE_Insta || "",
+  facebook: import.meta.env.VITE_Facebook || "",
+  whatsapp: import.meta.env.VITE_Whatsapp || "",
+};
+
+
+// Social links with URLs directly from .env
+const socialLinks = [
+  { icon: Github, c: "indigo", name: "GitHub", url: SOCIAL_LINKS.github, note: "Open-source projects, code, and contributions." },
+  { icon: Twitter, c: "cyan", name: "Twitter / X", url: SOCIAL_LINKS.twitter, note: "Quick updates, threads, and dev commentary." },
+  { icon: Linkedin, c: "indigo", name: "LinkedIn", url: SOCIAL_LINKS.linkedin, note: "Professional updates and career content." },
+  { icon: Youtube, c: "rose", name: "YouTube", url: SOCIAL_LINKS.youtube, note: "Video tutorials and project walkthroughs." },
+  { icon: Instagram, c: "pink", name: "Instagram", url: SOCIAL_LINKS.instagram, note: "Visual updates and behind-the-scenes." },
+  { icon: Facebook, c: "blue", name: "Facebook", url: SOCIAL_LINKS.facebook, note: "Community updates and announcements." },
+].filter(link => link.url && link.url !== "");
+
+  if (loading) {
+    return (
+      <div className={`sspg-root ${isDarkMode ? "dark" : "light"}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+        <div>Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <main
@@ -170,8 +302,8 @@ const ContactUs = () => {
             ))}
           </nav>
           <div className="sspg-sidebar-footer">
-            <Link to="/privacy" className="sspg-sidebar-link"><Shield size={12} />Privacy Policy</Link>
-            <Link to="/terms" className="sspg-sidebar-link"><FileText size={12} />Terms of Service</Link>
+            <Link to="/privacy-policy" className="sspg-sidebar-link"><Shield size={12} />Privacy Policy</Link>
+            <Link to="/terms-of-service" className="sspg-sidebar-link"><FileText size={12} />Terms of Service</Link>
           </div>
         </aside>
 
@@ -221,6 +353,7 @@ const ContactUs = () => {
                         required
                         autoComplete="name"
                         maxLength={100}
+                          onChange={handleInputChange}
                       />
                     </div>
 
@@ -235,6 +368,7 @@ const ContactUs = () => {
                         required
                         autoComplete="email"
                         maxLength={200}
+                          onChange={handleInputChange}
                       />
                     </div>
 
@@ -248,13 +382,14 @@ const ContactUs = () => {
                         placeholder="Brief subject of your message"
                         required
                         maxLength={200}
+                          onChange={handleInputChange}
                       />
                     </div>
 
                     {/* Category */}
                     <div className="sspg-form-group sspg-form-group--full">
                       <label className="sspg-form-label" htmlFor="ct-category">Category *</label>
-                      <select id="ct-category" className="sspg-form-select" required defaultValue="">
+                      <select id="ct-category" className="sspg-form-select" required defaultValue=""   onChange={handleInputChange}>
                         <option value="" disabled>Select a category…</option>
                         <option value="general">General Inquiry</option>
                         <option value="support">Technical Support</option>
@@ -306,7 +441,7 @@ const ContactUs = () => {
                   </button>
 
                   <p className="sspg-form-note">
-                    By submitting this form you agree to our <Link to="/privacy" style={{ color: 'var(--sspg-text-accent)' }}>Privacy Policy</Link>.
+                    By submitting this form you agree to our <Link to="/privacy-policy" style={{ color: 'var(--sspg-text-accent)' }}>Privacy Policy</Link>.
                     Your data will only be used to respond to your enquiry.
                   </p>
                 </form>
@@ -315,51 +450,44 @@ const ContactUs = () => {
           </section>
 
           {/* ── Other Channels ── */}
-          <section id="ct-channels" className="sspg-section sspg-reveal" aria-labelledby="ct-channels-h">
-            <span className="sspg-section-num" aria-hidden="true">02</span>
-            <header className="sspg-section-head">
-              <div className="sspg-section-icon sspg-color-cyan"><AtSign size={18} /></div>
-              <h2 id="ct-channels-h" className="sspg-section-title">Direct Email Channels</h2>
-            </header>
-            <div className="sspg-prose">
-              <p>For specific types of enquiries, you can reach us directly by email. Using the correct channel ensures your message is routed to the right context and handled appropriately.</p>
+<section id="ct-channels" className="sspg-section sspg-reveal" aria-labelledby="ct-channels-h">
+        <span className="sspg-section-num" aria-hidden="true">02</span>
+        <header className="sspg-section-head">
+          <div className="sspg-section-icon sspg-color-cyan"><AtSign size={18} /></div>
+          <h2 id="ct-channels-h" className="sspg-section-title">Direct Email Channels</h2>
+        </header>
+        <div className="sspg-prose">
+          <p>For specific types of enquiries, you can reach us directly by email. Using the correct channel ensures your message is routed to the right context and handled appropriately.</p>
 
-              <div className="sspg-contact-info-cards">
-                {[
-                  { icon: Mail,          c: "indigo", label: "General / Hello",      addr: "hello@shivamstack.com",   note: "General questions, feedback, and friendly messages. Replies within 2 business days." },
-                  { icon: HelpCircle,    c: "green",  label: "Technical Support",    addr: "support@shivamstack.com", note: "Purchase issues, product access, order problems, and technical bugs. Priority queue." },
-                  { icon: Shield,        c: "amber",  label: "Privacy & Data",       addr: "privacy@shivamstack.com", note: "Data access, correction, deletion requests, and all DPDP Act or GDPR-related enquiries." },
-                  { icon: FileText,      c: "cyan",   label: "Legal & Licensing",    addr: "legal@shivamstack.com",   note: "Copyright notices, licensing inquiries, DMCA requests, and legal correspondence." },
-                  { icon: Zap,           c: "purple", label: "Collaborations",       addr: "collab@shivamstack.com",  note: "Partnership proposals, sponsored content inquiries, and joint project opportunities." },
-                  { icon: AlertTriangle, c: "rose",   label: "Security Reports",     addr: "security@shivamstack.com",note: "Responsible vulnerability disclosure. We take security reports very seriously." },
-                ].map((ch, i) => (
-                  <a
-                    key={i}
-                    href={`mailto:${ch.addr}`}
-                    className="sspg-contact-info-card"
-                    aria-label={`Email ${ch.label}`}
-                  >
-                    <div className={`sspg-contact-info-icon sspg-color-${ch.c}`}>
-                      <ch.icon size={18} />
-                    </div>
-                    <div>
-                      <strong>{ch.label}</strong>
-                      <span style={{ display: 'block', color: 'var(--sspg-text-accent)', fontSize: 13, margin: '2px 0' }}>{ch.addr}</span>
-                      <span>{ch.note}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
+<div className="sspg-contact-info-cards">
+  {emailChannels.map((ch, i) => (
+    <a
+      key={i}
+      href={`mailto:${ch.email}`}
+      className="sspg-contact-info-card"
+      aria-label={`Email ${ch.label}`}
+    >
+      <div className={`sspg-contact-info-icon sspg-color-${ch.c}`}>
+        <ch.icon size={18} />
+      </div>
+      <div>
+        <strong>{ch.label}</strong>
+        <span style={{ display: 'block', color: 'var(--sspg-text-accent)', fontSize: 13, margin: '2px 0' }}>{ch.email}</span>
+        <span>{ch.note}</span>
+      </div>
+    </a>
+  ))}
+</div>
 
-              <div className="sspg-callout sspg-callout--info">
-                <Info size={16} className="sspg-callout-icon" />
-                <div>
-                  <strong>Email Tips for Faster Resolution</strong>
-                  <p>Include your registered account email, order ID (for purchase issues), browser/device details (for bugs), and as much specific context as possible. Vague messages like "it's not working" require back-and-forth that delays resolution.</p>
-                </div>
-              </div>
+          <div className="sspg-callout sspg-callout--info">
+            <Info size={16} className="sspg-callout-icon" />
+            <div>
+              <strong>Email Tips for Faster Resolution</strong>
+              <p>Include your registered account email, order ID (for purchase issues), browser/device details (for bugs), and as much specific context as possible. Vague messages like "it's not working" require back-and-forth that delays resolution.</p>
             </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
           {/* ── Response Times ── */}
           <section id="ct-response" className="sspg-section sspg-reveal" aria-labelledby="ct-response-h">
@@ -438,47 +566,42 @@ const ContactUs = () => {
 
           {/* ── Social ── */}
           <section id="ct-social" className="sspg-section sspg-reveal" aria-labelledby="ct-social-h">
-            <span className="sspg-section-num" aria-hidden="true">05</span>
-            <header className="sspg-section-head">
-              <div className="sspg-section-icon sspg-color-purple"><Globe size={18} /></div>
-              <h2 id="ct-social-h" className="sspg-section-title">Follow &amp; Connect</h2>
-            </header>
-            <div className="sspg-prose">
-              <p>Stay updated with ShivamStack's latest projects, tutorials, and digital products by following on social media. <strong>Please note that social media platforms are not monitored for support requests</strong> — use the contact form or email channels above for any issues requiring a response.</p>
+        <span className="sspg-section-num" aria-hidden="true">05</span>
+        <header className="sspg-section-head">
+          <div className="sspg-section-icon sspg-color-purple"><Globe size={18} /></div>
+          <h2 id="ct-social-h" className="sspg-section-title">Follow &amp; Connect</h2>
+        </header>
+        <div className="sspg-prose">
+          <p>Stay updated with ShivamStack's latest projects, tutorials, and digital products by following on social media. <strong>Please note that social media platforms are not monitored for support requests</strong> — use the contact form or email channels above for any issues requiring a response.</p>
 
-              <div className="sspg-tp-grid" style={{ marginTop: 24 }}>
-                {[
-                  { icon: Github,   c: "indigo", name: "GitHub",   url: "https://github.com/shivamstack",   note: "Open-source projects, code, and contributions." },
-                  { icon: Twitter,  c: "cyan",   name: "Twitter / X", url: "https://twitter.com/shivamstack", note: "Quick updates, threads, and dev commentary." },
-                  { icon: Linkedin, c: "indigo", name: "LinkedIn",  url: "https://linkedin.com/in/shivamstack", note: "Professional updates and career content." },
-                  { icon: Youtube,  c: "rose",   name: "YouTube",   url: "https://youtube.com/@shivamstack", note: "Video tutorials and project walkthroughs." },
-                ].map((s, i) => (
-                  <a
-                    key={i}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sspg-tp-card"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                      <s.icon size={16} className={`sspg-color-${s.c}`} />
-                      <strong>{s.name}</strong>
-                    </div>
-                    <span>{s.note}</span>
-                  </a>
-                ))}
-              </div>
+<div className="sspg-tp-grid" style={{ marginTop: 24 }}>
+  {socialLinks.map((s, i) => (
+    <a
+      key={i}
+      href={s.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="sspg-tp-card"
+      style={{ textDecoration: 'none' }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+        <s.icon size={16} className={`sspg-color-${s.c}`} />
+        <strong>{s.name}</strong>
+      </div>
+      <span>{s.note}</span>
+    </a>
+  ))}
+</div>
 
-              <div className="sspg-callout sspg-callout--info">
-                <Info size={16} className="sspg-callout-icon" />
-                <div>
-                  <strong>For Support, Always Use Email</strong>
-                  <p>DMs on Twitter/GitHub or comments on YouTube are not monitored for support. They may be missed or delayed by weeks. Email is the only guaranteed way to reach us.</p>
-                </div>
-              </div>
+          <div className="sspg-callout sspg-callout--info">
+            <Info size={16} className="sspg-callout-icon" />
+            <div>
+              <strong>For Support, Always Use Email</strong>
+              <p>DMs on Twitter/GitHub or comments on YouTube are not monitored for support. They may be missed or delayed by weeks. Email is the only guaranteed way to reach us.</p>
             </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
           {/* Related */}
           <div className="sspg-related">
@@ -487,12 +610,12 @@ const ContactUs = () => {
               <div><strong>About ShivamStack</strong><span>Learn about the creator</span></div>
               <ChevronRight size={16} />
             </Link>
-            <Link to="/privacy" className="sspg-related-card">
+            <Link to="/privacy-policy" className="sspg-related-card">
               <Shield size={22} />
               <div><strong>Privacy Policy</strong><span>How we handle your data</span></div>
               <ChevronRight size={16} />
             </Link>
-            <Link to="/terms" className="sspg-related-card">
+            <Link to="/terms-of-service" className="sspg-related-card">
               <FileText size={22} />
               <div><strong>Terms of Service</strong><span>Rules and guidelines</span></div>
               <ChevronRight size={16} />
