@@ -40,7 +40,8 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
-const API_BASE = "https://shivam-stack-backend.onrender.com/api/public/projects";
+const API_BASE =
+  "https://shivam-stack-backend.onrender.com/api/public/projects";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const formatDate = (d) =>
@@ -890,6 +891,35 @@ const MyProjects = () => {
         featured: all.filter((p) => p.isFeatured).length,
       });
 
+      try {
+        const statsParams = {
+          limit: 1000, // Get all projects
+          search: debouncedSearch,
+        };
+        if (activeCategory) statsParams.category = activeCategory;
+        if (activeStatus) statsParams.status = activeStatus;
+
+        const statsRes = await axios.get(`${API_BASE}`, {
+          params: statsParams,
+        });
+        const allProjects = statsRes.data.data || [];
+
+        setStats({
+          total: statsRes.data.pagination?.total || 0,
+          completed: allProjects.filter((p) => p.status === "completed").length,
+          inProgress: allProjects.filter((p) => p.status === "in-progress")
+            .length,
+          featured: allProjects.filter((p) => p.isFeatured).length,
+        });
+      } catch (err) {
+        console.error("Error fetching stats:", err);
+        setStats({
+          total: pagination?.total || 0,
+          completed: 0,
+          inProgress: 0,
+          featured: 0,
+        });
+      }
     } catch {
       setProjects([]);
     } finally {
