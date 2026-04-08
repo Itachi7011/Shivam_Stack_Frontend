@@ -88,15 +88,15 @@ const AVAILABILITY = {
 const TECH_STACK = [
   // ================= FRONTEND =================
   { name: "React", icon: "⚛️", color: "#61DAFB", category: "Frontend" },
-  { name: "Next.js", icon: "▲", color: "#FFFFFF", category: "Frontend" },
+  // { name: "Next.js", icon: "▲", color: "#FFFFFF", category: "Frontend" },
   { name: "Redux Toolkit", icon: "🌀", color: "#764ABC", category: "Frontend" },
-  // { name: "React Query", icon: "🔄", color: "#FF4154", category: "Frontend" },
-  // {
-  //   name: "React Hook Form",
-  //   icon: "📋",
-  //   color: "#EC5990",
-  //   category: "Frontend",
-  // },
+  { name: "React Query", icon: "🔄", color: "#FF4154", category: "Frontend" },
+  {
+    name: "React Hook Form",
+    icon: "📋",
+    color: "#EC5990",
+    category: "Frontend",
+  },
   { name: "Material UI", icon: "🟦", color: "#007FFF", category: "Frontend" },
 
   // ================= BACKEND =================
@@ -112,8 +112,8 @@ const TECH_STACK = [
 
   // ================= DATABASE =================
   { name: "MongoDB", icon: "🍃", color: "#47A248", category: "Database" },
-  // { name: "Mongoose", icon: "📀", color: "#880000", category: "Database" },
-  { name: "PostgreSQL", icon: "🐘", color: "#336791", category: "Database" },
+  { name: "Mongoose", icon: "📀", color: "#880000", category: "Database" },
+  // { name: "PostgreSQL", icon: "🐘", color: "#336791", category: "Database" },
   // { name: "Prisma", icon: "🔷", color: "#2D3748", category: "Database" },
   // { name: "Supabase", icon: "🟢", color: "#3ECF8E", category: "Database" },
 
@@ -127,20 +127,20 @@ const TECH_STACK = [
   // { name: "CSS3", icon: "🎨", color: "#1572B6", category: "CSS" },
   { name: "Sass", icon: "💅", color: "#CC6699", category: "CSS" },
   { name: "Tailwind CSS", icon: "💨", color: "#06B6D4", category: "CSS" },
-  // { name: "Styled Components", icon: "💖", color: "#DB7093", category: "CSS" },
+  { name: "Styled Components", icon: "💖", color: "#DB7093", category: "CSS" },
   { name: "Bootstrap", icon: "🅱️", color: "#7952B3", category: "CSS" },
 
   // ================= API =================
   { name: "REST API", icon: "🌐", color: "#009688", category: "API" },
-  { name: "GraphQL", icon: "◈", color: "#E535AB", category: "API" },
+  // { name: "GraphQL", icon: "◈", color: "#E535AB", category: "API" },
   // { name: "Apollo Server", icon: "🚀", color: "#311C87", category: "API" },
   { name: "Axios", icon: "📡", color: "#5A29E4", category: "API" },
-  // { name: "Postman", icon: "📮", color: "#FF6C37", category: "API" },
+  { name: "Postman", icon: "📮", color: "#FF6C37", category: "API" },
 
   // ================= CACHE =================
   { name: "Redis", icon: "🔴", color: "#DC382D", category: "Cache" },
-  // { name: "Node Cache", icon: "⚡", color: "#444444", category: "Cache" },
-  // { name: "Cloudflare CDN", icon: "☁️", color: "#F38020", category: "Cache" },
+  { name: "Node Cache", icon: "⚡", color: "#444444", category: "Cache" },
+  { name: "Cloudflare CDN", icon: "☁️", color: "#F38020", category: "Cache" },
 
   // ================= DEVOPS =================
   { name: "Docker", icon: "🐳", color: "#2496ED", category: "DevOps" },
@@ -171,12 +171,12 @@ const TECH_STACK = [
 ];
 
 const STATS = [
-  { value: "120+", label: "Projects Delivered", icon: <Briefcase size={22} /> },
-  { value: "80+", label: "Happy Clients", icon: <Users size={22} /> },
+  { value: "50+", label: "Projects Delivered", icon: <Briefcase size={22} /> },
+  { value: "45+", label: "Happy Clients", icon: <Users size={22} /> },
   { value: "4+", label: "Years Experience", icon: <Clock size={22} /> },
   { value: "99%", label: "Client Satisfaction", icon: <Star size={22} /> },
-  { value: "15K+", label: "GitHub Stars", icon: <Github size={22} /> },
-  { value: "30+", label: "Open Source Repos", icon: <GitBranch size={22} /> },
+  { value: "85%+", label: "Clean & Maintainable Code", icon: <Code2 size={22} /> },
+  { value: "100%+", label: "Learning & Improving Daily", icon: <TrendingUp size={22} /> },
 ];
 
 const EXPERTISE = [
@@ -351,26 +351,26 @@ const INDUSTRIES = [
 const CASE_STUDIES = [
   {
     tag: "SaaS",
-    title: "AuthNest — Login & Auth SaaS Platform",
-    desc: "Built a complete authentication-as-a-service platform with multi-tenant support, OAuth, JWT, and a beautiful admin dashboard. Scaled to 10K+ users in 3 months.",
-    stack: ["React", "Node.js", "MongoDB", "Redis", "AWS"],
-    metrics: ["10K+ Users", "99.9% Uptime", "3 Month Build"],
+    title: "Authnester — Authentication Platform",
+    desc: "Built a full-stack authentication platform supporting OAuth (Google, GitHub), magic links, JWT, and multi-factor authentication. Designed with secure token management, device tracking, and a scalable admin dashboard for user and system control.",
+    stack: ["React", "Node.js", "MongoDB", "Redis", "JWT"],
+    metrics: ["Multi-Auth System", "MFA Enabled", "Scalable Architecture"],
     color: "#6366f1",
   },
   {
-    tag: "E-Commerce",
-    title: "DigitalCart — MERN Stack Store",
-    desc: "Full-featured digital product marketplace with Stripe payments, affiliate system, coupon engine, and real-time analytics. Processed ₹5L+ in first month.",
-    stack: ["Next.js", "Express", "PostgreSQL", "Stripe", "Vercel"],
-    metrics: ["₹5L+ Revenue", "2K+ Products", "40% Conversion"],
+    tag: "FinTech",
+    title: "Finance Folio — Personal Finance Manager",
+    desc: "Developed a financial management platform to track income, expenses, and investments with real-time insights, risk alerts, and detailed reporting dashboards for smarter financial decisions.",
+    stack: ["React", "Node.js", "MongoDB", "Charts.js"],
+    metrics: ["Real-Time Insights", "Risk Alerts", "Data Visualization"],
     color: "#10b981",
   },
   {
-    tag: "EdTech",
-    title: "LearnForge — Course Platform",
-    desc: "Video-based learning platform with progress tracking, certificates, quizzes, and a creator dashboard. 500+ courses published in 6 months.",
-    stack: ["React", "Node.js", "MongoDB", "AWS S3", "Socket.io"],
-    metrics: ["500+ Courses", "8K Learners", "4.9★ Rating"],
+    tag: "FinTech",
+    title: "Banking App — Digital Banking Clone",
+    desc: "Created a responsive banking application simulating core features like account management, fund transfers, and loan exploration, focusing on clean UI and real-world application workflows.",
+    stack: ["React", "Node.js", "Express", "MongoDB"],
+    metrics: ["Core Banking Flows", "Responsive UI", "Secure Routing"],
     color: "#f59e0b",
   },
 ];
@@ -640,8 +640,8 @@ const ACHIEVEMENTS = [
     icon: <TrendingUp size={22} />,
     title: "₹50L+ Revenue Generated",
     desc: "For clients across various industries",
-  }, 
-  { 
+  },
+  {
     icon: <Coffee size={22} />,
     title: "3,000+ Hours Coded",
     desc: "In the last 12 months alone",
@@ -652,8 +652,6 @@ const ACHIEVEMENTS = [
     desc: "On MERN stack and web architecture",
   },
 ];
-
-
 
 // ─── HOOK: Intersection Observer for scroll animations ─────────────────────
 function useScrollReveal(threshold = 0.1) {
@@ -683,12 +681,12 @@ const Homepage = () => {
   const [testimonialIdx, setTestimonialIdx] = useState(0);
   const [email, setEmail] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [techFilter, setTechFilter] = useState("All");
+  const [techFilter, setTechFilter] = useState("Frontend");
 
-const [newsletterEmail, setNewsletterEmail] = useState('');
-const [newsletterName, setNewsletterName] = useState('');
-const [isSubscribing, setIsSubscribing] = useState(false);
-const [showNameInput, setShowNameInput] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterName, setNewsletterName] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [showNameInput, setShowNameInput] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -717,70 +715,70 @@ const [showNameInput, setShowNameInput] = useState(false);
   };
 
   const handleNewsletterSubmit = async (e) => {
-  e.preventDefault();
-  
-  if (!newsletterEmail.trim()) {
-    if (window.Swal) {
-      window.Swal.fire({
-        icon: 'warning',
-        title: 'Email Required',
-        text: 'Please enter your email address.',
-        confirmButtonColor: '#6366f1',
-        background: isDarkMode ? '#0f1320' : '#ffffff',
-        color: isDarkMode ? '#e2e8f0' : '#1e1b4b',
-      });
-    }
-    return;
-  }
-  
-  setIsSubscribing(true);
-  
-  try {
-    const response = await axios.post('/api/public/newsletter/subscribe', {
-      email: newsletterEmail,
-      name: newsletterName
-    });
-    
-    if (response.data.success) {
+    e.preventDefault();
+
+    if (!newsletterEmail.trim()) {
       if (window.Swal) {
         window.Swal.fire({
-          icon: 'success',
-          title: 'Subscribed! 🎉',
-          text: response.data.message,
-          confirmButtonColor: '#6366f1',
-          background: isDarkMode ? '#0f1320' : '#ffffff',
-          color: isDarkMode ? '#e2e8f0' : '#1e1b4b',
+          icon: "warning",
+          title: "Email Required",
+          text: "Please enter your email address.",
+          confirmButtonColor: "#6366f1",
+          background: isDarkMode ? "#0f1320" : "#ffffff",
+          color: isDarkMode ? "#e2e8f0" : "#1e1b4b",
+        });
+      }
+      return;
+    }
+
+    setIsSubscribing(true);
+
+    try {
+      const response = await axios.post("/api/public/newsletter/subscribe", {
+        email: newsletterEmail,
+        name: newsletterName,
+      });
+
+      if (response.data.success) {
+        if (window.Swal) {
+          window.Swal.fire({
+            icon: "success",
+            title: "Subscribed! 🎉",
+            text: response.data.message,
+            confirmButtonColor: "#6366f1",
+            background: isDarkMode ? "#0f1320" : "#ffffff",
+            color: isDarkMode ? "#e2e8f0" : "#1e1b4b",
+          });
+        } else {
+          alert(response.data.message);
+        }
+
+        // Reset form
+        setNewsletterEmail("");
+        setNewsletterName("");
+        setShowNameInput(false);
+      }
+    } catch (error) {
+      const errorMsg =
+        error.response?.data?.message ||
+        "Failed to subscribe. Please try again.";
+
+      if (window.Swal) {
+        window.Swal.fire({
+          icon: "error",
+          title: "Subscription Failed",
+          text: errorMsg,
+          confirmButtonColor: "#6366f1",
+          background: isDarkMode ? "#0f1320" : "#ffffff",
+          color: isDarkMode ? "#e2e8f0" : "#1e1b4b",
         });
       } else {
-        alert(response.data.message);
+        alert(errorMsg);
       }
-      
-      // Reset form
-      setNewsletterEmail('');
-      setNewsletterName('');
-      setShowNameInput(false);
+    } finally {
+      setIsSubscribing(false);
     }
-  } catch (error) {
-    const errorMsg = error.response?.data?.message || 'Failed to subscribe. Please try again.';
-    
-    if (window.Swal) {
-      window.Swal.fire({
-        icon: 'error',
-        title: 'Subscription Failed',
-        text: errorMsg,
-        confirmButtonColor: '#6366f1',
-        background: isDarkMode ? '#0f1320' : '#ffffff',
-        color: isDarkMode ? '#e2e8f0' : '#1e1b4b',
-      });
-    } else {
-      alert(errorMsg);
-    }
-  } finally {
-    setIsSubscribing(false);
-  }
-};
-
-
+  };
 
   const themeClass = isDarkMode ? "dark" : "light";
 
@@ -793,12 +791,10 @@ const [showNameInput, setShowNameInput] = useState(false);
   const [caseRef, caseVisible] = useScrollReveal(0.05);
   const [blogRef, blogVisible] = useScrollReveal(0.05);
 
-  
-
   return (
     <div className={`shivam-stack-homepage-root ${themeClass}`}>
       {/* ── 1. ANNOUNCEMENT BAR ────────────────────────────────────── */}
-      <div className="shivam-stack-homepage-announcement-bar">
+      {/* <div className="shivam-stack-homepage-announcement-bar">
         <div className="shivam-stack-homepage-announcement-inner">
           <span className="shivam-stack-homepage-announcement-badge">
             🔥 New
@@ -810,7 +806,7 @@ const [showNameInput, setShowNameInput] = useState(false);
             Grab it now <ArrowRight size={12} />
           </Link>
         </div>
-      </div>
+      </div> */}
 
       {/* ── 2. HERO SECTION ────────────────────────────────────────── */}
       <section className="shivam-stack-homepage-hero" id="section-about">
@@ -822,22 +818,22 @@ const [showNameInput, setShowNameInput] = useState(false);
         </div>
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-hero-content">
-            <div className="shivam-stack-homepage-hero-badge">
+            {/* <div className="shivam-stack-homepage-hero-badge">
               <span className="shivam-stack-homepage-hero-badge-dot" />
               <span>Available for Projects</span>
               <span className="shivam-stack-homepage-hero-badge-slots">
                 2 slots open
               </span>
-            </div>
+            </div> */}
             <h1 className="shivam-stack-homepage-hero-h1">
-              I Build{" "}
+              Turning Ideas into{" "}
               <span className="shivam-stack-homepage-hero-gradient-text">
-                Full-Stack
+                Scalable
               </span>
               <br />
-              Products That{" "}
+              Full-Stack{" "}
               <span className="shivam-stack-homepage-hero-gradient-text">
-                Scale
+                Products
               </span>
               .
             </h1>
@@ -853,7 +849,7 @@ const [showNameInput, setShowNameInput] = useState(false);
                 "MongoDB",
                 "Express",
                 "TypeScript",
-                "Next.js",
+                // "Next.js",
               ].map((t) => (
                 <span key={t} className="shivam-stack-homepage-hero-tag">
                   {t}
@@ -909,10 +905,16 @@ const [showNameInput, setShowNameInput] = useState(false);
                 </a>
               )}
               {SOCIAL_LINKS.whatsapp && (
-  <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer" className="shivam-stack-homepage-hero-social-link" aria-label="WhatsApp">
-    <Phone size={18} />
-  </a>
-)}
+                <a
+                  href={SOCIAL_LINKS.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shivam-stack-homepage-hero-social-link"
+                  aria-label="WhatsApp"
+                >
+                  <Phone size={18} />
+                </a>
+              )}
               <a
                 href={`mailto:${CONTACT_INFO.email}`}
                 className="shivam-stack-homepage-hero-social-link"
@@ -945,7 +947,7 @@ const [showNameInput, setShowNameInput] = useState(false);
                 </div>
                 <div className="shivam-stack-homepage-hero-floating-badges">
                   <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-1">
-                    <CheckCircle size={13} /> <span>120+ Projects</span>
+                    <CheckCircle size={13} /> <span>50+ Projects</span>
                   </div>
                   <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-2">
                     <Star size={13} fill="currentColor" />{" "}
@@ -1356,7 +1358,7 @@ const [showNameInput, setShowNameInput] = useState(false);
       </section>
 
       {/* ── 11. PRODUCT STORE ─────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-store-section">
+      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-store-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1418,10 +1420,10 @@ const [showNameInput, setShowNameInput] = useState(false);
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── 12. FREE RESOURCES ────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-resources-section">
+      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-resources-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1465,7 +1467,7 @@ const [showNameInput, setShowNameInput] = useState(false);
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── 13. PROCESS ───────────────────────────────────────────── */}
       <section
@@ -1650,7 +1652,7 @@ const [showNameInput, setShowNameInput] = useState(false);
       </section>
 
       {/* ── 16. OPEN SOURCE ───────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-opensource-section">
+      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-opensource-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1715,7 +1717,7 @@ const [showNameInput, setShowNameInput] = useState(false);
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── 17. BLOG ──────────────────────────────────────────────── */}
       <section
@@ -1909,68 +1911,99 @@ const [showNameInput, setShowNameInput] = useState(false);
         </div>
       </section>
 
-{/* ── 20. NEWSLETTER ────────────────────────────────────────── */}
-<section className="shivam-stack-homepage-section shivam-stack-homepage-newsletter-section">
-  <div className="shivam-stack-homepage-container">
-    <div className="shivam-stack-homepage-newsletter-card">
-      <div className="shivam-stack-homepage-newsletter-left">
-        <div className="shivam-stack-homepage-newsletter-icon"><Send size={24} /></div>
-        <h3 className="shivam-stack-homepage-newsletter-title">Join 3,000+ Developers</h3>
-        <p className="shivam-stack-homepage-newsletter-desc">
-          Weekly insights on MERN stack, architecture patterns, freelancing tips, and exclusive deals on my products. No spam, ever.
-        </p>
-        <div className="shivam-stack-homepage-newsletter-benefits">
-          {['Weekly tutorials', 'Free resources', 'Exclusive discounts', 'Career tips'].map((b) => (
-            <span key={b}><CheckCircle size={12} /> {b}</span>
-          ))}
-        </div>
-      </div>
-      <div className="shivam-stack-homepage-newsletter-right">
-        <form className="shivam-stack-homepage-newsletter-form" onSubmit={handleNewsletterSubmit}>
-          {showNameInput && (
-            <div className="shivam-stack-homepage-newsletter-field">
-              <User size={15} className="shivam-stack-homepage-newsletter-field-icon" />
-              <input
-                className="shivam-stack-homepage-newsletter-input"
-                type="text"
-                placeholder="Your name (optional)"
-                value={newsletterName}
-                onChange={(e) => setNewsletterName(e.target.value)}
-                aria-label="Your name"
-              />
+      {/* ── 20. NEWSLETTER ────────────────────────────────────────── */}
+      <section className="shivam-stack-homepage-section shivam-stack-homepage-newsletter-section">
+        <div className="shivam-stack-homepage-container">
+          <div className="shivam-stack-homepage-newsletter-card">
+            <div className="shivam-stack-homepage-newsletter-left">
+              <div className="shivam-stack-homepage-newsletter-icon">
+                <Send size={24} />
+              </div>
+              <h3 className="shivam-stack-homepage-newsletter-title">
+                Join 3,000+ Developers
+              </h3>
+              <p className="shivam-stack-homepage-newsletter-desc">
+                Weekly insights on MERN stack, architecture patterns,
+                freelancing tips, and exclusive deals on my products. No spam,
+                ever.
+              </p>
+              <div className="shivam-stack-homepage-newsletter-benefits">
+                {[
+                  "Weekly tutorials",
+                  "Free resources",
+                  "Exclusive discounts",
+                  "Career tips",
+                ].map((b) => (
+                  <span key={b}>
+                    <CheckCircle size={12} /> {b}
+                  </span>
+                ))}
+              </div>
             </div>
-          )}
-          <div className="shivam-stack-homepage-newsletter-field">
-            <Mail size={15} className="shivam-stack-homepage-newsletter-field-icon" />
-            <input
-              className="shivam-stack-homepage-newsletter-input"
-              type="email"
-              placeholder="your@email.com"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              required
-              aria-label="Email address"
-              onFocus={() => setShowNameInput(true)}
-            />
+            <div className="shivam-stack-homepage-newsletter-right">
+              <form
+                className="shivam-stack-homepage-newsletter-form"
+                onSubmit={handleNewsletterSubmit}
+              >
+                {showNameInput && (
+                  <div className="shivam-stack-homepage-newsletter-field">
+                    <User
+                      size={15}
+                      className="shivam-stack-homepage-newsletter-field-icon"
+                    />
+                    <input
+                      className="shivam-stack-homepage-newsletter-input"
+                      type="text"
+                      placeholder="Your name (optional)"
+                      value={newsletterName}
+                      onChange={(e) => setNewsletterName(e.target.value)}
+                      aria-label="Your name"
+                    />
+                  </div>
+                )}
+                <div className="shivam-stack-homepage-newsletter-field">
+                  <Mail
+                    size={15}
+                    className="shivam-stack-homepage-newsletter-field-icon"
+                  />
+                  <input
+                    className="shivam-stack-homepage-newsletter-input"
+                    type="email"
+                    placeholder="your@email.com"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    required
+                    aria-label="Email address"
+                    onFocus={() => setShowNameInput(true)}
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="shivam-stack-homepage-btn-primary shivam-stack-homepage-newsletter-btn"
+                  disabled={isSubscribing}
+                >
+                  {isSubscribing ? (
+                    <>
+                      Subscribing...{" "}
+                      <RefreshCw
+                        size={15}
+                        className="shivam-stack-homepage-spinner"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      Subscribe Free <ArrowRight size={15} />
+                    </>
+                  )}
+                </button>
+                <p className="shivam-stack-homepage-newsletter-privacy">
+                  No spam. Unsubscribe anytime.
+                </p>
+              </form>
+            </div>
           </div>
-          <button 
-            type="submit" 
-            className="shivam-stack-homepage-btn-primary shivam-stack-homepage-newsletter-btn"
-            disabled={isSubscribing}
-          >
-            {isSubscribing ? (
-              <>Subscribing... <RefreshCw size={15} className="shivam-stack-homepage-spinner" /></>
-            ) : (
-              <>Subscribe Free <ArrowRight size={15} /></>
-            )}
-          </button>
-          <p className="shivam-stack-homepage-newsletter-privacy">No spam. Unsubscribe anytime.</p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
+        </div>
+      </section>
     </div>
   );
 };

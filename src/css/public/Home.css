@@ -607,7 +607,7 @@
 
 .shivam-stack-homepage-hero-h1 {
   font-family: var(--ss-font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: #ffffff;
   line-height: 1.1;
