@@ -199,8 +199,8 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: clamp(80px, 12vw, 160px) clamp(20px, 5vw, 80px) clamp(60px, 8vw, 100px);
-  overflow: hidden;
+padding: clamp(20px, 5vw, 80px) clamp(20px, 5vw, 80px) clamp(60px, 8vw, 100px);
+padding-top: clamp(40px, 8vw, 100px);  overflow: hidden;
 }
 
 .sspg-hero-eyebrow {
