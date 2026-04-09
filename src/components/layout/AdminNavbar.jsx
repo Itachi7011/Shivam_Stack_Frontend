@@ -266,11 +266,7 @@ const AdminNavbar = () => {
                     className="shivam-stack-admin-navbar-breadcrumb-sep"
                   />
                 )}
-                <span
-                  className={`shivam-stack-admin-navbar-breadcrumb-item ${i === pageInfo.crumbs.length - 1 ? "shivam-stack-admin-navbar-breadcrumb-active" : ""}`}
-                >
-                  {crumb}
-                </span>
+                
               </React.Fragment>
             ))}
           </nav>

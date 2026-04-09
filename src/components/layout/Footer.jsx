@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState ,useEffect} from "react";
+import { Link, useLocation  } from "react-router-dom";
 import {
   Code2,
   Layers,
@@ -70,32 +70,32 @@ const QUICK_LINKS = [
   { to: "/services", label: "Services" },
   { to: "/work", label: "Work & Portfolio" },
   { to: "/products", label: "Digital Products", badge: "hot" },
-  { to: "/blog", label: "Blog & Articles", badge: "new" },
+  { to: "/blogs", label: "Blog & Articles", badge: "new" },
   { to: "/about", label: "About Shivam" },
   { to: "/contact", label: "Contact & Hire" },
 ];
 
 const SERVICE_LINKS = [
-  { to: "/services/full-stack", label: "Full Stack Development", icon: Layers },
+  { to: "/services/full-stack-development", label: "Full Stack Development", icon: Layers },
   {
-    to: "/services/ecommerce",
+    to: "/services/ecommerce-solutions",
     label: "E-Commerce Solutions",
     icon: ShoppingCart,
   },
   {
-    to: "/services/admin-panel",
+    to: "/services/admin-panel-cms-development",
     label: "Admin Panel & CMS",
     icon: LayoutDashboard,
   },
   { to: "/services/api-development", label: "API Development", icon: Zap },
   {
-    to: "/services/performance",
+    to: "/services/performance-optimization",
     label: "Performance Optimization",
     icon: BarChart3,
   },
-  { to: "/services/portfolio", label: "Portfolio Websites", icon: Briefcase },
-  { to: "/services/devops", label: "DevOps & Deployment", icon: Server },
-  { to: "/services/maintenance", label: "Maintenance & Support", icon: Wrench },
+  { to: "/services/portfolio-website-development", label: "Portfolio Websites", icon: Briefcase },
+  { to: "/services/devops-deployment", label: "DevOps & Deployment", icon: Server },
+  { to: "/services/maintenance-support", label: "Maintenance & Support", icon: Wrench },
 ];
 
 const LEGAL_LINKS = [
@@ -178,11 +178,22 @@ const YEAR = new Date().getFullYear();
 ───────────────────────────────────────────────────────────────────────────── */
 const Footer = () => {
   const { isDarkMode } = useContext(ThemeContext);
+    const location = useLocation();
+
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [subState, setSubState] = useState("idle"); // idle | loading | success | error
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // Scroll to top on route change
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth' // Smooth scrolling for better UX
+  });
+}, [location.pathname]); // Trigger whenever the pathname changes
 
 const handleSubscribe = async (e) => {
   e.preventDefault();
@@ -440,7 +451,7 @@ console.log("Data:", { email, name: firstName });
               ))}
               <li>
                 <Link
-                  to="/hire"
+                  to="/contact"
                   className="shivam-stackxy-footer-link"
                   style={{ color: "#818cf8", fontWeight: 600 }}
                 >
@@ -493,13 +504,13 @@ console.log("Data:", { email, name: firstName });
               </div>
               <ul className="shivam-stackxy-footer-link-list">
                 {[
-                  { to: "/blog", label: "Dev Blog", icon: BookOpen },
-                  { to: "/work", label: "Portfolio", icon: FolderOpen },
-                  {
-                    to: "/work/open-source",
-                    label: "Open Source",
-                    icon: Github,
-                  },
+                  { to: "/blogs", label: "Dev Blog", icon: BookOpen },
+                  { to: "/portfolio", label: "Portfolio", icon: FolderOpen },
+                  // {
+                  //   to: "/work/open-source",
+                  //   label: "Open Source",
+                  //   icon: Github,
+                  // },
                   {
                     to: "/products/resources",
                     label: "Free Resources",

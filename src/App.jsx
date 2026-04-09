@@ -38,6 +38,7 @@ import "./css/admin/AdminDashboard.css";
 import "./css/admin/AdminPage.css";
 import "./css/admin/MainSettings.css";
 import "./css/admin/ManageMessages.css";
+import "./css/admin/ManageContactUsMessages.css";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -86,6 +87,9 @@ import AdminForgotPassword from "./pages/admin/auth/ForgotPassword";
 import AdminResetPassword from "./pages/admin/auth/ResetPassword";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminManageMessages from "./pages/admin/messages/ManageMessages";
+import AdminManageContactUsMessages from "./pages/admin/ManageContactUsMessages";
+import AdminManageNewsLetterSubscribers from "./pages/admin/ManageNewsLetterSubscribers";
+import AdminManageBookFreeCallMessages from "./pages/admin/ManageBookFreeCallMessages";
 
 // import AdminAnalytics from "./pages/admin/Analytics";
 import AdminMainSettings from "./pages/admin/MainSettings";
@@ -275,9 +279,26 @@ function App() {
                   {/* <Route path="/admin/manage-orders" element={<AdminManageOrders />} /> */}
 
                   <Route
+                    path="/admin/manage-contact-us-messages"
+                    element={<AdminManageContactUsMessages />}
+                  />
+
+
+                  <Route
+                    path="/admin/manage-book-free-calls-messages"
+                    element={<AdminManageBookFreeCallMessages />}
+                  />
+
+                  <Route
+                    path="/admin/manage-news-letter-subscribers"
+                    element={<AdminManageNewsLetterSubscribers />}
+                  />
+
+                  <Route
                     path="/admin/manage-products"
                     element={<AdminManageProducts />}
                   />
+
                   <Route
                     path="/admin/manage-product-categories"
                     element={<AdminManageProductsCategory />}

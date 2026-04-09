@@ -228,6 +228,15 @@ const Navbar = () => {
   const navRef = useRef(null);
   const closeTimer = useRef(null);
 
+  // Scroll to top on route change
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth' // Smooth scrolling for better UX
+  });
+}, [location.pathname]); // Trigger whenever the pathname changes
+
   /* scroll */
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 12);
