@@ -99,7 +99,7 @@ const SERVICE_LINKS = [
 ];
 
 const LEGAL_LINKS = [
-  { to: "/privacy", label: "Privacy Policy", icon: Shield },
+  { to: "/privacy-policy", label: "Privacy Policy", icon: Shield },
   { to: "/terms-of-service", label: "Terms & Conditions", icon: FileText },
   { to: "/refund", label: "Refund Policy", icon: RefreshCw },
   { to: "/cookies", label: "Cookie Policy", icon: Cookie },
@@ -610,7 +610,7 @@ console.log("Data:", { email, name: firstName });
               />
               Your email is safe. Read our{" "}
               <Link
-                to="/privacy"
+                to="/privacy-policy"
                 style={{ color: "var(--ssf-text-accent)", marginLeft: 3 }}
               >
                 Privacy Policy
@@ -667,7 +667,7 @@ console.log("Data:", { email, name: firstName });
           </div>
 
           <div className="shivam-stackxy-footer-bottom-links">
-            <Link to="/privacy" className="shivam-stackxy-footer-bottom-link">
+            <Link to="/privacy-policy" className="shivam-stackxy-footer-bottom-link">
               Privacy
             </Link>
             <span className="shivam-stackxy-footer-bottom-sep">·</span>

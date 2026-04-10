@@ -3,6 +3,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 import {
   Search,
   X,
@@ -965,8 +966,70 @@ const MyProjects = () => {
     }
   };
 
+  const getPageTitle = () => {
+  if (selectedSlug) {
+    const project = projects.find(p => p.slug === selectedSlug);
+    return project ? `${project.title} | Shivam Sharma` : "Project Details | Shivam Sharma";
+  }
+  
+  let title = "Shivam";
+  if (debouncedSearch) {
+    title = `Search: "${debouncedSearch}" | ${title}`;
+  } else if (activeCategory) {
+    const category = categories.find(c => c._id === activeCategory);
+    title = category ? `${category.name} Projects | ${title}` : title;
+  } else if (activeStatus) {
+    title = `${STATUS_CONFIG[activeStatus]?.label} Projects | ${title}`;
+  } else {
+    title = `Projects | ${title}`;
+  }
+  
+  return title;
+};
+
+const getPageDescription = () => {
+  if (selectedSlug) {
+    const project = projects.find(p => p.slug === selectedSlug);
+    return project?.description 
+      ? excerpt(project.description, 160)
+      : "View detailed project information including tech stack, features, and live demo.";
+  }
+  
+  let description = "Explore my portfolio of production-ready web applications and software projects.";
+  if (debouncedSearch) {
+    description = `Projects matching "${debouncedSearch}" - ${description.toLowerCase()}`;
+  } else if (activeCategory) {
+    const category = categories.find(c => c._id === activeCategory);
+    description = `Browse my ${category?.name?.toLowerCase()} projects - ${description.toLowerCase()}`;
+  } else if (activeStatus) {
+    description = `View ${STATUS_CONFIG[activeStatus]?.label?.toLowerCase()} projects - ${description.toLowerCase()}`;
+  }
+  
+  return description;
+};
+
   return (
-    <main className={`ssp-root ${isDarkMode ? "dark" : "light"}`}>
+    <>
+
+    <Helmet>
+      <title>{getPageTitle()}</title>
+      <meta name="description" content={getPageDescription()} />
+      <meta name="keywords" content={`Shivam Sharma, portfolio, projects, web development, ${projects.map(p => p.title).slice(0, 5).join(', ')}, ${categories.map(c => c.name).slice(0, 3).join(', ')}`} />
+      <meta name="author" content="Shivam Sharma" />
+      <meta property="og:title" content={getPageTitle()} />
+      <meta property="og:description" content={getPageDescription()} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={window.location.href} />
+      <meta property="og:image" content={projects[0]?.mainImage || "/default-og-image.jpg"} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={getPageTitle()} />
+      <meta name="twitter:description" content={getPageDescription()} />
+      <meta name="twitter:image" content={projects[0]?.mainImage || "/default-og-image.jpg"} />
+      <link rel="canonical" href={window.location.href} />
+    </Helmet>
+    
+    
+       <main className={`ssp-root ${isDarkMode ? "dark" : "light"}`}>
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="ssp-hero">
         <canvas ref={canvasRef} className="ssp-hero-canvas" />
@@ -1368,6 +1431,8 @@ const MyProjects = () => {
         />
       )}
     </main>
+
+</>
   );
 };
 

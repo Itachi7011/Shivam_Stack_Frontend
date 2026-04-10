@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { ThemeContext } from "../../context/ThemeContext";
 import axios from "axios";
+import SEO from "../../components/common/SEO"; 
+
 
 const META = {
   title:       "Contact Us — ShivamStack",
@@ -244,6 +246,18 @@ const socialLinks = [
   }
 
   return (
+
+        <>
+        <SEO 
+  title="Terms of Service"
+  description="Terms and conditions for using ShivamStack. Read about acceptable use, intellectual property, disclaimers, liability limitations, and user obligations."
+  keywords={["terms of service", "terms and conditions", "legal", "user agreement", "acceptable use", "disclaimer", "liability", "ShivamStack terms"]}
+  ogType="website"
+  publishedTime="2025-02-01"
+  modifiedTime="2025-02-01"
+/>
+
+
     <main
       className={`sspg-root ${isDarkMode ? "dark" : "light"}`}
       itemScope
@@ -633,6 +647,10 @@ const socialLinks = [
         <ArrowUp size={18} />
       </button>
     </main>
+
+      </>
+
+
   );
 };
 

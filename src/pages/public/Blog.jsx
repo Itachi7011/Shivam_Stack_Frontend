@@ -3,6 +3,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import SEO from "../../components/common/SEO"; 
 import {
   Search,
   Calendar,
@@ -821,6 +822,16 @@ const MyBlogs = () => {
   const featuredBlog = blogs[0];
 
   return (
+
+        <>
+    <SEO 
+  title="Blog"
+  description="Technical insights, programming tutorials, and development experiences. Explore articles on React, Node.js, MongoDB, system design, and modern web technologies."
+  keywords={["blog", "programming tutorials", "web development", "React", "Node.js", "JavaScript", "coding tips", "developer blog", "ShivamStack blog"]}
+  ogType="website"
+/>
+
+
     <main
       className={`shivam-stack-my-public-pages-blogs-root ${isDarkMode ? "dark" : "light"}`}
     >
@@ -1375,6 +1386,9 @@ const MyBlogs = () => {
         />
       )}
     </main>
+
+      </>
+
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/common/SEO"; 
 import {
   Layers, ShoppingCart, LayoutDashboard, Zap, Gauge, Briefcase,
   Server, Wrench, ArrowRight, ChevronRight, ArrowUp, Mail,
@@ -280,6 +281,16 @@ const ServicesPage = () => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
+
+        <>
+       <SEO 
+  title="Services"
+  description="Professional web development services including custom application development, API design, frontend implementation, and technical consulting. Let's build something great together."
+  keywords={["web development services", "custom application development", "API development", "React development", "Node.js consulting", "freelance developer", "hire full-stack developer"]}
+  ogType="website"
+/>
+
+
     <main
       className={`sssp-root ${isDarkMode ? "dark" : "light"}`}
       itemScope
@@ -740,6 +751,8 @@ const ServicesPage = () => {
         <ArrowUp size={18} />
       </button>
     </main>
+
+      </>
   );
 };
 

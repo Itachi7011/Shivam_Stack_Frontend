@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ThemeContext } from "../../../context/ThemeContext";
+import SEO from "../../../components/common/SEO"; 
 
 // Icons
 const Search = () => <span className="ss-icon">🔍</span>;
@@ -279,6 +280,15 @@ const AllProducts = () => {
   };
 
   return (
+
+        <>
+<SEO 
+  title="All Products"
+  description="Browse all digital products, ebooks, guides, and resources from ShivamStack. Find the perfect learning material for your web development journey."
+  keywords={["all products", "digital products", "ebooks collection", "programming resources", "web development products", "developer tools", "coding guides", "ShivamStack store"]}
+  ogType="website"
+/>
+
     <div className={`ss-page-wrapper ${isDarkMode ? "dark" : "light"}`}>
       {/* Hero Section */}
       <section className="ss-page-hero">
@@ -760,6 +770,9 @@ const AllProducts = () => {
         </div>
       </section>
     </div>
+
+          </>
+
   );
 };
 

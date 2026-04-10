@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/common/SEO"; 
+
 import {
   Sparkles,
   User,
@@ -92,7 +94,18 @@ const AboutUs = () => {
       ?.scrollIntoView({ behavior: "smooth", block: "start" });
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
+  
+
   return (
+
+        <>
+    <SEO 
+  title="About Me"
+  description="Shivam Sharma — full-stack developer passionate about building scalable web applications. Learn about my journey, skills, experience, and the technologies I work with."
+  keywords={["about", "Shivam Sharma", "full-stack developer", "web developer portfolio", "developer story", "skills", "experience", "bio"]}
+  ogType="profile"
+/>
+
     <main
       className={`sspg-root ${isDarkMode ? "dark" : "light"}`}
       itemScope
@@ -926,6 +939,8 @@ const AboutUs = () => {
         <ArrowUp size={18} />
       </button>
     </main>
+
+      </>
   );
 };
 

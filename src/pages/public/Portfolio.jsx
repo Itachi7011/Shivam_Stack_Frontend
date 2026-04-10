@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
+import SEO from "../../components/common/SEO"; 
 import {
   Shield, Smile, Briefcase, Tv2, BarChart3, Brain, FileText,
   Code2, Building2, HeartPulse, Scale, ShoppingCart, Globe,
@@ -705,6 +706,16 @@ const handleBookCall = async () => {
   const marqueeDuplicated = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
   return (
+
+    <>
+    <SEO 
+  title="Portfolio"
+  description="Explore my portfolio of production-ready web applications, MERN stack projects, and real-world software solutions. See live demos and source code."
+  keywords={["portfolio", "web development projects", "MERN stack", "React projects", "Node.js applications", "full-stack portfolio", "code samples", "live demos"]}
+  ogType="website"
+/>
+
+
     <div className={`ss-portfolio-root ${isDarkMode ? 'dark' : 'light'}`}>
 
       {/* ══════════════════════════════════
@@ -1191,6 +1202,8 @@ const handleBookCall = async () => {
       </section>
 
     </div>
+
+      </>
   );
 };
 

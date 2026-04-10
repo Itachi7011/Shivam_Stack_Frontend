@@ -6,6 +6,7 @@ import {
   RefreshCw, Server, Link2, Clock, CheckCircle, XCircle,
   Info, BookOpen, Sparkles, ExternalLink,
 } from "lucide-react";
+import SEO from "../../components/common/SEO"; 
 import { ThemeContext } from "../../context/ThemeContext";
 
 /* ── SEO Meta ─────────────────────────────────────────────────────────────── */
@@ -65,10 +66,23 @@ const PrivacyPolicy = () => {
   }, []);
 
   const scrollTo  = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <main
+
+    <>
+    <SEO 
+      title="Privacy Policy"
+      description="ShivamStack privacy policy. Learn how we collect, use, protect, and manage your personal data. Your privacy is our priority."
+      keywords={["privacy policy", "data protection", "GDPR", "user rights", "data security", "ShivamStack privacy"]}
+      ogType="website"
+      publishedTime="2025-02-01"
+      modifiedTime="2025-02-01"
+    />
+    
+       <main
       className={`sspg-root ${isDarkMode ? "dark" : "light"}`}
       itemScope
       itemType="https://schema.org/WebPage"
@@ -566,6 +580,8 @@ const PrivacyPolicy = () => {
         <ArrowUp size={18} />
       </button>
     </main>
+  </>
+
   );
 };
 

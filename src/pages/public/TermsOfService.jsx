@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/common/SEO"; 
 import {
   FileText, Scale, ShieldAlert, Package, CreditCard, Ban,
   ChevronRight, ArrowUp, Mail, Shield, Globe, RefreshCw,
@@ -64,6 +65,18 @@ const TermsOfService = () => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
+
+        <>
+    <SEO 
+  title="Terms of Service"
+  description="Terms and conditions for using ShivamStack. Read about acceptable use, intellectual property, disclaimers, liability limitations, and user obligations."
+  keywords={["terms of service", "terms and conditions", "legal", "user agreement", "acceptable use", "disclaimer", "liability", "ShivamStack terms"]}
+  ogType="website"
+  publishedTime="2025-02-01"
+  modifiedTime="2025-02-01"
+/>
+
+
     <main
       className={`sspg-root ${isDarkMode ? "dark" : "light"}`}
       itemScope
@@ -572,6 +585,9 @@ const TermsOfService = () => {
         <ArrowUp size={18} />
       </button>
     </main>
+
+      </>
+
   );
 };
 

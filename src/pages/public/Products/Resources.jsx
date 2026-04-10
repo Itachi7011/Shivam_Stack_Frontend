@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
+import SEO from "../../../components/common/SEO"; 
 
 export default function Resources() {
   const { isDarkMode } = useContext(ThemeContext);
@@ -517,6 +518,15 @@ export default function Resources() {
   }
 
   return (
+
+        <>
+    <SEO 
+  title="Ebooks & Digital Products"
+  description="Premium technical ebooks, programming guides, and digital resources. Learn React, Node.js, MongoDB, system design, and modern web development through comprehensive written materials."
+  keywords={["ebooks", "programming ebooks", "technical guides", "React ebook", "Node.js book", "web development resources", "digital products", "programming tutorials PDF", "ShivamStack ebooks"]}
+  ogType="website"
+/>
+
     <div className={`ss-page-wrapper ${isDarkMode ? "dark" : "light"}`}>
       {/* ── Hero ────────────────────────────────────── */}
       <section className="ss-page-hero">
@@ -1093,5 +1103,8 @@ export default function Resources() {
         </div>
       </section>
     </div>
+
+          </>
+
   );
 }
