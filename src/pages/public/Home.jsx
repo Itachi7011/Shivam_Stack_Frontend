@@ -175,8 +175,16 @@ const STATS = [
   { value: "45+", label: "Happy Clients", icon: <Users size={22} /> },
   { value: "4+", label: "Years Experience", icon: <Clock size={22} /> },
   { value: "99%", label: "Client Satisfaction", icon: <Star size={22} /> },
-  { value: "85%+", label: "Clean & Maintainable Code", icon: <Code2 size={22} /> },
-  { value: "100%+", label: "Learning & Improving Daily", icon: <TrendingUp size={22} /> },
+  {
+    value: "85%+",
+    label: "Clean & Maintainable Code",
+    icon: <Code2 size={22} />,
+  },
+  {
+    value: "100%+",
+    label: "Learning & Improving Daily",
+    icon: <TrendingUp size={22} />,
+  },
 ];
 
 const EXPERTISE = [
@@ -1881,7 +1889,7 @@ const Homepage = () => {
             </p>
             <div className="shivam-stack-homepage-cta-buttons">
               <a
-                href="mailto:shivam@example.com"
+                href={`mailto:${CONTACT_INFO.email}`}
                 className="shivam-stack-homepage-btn-primary shivam-stack-homepage-cta-primary-btn"
               >
                 <Mail size={16} /> Email Me Directly
