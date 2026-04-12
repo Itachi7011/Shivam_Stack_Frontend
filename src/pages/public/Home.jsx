@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 import axios from "axios";
-import SEO from "../../components/common/SEO"; 
+import SEO from "../../components/common/SEO";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -800,27 +800,30 @@ const Homepage = () => {
   const [caseRef, caseVisible] = useScrollReveal(0.05);
   const [blogRef, blogVisible] = useScrollReveal(0.05);
 
-
-
-
-
   return (
-
-       
-
     <>
-    <SEO 
-      title="Home"
-      description="ShivamStack privacy policy. Learn how we collect, use, protect, and manage your personal data. Your privacy is our priority."
-      keywords={["home", "new website", "web app", "website", "mern", "ShivamStack"]}
-      ogType="website"
-      publishedTime="2025-02-01"
-      modifiedTime="2025-02-01"
-    />
-    
-    <div className={`shivam-stack-homepage-root ${themeClass}`}>
-      {/* ── 1. ANNOUNCEMENT BAR ────────────────────────────────────── */}
-      {/* <div className="shivam-stack-homepage-announcement-bar">
+      <SEO
+        title="Home"
+        description="ShivamStack is a MERN Stack Web Developer portfolio showcasing modern full-stack web applications built with MongoDB, Express, React, and Node.js. Explore projects, skills, and production-ready development work."
+        keywords={[
+          "MERN stack developer",
+          "full stack web developer",
+          "React developer",
+          "Node.js developer",
+          "web developer portfolio",
+          "JavaScript developer",
+          "MongoDB Express React Node",
+          "frontend backend developer",
+          "ShivamStack portfolio",
+        ]}
+        ogType="website"
+        publishedTime="2025-02-01"
+        modifiedTime="2026-04-12"
+      />
+
+      <div className={`shivam-stack-homepage-root ${themeClass}`}>
+        {/* ── 1. ANNOUNCEMENT BAR ────────────────────────────────────── */}
+        {/* <div className="shivam-stack-homepage-announcement-bar">
         <div className="shivam-stack-homepage-announcement-inner">
           <span className="shivam-stack-homepage-announcement-badge">
             🔥 New
@@ -834,557 +837,572 @@ const Homepage = () => {
         </div>
       </div> */}
 
-      {/* ── 2. HERO SECTION ────────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-hero" id="section-about">
-        <div className="shivam-stack-homepage-hero-bg">
-          <div className="shivam-stack-homepage-hero-grid-overlay" />
-          <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-1" />
-          <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-2" />
-          <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-3" />
-        </div>
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-hero-content">
-            {/* <div className="shivam-stack-homepage-hero-badge">
+        {/* ── 2. HERO SECTION ────────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-hero" id="section-about">
+          <div className="shivam-stack-homepage-hero-bg">
+            <div className="shivam-stack-homepage-hero-grid-overlay" />
+            <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-1" />
+            <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-2" />
+            <div className="shivam-stack-homepage-hero-orb shivam-stack-homepage-hero-orb-3" />
+          </div>
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-hero-content">
+              {/* <div className="shivam-stack-homepage-hero-badge">
               <span className="shivam-stack-homepage-hero-badge-dot" />
               <span>Available for Projects</span>
               <span className="shivam-stack-homepage-hero-badge-slots">
                 2 slots open
               </span>
             </div> */}
-            <h1 className="shivam-stack-homepage-hero-h1">
-              Turning Ideas into{" "}
-              <span className="shivam-stack-homepage-hero-gradient-text">
-                Scalable
-              </span>
-              <br />
-              Full-Stack{" "}
-              <span className="shivam-stack-homepage-hero-gradient-text">
-                Products
-              </span>
-              .
-            </h1>
-            <p className="shivam-stack-homepage-hero-subtitle">
-              MERN Stack Developer with 4+ years crafting high-performance web
-              applications, SaaS platforms, and developer tools. From idea to
-              production — fast, clean, and scalable.
-            </p>
-            <div className="shivam-stack-homepage-hero-tags">
-              {[
-                "React",
-                "Node.js",
-                "MongoDB",
-                "Express",
-                "TypeScript",
-                // "Next.js",
-              ].map((t) => (
-                <span key={t} className="shivam-stack-homepage-hero-tag">
-                  {t}
+              <h1 className="shivam-stack-homepage-hero-h1">
+                Turning Ideas into{" "}
+                <span className="shivam-stack-homepage-hero-gradient-text">
+                  Scalable
                 </span>
-              ))}
-            </div>
-            <div className="shivam-stack-homepage-hero-actions">
-              <button
-                className="shivam-stack-homepage-btn-primary shivam-stack-homepage-hero-cta-primary"
-                onClick={() => scrollTo("section-contact")}
-              >
-                Start a Project <ArrowRight size={16} />
-              </button>
-              <button
-                className="shivam-stack-homepage-btn-ghost shivam-stack-homepage-hero-cta-secondary"
-                onClick={() => scrollTo("section-work")}
-              >
-                <Play size={15} /> View Work
-              </button>
-            </div>
-            <div className="shivam-stack-homepage-hero-social">
-              {SOCIAL_LINKS.github && (
-                <a
-                  href={SOCIAL_LINKS.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shivam-stack-homepage-hero-social-link"
-                  aria-label="GitHub"
-                >
-                  <Github size={18} />
-                </a>
-              )}
-              {SOCIAL_LINKS.linkedin && (
-                <a
-                  href={SOCIAL_LINKS.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shivam-stack-homepage-hero-social-link"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={18} />
-                </a>
-              )}
-              {SOCIAL_LINKS.twitter && (
-                <a
-                  href={SOCIAL_LINKS.twitter}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shivam-stack-homepage-hero-social-link"
-                  aria-label="Twitter"
-                >
-                  <Twitter size={18} />
-                </a>
-              )}
-              {SOCIAL_LINKS.whatsapp && (
-                <a
-                  href={SOCIAL_LINKS.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shivam-stack-homepage-hero-social-link"
-                  aria-label="WhatsApp"
-                >
-                  <Phone size={18} />
-                </a>
-              )}
-              <a
-                href={`mailto:${CONTACT_INFO.email}`}
-                className="shivam-stack-homepage-hero-social-link"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
-            </div>
-          </div>
-          <div className="shivam-stack-homepage-hero-visual">
-            <div className="shivam-stack-homepage-hero-card-3d">
-              <div className="shivam-stack-homepage-hero-card-inner">
-                <div className="shivam-stack-homepage-hero-profile-ring">
-                  <img
-                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=ShivamDev&backgroundColor=b6e3f4,c0aede&backgroundType=gradientLinear"
-                    alt="Shivam"
-                    className="shivam-stack-homepage-hero-profile-img"
-                  />
-                </div>
-                <div className="shivam-stack-homepage-hero-card-info">
-                  <div className="shivam-stack-homepage-hero-card-name">
-                    Shivam
-                  </div>
-                  <div className="shivam-stack-homepage-hero-card-role">
-                    MERN Stack Developer
-                  </div>
-                  <div className="shivam-stack-homepage-hero-card-location">
-                    <MapPin size={12} /> India • Remote Friendly
-                  </div>
-                </div>
-                <div className="shivam-stack-homepage-hero-floating-badges">
-                  <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-1">
-                    <CheckCircle size={13} /> <span>50+ Projects</span>
-                  </div>
-                  <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-2">
-                    <Star size={13} fill="currentColor" />{" "}
-                    <span>5.0 Rating</span>
-                  </div>
-                  <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-3">
-                    <Zap size={13} /> <span>Fast Delivery</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button
-          className="shivam-stack-homepage-hero-scroll-cue"
-          onClick={() => scrollTo("section-stats")}
-          aria-label="Scroll down"
-        >
-          <ChevronDown size={20} />
-        </button>
-      </section>
-
-      {/* ── 4. STATS ───────────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-stats-section"
-        id="section-stats"
-        ref={statsRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div
-            className={`shivam-stack-homepage-stats-grid ${statsVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {STATS.map((s, i) => (
-              <div
-                key={i}
-                className="shivam-stack-homepage-stat-card"
-                style={{ animationDelay: `${i * 0.08}s` }}
-              >
-                <div className="shivam-stack-homepage-stat-icon">{s.icon}</div>
-                <div className="shivam-stack-homepage-stat-value">
-                  {s.value}
-                </div>
-                <div className="shivam-stack-homepage-stat-label">
-                  {s.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. TECH STACK ─────────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-tech-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Tech Stack
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              Tools I Master Daily
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              A curated stack of proven, production-battle-tested technologies.
-            </p>
-          </div>
-          <div className="shivam-stack-homepage-tech-filters">
-            {techCategories.map((cat) => (
-              <button
-                key={cat}
-                className={`shivam-stack-homepage-tech-filter-btn ${techFilter === cat ? "shivam-stack-homepage-tech-filter-active" : ""}`}
-                onClick={() => setTechFilter(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-          <div className="shivam-stack-homepage-tech-grid">
-            {filteredTech.map((tech, i) => (
-              <div
-                key={tech.name}
-                className="shivam-stack-homepage-tech-card"
-                style={{ animationDelay: `${i * 0.04}s` }}
-              >
-                <div
-                  className="shivam-stack-homepage-tech-icon"
-                  style={{ "--tech-color": tech.color }}
-                >
-                  <span>{tech.icon}</span>
-                </div>
-                <span className="shivam-stack-homepage-tech-name">
-                  {tech.name}
+                <br />
+                Full-Stack{" "}
+                <span className="shivam-stack-homepage-hero-gradient-text">
+                  Products
                 </span>
-                <span className="shivam-stack-homepage-tech-cat">
-                  {tech.category}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. ABOUT ME ────────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-about-section"
-        id="section-about-me"
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-about-grid">
-            <div className="shivam-stack-homepage-about-left">
-              <span className="shivam-stack-homepage-section-label">
-                About Me
-              </span>
-              <h2 className="shivam-stack-homepage-section-title shivam-stack-homepage-about-title">
-                Hi, I'm Shivam —<br /> A Developer Who Ships.
-              </h2>
-              <p className="shivam-stack-homepage-about-body">
-                I'm a full-stack MERN developer based in India with a deep
-                obsession for clean architecture and user experience. Over the
-                past 4+ years, I've built everything from MVP startups to
-                production SaaS platforms handling thousands of users daily.
+                .
+              </h1>
+              <p className="shivam-stack-homepage-hero-subtitle">
+                MERN Stack Developer with 4+ years crafting high-performance web
+                applications, SaaS platforms, and developer tools. From idea to
+                production — fast, clean, and scalable.
               </p>
-              <p className="shivam-stack-homepage-about-body">
-                I don't just write code — I solve business problems with
-                technology. Every line I write is intentional, scalable, and
-                maintainable. I care deeply about performance, developer
-                experience, and delivering real business value.
-              </p>
-              <div className="shivam-stack-homepage-about-achievements">
-                {ACHIEVEMENTS.map((a, i) => (
-                  <div
-                    key={i}
-                    className="shivam-stack-homepage-about-achievement"
-                  >
-                    <div className="shivam-stack-homepage-about-achievement-icon">
-                      {a.icon}
-                    </div>
-                    <div>
-                      <div className="shivam-stack-homepage-about-achievement-title">
-                        {a.title}
-                      </div>
-                      <div className="shivam-stack-homepage-about-achievement-desc">
-                        {a.desc}
-                      </div>
-                    </div>
-                  </div>
+              <div className="shivam-stack-homepage-hero-tags">
+                {[
+                  "React",
+                  "Node.js",
+                  "MongoDB",
+                  "Express",
+                  "TypeScript",
+                  // "Next.js",
+                ].map((t) => (
+                  <span key={t} className="shivam-stack-homepage-hero-tag">
+                    {t}
+                  </span>
                 ))}
               </div>
-              <div className="shivam-stack-homepage-about-actions">
-                {/* <a
+              <div className="shivam-stack-homepage-hero-actions">
+                <button
+                  className="shivam-stack-homepage-btn-primary shivam-stack-homepage-hero-cta-primary"
+                  onClick={() => scrollTo("section-contact")}
+                >
+                  Start a Project <ArrowRight size={16} />
+                </button>
+                <button
+                  className="shivam-stack-homepage-btn-ghost shivam-stack-homepage-hero-cta-secondary"
+                  onClick={() => scrollTo("section-work")}
+                >
+                  <Play size={15} /> View Work
+                </button>
+              </div>
+              <div className="shivam-stack-homepage-hero-social">
+                {SOCIAL_LINKS.github && (
+                  <a
+                    href={SOCIAL_LINKS.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shivam-stack-homepage-hero-social-link"
+                    aria-label="GitHub"
+                  >
+                    <Github size={18} />
+                  </a>
+                )}
+                {SOCIAL_LINKS.linkedin && (
+                  <a
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shivam-stack-homepage-hero-social-link"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={18} />
+                  </a>
+                )}
+                {SOCIAL_LINKS.twitter && (
+                  <a
+                    href={SOCIAL_LINKS.twitter}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shivam-stack-homepage-hero-social-link"
+                    aria-label="Twitter"
+                  >
+                    <Twitter size={18} />
+                  </a>
+                )}
+                {SOCIAL_LINKS.whatsapp && (
+                  <a
+                    href={SOCIAL_LINKS.whatsapp}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shivam-stack-homepage-hero-social-link"
+                    aria-label="WhatsApp"
+                  >
+                    <Phone size={18} />
+                  </a>
+                )}
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="shivam-stack-homepage-hero-social-link"
+                  aria-label="Email"
+                >
+                  <Mail size={18} />
+                </a>
+              </div>
+            </div>
+            <div className="shivam-stack-homepage-hero-visual">
+              <div className="shivam-stack-homepage-hero-card-3d">
+                <div className="shivam-stack-homepage-hero-card-inner">
+                  <div className="shivam-stack-homepage-hero-profile-ring">
+                    <img
+                      src="https://api.dicebear.com/7.x/avataaars/svg?seed=ShivamDev&backgroundColor=b6e3f4,c0aede&backgroundType=gradientLinear"
+                      alt="Shivam"
+                      className="shivam-stack-homepage-hero-profile-img"
+                    />
+                  </div>
+                  <div className="shivam-stack-homepage-hero-card-info">
+                    <div className="shivam-stack-homepage-hero-card-name">
+                      Shivam
+                    </div>
+                    <div className="shivam-stack-homepage-hero-card-role">
+                      MERN Stack Developer
+                    </div>
+                    <div className="shivam-stack-homepage-hero-card-location">
+                      <MapPin size={12} /> India • Remote Friendly
+                    </div>
+                  </div>
+                  <div className="shivam-stack-homepage-hero-floating-badges">
+                    <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-1">
+                      <CheckCircle size={13} /> <span>50+ Projects</span>
+                    </div>
+                    <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-2">
+                      <Star size={13} fill="currentColor" />{" "}
+                      <span>5.0 Rating</span>
+                    </div>
+                    <div className="shivam-stack-homepage-hero-floating-badge shivam-stack-homepage-hero-fb-3">
+                      <Zap size={13} /> <span>Fast Delivery</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            className="shivam-stack-homepage-hero-scroll-cue"
+            onClick={() => scrollTo("section-stats")}
+            aria-label="Scroll down"
+          >
+            <ChevronDown size={20} />
+          </button>
+        </section>
+
+        {/* ── 4. STATS ───────────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-stats-section"
+          id="section-stats"
+          ref={statsRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div
+              className={`shivam-stack-homepage-stats-grid ${statsVisible ? "shivam-stack-homepage-revealed" : ""}`}
+            >
+              {STATS.map((s, i) => (
+                <div
+                  key={i}
+                  className="shivam-stack-homepage-stat-card"
+                  style={{ animationDelay: `${i * 0.08}s` }}
+                >
+                  <div className="shivam-stack-homepage-stat-icon">
+                    {s.icon}
+                  </div>
+                  <div className="shivam-stack-homepage-stat-value">
+                    {s.value}
+                  </div>
+                  <div className="shivam-stack-homepage-stat-label">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 3. TECH STACK ─────────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-tech-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Tech Stack
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Tools I Master Daily
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                A curated stack of proven, production-battle-tested
+                technologies.
+              </p>
+            </div>
+            <div className="shivam-stack-homepage-tech-filters">
+              {techCategories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`shivam-stack-homepage-tech-filter-btn ${techFilter === cat ? "shivam-stack-homepage-tech-filter-active" : ""}`}
+                  onClick={() => setTechFilter(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            <div className="shivam-stack-homepage-tech-grid">
+              {filteredTech.map((tech, i) => (
+                <div
+                  key={tech.name}
+                  className="shivam-stack-homepage-tech-card"
+                  style={{ animationDelay: `${i * 0.04}s` }}
+                >
+                  <div
+                    className="shivam-stack-homepage-tech-icon"
+                    style={{ "--tech-color": tech.color }}
+                  >
+                    <span>{tech.icon}</span>
+                  </div>
+                  <span className="shivam-stack-homepage-tech-name">
+                    {tech.name}
+                  </span>
+                  <span className="shivam-stack-homepage-tech-cat">
+                    {tech.category}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 6. ABOUT ME ────────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-about-section"
+          id="section-about-me"
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-about-grid">
+              <div className="shivam-stack-homepage-about-left">
+                <span className="shivam-stack-homepage-section-label">
+                  About Me
+                </span>
+                <h2 className="shivam-stack-homepage-section-title shivam-stack-homepage-about-title">
+                  Hi, I'm Shivam —<br /> A Developer Who Ships.
+                </h2>
+                <p className="shivam-stack-homepage-about-body">
+                  I'm a full-stack MERN developer based in India with a deep
+                  obsession for clean architecture and user experience. Over the
+                  past 4+ years, I've built everything from MVP startups to
+                  production SaaS platforms handling thousands of users daily.
+                </p>
+                <p className="shivam-stack-homepage-about-body">
+                  I don't just write code — I solve business problems with
+                  technology. Every line I write is intentional, scalable, and
+                  maintainable. I care deeply about performance, developer
+                  experience, and delivering real business value.
+                </p>
+                <div className="shivam-stack-homepage-about-achievements">
+                  {ACHIEVEMENTS.map((a, i) => (
+                    <div
+                      key={i}
+                      className="shivam-stack-homepage-about-achievement"
+                    >
+                      <div className="shivam-stack-homepage-about-achievement-icon">
+                        {a.icon}
+                      </div>
+                      <div>
+                        <div className="shivam-stack-homepage-about-achievement-title">
+                          {a.title}
+                        </div>
+                        <div className="shivam-stack-homepage-about-achievement-desc">
+                          {a.desc}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="shivam-stack-homepage-about-actions">
+                  {/* <a
                   href={CONTACT_INFO.resumeUrl}
                   download
                   className="shivam-stack-homepage-btn-primary"
                 >
                   <Download size={15} /> Download Resume
                 </a> */}
-                <button
-                  className="shivam-stack-homepage-btn-ghost"
-                  onClick={() => scrollTo("section-contact")}
-                >
-                  Let's Talk <ArrowRight size={15} />
-                </button>
-              </div>
-            </div>
-            <div className="shivam-stack-homepage-about-right">
-              <div className="shivam-stack-homepage-about-visual">
-                <div className="shivam-stack-homepage-about-img-wrap">
-                  <img
-                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=ShivamPro&backgroundColor=dbeafe&backgroundType=gradientLinear&clothingColor=3c4f5c"
-                    alt="Shivam"
-                    className="shivam-stack-homepage-about-img"
-                  />
-                </div>
-                <div className="shivam-stack-homepage-about-exp-badge">
-                  <div className="shivam-stack-homepage-about-exp-num">4+</div>
-                  <div className="shivam-stack-homepage-about-exp-text">
-                    Years of
-                    <br />
-                    Experience
-                  </div>
-                </div>
-                <div className="shivam-stack-homepage-about-avail-badge">
-                  <span className="shivam-stack-homepage-about-avail-dot" />
-                  Available Now
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. EXPERTISE ───────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-expertise-section"
-        ref={expertiseRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Core Skills
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              Where I Excel
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Deep expertise across the full stack — from pixel-perfect UIs to
-              battle-tested backend systems.
-            </p>
-          </div>
-          <div
-            className={`shivam-stack-homepage-expertise-grid ${expertiseVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {EXPERTISE.map((exp, i) => (
-              <div
-                key={i}
-                className="shivam-stack-homepage-expertise-card"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="shivam-stack-homepage-expertise-icon">
-                  {exp.icon}
-                </div>
-                <h3 className="shivam-stack-homepage-expertise-title">
-                  {exp.title}
-                </h3>
-                <p className="shivam-stack-homepage-expertise-desc">
-                  {exp.desc}
-                </p>
-                <div className="shivam-stack-homepage-expertise-skills">
-                  {exp.skills.map((sk) => (
-                    <span
-                      key={sk}
-                      className="shivam-stack-homepage-expertise-skill-tag"
-                    >
-                      {sk}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 8. SERVICES ────────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-services-section"
-        id="section-services"
-        ref={servicesRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Services
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              What I Build For You
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              From quick MVPs to full-scale SaaS platforms — clear pricing, real
-              deliverables.
-            </p>
-          </div>
-          <div
-            className={`shivam-stack-homepage-services-grid ${servicesVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {SERVICES.map((svc, i) => (
-              <div
-                key={i}
-                className={`shivam-stack-homepage-service-card ${svc.badge === "Most Popular" ? "shivam-stack-homepage-service-card-featured" : ""}`}
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {svc.badge && (
-                  <div
-                    className={`shivam-stack-homepage-service-badge ${svc.badge === "Most Popular" ? "shivam-stack-homepage-service-badge-popular" : svc.badge === "New" ? "shivam-stack-homepage-service-badge-new" : "shivam-stack-homepage-service-badge-premium"}`}
+                  <button
+                    className="shivam-stack-homepage-btn-ghost"
+                    onClick={() => scrollTo("section-contact")}
                   >
-                    {svc.badge}
+                    Let's Talk <ArrowRight size={15} />
+                  </button>
+                </div>
+              </div>
+              <div className="shivam-stack-homepage-about-right">
+                <div className="shivam-stack-homepage-about-visual">
+                  <div className="shivam-stack-homepage-about-img-wrap">
+                    <img
+                      src="https://api.dicebear.com/7.x/avataaars/svg?seed=ShivamPro&backgroundColor=dbeafe&backgroundType=gradientLinear&clothingColor=3c4f5c"
+                      alt="Shivam"
+                      className="shivam-stack-homepage-about-img"
+                    />
                   </div>
-                )}
-                <div className="shivam-stack-homepage-service-icon">
-                  {svc.icon}
+                  <div className="shivam-stack-homepage-about-exp-badge">
+                    <div className="shivam-stack-homepage-about-exp-num">
+                      4+
+                    </div>
+                    <div className="shivam-stack-homepage-about-exp-text">
+                      Years of
+                      <br />
+                      Experience
+                    </div>
+                  </div>
+                  <div className="shivam-stack-homepage-about-avail-badge">
+                    <span className="shivam-stack-homepage-about-avail-dot" />
+                    Available Now
+                  </div>
                 </div>
-                <div className="shivam-stack-homepage-service-price">
-                  {svc.price}
-                </div>
-                <h3 className="shivam-stack-homepage-service-title">
-                  {svc.title}
-                </h3>
-                <p className="shivam-stack-homepage-service-desc">{svc.desc}</p>
-                <ul className="shivam-stack-homepage-service-features">
-                  {svc.features.map((f) => (
-                    <li key={f}>
-                      <CheckCircle size={13} /> <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className="shivam-stack-homepage-btn-primary shivam-stack-homepage-service-cta"
-                  onClick={() => scrollTo("section-contact")}
-                >
-                  Get Started <ArrowRight size={14} />
-                </button>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 9. INDUSTRIES ─────────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-industries-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Industries
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">Who I Help</h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Diverse domain experience means I understand your business — not
-              just your tech requirements.
-            </p>
-          </div>
-          <div className="shivam-stack-homepage-industries-grid">
-            {INDUSTRIES.map((ind, i) => (
-              <div key={i} className="shivam-stack-homepage-industry-card">
-                <div className="shivam-stack-homepage-industry-icon">
-                  {ind.icon}
-                </div>
-                <div className="shivam-stack-homepage-industry-name">
-                  {ind.name}
-                </div>
-                <div className="shivam-stack-homepage-industry-desc">
-                  {ind.desc}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 10. CASE STUDIES ──────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-cases-section"
-        id="section-work"
-        ref={caseRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Case Studies
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              Featured Projects
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Real-world solutions that made a real-world difference for my
-              clients.
-            </p>
-          </div>
-          <div
-            className={`shivam-stack-homepage-cases-grid ${caseVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {CASE_STUDIES.map((cs, i) => (
-              <div
-                key={i}
-                className="shivam-stack-homepage-case-card"
-                style={{
-                  "--case-color": cs.color,
-                  animationDelay: `${i * 0.15}s`,
-                }}
-              >
-                <div className="shivam-stack-homepage-case-top">
-                  <span className="shivam-stack-homepage-case-tag">
-                    {cs.tag}
-                  </span>
-                  <ExternalLink
-                    size={16}
-                    className="shivam-stack-homepage-case-ext"
-                  />
-                </div>
-                <h3 className="shivam-stack-homepage-case-title">{cs.title}</h3>
-                <p className="shivam-stack-homepage-case-desc">{cs.desc}</p>
-                <div className="shivam-stack-homepage-case-metrics">
-                  {cs.metrics.map((m) => (
-                    <span key={m} className="shivam-stack-homepage-case-metric">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-                <div className="shivam-stack-homepage-case-stack">
-                  {cs.stack.map((s) => (
-                    <span key={s} className="shivam-stack-homepage-case-tech">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="shivam-stack-homepage-section-cta">
-            <a
-              href={SOCIAL_LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="shivam-stack-homepage-btn-ghost"
+        {/* ── 7. EXPERTISE ───────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-expertise-section"
+          ref={expertiseRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Core Skills
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Where I Excel
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Deep expertise across the full stack — from pixel-perfect UIs to
+                battle-tested backend systems.
+              </p>
+            </div>
+            <div
+              className={`shivam-stack-homepage-expertise-grid ${expertiseVisible ? "shivam-stack-homepage-revealed" : ""}`}
             >
-              <Github size={16} /> View GitHub Profile <ArrowRight size={15} />
-            </a>
+              {EXPERTISE.map((exp, i) => (
+                <div
+                  key={i}
+                  className="shivam-stack-homepage-expertise-card"
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  <div className="shivam-stack-homepage-expertise-icon">
+                    {exp.icon}
+                  </div>
+                  <h3 className="shivam-stack-homepage-expertise-title">
+                    {exp.title}
+                  </h3>
+                  <p className="shivam-stack-homepage-expertise-desc">
+                    {exp.desc}
+                  </p>
+                  <div className="shivam-stack-homepage-expertise-skills">
+                    {exp.skills.map((sk) => (
+                      <span
+                        key={sk}
+                        className="shivam-stack-homepage-expertise-skill-tag"
+                      >
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 11. PRODUCT STORE ─────────────────────────────────────── */}
-      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-store-section">
+        {/* ── 8. SERVICES ────────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-services-section"
+          id="section-services"
+          ref={servicesRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Services
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                What I Build For You
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                From quick MVPs to full-scale SaaS platforms — clear pricing,
+                real deliverables.
+              </p>
+            </div>
+            <div
+              className={`shivam-stack-homepage-services-grid ${servicesVisible ? "shivam-stack-homepage-revealed" : ""}`}
+            >
+              {SERVICES.map((svc, i) => (
+                <div
+                  key={i}
+                  className={`shivam-stack-homepage-service-card ${svc.badge === "Most Popular" ? "shivam-stack-homepage-service-card-featured" : ""}`}
+                  style={{ animationDelay: `${i * 0.1}s` }}
+                >
+                  {svc.badge && (
+                    <div
+                      className={`shivam-stack-homepage-service-badge ${svc.badge === "Most Popular" ? "shivam-stack-homepage-service-badge-popular" : svc.badge === "New" ? "shivam-stack-homepage-service-badge-new" : "shivam-stack-homepage-service-badge-premium"}`}
+                    >
+                      {svc.badge}
+                    </div>
+                  )}
+                  <div className="shivam-stack-homepage-service-icon">
+                    {svc.icon}
+                  </div>
+                  <div className="shivam-stack-homepage-service-price">
+                    {svc.price}
+                  </div>
+                  <h3 className="shivam-stack-homepage-service-title">
+                    {svc.title}
+                  </h3>
+                  <p className="shivam-stack-homepage-service-desc">
+                    {svc.desc}
+                  </p>
+                  <ul className="shivam-stack-homepage-service-features">
+                    {svc.features.map((f) => (
+                      <li key={f}>
+                        <CheckCircle size={13} /> <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    className="shivam-stack-homepage-btn-primary shivam-stack-homepage-service-cta"
+                    onClick={() => scrollTo("section-contact")}
+                  >
+                    Get Started <ArrowRight size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 9. INDUSTRIES ─────────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-industries-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Industries
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Who I Help
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Diverse domain experience means I understand your business — not
+                just your tech requirements.
+              </p>
+            </div>
+            <div className="shivam-stack-homepage-industries-grid">
+              {INDUSTRIES.map((ind, i) => (
+                <div key={i} className="shivam-stack-homepage-industry-card">
+                  <div className="shivam-stack-homepage-industry-icon">
+                    {ind.icon}
+                  </div>
+                  <div className="shivam-stack-homepage-industry-name">
+                    {ind.name}
+                  </div>
+                  <div className="shivam-stack-homepage-industry-desc">
+                    {ind.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 10. CASE STUDIES ──────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-cases-section"
+          id="section-work"
+          ref={caseRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Case Studies
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Featured Projects
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Real-world solutions that made a real-world difference for my
+                clients.
+              </p>
+            </div>
+            <div
+              className={`shivam-stack-homepage-cases-grid ${caseVisible ? "shivam-stack-homepage-revealed" : ""}`}
+            >
+              {CASE_STUDIES.map((cs, i) => (
+                <div
+                  key={i}
+                  className="shivam-stack-homepage-case-card"
+                  style={{
+                    "--case-color": cs.color,
+                    animationDelay: `${i * 0.15}s`,
+                  }}
+                >
+                  <div className="shivam-stack-homepage-case-top">
+                    <span className="shivam-stack-homepage-case-tag">
+                      {cs.tag}
+                    </span>
+                    <ExternalLink
+                      size={16}
+                      className="shivam-stack-homepage-case-ext"
+                    />
+                  </div>
+                  <h3 className="shivam-stack-homepage-case-title">
+                    {cs.title}
+                  </h3>
+                  <p className="shivam-stack-homepage-case-desc">{cs.desc}</p>
+                  <div className="shivam-stack-homepage-case-metrics">
+                    {cs.metrics.map((m) => (
+                      <span
+                        key={m}
+                        className="shivam-stack-homepage-case-metric"
+                      >
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="shivam-stack-homepage-case-stack">
+                    {cs.stack.map((s) => (
+                      <span key={s} className="shivam-stack-homepage-case-tech">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="shivam-stack-homepage-section-cta">
+              <a
+                href={SOCIAL_LINKS.github}
+                target="_blank"
+                rel="noreferrer"
+                className="shivam-stack-homepage-btn-ghost"
+              >
+                <Github size={16} /> View GitHub Profile{" "}
+                <ArrowRight size={15} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 11. PRODUCT STORE ─────────────────────────────────────── */}
+        {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-store-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1448,8 +1466,8 @@ const Homepage = () => {
         </div>
       </section> */}
 
-      {/* ── 12. FREE RESOURCES ────────────────────────────────────── */}
-      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-resources-section">
+        {/* ── 12. FREE RESOURCES ────────────────────────────────────── */}
+        {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-resources-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1495,190 +1513,196 @@ const Homepage = () => {
         </div>
       </section> */}
 
-      {/* ── 13. PROCESS ───────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-process-section"
-        ref={processRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              How It Works
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              My Development Process
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              A structured approach that delivers results — on time, every time.
-            </p>
-          </div>
-          <div
-            className={`shivam-stack-homepage-process-steps ${processVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {PROCESS_STEPS.map((step, i) => (
-              <div
-                key={i}
-                className="shivam-stack-homepage-process-step"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="shivam-stack-homepage-process-step-num">
-                  {step.step}
-                </div>
-                {i < PROCESS_STEPS.length - 1 && (
-                  <div className="shivam-stack-homepage-process-connector" />
-                )}
-                <div className="shivam-stack-homepage-process-step-icon">
-                  {step.icon}
-                </div>
-                <h3 className="shivam-stack-homepage-process-step-title">
-                  {step.title}
-                </h3>
-                <p className="shivam-stack-homepage-process-step-desc">
-                  {step.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 14. WHY CHOOSE ME ─────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-why-section"
-        ref={whyRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-why-grid">
-            <div className="shivam-stack-homepage-why-left">
+        {/* ── 13. PROCESS ───────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-process-section"
+          ref={processRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
               <span className="shivam-stack-homepage-section-label">
-                Why Me
+                How It Works
               </span>
-              <h2 className="shivam-stack-homepage-section-title shivam-stack-homepage-why-title">
-                Why Clients Choose Me Over Agencies
+              <h2 className="shivam-stack-homepage-section-title">
+                My Development Process
               </h2>
-              <p className="shivam-stack-homepage-why-desc">
-                Agencies charge 3x and put a junior on your project. I'm a
-                senior developer who takes ownership — delivering the same
-                quality at a fraction of the cost, with direct, transparent
-                communication.
+              <p className="shivam-stack-homepage-section-desc">
+                A structured approach that delivers results — on time, every
+                time.
               </p>
-              <div className="shivam-stack-homepage-why-cta-wrap">
-                <button
-                  className="shivam-stack-homepage-btn-primary"
-                  onClick={() => scrollTo("section-contact")}
+            </div>
+            <div
+              className={`shivam-stack-homepage-process-steps ${processVisible ? "shivam-stack-homepage-revealed" : ""}`}
+            >
+              {PROCESS_STEPS.map((step, i) => (
+                <div
+                  key={i}
+                  className="shivam-stack-homepage-process-step"
+                  style={{ animationDelay: `${i * 0.1}s` }}
                 >
-                  Start Working Together <ArrowRight size={15} />
+                  <div className="shivam-stack-homepage-process-step-num">
+                    {step.step}
+                  </div>
+                  {i < PROCESS_STEPS.length - 1 && (
+                    <div className="shivam-stack-homepage-process-connector" />
+                  )}
+                  <div className="shivam-stack-homepage-process-step-icon">
+                    {step.icon}
+                  </div>
+                  <h3 className="shivam-stack-homepage-process-step-title">
+                    {step.title}
+                  </h3>
+                  <p className="shivam-stack-homepage-process-step-desc">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 14. WHY CHOOSE ME ─────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-why-section"
+          ref={whyRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-why-grid">
+              <div className="shivam-stack-homepage-why-left">
+                <span className="shivam-stack-homepage-section-label">
+                  Why Me
+                </span>
+                <h2 className="shivam-stack-homepage-section-title shivam-stack-homepage-why-title">
+                  Why Clients Choose Me Over Agencies
+                </h2>
+                <p className="shivam-stack-homepage-why-desc">
+                  Agencies charge 3x and put a junior on your project. I'm a
+                  senior developer who takes ownership — delivering the same
+                  quality at a fraction of the cost, with direct, transparent
+                  communication.
+                </p>
+                <div className="shivam-stack-homepage-why-cta-wrap">
+                  <button
+                    className="shivam-stack-homepage-btn-primary"
+                    onClick={() => scrollTo("section-contact")}
+                  >
+                    Start Working Together <ArrowRight size={15} />
+                  </button>
+                </div>
+              </div>
+              <div
+                className={`shivam-stack-homepage-why-right ${whyVisible ? "shivam-stack-homepage-revealed" : ""}`}
+              >
+                {WHY_ME.map((w, i) => (
+                  <div
+                    key={i}
+                    className="shivam-stack-homepage-why-card"
+                    style={{ animationDelay: `${i * 0.08}s` }}
+                  >
+                    <div className="shivam-stack-homepage-why-icon">
+                      {w.icon}
+                    </div>
+                    <div>
+                      <div className="shivam-stack-homepage-why-card-title">
+                        {w.title}
+                      </div>
+                      <div className="shivam-stack-homepage-why-card-desc">
+                        {w.desc}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 15. TESTIMONIALS ──────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-testimonials-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">
+                Testimonials
+              </span>
+              <h2 className="shivam-stack-homepage-section-title">
+                What Clients Say
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Real words from real people who trusted me with their projects.
+              </p>
+            </div>
+            <div className="shivam-stack-homepage-testimonials-carousel">
+              <div
+                className="shivam-stack-homepage-testimonials-track"
+                style={{ transform: `translateX(-${testimonialIdx * 100}%)` }}
+              >
+                {TESTIMONIALS.map((t, i) => (
+                  <div
+                    key={i}
+                    className="shivam-stack-homepage-testimonial-card"
+                  >
+                    <div className="shivam-stack-homepage-testimonial-stars">
+                      {Array.from({ length: t.rating }).map((_, s) => (
+                        <Star key={s} size={15} fill="currentColor" />
+                      ))}
+                    </div>
+                    <blockquote className="shivam-stack-homepage-testimonial-text">
+                      "{t.text}"
+                    </blockquote>
+                    <div className="shivam-stack-homepage-testimonial-author">
+                      <div
+                        className="shivam-stack-homepage-testimonial-avatar"
+                        style={{ background: `${t.color}30`, color: t.color }}
+                      >
+                        {t.avatar}
+                      </div>
+                      <div>
+                        <div className="shivam-stack-homepage-testimonial-name">
+                          {t.name}
+                        </div>
+                        <div className="shivam-stack-homepage-testimonial-role">
+                          {t.role}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="shivam-stack-homepage-testimonials-controls">
+                <button
+                  onClick={() => setTestimonialIdx((i) => Math.max(0, i - 1))}
+                  className="shivam-stack-homepage-carousel-btn"
+                  disabled={testimonialIdx === 0}
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <div className="shivam-stack-homepage-carousel-dots">
+                  {TESTIMONIALS.map((_, i) => (
+                    <button
+                      key={i}
+                      className={`shivam-stack-homepage-carousel-dot ${i === testimonialIdx ? "shivam-stack-homepage-carousel-dot-active" : ""}`}
+                      onClick={() => setTestimonialIdx(i)}
+                    />
+                  ))}
+                </div>
+                <button
+                  onClick={() =>
+                    setTestimonialIdx((i) =>
+                      Math.min(TESTIMONIALS.length - 1, i + 1),
+                    )
+                  }
+                  className="shivam-stack-homepage-carousel-btn"
+                  disabled={testimonialIdx === TESTIMONIALS.length - 1}
+                >
+                  <ChevronRight size={18} />
                 </button>
               </div>
             </div>
-            <div
-              className={`shivam-stack-homepage-why-right ${whyVisible ? "shivam-stack-homepage-revealed" : ""}`}
-            >
-              {WHY_ME.map((w, i) => (
-                <div
-                  key={i}
-                  className="shivam-stack-homepage-why-card"
-                  style={{ animationDelay: `${i * 0.08}s` }}
-                >
-                  <div className="shivam-stack-homepage-why-icon">{w.icon}</div>
-                  <div>
-                    <div className="shivam-stack-homepage-why-card-title">
-                      {w.title}
-                    </div>
-                    <div className="shivam-stack-homepage-why-card-desc">
-                      {w.desc}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 15. TESTIMONIALS ──────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-testimonials-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">
-              Testimonials
-            </span>
-            <h2 className="shivam-stack-homepage-section-title">
-              What Clients Say
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Real words from real people who trusted me with their projects.
-            </p>
-          </div>
-          <div className="shivam-stack-homepage-testimonials-carousel">
-            <div
-              className="shivam-stack-homepage-testimonials-track"
-              style={{ transform: `translateX(-${testimonialIdx * 100}%)` }}
-            >
-              {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="shivam-stack-homepage-testimonial-card">
-                  <div className="shivam-stack-homepage-testimonial-stars">
-                    {Array.from({ length: t.rating }).map((_, s) => (
-                      <Star key={s} size={15} fill="currentColor" />
-                    ))}
-                  </div>
-                  <blockquote className="shivam-stack-homepage-testimonial-text">
-                    "{t.text}"
-                  </blockquote>
-                  <div className="shivam-stack-homepage-testimonial-author">
-                    <div
-                      className="shivam-stack-homepage-testimonial-avatar"
-                      style={{ background: `${t.color}30`, color: t.color }}
-                    >
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div className="shivam-stack-homepage-testimonial-name">
-                        {t.name}
-                      </div>
-                      <div className="shivam-stack-homepage-testimonial-role">
-                        {t.role}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="shivam-stack-homepage-testimonials-controls">
-              <button
-                onClick={() => setTestimonialIdx((i) => Math.max(0, i - 1))}
-                className="shivam-stack-homepage-carousel-btn"
-                disabled={testimonialIdx === 0}
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <div className="shivam-stack-homepage-carousel-dots">
-                {TESTIMONIALS.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`shivam-stack-homepage-carousel-dot ${i === testimonialIdx ? "shivam-stack-homepage-carousel-dot-active" : ""}`}
-                    onClick={() => setTestimonialIdx(i)}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={() =>
-                  setTestimonialIdx((i) =>
-                    Math.min(TESTIMONIALS.length - 1, i + 1),
-                  )
-                }
-                className="shivam-stack-homepage-carousel-btn"
-                disabled={testimonialIdx === TESTIMONIALS.length - 1}
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 16. OPEN SOURCE ───────────────────────────────────────── */}
-      {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-opensource-section">
+        {/* ── 16. OPEN SOURCE ───────────────────────────────────────── */}
+        {/* <section className="shivam-stack-homepage-section shivam-stack-homepage-opensource-section">
         <div className="shivam-stack-homepage-container">
           <div className="shivam-stack-homepage-section-header">
             <span className="shivam-stack-homepage-section-label">
@@ -1745,295 +1769,299 @@ const Homepage = () => {
         </div>
       </section> */}
 
-      {/* ── 17. BLOG ──────────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-blog-section"
-        id="section-blog"
-        ref={blogRef}
-      >
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">Blog</span>
-            <h2 className="shivam-stack-homepage-section-title">
-              Insights & Tutorials
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Deep-dive articles on MERN stack, architecture, and career growth
-              written from real experience.
-            </p>
-          </div>
-          <div
-            className={`shivam-stack-homepage-blog-grid ${blogVisible ? "shivam-stack-homepage-revealed" : ""}`}
-          >
-            {BLOG_POSTS.map((post, i) => (
-              <div
-                key={i}
-                className="shivam-stack-homepage-blog-card"
-                style={{
-                  "--blog-color": post.color,
-                  animationDelay: `${i * 0.12}s`,
-                }}
-              >
-                <div className="shivam-stack-homepage-blog-card-top">
-                  <span className="shivam-stack-homepage-blog-tag">
-                    {post.tag}
-                  </span>
-                  <span className="shivam-stack-homepage-blog-date">
-                    {post.date}
-                  </span>
-                </div>
-                <h3 className="shivam-stack-homepage-blog-title">
-                  {post.title}
-                </h3>
-                <p className="shivam-stack-homepage-blog-desc">{post.desc}</p>
-                <div className="shivam-stack-homepage-blog-footer">
-                  <span className="shivam-stack-homepage-blog-read-time">
-                    <Clock size={12} /> {post.readTime}
-                  </span>
-                  <Link to="/blog" className="shivam-stack-homepage-blog-link">
-                    Read More <ArrowRight size={13} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="shivam-stack-homepage-section-cta">
-            <Link to="/blog" className="shivam-stack-homepage-btn-ghost">
-              View All Posts <ArrowRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── AVAILABILITY WIDGET ────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-availability-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-availability-card">
-            <div className="shivam-stack-homepage-availability-left">
-              <div className="shivam-stack-homepage-availability-status">
-                <span className="shivam-stack-homepage-availability-dot" />
-                <span>Currently Available for Work</span>
-              </div>
-              <h3 className="shivam-stack-homepage-availability-title">
-                Only {AVAILABILITY.slots} Client Slots Open This Month
-              </h3>
-              <p className="shivam-stack-homepage-availability-desc">
-                I deliberately limit my client load to guarantee full attention
-                to every project. Spots fill fast — don't wait.
+        {/* ── 17. BLOG ──────────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-blog-section"
+          id="section-blog"
+          ref={blogRef}
+        >
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">Blog</span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Insights & Tutorials
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Deep-dive articles on MERN stack, architecture, and career
+                growth written from real experience.
               </p>
             </div>
-            <div className="shivam-stack-homepage-availability-right">
-              <div className="shivam-stack-homepage-availability-slots">
-                <div className="shivam-stack-homepage-availability-slot-bar">
-                  <div
-                    className="shivam-stack-homepage-availability-slot-fill"
-                    style={{ width: `${(AVAILABILITY.slots / 4) * 100}%` }}
-                  />
-                </div>
-                <span>{AVAILABILITY.slots} of 4 slots remaining</span>
-              </div>
-              <button
-                className="shivam-stack-homepage-btn-primary"
-                onClick={() => scrollTo("section-contact")}
-              >
-                Book a Call Now <ArrowRight size={15} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 18. FAQ ───────────────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-faq-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-section-header">
-            <span className="shivam-stack-homepage-section-label">FAQ</span>
-            <h2 className="shivam-stack-homepage-section-title">
-              Common Questions
-            </h2>
-            <p className="shivam-stack-homepage-section-desc">
-              Everything you want to know before we start working together.
-            </p>
-          </div>
-          <div className="shivam-stack-homepage-faq-list">
-            {FAQS.map((faq, i) => (
-              <div
-                key={i}
-                className={`shivam-stack-homepage-faq-item ${openFaq === i ? "shivam-stack-homepage-faq-open" : ""}`}
-              >
-                <button
-                  className="shivam-stack-homepage-faq-question"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+            <div
+              className={`shivam-stack-homepage-blog-grid ${blogVisible ? "shivam-stack-homepage-revealed" : ""}`}
+            >
+              {BLOG_POSTS.map((post, i) => (
+                <div
+                  key={i}
+                  className="shivam-stack-homepage-blog-card"
+                  style={{
+                    "--blog-color": post.color,
+                    animationDelay: `${i * 0.12}s`,
+                  }}
                 >
-                  <span>{faq.q}</span>
-                  <span className="shivam-stack-homepage-faq-chevron">
-                    {openFaq === i ? <Minus size={16} /> : <Plus size={16} />}
-                  </span>
-                </button>
-                <div className="shivam-stack-homepage-faq-answer">
-                  <p>{faq.a}</p>
+                  <div className="shivam-stack-homepage-blog-card-top">
+                    <span className="shivam-stack-homepage-blog-tag">
+                      {post.tag}
+                    </span>
+                    <span className="shivam-stack-homepage-blog-date">
+                      {post.date}
+                    </span>
+                  </div>
+                  <h3 className="shivam-stack-homepage-blog-title">
+                    {post.title}
+                  </h3>
+                  <p className="shivam-stack-homepage-blog-desc">{post.desc}</p>
+                  <div className="shivam-stack-homepage-blog-footer">
+                    <span className="shivam-stack-homepage-blog-read-time">
+                      <Clock size={12} /> {post.readTime}
+                    </span>
+                    <Link
+                      to="/blog"
+                      className="shivam-stack-homepage-blog-link"
+                    >
+                      Read More <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 19. STRONG CTA ────────────────────────────────────────── */}
-      <section
-        className="shivam-stack-homepage-section shivam-stack-homepage-cta-section"
-        id="section-contact"
-      >
-        <div className="shivam-stack-homepage-cta-bg">
-          <div className="shivam-stack-homepage-cta-orb-1" />
-          <div className="shivam-stack-homepage-cta-orb-2" />
-        </div>
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-cta-inner">
-            <span className="shivam-stack-homepage-section-label">
-              Let's Build
-            </span>
-            <h2 className="shivam-stack-homepage-cta-title">
-              Ready to Build Something
-              <br />
-              <span className="shivam-stack-homepage-hero-gradient-text">
-                Extraordinary?
-              </span>
-            </h2>
-            <p className="shivam-stack-homepage-cta-desc">
-              Tell me about your project. I'll respond within 24 hours with a
-              tailored plan and honest pricing. No sales pitch, just a real
-              conversation.
-            </p>
-            <div className="shivam-stack-homepage-cta-buttons">
-              <a
-                href={`mailto:${CONTACT_INFO.email}`}
-                className="shivam-stack-homepage-btn-primary shivam-stack-homepage-cta-primary-btn"
-              >
-                <Mail size={16} /> Email Me Directly
-              </a>
-              <a
-                href="/book-free-call"
-                target="_blank"
-                rel="noreferrer"
-                className="shivam-stack-homepage-btn-secondary"
-              >
-                <Phone size={16} /> Book a Free Call
-              </a>
+              ))}
             </div>
-            <div className="shivam-stack-homepage-cta-trust">
-              {[
-                "Free Consultation",
-                "Response in 24h",
-                "No Commitment",
-                "Fixed Pricing",
-              ].map((t) => (
-                <span key={t} className="shivam-stack-homepage-cta-trust-item">
-                  <CheckCircle size={13} /> {t}
-                </span>
+            <div className="shivam-stack-homepage-section-cta">
+              <Link to="/blog" className="shivam-stack-homepage-btn-ghost">
+                View All Posts <ArrowRight size={15} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── AVAILABILITY WIDGET ────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-availability-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-availability-card">
+              <div className="shivam-stack-homepage-availability-left">
+                <div className="shivam-stack-homepage-availability-status">
+                  <span className="shivam-stack-homepage-availability-dot" />
+                  <span>Currently Available for Work</span>
+                </div>
+                <h3 className="shivam-stack-homepage-availability-title">
+                  Only {AVAILABILITY.slots} Client Slots Open This Month
+                </h3>
+                <p className="shivam-stack-homepage-availability-desc">
+                  I deliberately limit my client load to guarantee full
+                  attention to every project. Spots fill fast — don't wait.
+                </p>
+              </div>
+              <div className="shivam-stack-homepage-availability-right">
+                <div className="shivam-stack-homepage-availability-slots">
+                  <div className="shivam-stack-homepage-availability-slot-bar">
+                    <div
+                      className="shivam-stack-homepage-availability-slot-fill"
+                      style={{ width: `${(AVAILABILITY.slots / 4) * 100}%` }}
+                    />
+                  </div>
+                  <span>{AVAILABILITY.slots} of 4 slots remaining</span>
+                </div>
+                <button
+                  className="shivam-stack-homepage-btn-primary"
+                  onClick={() => scrollTo("section-contact")}
+                >
+                  Book a Call Now <ArrowRight size={15} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 18. FAQ ───────────────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-faq-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-section-header">
+              <span className="shivam-stack-homepage-section-label">FAQ</span>
+              <h2 className="shivam-stack-homepage-section-title">
+                Common Questions
+              </h2>
+              <p className="shivam-stack-homepage-section-desc">
+                Everything you want to know before we start working together.
+              </p>
+            </div>
+            <div className="shivam-stack-homepage-faq-list">
+              {FAQS.map((faq, i) => (
+                <div
+                  key={i}
+                  className={`shivam-stack-homepage-faq-item ${openFaq === i ? "shivam-stack-homepage-faq-open" : ""}`}
+                >
+                  <button
+                    className="shivam-stack-homepage-faq-question"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  >
+                    <span>{faq.q}</span>
+                    <span className="shivam-stack-homepage-faq-chevron">
+                      {openFaq === i ? <Minus size={16} /> : <Plus size={16} />}
+                    </span>
+                  </button>
+                  <div className="shivam-stack-homepage-faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── 20. NEWSLETTER ────────────────────────────────────────── */}
-      <section className="shivam-stack-homepage-section shivam-stack-homepage-newsletter-section">
-        <div className="shivam-stack-homepage-container">
-          <div className="shivam-stack-homepage-newsletter-card">
-            <div className="shivam-stack-homepage-newsletter-left">
-              <div className="shivam-stack-homepage-newsletter-icon">
-                <Send size={24} />
-              </div>
-              <h3 className="shivam-stack-homepage-newsletter-title">
-                Join 3,000+ Developers
-              </h3>
-              <p className="shivam-stack-homepage-newsletter-desc">
-                Weekly insights on MERN stack, architecture patterns,
-                freelancing tips, and exclusive deals on my products. No spam,
-                ever.
+        {/* ── 19. STRONG CTA ────────────────────────────────────────── */}
+        <section
+          className="shivam-stack-homepage-section shivam-stack-homepage-cta-section"
+          id="section-contact"
+        >
+          <div className="shivam-stack-homepage-cta-bg">
+            <div className="shivam-stack-homepage-cta-orb-1" />
+            <div className="shivam-stack-homepage-cta-orb-2" />
+          </div>
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-cta-inner">
+              <span className="shivam-stack-homepage-section-label">
+                Let's Build
+              </span>
+              <h2 className="shivam-stack-homepage-cta-title">
+                Ready to Build Something
+                <br />
+                <span className="shivam-stack-homepage-hero-gradient-text">
+                  Extraordinary?
+                </span>
+              </h2>
+              <p className="shivam-stack-homepage-cta-desc">
+                Tell me about your project. I'll respond within 24 hours with a
+                tailored plan and honest pricing. No sales pitch, just a real
+                conversation.
               </p>
-              <div className="shivam-stack-homepage-newsletter-benefits">
+              <div className="shivam-stack-homepage-cta-buttons">
+                <a
+                  href={`mailto:${CONTACT_INFO.email}`}
+                  className="shivam-stack-homepage-btn-primary shivam-stack-homepage-cta-primary-btn"
+                >
+                  <Mail size={16} /> Email Me Directly
+                </a>
+                <a
+                  href="/book-free-call"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="shivam-stack-homepage-btn-secondary"
+                >
+                  <Phone size={16} /> Book a Free Call
+                </a>
+              </div>
+              <div className="shivam-stack-homepage-cta-trust">
                 {[
-                  "Weekly tutorials",
-                  "Free resources",
-                  "Exclusive discounts",
-                  "Career tips",
-                ].map((b) => (
-                  <span key={b}>
-                    <CheckCircle size={12} /> {b}
+                  "Free Consultation",
+                  "Response in 24h",
+                  "No Commitment",
+                  "Fixed Pricing",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="shivam-stack-homepage-cta-trust-item"
+                  >
+                    <CheckCircle size={13} /> {t}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="shivam-stack-homepage-newsletter-right">
-              <form
-                className="shivam-stack-homepage-newsletter-form"
-                onSubmit={handleNewsletterSubmit}
-              >
-                {showNameInput && (
+          </div>
+        </section>
+
+        {/* ── 20. NEWSLETTER ────────────────────────────────────────── */}
+        <section className="shivam-stack-homepage-section shivam-stack-homepage-newsletter-section">
+          <div className="shivam-stack-homepage-container">
+            <div className="shivam-stack-homepage-newsletter-card">
+              <div className="shivam-stack-homepage-newsletter-left">
+                <div className="shivam-stack-homepage-newsletter-icon">
+                  <Send size={24} />
+                </div>
+                <h3 className="shivam-stack-homepage-newsletter-title">
+                  Join 3,000+ Developers
+                </h3>
+                <p className="shivam-stack-homepage-newsletter-desc">
+                  Weekly insights on MERN stack, architecture patterns,
+                  freelancing tips, and exclusive deals on my products. No spam,
+                  ever.
+                </p>
+                <div className="shivam-stack-homepage-newsletter-benefits">
+                  {[
+                    "Weekly tutorials",
+                    "Free resources",
+                    "Exclusive discounts",
+                    "Career tips",
+                  ].map((b) => (
+                    <span key={b}>
+                      <CheckCircle size={12} /> {b}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="shivam-stack-homepage-newsletter-right">
+                <form
+                  className="shivam-stack-homepage-newsletter-form"
+                  onSubmit={handleNewsletterSubmit}
+                >
+                  {showNameInput && (
+                    <div className="shivam-stack-homepage-newsletter-field">
+                      <User
+                        size={15}
+                        className="shivam-stack-homepage-newsletter-field-icon"
+                      />
+                      <input
+                        className="shivam-stack-homepage-newsletter-input"
+                        type="text"
+                        placeholder="Your name (optional)"
+                        value={newsletterName}
+                        onChange={(e) => setNewsletterName(e.target.value)}
+                        aria-label="Your name"
+                      />
+                    </div>
+                  )}
                   <div className="shivam-stack-homepage-newsletter-field">
-                    <User
+                    <Mail
                       size={15}
                       className="shivam-stack-homepage-newsletter-field-icon"
                     />
                     <input
                       className="shivam-stack-homepage-newsletter-input"
-                      type="text"
-                      placeholder="Your name (optional)"
-                      value={newsletterName}
-                      onChange={(e) => setNewsletterName(e.target.value)}
-                      aria-label="Your name"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      required
+                      aria-label="Email address"
+                      onFocus={() => setShowNameInput(true)}
                     />
                   </div>
-                )}
-                <div className="shivam-stack-homepage-newsletter-field">
-                  <Mail
-                    size={15}
-                    className="shivam-stack-homepage-newsletter-field-icon"
-                  />
-                  <input
-                    className="shivam-stack-homepage-newsletter-input"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    required
-                    aria-label="Email address"
-                    onFocus={() => setShowNameInput(true)}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="shivam-stack-homepage-btn-primary shivam-stack-homepage-newsletter-btn"
-                  disabled={isSubscribing}
-                >
-                  {isSubscribing ? (
-                    <>
-                      Subscribing...{" "}
-                      <RefreshCw
-                        size={15}
-                        className="shivam-stack-homepage-spinner"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      Subscribe Free <ArrowRight size={15} />
-                    </>
-                  )}
-                </button>
-                <p className="shivam-stack-homepage-newsletter-privacy">
-                  No spam. Unsubscribe anytime.
-                </p>
-              </form>
+                  <button
+                    type="submit"
+                    className="shivam-stack-homepage-btn-primary shivam-stack-homepage-newsletter-btn"
+                    disabled={isSubscribing}
+                  >
+                    {isSubscribing ? (
+                      <>
+                        Subscribing...{" "}
+                        <RefreshCw
+                          size={15}
+                          className="shivam-stack-homepage-spinner"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        Subscribe Free <ArrowRight size={15} />
+                      </>
+                    )}
+                  </button>
+                  <p className="shivam-stack-homepage-newsletter-privacy">
+                    No spam. Unsubscribe anytime.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
-
-</>
-
+        </section>
+      </div>
+    </>
   );
 };
 
