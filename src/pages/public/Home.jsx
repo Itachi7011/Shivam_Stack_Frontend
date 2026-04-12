@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
 import axios from "axios";
+import SEO from "../../components/common/SEO"; 
 import {
   ArrowRight,
   ArrowUpRight,
@@ -799,7 +800,24 @@ const Homepage = () => {
   const [caseRef, caseVisible] = useScrollReveal(0.05);
   const [blogRef, blogVisible] = useScrollReveal(0.05);
 
+
+
+
+
   return (
+
+       
+
+    <>
+    <SEO 
+      title="Home"
+      description="ShivamStack privacy policy. Learn how we collect, use, protect, and manage your personal data. Your privacy is our priority."
+      keywords={["home", "new website", "web app", "website", "mern", "ShivamStack"]}
+      ogType="website"
+      publishedTime="2025-02-01"
+      modifiedTime="2025-02-01"
+    />
+    
     <div className={`shivam-stack-homepage-root ${themeClass}`}>
       {/* ── 1. ANNOUNCEMENT BAR ────────────────────────────────────── */}
       {/* <div className="shivam-stack-homepage-announcement-bar">
@@ -2013,6 +2031,9 @@ const Homepage = () => {
         </div>
       </section>
     </div>
+
+</>
+
   );
 };
 
