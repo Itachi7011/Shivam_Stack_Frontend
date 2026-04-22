@@ -7,13 +7,13 @@ import { useAdmin } from "./context/AdminContext";
 import { useLocation, Link } from "react-router-dom";
 import { SidebarProvider } from "./context/SidebarContext";
  
-import "./App.css";
+import "./App.css"; 
  
 import "./css/public/Home.css";
-import "./css/public/PublicPages.css";
-import "./css/public/Services.css";
-import "./css/public/AllServices.css";
-import "./css/public/AllProducts.css";
+import "./css/public/PublicPages.css"; 
+import "./css/public/Services.css"; 
+import "./css/public/AllServices.css"; 
+import "./css/public/AllProducts.css"; 
 import "./css/public/Portfolio.css";
 import "./css/public/BookFreeCall.css";
 import "./css/public/Blog.css";

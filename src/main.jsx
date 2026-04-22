@@ -1,10 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+import "./index.css"; 
+import App from "./App.jsx"; 
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import { HelmetProvider } from "react-helmet-async";
-
+ 
 import axios from "axios";
 
 // Set base URL for all axios requests
@@ -39,9 +39,9 @@ axios.interceptors.response.use((response) => {
   //   status: response.status,
   //   headers: response.headers
   // });
-  return response;
-});
-
+  return response; 
+}); 
+ 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider>
