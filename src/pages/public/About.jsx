@@ -11,12 +11,12 @@ import {
   Globe,
   Mail,
   ChevronRight,
-  ArrowUp,
+  ArrowUp, 
   Shield,
   FileText,
   Zap,
   Target,
-  Award,
+  Award, 
   Heart,
   Coffee,
   Star,
@@ -40,9 +40,9 @@ const META = {
     "Learn about ShivamStack and its creator Shivam — a full-stack developer and content creator from India who builds open-source projects, educational tutorials, and premium digital resources.",
 };
 
-const SECTIONS = [
+const SECTIONS = [ 
   { id: "ab-story", icon: BookOpen, title: "The Story" },
-  { id: "ab-creator", icon: User, title: "About the Creator" },
+  { id: "ab-creator", icon: User, title: "About the Creator" }, 
   { id: "ab-mission", icon: Target, title: "Mission & Values" },
   { id: "ab-what", icon: Layers, title: "What We Build" },
   { id: "ab-skills", icon: Code2, title: "Skills & Tech Stack" },
